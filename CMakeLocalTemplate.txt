@@ -1,0 +1,45 @@
+# Put global paths here just in case
+
+##########################################################
+################ Setup Eigen (required) ##################
+##########################################################
+
+set(EIGEN_DIR "C:/Workspace/eigenGit")
+
+##########################################################
+################ Setup LibIGL (required) #################
+##########################################################
+
+set(LIBIGL_DIR "C:/Workspace/libigl")
+
+##########################################################
+############## Build with CUDA? (optional) ###############
+##########################################################
+
+set(USE_CUDA false)
+set(CUDA_INC_DIR "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v9.1/include")
+set(CUDA_LIB_DIR "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v9.1/lib")
+
+##########################################################
+############# Build with Knitro? (optional) ##############
+##########################################################
+
+set(USE_KNITRO false)
+set(KNITROSAMP_INC_DIR "C:/Workspace/sdk/Knitro/examples/C++/include")
+set(KNITROCORE_INC_DIR "C:/Workspace/sdk/Knitro/include")
+set(KNITRO_LIB_DIR "C:/Workspace/sdk/Knitro/lib")
+
+##########################################################
+########### Build with SuiteSparse? (optional) ###########
+##########################################################
+
+set(USE_SSPARSE false)
+set(CHOLMOD_INC_DIR "C:/workspace/sdk/SuiteSparse/SuiteSparse/CHOLMOD/Include")
+set(SSPARSE_INC_DIR "C:/workspace/sdk/SuiteSparse/SuiteSparse/SuiteSparse_config")
+set(SSPARSE_LIB_DIR "C:/workspace/sdk/SuiteSparse/build/lib")
+
+##########################################################
+############## Build with for static linking #############
+##########################################################
+
+set(LINKSTATIC true)

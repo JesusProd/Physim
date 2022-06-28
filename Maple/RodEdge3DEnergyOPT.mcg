@@ -1,0 +1,6 @@
+		double t4 = x12[0]*x12[0];
+		double t5 = x12[1]*x12[1];
+		double t6 = x12[2]*x12[2];
+		double t8 = sqrt(t4+t5+t6);
+		double t12 = pow(t8/L0-0.1E1,2.0);
+		double t15 = 0.5*E*rh*rw*M_PI*L0*t12;

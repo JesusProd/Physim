@@ -1,0 +1,34 @@
+<composite>
+    <element number="0" model="StVk"> 
+        <parameter Young="1e5" Poisson="0.45" Density="1e3">            
+        </parameter>
+    </element>
+    <element number="1" model="StVk"> 
+        <parameter Young="1e5" Poisson="0.45" Density="1e3">            
+        </parameter>
+    </element> 
+    <element number="2" model="StVk"> 
+        <parameter Young="1e5" Poisson="0.45" Density="1e3">            
+        </parameter>
+    </element> 
+    <element number="3" model="StVk"> 
+        <parameter Young="1e5" Poisson="0.45" Density="1e3">            
+        </parameter>
+    </element> 
+    <element number="4" model="StVk"> 
+        <parameter Young="1e5" Poisson="0.45" Density="1e3">            
+        </parameter>
+    </element> 
+    <element number="5" model="StVk"> 
+        <parameter Young="1e5" Poisson="0.45" Density="1e3">            
+        </parameter>
+    </element>
+     <element number="6" model="StVk"> 
+        <parameter Young="1e5" Poisson="0.45" Density="1e3">            
+        </parameter>
+    </element> 
+    <element number="7" model="StVk"> 
+        <parameter Young="5e4" Poisson="0.45" Density="1e3">            
+        </parameter>
+    </element>   
+</composite>

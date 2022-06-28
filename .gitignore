@@ -1,0 +1,44 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+#*.obj   # Commented to allow pushing mesh files.
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+*.un~
+*.swo
+*.swp
+
+# Folders
+PhySim.dir/*
+build/*
+x64/*
+Debug/*
+#Other
+CMakeLocal.txt
+external/tinyobj/*
+include/PhySim/Extensions/SimulatorLite.h
+source/PhySim/Extensions/SimulatorLite.cpp
+source/PhySim/Utils/Serializer_Mesh.cpp

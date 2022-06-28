@@ -1,0 +1,17 @@
+		double t1 = v*v;
+		double t3 = Y*(-t1+1.0);
+		double t4 = Fv[0]*Fv[0];
+		double t5 = Fv[2]*Fv[2];
+		double t6 = Fv[4]*Fv[4];
+		double t7 = t4+t5+t6;
+		double t11 = Fv[1]*Fv[1];
+		double t12 = Fv[3]*Fv[3];
+		double t13 = Fv[5]*Fv[5];
+		double t14 = t11+t12+t13;
+		double t21 = Fv[0]*Fv[1]+Fv[2]*Fv[3]+Fv[4]*Fv[5];
+      vgx[0] = 0.2E1*t3*t7*Fv[0]+0.2E1*t3*Fv[0]*t14+0.1E1*t3*t21*Fv[1];
+      vgx[1] = 0.2E1*t3*Fv[1]*t14+0.2E1*t3*t7*Fv[1]+0.1E1*t3*t21*Fv[0];
+      vgx[2] = 0.2E1*t3*t7*Fv[2]+0.2E1*t3*t14*Fv[2]+0.1E1*t3*t21*Fv[3];
+      vgx[3] = 0.2E1*t3*Fv[3]*t14+0.2E1*t3*t7*Fv[3]+0.1E1*t3*t21*Fv[2];
+      vgx[4] = 0.2E1*t3*t7*Fv[4]+0.2E1*t3*t14*Fv[4]+0.1E1*t3*t21*Fv[5];
+      vgx[5] = 0.2E1*t3*Fv[5]*t14+0.2E1*t3*t7*Fv[5]+0.1E1*t3*t21*Fv[4];

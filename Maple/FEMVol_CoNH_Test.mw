@@ -1,0 +1,1860 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Worksheet>
+<Version major="2017" minor="1"/>
+<Label-Scheme value="2" prefix=""/>
+<View-Properties presentation="false" autoexpanding_sections="true" UserProfileName="Maple Default Profile" NumericFormat-ApplyInteger="true" NumericFormat-ApplyRational="true" NumericFormat-ApplyExponent="false">
+</View-Properties>
+<MapleNet-Properties prettyprint="3" warnlevel="3" preplot="" helpbrowser="standard" contextmenusize="automatic" displayprecision="-1" echo="1" unitattributes="&quot;fontweight&quot; = &quot;bold&quot;" imaginaryunit="I" longdelim="true" elisiontermsthreshold="10000" elisiondigitsafter="100" elisiondigitsbefore="100" plotdevice="inline" errorbreak="1" plotoptions="" plotdriver="opengl" quiet="false" elisiontermsbefore="100" elisiontermsafter="100" screenwidth="79" indentamount="4" plotoutput="terminal" screenpixelheight="1080" rtablesize="10" useclientjvm="true" labelwidth="20" postplot="" typesetting="extended" ansi="false" elisiondigitsthreshold="10000" showassumed="1" errorcursor="false" labelling="true" screenheight="25" prompt="&gt; " verboseproc="1" latexwidth="8.0" ShowLabels="true"/>
+<Styles>
+<Font name="Heading 1" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="18" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Help Variable" background="[255,255,255]" bold="false" executable="false" family="Monospaced" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Left Justified Maple Output" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Heading 4" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="10" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Heading 2" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="14" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Text Output6" background="[255,255,255]" bold="false" executable="false" family="Monospaced" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="10" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Heading 3" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Ordered List 1" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Text Output" background="[255,255,255]" bold="false" executable="false" family="Monospaced" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="10" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Ordered List 2" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Ordered List 3" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Ordered List 4" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Help Underlined Bold" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Ordered List 5" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Copyright" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="10" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Maple Comment" background="[255,255,255]" bold="true" executable="false" family="Monospaced" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Popup" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,128,128]" italic="true" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="true" placeholder="false"/>
+<Font name="Atomic Variable" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[175,0,175]" italic="true" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="HyperlinkWarning" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="true" placeholder="false"/>
+<Font name="Dictionary Hyperlink" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[147,0,15]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="true" placeholder="false"/>
+<Font name="Plot Text" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="8" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="List Item" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Dash Item" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Input" background="[255,255,255]" bold="false" executable="true" family="Times New Roman" foreground="[255,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Code" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[255,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Math Italic" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Math Small" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="1" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Author" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Math Bold Small" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="1" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Help Bold" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Help Menus" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Help Heading" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="14" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Warning" background="[255,255,255]" bold="false" executable="false" family="Monospaced" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="10" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Fixed Width" background="[255,255,255]" bold="false" executable="false" family="Monospaced" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="10" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Help" background="[255,255,255]" bold="false" executable="false" family="Monospaced" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="9" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Output" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,255]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Line Printed Output" background="[255,255,255]" bold="false" executable="false" family="Monospaced" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="10" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Maple Output" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Inert Output" background="[255,255,255]" bold="false" executable="true" family="Times New Roman" foreground="[144,144,144]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Help Normal" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Diagnostic" background="[255,255,255]" bold="false" executable="false" family="Monospaced" foreground="[64,128,64]" italic="false" opaque="false" readonly="true" size="10" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Maple Input" background="[255,255,255]" bold="true" executable="true" family="Monospaced" foreground="[255,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Page Number" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Annotation Title" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="18" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Header and Footer" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="10" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Math Italic Small206" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="1" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Help Fixed" background="[255,255,255]" bold="false" executable="false" family="Monospaced" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="10" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Output Labels" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="8" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Math Italic Small205" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="1" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="HyperlinkError" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[255,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="true" placeholder="false"/>
+<Font name="Help Notes" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Help Underlined" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="true" placeholder="false"/>
+<Font name="2D Math Italic Small208" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="1" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Math Italic Small" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="1" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Math Symbol 2" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Math Italic Small207" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="1" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Math" background="[255,255,255]" bold="false" executable="true" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Help Nonterminal" background="[255,255,255]" bold="true" executable="false" family="Monospaced" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Math Italic Small209" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="1" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Bullet Item" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Maple Plot" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Annotation Text" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Help Maple Name" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[104,64,92]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Error" background="[255,255,255]" bold="false" executable="false" family="Monospaced" foreground="[255,0,255]" italic="false" opaque="false" readonly="true" size="10" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Title" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="18" subscript="false" superscript="false" underline="true" placeholder="false"/>
+<Font name="Text" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Plot Title" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="10" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Help Underlined Italic" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="true" placeholder="false"/>
+<Font name="Normal" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Caption Reference" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Help Italic Bold" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Default" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Maple Input Placeholder" background="[255,255,255]" bold="true" executable="true" family="Courier New" foreground="[200,0,200]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="LaTeX" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Help Emphasized" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Equation Label" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Help Italic" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Comment" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Prompt" background="[255,255,255]" bold="true" executable="false" family="Monospaced" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Math Bold" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Hyperlink" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,128,128]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="true" placeholder="false"/>
+<Font name="Caption Text" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Layout name="Heading 1" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="8" spacebelow="4" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Warning" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Fixed Width" alignment="centred" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Left Justified Maple Output" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Help" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Heading 4" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Line Printed Output" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Heading 2" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="8" spacebelow="2" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Maple Output" alignment="centred" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Text Output6" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Heading 3" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Diagnostic" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Ordered List 1" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Text Output" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Ordered List 2" alignment="left" bullet="none" firstindent="0" leftmargin="36" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Ordered List 3" alignment="left" bullet="none" firstindent="0" leftmargin="72" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Ordered List 4" alignment="left" bullet="none" firstindent="0" leftmargin="108" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Ordered List 5" alignment="left" bullet="none" firstindent="0" leftmargin="144" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Annotation Title" alignment="centred" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="12" spacebelow="12" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="HyperlinkError" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="HyperlinkWarning" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Bullet Item" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Maple Plot" alignment="centred" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="List Item" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Dash Item" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Error" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Title" alignment="centred" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="12" spacebelow="12" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Normal" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Author" alignment="centred" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="8" spacebelow="8" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Pencil-style name="Pencil 1" pen-color="[0,0,0]" pen-height="1.0" pen-width="1.0" pen-opacity="1.0"/>
+<Pencil-style name="Pencil 2" pen-color="[0,0,255]" pen-height="1.0" pen-width="1.0" pen-opacity="1.0"/>
+<Pencil-style name="Pencil 3" pen-color="[0,0,0]" pen-height="3.0" pen-width="3.0" pen-opacity="1.0"/>
+<Pencil-style name="Pencil 4" pen-color="[0,0,255]" pen-height="3.0" pen-width="3.0" pen-opacity="1.0"/>
+<Pencil-style name="Pencil 5" pen-color="[255,0,0]" pen-height="5.0" pen-width="5.0" pen-opacity="1.0"/>
+<Highlighter-style name="Highlighter 5" pen-color="[255,255,0]" pen-height="48.0" pen-width="48.0" pen-opacity="0.8"/>
+<Highlighter-style name="Highlighter 3" pen-color="[51,255,0]" pen-height="24.0" pen-width="24.0" pen-opacity="0.8"/>
+<Highlighter-style name="Highlighter 4" pen-color="[0,255,255]" pen-height="32.0" pen-width="32.0" pen-opacity="0.8"/>
+<Highlighter-style name="Highlighter 1" pen-color="[255,153,255]" pen-height="12.0" pen-width="8.0" pen-opacity="0.8"/>
+<Highlighter-style name="Highlighter 2" pen-color="[255,204,0]" pen-height="14.0" pen-width="14.0" pen-opacity="0.8"/>
+</Styles>
+<Startup-Code startupcode=""/>
+<Metadata-table>
+    <Metadata-category name="&lt;default&gt;"/>
+    <Metadata-tag id="0" category="&lt;default&gt;" name="Propiedades del Documento">
+        <Metadata-attribute name="T\303\255tulo" value="&lt;default&gt;"/>
+        <Metadata-attribute name="Palabras claves" value="&lt;default&gt;"/>
+        <Metadata-attribute name="Autor" value="&lt;default&gt;"/>
+        <Metadata-attribute name="Asunto " value="&lt;default&gt;"/>
+    </Metadata-tag>
+</Metadata-table>
+<Task-table>
+    <Task-category name="&lt;default&gt;"/>
+</Task-table>
+<Task/>
+<Group labelreference="L3" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">restart: with(linalg): with(codegen):</Text-field>
+</Input>
+</Group>
+<Group labelreference="L33" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"><Equation executable="true" style="2D Input" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbW9HRiQ2LVEhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y0LyUpc3RyZXRjaHlHRjQvJSpzeW1tZXRyaWNHRjQvJShsYXJnZW9wR0Y0LyUubW92YWJsZWxpbWl0c0dGNC8lJ2FjY2VudEdGNC8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkMvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUrZXhlY3V0YWJsZUdGNEYv">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbW9HRiQ2LVEhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y0LyUpc3RyZXRjaHlHRjQvJSpzeW1tZXRyaWNHRjQvJShsYXJnZW9wR0Y0LyUubW92YWJsZWxpbWl0c0dGNC8lJ2FjY2VudEdGNC8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkMvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUrZXhlY3V0YWJsZUdGNEYv</Equation></Text-field>
+</Input>
+</Group>
+<Group labelreference="L32" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">toC := proc(expr, file)
+try fremove(file) catch: end try:
+C(expr,optimized,filename = file):
+end:</Text-field>
+</Input>
+</Group>
+<Group labelreference="L4" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group labelreference="L5" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"><Font encoding="UTF-8"># Uses an isotropic material characterized by lam\303\251 coefficients</Font></Text-field>
+</Input>
+</Group>
+<Group labelreference="L29" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group hide-input="false" labelreference="L180" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Nx := matrix(3,4);</Text-field>
+</Input>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbWlHRiQ2JVEjTnhGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtb0dGJDYtUSkmQXNzaWduO0YnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSwwLjI3Nzc3NzhlbUYnLyUncnNwYWNlR0ZMLUkobWZlbmNlZEdGJDYoLUknbXRhYmxlR0YkNjctSSRtdHJHRiQ2KS1JJG10ZEdGJDYoLUklbXN1YkdGJDYlLUY2Ni1RIj9GJ0Y5RjtGPkZARkJGREZGRkgvRktRLDAuMTExMTExMWVtRicvRk5GXG8tRiM2Ji1JI21uR0YkNiRRIjFGJ0Y5LUY2Ni1RKCZjb21tYTtGJ0Y5RjsvRj9GMUZARkJGREZGRkgvRktRJjAuMGVtRicvRk5RLDAuMzMzMzMzM2VtRidGYG9GOS8lL3N1YnNjcmlwdHNoaWZ0R1EiMEYnLyUpcm93YWxpZ25HUSFGJy8lLGNvbHVtbmFsaWduR0ZhcC8lK2dyb3VwYWxpZ25HRmFwLyUocm93c3BhbkdGY28vJStjb2x1bW5zcGFuR0Zjby1GWTYoLUZmbjYlRmhuLUYjNiZGYG9GZG8tRmFvNiRRIjJGJ0Y5RjlGXHBGX3BGYnBGZHBGZnBGaHAtRlk2KC1GZm42JUZobi1GIzYmRmBvRmRvLUZhbzYkUSIzRidGOUY5RlxwRl9wRmJwRmRwRmZwRmhwLUZZNigtRmZuNiVGaG4tRiM2JkZgb0Zkby1GYW82JFEiNEYnRjlGOUZccEZfcEZicEZkcEZmcEZocEZfcEZicEZkcC1GVjYpLUZZNigtRmZuNiVGaG4tRiM2JkZgcUZkb0Zgb0Y5RlxwRl9wRmJwRmRwRmZwRmhwLUZZNigtRmZuNiVGaG4tRiM2JkZgcUZkb0ZgcUY5RlxwRl9wRmJwRmRwRmZwRmhwLUZZNigtRmZuNiVGaG4tRiM2JkZgcUZkb0ZpcUY5RlxwRl9wRmJwRmRwRmZwRmhwLUZZNigtRmZuNiVGaG4tRiM2JkZgcUZkb0ZickY5RlxwRl9wRmJwRmRwRmZwRmhwRl9wRmJwRmRwLUZWNiktRlk2KC1GZm42JUZobi1GIzYmRmlxRmRvRmBvRjlGXHBGX3BGYnBGZHBGZnBGaHAtRlk2KC1GZm42JUZobi1GIzYmRmlxRmRvRmBxRjlGXHBGX3BGYnBGZHBGZnBGaHAtRlk2KC1GZm42JUZobi1GIzYmRmlxRmRvRmlxRjlGXHBGX3BGYnBGZHBGZnBGaHAtRlk2KC1GZm42JUZobi1GIzYmRmlxRmRvRmJyRjlGXHBGX3BGYnBGZHBGZnBGaHBGX3BGYnBGZHAvJSZhbGlnbkdRJWF4aXNGJy9GYHBRKWJhc2VsaW5lRicvRmNwUSdjZW50ZXJGJy9GZXBRJ3xmcmxlZnR8aHJGJy8lL2FsaWdubWVudHNjb3BlR0YxLyUsY29sdW1ud2lkdGhHUSVhdXRvRicvJSZ3aWR0aEdGZnYvJStyb3dzcGFjaW5nR1EmMS4wZXhGJy8lLmNvbHVtbnNwYWNpbmdHUSYwLjhlbUYnLyUpcm93bGluZXNHUSVub25lRicvJSxjb2x1bW5saW5lc0dGYXcvJSZmcmFtZUdGYXcvJS1mcmFtZXNwYWNpbmdHUSwwLjRlbX4wLjVleEYnLyUqZXF1YWxyb3dzR0Y9LyUtZXF1YWxjb2x1bW5zR0Y9LyUtZGlzcGxheXN0eWxlR0Y9LyUlc2lkZUdRJnJpZ2h0RicvJTBtaW5sYWJlbHNwYWNpbmdHRl53RjkvSSttc2VtYW50aWNzR0YkUSlhcnJheVsyXUYnLyUlb3BlbkdRJyZsc3FiO0YnLyUmY2xvc2VHUScmcnNxYjtGJ0ZkeEY5">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2JVEjTnhGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtb0dGJDYtUSkmQXNzaWduO0YnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSwwLjI3Nzc3NzhlbUYnLyUncnNwYWNlR0ZMLUkobWZlbmNlZEdGJDYoLUknbXRhYmxlR0YkNjctSSRtdHJHRiQ2KS1JJG10ZEdGJDYoLUklbXN1YkdGJDYlLUY2Ni1RIj9GJ0Y5RjtGPkZARkJGREZGRkgvRktRLDAuMTExMTExMWVtRicvRk5GXG8tRiM2JS1JI21uR0YkNiRRIjFGJ0Y5LUY2Ni1RKCZjb21tYTtGJ0Y5RjsvRj9GMUZARkJGREZGRkgvRktRJjAuMGVtRicvRk5RLDAuMzMzMzMzM2VtRidGYG8vJS9zdWJzY3JpcHRzaGlmdEdRIjBGJy8lKXJvd2FsaWduR1EhRicvJSxjb2x1bW5hbGlnbkdGYXAvJStncm91cGFsaWduR0ZhcC8lKHJvd3NwYW5HRmNvLyUrY29sdW1uc3BhbkdGY28tRlk2KC1GZm42JUZobi1GIzYlRmBvRmRvLUZhbzYkUSIyRidGOUZccEZfcEZicEZkcEZmcEZocC1GWTYoLUZmbjYlRmhuLUYjNiVGYG9GZG8tRmFvNiRRIjNGJ0Y5RlxwRl9wRmJwRmRwRmZwRmhwLUZZNigtRmZuNiVGaG4tRiM2JUZgb0Zkby1GYW82JFEiNEYnRjlGXHBGX3BGYnBGZHBGZnBGaHBGX3BGYnBGZHAtRlY2KS1GWTYoLUZmbjYlRmhuLUYjNiVGYHFGZG9GYG9GXHBGX3BGYnBGZHBGZnBGaHAtRlk2KC1GZm42JUZobi1GIzYlRmBxRmRvRmBxRlxwRl9wRmJwRmRwRmZwRmhwLUZZNigtRmZuNiVGaG4tRiM2JUZgcUZkb0ZpcUZccEZfcEZicEZkcEZmcEZocC1GWTYoLUZmbjYlRmhuLUYjNiVGYHFGZG9GYnJGXHBGX3BGYnBGZHBGZnBGaHBGX3BGYnBGZHAtRlY2KS1GWTYoLUZmbjYlRmhuLUYjNiVGaXFGZG9GYG9GXHBGX3BGYnBGZHBGZnBGaHAtRlk2KC1GZm42JUZobi1GIzYlRmlxRmRvRmBxRlxwRl9wRmJwRmRwRmZwRmhwLUZZNigtRmZuNiVGaG4tRiM2JUZpcUZkb0ZpcUZccEZfcEZicEZkcEZmcEZocC1GWTYoLUZmbjYlRmhuLUYjNiVGaXFGZG9GYnJGXHBGX3BGYnBGZHBGZnBGaHBGX3BGYnBGZHAvJSZhbGlnbkdRJWF4aXNGJy9GYHBRKWJhc2VsaW5lRicvRmNwUSdjZW50ZXJGJy9GZXBRJ3xmcmxlZnR8aHJGJy8lL2FsaWdubWVudHNjb3BlR0YxLyUsY29sdW1ud2lkdGhHUSVhdXRvRicvJSZ3aWR0aEdGZnYvJStyb3dzcGFjaW5nR1EmMS4wZXhGJy8lLmNvbHVtbnNwYWNpbmdHUSYwLjhlbUYnLyUpcm93bGluZXNHUSVub25lRicvJSxjb2x1bW5saW5lc0dGYXcvJSZmcmFtZUdGYXcvJS1mcmFtZXNwYWNpbmdHUSwwLjRlbX4wLjVleEYnLyUqZXF1YWxyb3dzR0Y9LyUtZXF1YWxjb2x1bW5zR0Y9LyUtZGlzcGxheXN0eWxlR0Y9LyUlc2lkZUdRJnJpZ2h0RicvJTBtaW5sYWJlbHNwYWNpbmdHRl53RjkvSSttc2VtYW50aWNzR0YkUSlhcnJheVsyXUYnLyUlb3BlbkdRJyZsc3FiO0YnLyUmY2xvc2VHUScmcnNxYjtGJ0ZkeA==</Equation></Text-field>
+</Output>
+</Group>
+<Group hide-input="false" labelreference="L153" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">BHi := matrix(4,3);</Text-field>
+</Input>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbWlHRiQ2JVEkQkhpRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW9HRiQ2LVEpJkFzc2lnbjtGJy9GM1Enbm9ybWFsRicvJSZmZW5jZUdRJmZhbHNlRicvJSpzZXBhcmF0b3JHRj0vJSlzdHJldGNoeUdGPS8lKnN5bW1ldHJpY0dGPS8lKGxhcmdlb3BHRj0vJS5tb3ZhYmxlbGltaXRzR0Y9LyUnYWNjZW50R0Y9LyUnbHNwYWNlR1EsMC4yNzc3Nzc4ZW1GJy8lJ3JzcGFjZUdGTC1JKG1mZW5jZWRHRiQ2KC1JJ210YWJsZUdGJDY4LUkkbXRyR0YkNigtSSRtdGRHRiQ2KC1JJW1zdWJHRiQ2JS1GNjYtUSI/RidGOUY7Rj5GQEZCRkRGRkZIL0ZLUSwwLjExMTExMTFlbUYnL0ZORlxvLUYjNiYtSSNtbkdGJDYkUSIxRidGOS1GNjYtUSgmY29tbWE7RidGOUY7L0Y/RjFGQEZCRkRGRkZIL0ZLUSYwLjBlbUYnL0ZOUSwwLjMzMzMzMzNlbUYnRmBvRjkvJS9zdWJzY3JpcHRzaGlmdEdRIjBGJy8lKXJvd2FsaWduR1EhRicvJSxjb2x1bW5hbGlnbkdGYXAvJStncm91cGFsaWduR0ZhcC8lKHJvd3NwYW5HRmNvLyUrY29sdW1uc3BhbkdGY28tRlk2KC1GZm42JUZobi1GIzYmRmBvRmRvLUZhbzYkUSIyRidGOUY5RlxwRl9wRmJwRmRwRmZwRmhwLUZZNigtRmZuNiVGaG4tRiM2JkZgb0Zkby1GYW82JFEiM0YnRjlGOUZccEZfcEZicEZkcEZmcEZocEZfcEZicEZkcC1GVjYoLUZZNigtRmZuNiVGaG4tRiM2JkZgcUZkb0Zgb0Y5RlxwRl9wRmJwRmRwRmZwRmhwLUZZNigtRmZuNiVGaG4tRiM2JkZgcUZkb0ZgcUY5RlxwRl9wRmJwRmRwRmZwRmhwLUZZNigtRmZuNiVGaG4tRiM2JkZgcUZkb0ZpcUY5RlxwRl9wRmJwRmRwRmZwRmhwRl9wRmJwRmRwLUZWNigtRlk2KC1GZm42JUZobi1GIzYmRmlxRmRvRmBvRjlGXHBGX3BGYnBGZHBGZnBGaHAtRlk2KC1GZm42JUZobi1GIzYmRmlxRmRvRmBxRjlGXHBGX3BGYnBGZHBGZnBGaHAtRlk2KC1GZm42JUZobi1GIzYmRmlxRmRvRmlxRjlGXHBGX3BGYnBGZHBGZnBGaHBGX3BGYnBGZHAtRlY2KC1GWTYoLUZmbjYlRmhuLUYjNiYtRmFvNiRRIjRGJ0Y5RmRvRmBvRjlGXHBGX3BGYnBGZHBGZnBGaHAtRlk2KC1GZm42JUZobi1GIzYmRlx1RmRvRmBxRjlGXHBGX3BGYnBGZHBGZnBGaHAtRlk2KC1GZm42JUZobi1GIzYmRlx1RmRvRmlxRjlGXHBGX3BGYnBGZHBGZnBGaHBGX3BGYnBGZHAvJSZhbGlnbkdRJWF4aXNGJy9GYHBRKWJhc2VsaW5lRicvRmNwUSdjZW50ZXJGJy9GZXBRJ3xmcmxlZnR8aHJGJy8lL2FsaWdubWVudHNjb3BlR0YxLyUsY29sdW1ud2lkdGhHUSVhdXRvRicvJSZ3aWR0aEdGaHYvJStyb3dzcGFjaW5nR1EmMS4wZXhGJy8lLmNvbHVtbnNwYWNpbmdHUSYwLjhlbUYnLyUpcm93bGluZXNHUSVub25lRicvJSxjb2x1bW5saW5lc0dGY3cvJSZmcmFtZUdGY3cvJS1mcmFtZXNwYWNpbmdHUSwwLjRlbX4wLjVleEYnLyUqZXF1YWxyb3dzR0Y9LyUtZXF1YWxjb2x1bW5zR0Y9LyUtZGlzcGxheXN0eWxlR0Y9LyUlc2lkZUdRJnJpZ2h0RicvJTBtaW5sYWJlbHNwYWNpbmdHRmB3RjkvSSttc2VtYW50aWNzR0YkUSlhcnJheVsyXUYnLyUlb3BlbkdRJyZsc3FiO0YnLyUmY2xvc2VHUScmcnNxYjtGJ0ZmeEY5">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2JVEkQkhpRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW9HRiQ2LVEpJkFzc2lnbjtGJy9GM1Enbm9ybWFsRicvJSZmZW5jZUdRJmZhbHNlRicvJSpzZXBhcmF0b3JHRj0vJSlzdHJldGNoeUdGPS8lKnN5bW1ldHJpY0dGPS8lKGxhcmdlb3BHRj0vJS5tb3ZhYmxlbGltaXRzR0Y9LyUnYWNjZW50R0Y9LyUnbHNwYWNlR1EsMC4yNzc3Nzc4ZW1GJy8lJ3JzcGFjZUdGTC1JKG1mZW5jZWRHRiQ2KC1JJ210YWJsZUdGJDY4LUkkbXRyR0YkNigtSSRtdGRHRiQ2KC1JJW1zdWJHRiQ2JS1GNjYtUSI/RidGOUY7Rj5GQEZCRkRGRkZIL0ZLUSwwLjExMTExMTFlbUYnL0ZORlxvLUYjNiUtSSNtbkdGJDYkUSIxRidGOS1GNjYtUSgmY29tbWE7RidGOUY7L0Y/RjFGQEZCRkRGRkZIL0ZLUSYwLjBlbUYnL0ZOUSwwLjMzMzMzMzNlbUYnRmBvLyUvc3Vic2NyaXB0c2hpZnRHUSIwRicvJSlyb3dhbGlnbkdRIUYnLyUsY29sdW1uYWxpZ25HRmFwLyUrZ3JvdXBhbGlnbkdGYXAvJShyb3dzcGFuR0Zjby8lK2NvbHVtbnNwYW5HRmNvLUZZNigtRmZuNiVGaG4tRiM2JUZgb0Zkby1GYW82JFEiMkYnRjlGXHBGX3BGYnBGZHBGZnBGaHAtRlk2KC1GZm42JUZobi1GIzYlRmBvRmRvLUZhbzYkUSIzRidGOUZccEZfcEZicEZkcEZmcEZocEZfcEZicEZkcC1GVjYoLUZZNigtRmZuNiVGaG4tRiM2JUZgcUZkb0Zgb0ZccEZfcEZicEZkcEZmcEZocC1GWTYoLUZmbjYlRmhuLUYjNiVGYHFGZG9GYHFGXHBGX3BGYnBGZHBGZnBGaHAtRlk2KC1GZm42JUZobi1GIzYlRmBxRmRvRmlxRlxwRl9wRmJwRmRwRmZwRmhwRl9wRmJwRmRwLUZWNigtRlk2KC1GZm42JUZobi1GIzYlRmlxRmRvRmBvRlxwRl9wRmJwRmRwRmZwRmhwLUZZNigtRmZuNiVGaG4tRiM2JUZpcUZkb0ZgcUZccEZfcEZicEZkcEZmcEZocC1GWTYoLUZmbjYlRmhuLUYjNiVGaXFGZG9GaXFGXHBGX3BGYnBGZHBGZnBGaHBGX3BGYnBGZHAtRlY2KC1GWTYoLUZmbjYlRmhuLUYjNiUtRmFvNiRRIjRGJ0Y5RmRvRmBvRlxwRl9wRmJwRmRwRmZwRmhwLUZZNigtRmZuNiVGaG4tRiM2JUZcdUZkb0ZgcUZccEZfcEZicEZkcEZmcEZocC1GWTYoLUZmbjYlRmhuLUYjNiVGXHVGZG9GaXFGXHBGX3BGYnBGZHBGZnBGaHBGX3BGYnBGZHAvJSZhbGlnbkdRJWF4aXNGJy9GYHBRKWJhc2VsaW5lRicvRmNwUSdjZW50ZXJGJy9GZXBRJ3xmcmxlZnR8aHJGJy8lL2FsaWdubWVudHNjb3BlR0YxLyUsY29sdW1ud2lkdGhHUSVhdXRvRicvJSZ3aWR0aEdGaHYvJStyb3dzcGFjaW5nR1EmMS4wZXhGJy8lLmNvbHVtbnNwYWNpbmdHUSYwLjhlbUYnLyUpcm93bGluZXNHUSVub25lRicvJSxjb2x1bW5saW5lc0dGY3cvJSZmcmFtZUdGY3cvJS1mcmFtZXNwYWNpbmdHUSwwLjRlbX4wLjVleEYnLyUqZXF1YWxyb3dzR0Y9LyUtZXF1YWxjb2x1bW5zR0Y9LyUtZGlzcGxheXN0eWxlR0Y9LyUlc2lkZUdRJnJpZ2h0RicvJTBtaW5sYWJlbHNwYWNpbmdHRmB3RjkvSSttc2VtYW50aWNzR0YkUSlhcnJheVsyXUYnLyUlb3BlbkdRJyZsc3FiO0YnLyUmY2xvc2VHUScmcnNxYjtGJ0ZmeA==</Equation></Text-field>
+</Output>
+</Group>
+<Group hide-input="false" labelreference="L152" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Fm := multiply(Nx,BHi);</Text-field>
+</Input>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbWlHRiQ2JVEjRm1GJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtb0dGJDYtUSkmQXNzaWduO0YnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSwwLjI3Nzc3NzhlbUYnLyUncnNwYWNlR0ZMLUkobWZlbmNlZEdGJDYoLUknbXRhYmxlR0YkNjctSSRtdHJHRiQ2KC1JJG10ZEdGJDYoLUYjNiotRiM2Ji1JJW1zdWJHRiQ2JS1GLDYlUSNOeEYnRi9GMi1GIzYmLUkjbW5HRiQ2JFEiMUYnRjktRjY2LVEoJmNvbW1hO0YnRjlGOy9GP0YxRkBGQkZERkZGSC9GS1EmMC4wZW1GJy9GTlEsMC4zMzMzMzMzZW1GJ0Zhb0Y5LyUvc3Vic2NyaXB0c2hpZnRHUSIwRictRjY2LVExJkludmlzaWJsZVRpbWVzO0YnRjlGO0Y+RkBGQkZERkZGSEZpby9GTkZqby1Gam42JS1GLDYlUSRCSGlGJ0YvRjJGX29GXXBGOS1GNjYtUScmcGx1cztGJ0Y5RjtGPkZARkJGREZGRkgvRktRLDAuMjIyMjIyMmVtRicvRk5GXXEtRiM2Ji1Gam42JUZcby1GIzYmRmFvRmVvLUZibzYkUSIyRidGOUY5Rl1wRmBwLUZqbjYlRmZwLUYjNiZGZXFGZW9GYW9GOUZdcEY5RmlwLUYjNiYtRmpuNiVGXG8tRiM2JkZhb0Zlby1GYm82JFEiM0YnRjlGOUZdcEZgcC1Gam42JUZmcC1GIzYmRmJyRmVvRmFvRjlGXXBGOUZpcC1GIzYmLUZqbjYlRlxvLUYjNiZGYW9GZW8tRmJvNiRRIjRGJ0Y5RjlGXXBGYHAtRmpuNiVGZnAtRiM2JkZfc0Zlb0Zhb0Y5Rl1wRjlGOS8lKXJvd2FsaWduR1EhRicvJSxjb2x1bW5hbGlnbkdGaHMvJStncm91cGFsaWduR0Zocy8lKHJvd3NwYW5HRmRvLyUrY29sdW1uc3BhbkdGZG8tRlk2KC1GIzYqLUYjNiZGaW5GYHAtRmpuNiVGZnBGY3FGXXBGOUZpcC1GIzYmRmFxRmBwLUZqbjYlRmZwLUYjNiZGZXFGZW9GZXFGOUZdcEY5RmlwLUYjNiZGXnJGYHAtRmpuNiVGZnAtRiM2JkZickZlb0ZlcUY5Rl1wRjlGaXAtRiM2JkZbc0ZgcC1Gam42JUZmcC1GIzYmRl9zRmVvRmVxRjlGXXBGOUY5RmZzRmlzRlt0Rl10Rl90LUZZNigtRiM2Ki1GIzYmRmluRmBwLUZqbjYlRmZwRmByRl1wRjlGaXAtRiM2JkZhcUZgcC1Gam42JUZmcC1GIzYmRmVxRmVvRmJyRjlGXXBGOUZpcC1GIzYmRl5yRmBwLUZqbjYlRmZwLUYjNiZGYnJGZW9GYnJGOUZdcEY5RmlwLUYjNiZGW3NGYHAtRmpuNiVGZnAtRiM2JkZfc0Zlb0ZickY5Rl1wRjlGOUZmc0Zpc0ZbdEZddEZfdEZmc0Zpc0ZbdC1GVjYoLUZZNigtRiM2Ki1GIzYmRmRwRmBwLUZqbjYlRlxvRmpxRl1wRjlGaXAtRiM2JkZocUZgcC1Gam42JUZcb0ZddUZdcEY5RmlwLUYjNiZGZXJGYHAtRmpuNiVGXG9GZ3ZGXXBGOUZpcC1GIzYmRmJzRmBwLUZqbjYlRlxvLUYjNiZGZXFGZW9GX3NGOUZdcEY5RjlGZnNGaXNGW3RGXXRGX3QtRlk2KC1GIzYqLUYjNiZGZ3RGYHBGXXhGOUZpcC1GIzYmRlt1RmBwRmF4RjlGaXAtRiM2JkZhdUZgcEZleEY5RmlwLUYjNiZGZ3VGYHBGaXhGOUY5RmZzRmlzRlt0Rl10Rl90LUZZNigtRiM2Ki1GIzYmRmF2RmBwRl14RjlGaXAtRiM2JkZldkZgcEZheEY5RmlwLUYjNiZGW3dGYHBGZXhGOUZpcC1GIzYmRmF3RmBwRml4RjlGOUZmc0Zpc0ZbdEZddEZfdEZmc0Zpc0ZbdC1GVjYoLUZZNigtRiM2Ki1GIzYmRmRwRmBwLUZqbjYlRlxvRmdyRl1wRjlGaXAtRiM2JkZocUZgcC1Gam42JUZcb0ZjdUZdcEY5RmlwLUYjNiZGZXJGYHAtRmpuNiVGXG9GXXdGXXBGOUZpcC1GIzYmRmJzRmBwLUZqbjYlRlxvLUYjNiZGYnJGZW9GX3NGOUZdcEY5RjlGZnNGaXNGW3RGXXRGX3QtRlk2KC1GIzYqLUYjNiZGZ3RGYHBGXVtsRjlGaXAtRiM2JkZbdUZgcEZhW2xGOUZpcC1GIzYmRmF1RmBwRmVbbEY5RmlwLUYjNiZGZ3VGYHBGaVtsRjlGOUZmc0Zpc0ZbdEZddEZfdC1GWTYoLUYjNiotRiM2JkZhdkZgcEZdW2xGOUZpcC1GIzYmRmV2RmBwRmFbbEY5RmlwLUYjNiZGW3dGYHBGZVtsRjlGaXAtRiM2JkZhd0ZgcEZpW2xGOUY5RmZzRmlzRlt0Rl10Rl90RmZzRmlzRlt0LyUmYWxpZ25HUSVheGlzRicvRmdzUSliYXNlbGluZUYnL0Zqc1EnY2VudGVyRicvRlx0USd8ZnJsZWZ0fGhyRicvJS9hbGlnbm1lbnRzY29wZUdGMS8lLGNvbHVtbndpZHRoR1ElYXV0b0YnLyUmd2lkdGhHRmJebC8lK3Jvd3NwYWNpbmdHUSYxLjBleEYnLyUuY29sdW1uc3BhY2luZ0dRJjAuOGVtRicvJSlyb3dsaW5lc0dRJW5vbmVGJy8lLGNvbHVtbmxpbmVzR0ZdX2wvJSZmcmFtZUdGXV9sLyUtZnJhbWVzcGFjaW5nR1EsMC40ZW1+MC41ZXhGJy8lKmVxdWFscm93c0dGPS8lLWVxdWFsY29sdW1uc0dGPS8lLWRpc3BsYXlzdHlsZUdGPS8lJXNpZGVHUSZyaWdodEYnLyUwbWlubGFiZWxzcGFjaW5nR0ZqXmxGOS9JK21zZW1hbnRpY3NHRiRRKWFycmF5WzJdRicvJSVvcGVuR1EnJmxzcWI7RicvJSZjbG9zZUdRJyZyc3FiO0YnRmBgbEY5">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2JVEjRm1GJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtb0dGJDYtUSkmQXNzaWduO0YnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSwwLjI3Nzc3NzhlbUYnLyUncnNwYWNlR0ZMLUkobWZlbmNlZEdGJDYoLUknbXRhYmxlR0YkNjctSSRtdHJHRiQ2KC1JJG10ZEdGJDYoLUYjNiktRiM2JS1JJW1zdWJHRiQ2JS1GLDYlUSNOeEYnRi9GMi1GIzYlLUkjbW5HRiQ2JFEiMUYnRjktRjY2LVEoJmNvbW1hO0YnRjlGOy9GP0YxRkBGQkZERkZGSC9GS1EmMC4wZW1GJy9GTlEsMC4zMzMzMzMzZW1GJ0Zhby8lL3N1YnNjcmlwdHNoaWZ0R1EiMEYnLUY2Ni1RMSZJbnZpc2libGVUaW1lcztGJ0Y5RjtGPkZARkJGREZGRkhGaW8vRk5Gam8tRmpuNiUtRiw2JVEkQkhpRidGL0YyRl9vRl1wLUY2Ni1RJyZwbHVzO0YnRjlGO0Y+RkBGQkZERkZGSC9GS1EsMC4yMjIyMjIyZW1GJy9GTkZdcS1GIzYlLUZqbjYlRlxvLUYjNiVGYW9GZW8tRmJvNiRRIjJGJ0Y5Rl1wRmBwLUZqbjYlRmZwLUYjNiVGZXFGZW9GYW9GXXBGaXAtRiM2JS1Gam42JUZcby1GIzYlRmFvRmVvLUZibzYkUSIzRidGOUZdcEZgcC1Gam42JUZmcC1GIzYlRmJyRmVvRmFvRl1wRmlwLUYjNiUtRmpuNiVGXG8tRiM2JUZhb0Zlby1GYm82JFEiNEYnRjlGXXBGYHAtRmpuNiVGZnAtRiM2JUZfc0Zlb0Zhb0ZdcC8lKXJvd2FsaWduR1EhRicvJSxjb2x1bW5hbGlnbkdGaHMvJStncm91cGFsaWduR0Zocy8lKHJvd3NwYW5HRmRvLyUrY29sdW1uc3BhbkdGZG8tRlk2KC1GIzYpLUYjNiVGaW5GYHAtRmpuNiVGZnBGY3FGXXBGaXAtRiM2JUZhcUZgcC1Gam42JUZmcC1GIzYlRmVxRmVvRmVxRl1wRmlwLUYjNiVGXnJGYHAtRmpuNiVGZnAtRiM2JUZickZlb0ZlcUZdcEZpcC1GIzYlRltzRmBwLUZqbjYlRmZwLUYjNiVGX3NGZW9GZXFGXXBGZnNGaXNGW3RGXXRGX3QtRlk2KC1GIzYpLUYjNiVGaW5GYHAtRmpuNiVGZnBGYHJGXXBGaXAtRiM2JUZhcUZgcC1Gam42JUZmcC1GIzYlRmVxRmVvRmJyRl1wRmlwLUYjNiVGXnJGYHAtRmpuNiVGZnAtRiM2JUZickZlb0ZickZdcEZpcC1GIzYlRltzRmBwLUZqbjYlRmZwLUYjNiVGX3NGZW9GYnJGXXBGZnNGaXNGW3RGXXRGX3RGZnNGaXNGW3QtRlY2KC1GWTYoLUYjNiktRiM2JUZkcEZgcC1Gam42JUZcb0ZqcUZdcEZpcC1GIzYlRmhxRmBwLUZqbjYlRlxvRl11Rl1wRmlwLUYjNiVGZXJGYHAtRmpuNiVGXG9GZ3ZGXXBGaXAtRiM2JUZic0ZgcC1Gam42JUZcby1GIzYlRmVxRmVvRl9zRl1wRmZzRmlzRlt0Rl10Rl90LUZZNigtRiM2KS1GIzYlRmd0RmBwRl14RmlwLUYjNiVGW3VGYHBGYXhGaXAtRiM2JUZhdUZgcEZleEZpcC1GIzYlRmd1RmBwRml4RmZzRmlzRlt0Rl10Rl90LUZZNigtRiM2KS1GIzYlRmF2RmBwRl14RmlwLUYjNiVGZXZGYHBGYXhGaXAtRiM2JUZbd0ZgcEZleEZpcC1GIzYlRmF3RmBwRml4RmZzRmlzRlt0Rl10Rl90RmZzRmlzRlt0LUZWNigtRlk2KC1GIzYpLUYjNiVGZHBGYHAtRmpuNiVGXG9GZ3JGXXBGaXAtRiM2JUZocUZgcC1Gam42JUZcb0ZjdUZdcEZpcC1GIzYlRmVyRmBwLUZqbjYlRlxvRl13Rl1wRmlwLUYjNiVGYnNGYHAtRmpuNiVGXG8tRiM2JUZickZlb0Zfc0ZdcEZmc0Zpc0ZbdEZddEZfdC1GWTYoLUYjNiktRiM2JUZndEZgcEZdW2xGaXAtRiM2JUZbdUZgcEZhW2xGaXAtRiM2JUZhdUZgcEZlW2xGaXAtRiM2JUZndUZgcEZpW2xGZnNGaXNGW3RGXXRGX3QtRlk2KC1GIzYpLUYjNiVGYXZGYHBGXVtsRmlwLUYjNiVGZXZGYHBGYVtsRmlwLUYjNiVGW3dGYHBGZVtsRmlwLUYjNiVGYXdGYHBGaVtsRmZzRmlzRlt0Rl10Rl90RmZzRmlzRlt0LyUmYWxpZ25HUSVheGlzRicvRmdzUSliYXNlbGluZUYnL0Zqc1EnY2VudGVyRicvRlx0USd8ZnJsZWZ0fGhyRicvJS9hbGlnbm1lbnRzY29wZUdGMS8lLGNvbHVtbndpZHRoR1ElYXV0b0YnLyUmd2lkdGhHRmJebC8lK3Jvd3NwYWNpbmdHUSYxLjBleEYnLyUuY29sdW1uc3BhY2luZ0dRJjAuOGVtRicvJSlyb3dsaW5lc0dRJW5vbmVGJy8lLGNvbHVtbmxpbmVzR0ZdX2wvJSZmcmFtZUdGXV9sLyUtZnJhbWVzcGFjaW5nR1EsMC40ZW1+MC41ZXhGJy8lKmVxdWFscm93c0dGPS8lLWVxdWFsY29sdW1uc0dGPS8lLWRpc3BsYXlzdHlsZUdGPS8lJXNpZGVHUSZyaWdodEYnLyUwbWlubGFiZWxzcGFjaW5nR0ZqXmxGOS9JK21zZW1hbnRpY3NHRiRRKWFycmF5WzJdRicvJSVvcGVuR1EnJmxzcWI7RicvJSZjbG9zZUdRJyZyc3FiO0YnRmBgbA==</Equation></Text-field>
+</Output>
+</Group>
+<Group labelreference="L6" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group labelreference="L151" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">FtF := multiply(transpose(Fm),Fm):</Text-field>
+</Input>
+</Group>
+<Group labelreference="L150" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">I1 := trace(FtF):</Text-field>
+</Input>
+</Group>
+<Group labelreference="L149" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">J2 := det(FtF):</Text-field>
+</Input>
+</Group>
+<Group labelreference="L148" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">J := sqrt(J2):</Text-field>
+</Input>
+</Group>
+<Group hide-input="false" labelreference="L179" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">C1 := lame2/2:</Text-field>
+</Input>
+</Group>
+<Group labelreference="L178" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">D1 := lame1/2:</Text-field>
+</Input>
+</Group>
+<Group labelreference="L177" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"><Equation executable="true" style="2D Input" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbW9HRiQ2LVEhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y0LyUpc3RyZXRjaHlHRjQvJSpzeW1tZXRyaWNHRjQvJShsYXJnZW9wR0Y0LyUubW92YWJsZWxpbWl0c0dGNC8lJ2FjY2VudEdGNC8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkMvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUrZXhlY3V0YWJsZUdGNEYv">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbW9HRiQ2LVEhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y0LyUpc3RyZXRjaHlHRjQvJSpzeW1tZXRyaWNHRjQvJShsYXJnZW9wR0Y0LyUubW92YWJsZWxpbWl0c0dGNC8lJ2FjY2VudEdGNC8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkMvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUrZXhlY3V0YWJsZUdGNEYv</Equation></Text-field>
+</Input>
+</Group>
+<Group labelreference="L147" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">U := (C1*(I1 - 3 - 2*ln(J)) + D1*(ln(J)^2))*V0:</Text-field>
+</Input>
+</Group>
+<Group labelreference="L71" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group hide-input="false" labelreference="L169" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">vx := vector(12,[Nx[1,1],Nx[2,1],Nx[3,1],Nx[1,2],Nx[2,2],Nx[3,2],Nx[1,3],Nx[2,3],Nx[3,3],Nx[1,4],Nx[2,4],Nx[3,4]]);</Text-field>
+</Input>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbWlHRiQ2JVEjdnhGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtb0dGJDYtUSkmQXNzaWduO0YnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSwwLjI3Nzc3NzhlbUYnLyUncnNwYWNlR0ZMLUkobWZlbmNlZEdGJDYoLUknbXRhYmxlR0YkNjUtSSRtdHJHRiQ2MS1JJG10ZEdGJDYoLUklbXN1YkdGJDYlLUYsNiVRI054RidGL0YyLUYjNiYtSSNtbkdGJDYkUSIxRidGOS1GNjYtUSgmY29tbWE7RidGOUY7L0Y/RjFGQEZCRkRGRkZIL0ZLUSYwLjBlbUYnL0ZOUSwwLjMzMzMzMzNlbUYnRl1vRjkvJS9zdWJzY3JpcHRzaGlmdEdRIjBGJy8lKXJvd2FsaWduR1EhRicvJSxjb2x1bW5hbGlnbkdGXnAvJStncm91cGFsaWduR0ZecC8lKHJvd3NwYW5HRmBvLyUrY29sdW1uc3BhbkdGYG8tRlk2KC1GZm42JUZobi1GIzYmLUZebzYkUSIyRidGOUZhb0Zdb0Y5RmlvRlxwRl9wRmFwRmNwRmVwLUZZNigtRmZuNiVGaG4tRiM2Ji1GXm82JFEiM0YnRjlGYW9GXW9GOUZpb0ZccEZfcEZhcEZjcEZlcC1GWTYoLUZmbjYlRmhuLUYjNiZGXW9GYW9GXXFGOUZpb0ZccEZfcEZhcEZjcEZlcC1GWTYoLUZmbjYlRmhuLUYjNiZGXXFGYW9GXXFGOUZpb0ZccEZfcEZhcEZjcEZlcC1GWTYoLUZmbjYlRmhuLUYjNiZGZnFGYW9GXXFGOUZpb0ZccEZfcEZhcEZjcEZlcC1GWTYoLUZmbjYlRmhuLUYjNiZGXW9GYW9GZnFGOUZpb0ZccEZfcEZhcEZjcEZlcC1GWTYoLUZmbjYlRmhuLUYjNiZGXXFGYW9GZnFGOUZpb0ZccEZfcEZhcEZjcEZlcC1GWTYoLUZmbjYlRmhuLUYjNiZGZnFGYW9GZnFGOUZpb0ZccEZfcEZhcEZjcEZlcC1GWTYoLUZmbjYlRmhuLUYjNiZGXW9GYW8tRl5vNiRRIjRGJ0Y5RjlGaW9GXHBGX3BGYXBGY3BGZXAtRlk2KC1GZm42JUZobi1GIzYmRl1xRmFvRmN0RjlGaW9GXHBGX3BGYXBGY3BGZXAtRlk2KC1GZm42JUZobi1GIzYmRmZxRmFvRmN0RjlGaW9GXHBGX3BGYXBGY3BGZXBGXHBGX3BGYXAvJSZhbGlnbkdRJWF4aXNGJy9GXXBRKWJhc2VsaW5lRicvRmBwUSdjZW50ZXJGJy9GYnBRJ3xmcmxlZnR8aHJGJy8lL2FsaWdubWVudHNjb3BlR0YxLyUsY29sdW1ud2lkdGhHUSVhdXRvRicvJSZ3aWR0aEdGX3YvJStyb3dzcGFjaW5nR1EmMS4wZXhGJy8lLmNvbHVtbnNwYWNpbmdHUSYwLjhlbUYnLyUpcm93bGluZXNHUSVub25lRicvJSxjb2x1bW5saW5lc0dGanYvJSZmcmFtZUdGanYvJS1mcmFtZXNwYWNpbmdHUSwwLjRlbX4wLjVleEYnLyUqZXF1YWxyb3dzR0Y9LyUtZXF1YWxjb2x1bW5zR0Y9LyUtZGlzcGxheXN0eWxlR0Y9LyUlc2lkZUdRJnJpZ2h0RicvJTBtaW5sYWJlbHNwYWNpbmdHRmd2RjkvSSttc2VtYW50aWNzR0YkUSlhcnJheVsxXUYnLyUlb3BlbkdRJyZsc3FiO0YnLyUmY2xvc2VHUScmcnNxYjtGJ0ZdeEY5">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2JVEjdnhGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtb0dGJDYtUSkmQXNzaWduO0YnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSwwLjI3Nzc3NzhlbUYnLyUncnNwYWNlR0ZMLUkobWZlbmNlZEdGJDYoLUknbXRhYmxlR0YkNjUtSSRtdHJHRiQ2MS1JJG10ZEdGJDYoLUklbXN1YkdGJDYlLUYsNiVRI054RidGL0YyLUYjNiUtSSNtbkdGJDYkUSIxRidGOS1GNjYtUSgmY29tbWE7RidGOUY7L0Y/RjFGQEZCRkRGRkZIL0ZLUSYwLjBlbUYnL0ZOUSwwLjMzMzMzMzNlbUYnRl1vLyUvc3Vic2NyaXB0c2hpZnRHUSIwRicvJSlyb3dhbGlnbkdRIUYnLyUsY29sdW1uYWxpZ25HRl5wLyUrZ3JvdXBhbGlnbkdGXnAvJShyb3dzcGFuR0Zgby8lK2NvbHVtbnNwYW5HRmBvLUZZNigtRmZuNiVGaG4tRiM2JS1GXm82JFEiMkYnRjlGYW9GXW9GaW9GXHBGX3BGYXBGY3BGZXAtRlk2KC1GZm42JUZobi1GIzYlLUZebzYkUSIzRidGOUZhb0Zdb0Zpb0ZccEZfcEZhcEZjcEZlcC1GWTYoLUZmbjYlRmhuLUYjNiVGXW9GYW9GXXFGaW9GXHBGX3BGYXBGY3BGZXAtRlk2KC1GZm42JUZobi1GIzYlRl1xRmFvRl1xRmlvRlxwRl9wRmFwRmNwRmVwLUZZNigtRmZuNiVGaG4tRiM2JUZmcUZhb0ZdcUZpb0ZccEZfcEZhcEZjcEZlcC1GWTYoLUZmbjYlRmhuLUYjNiVGXW9GYW9GZnFGaW9GXHBGX3BGYXBGY3BGZXAtRlk2KC1GZm42JUZobi1GIzYlRl1xRmFvRmZxRmlvRlxwRl9wRmFwRmNwRmVwLUZZNigtRmZuNiVGaG4tRiM2JUZmcUZhb0ZmcUZpb0ZccEZfcEZhcEZjcEZlcC1GWTYoLUZmbjYlRmhuLUYjNiVGXW9GYW8tRl5vNiRRIjRGJ0Y5RmlvRlxwRl9wRmFwRmNwRmVwLUZZNigtRmZuNiVGaG4tRiM2JUZdcUZhb0ZjdEZpb0ZccEZfcEZhcEZjcEZlcC1GWTYoLUZmbjYlRmhuLUYjNiVGZnFGYW9GY3RGaW9GXHBGX3BGYXBGY3BGZXBGXHBGX3BGYXAvJSZhbGlnbkdRJWF4aXNGJy9GXXBRKWJhc2VsaW5lRicvRmBwUSdjZW50ZXJGJy9GYnBRJ3xmcmxlZnR8aHJGJy8lL2FsaWdubWVudHNjb3BlR0YxLyUsY29sdW1ud2lkdGhHUSVhdXRvRicvJSZ3aWR0aEdGX3YvJStyb3dzcGFjaW5nR1EmMS4wZXhGJy8lLmNvbHVtbnNwYWNpbmdHUSYwLjhlbUYnLyUpcm93bGluZXNHUSVub25lRicvJSxjb2x1bW5saW5lc0dGanYvJSZmcmFtZUdGanYvJS1mcmFtZXNwYWNpbmdHUSwwLjRlbX4wLjVleEYnLyUqZXF1YWxyb3dzR0Y9LyUtZXF1YWxjb2x1bW5zR0Y9LyUtZGlzcGxheXN0eWxlR0Y9LyUlc2lkZUdRJnJpZ2h0RicvJTBtaW5sYWJlbHNwYWNpbmdHRmd2RjkvSSttc2VtYW50aWNzR0YkUSlhcnJheVsxXUYnLyUlb3BlbkdRJyZsc3FiO0YnLyUmY2xvc2VHUScmcnNxYjtGJ0ZdeA==</Equation></Text-field>
+</Output>
+</Group>
+<Group labelreference="L170" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">vgx := grad(U,vx):</Text-field>
+</Input>
+</Group>
+<Group labelreference="L160" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">mHx := jacobian(vgx,vx):</Text-field>
+</Input>
+</Group>
+<Group labelreference="L166" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"><Equation executable="true" style="2D Input" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbW9HRiQ2LVEhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y0LyUpc3RyZXRjaHlHRjQvJSpzeW1tZXRyaWNHRjQvJShsYXJnZW9wR0Y0LyUubW92YWJsZWxpbWl0c0dGNC8lJ2FjY2VudEdGNC8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkMvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUrZXhlY3V0YWJsZUdGNEYv">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbW9HRiQ2LVEhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y0LyUpc3RyZXRjaHlHRjQvJSpzeW1tZXRyaWNHRjQvJShsYXJnZW9wR0Y0LyUubW92YWJsZWxpbWl0c0dGNC8lJ2FjY2VudEdGNC8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkMvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUrZXhlY3V0YWJsZUdGNEYv</Equation></Text-field>
+</Input>
+</Group>
+<Group hide-input="false" labelreference="L162" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">C(U,optimized);</Text-field>
+</Input>
+<Output><Text-field style="Line Printed Output" layout="Line Printed Output">      t1 = BHi[0][0]*Nx[0][0];</Text-field><Text-field style="Line Printed Output" layout="Line Printed Output">      t6 = pow(BHi[1][0]*Nx[0][1]+BHi[2][0]*Nx[0][2]+BHi[3][0]*Nx[0][3]+t1,2.0)
+;
+      t7 = BHi[0][0]*Nx[1][0];
+      t12 = pow(BHi[1][0]*Nx[1][1]+BHi[2][0]*Nx[1][2]+BHi[3][0]*Nx[1][3]+t7,2.0
+);
+      t13 = BHi[0][0]*Nx[2][0];
+      t14 = BHi[1][0]*Nx[2][1];
+      t18 = pow(BHi[2][0]*Nx[2][2]+BHi[3][0]*Nx[2][3]+t13+t14,2.0);
+      t24 = pow(BHi[0][1]*Nx[0][0]+BHi[1][1]*Nx[0][1]+BHi[2][1]*Nx[0][2]+BHi[3]
+[1]*Nx[0][3],2.0);
+      t27 = BHi[2][1]*Nx[1][2];
+      t28 = BHi[3][1]*Nx[1][3];
+      t30 = pow(BHi[0][1]*Nx[1][0]+BHi[1][1]*Nx[1][1]+t27+t28,2.0);
+      t33 = BHi[2][1]*Nx[2][2];
+      t34 = BHi[3][1]*Nx[2][3];
+      t36 = pow(BHi[0][1]*Nx[2][0]+BHi[1][1]*Nx[2][1]+t33+t34,2.0);
+      t42 = pow(BHi[0][2]*Nx[0][0]+BHi[1][2]*Nx[0][1]+BHi[2][2]*Nx[0][2]+BHi[3]
+[2]*Nx[0][3],2.0);
+      t45 = BHi[2][2]*Nx[1][2];
+      t46 = BHi[3][2]*Nx[1][3];
+      t48 = pow(BHi[0][2]*Nx[1][0]+BHi[1][2]*Nx[1][1]+t45+t46,2.0);
+      t51 = BHi[2][2]*Nx[2][2];
+      t52 = BHi[3][2]*Nx[2][3];
+      t54 = pow(BHi[0][2]*Nx[2][0]+BHi[1][2]*Nx[2][1]+t51+t52,2.0);
+      t55 = t1*Nx[1][1];
+      t56 = t51*BHi[1][1];
+      t58 = t1*Nx[1][2];
+      t60 = Nx[2][1]*BHi[2][2]*BHi[1][1];
+      t62 = BHi[0][0]*Nx[0][1];
+      t63 = t62*Nx[1][0];
+      t65 = t62*Nx[2][0];
+      t68 = BHi[0][0]*Nx[0][2];
+      t69 = t68*Nx[1][0];
+      t71 = t68*Nx[1][1];
+      t75 = t1*Nx[2][3];
+      t79 = t1*Nx[2][1];
+      t80 = t46*BHi[1][1];
+      t85 = BHi[0][0]*Nx[0][3];
+      t86 = t85*Nx[1][0];
+      t87 = Nx[2][1]*BHi[3][2];
+      t90 = t85*Nx[1][1];
+      t91 = Nx[2][0]*BHi[3][2];
+      t94 = t33*BHi[1][2];
+      t97 = Nx[2][1]*BHi[2][1]*BHi[1][2];
+      t106 = -t71*Nx[2][0]*BHi[2][2]*BHi[1][1]+t71*Nx[2][0]*BHi[2][1]*BHi[1][2]
++t75*Nx[1][1]*BHi[3][2]*BHi[1][1]-t65*t27*BHi[1][2]+t65*t45*BHi[1][1]-t63*t52*
+BHi[1][1]+t86*t87*BHi[1][1]-t90*t91*BHi[1][1]+t55*t56-t55*t94-t63*t56-t58*t60+
+t58*t97+t69*t60+t63*t94+t65*t80-t69*t97-t79*t80;
+      t110 = t28*BHi[1][2];
+      t115 = Nx[2][1]*BHi[3][1];
+      t118 = Nx[2][0]*BHi[3][1];
+      t124 = t1*Nx[2][2];
+      t127 = t7*Nx[2][3];
+      t129 = Nx[0][2]*BHi[3][2]*BHi[2][1];
+      t131 = t13*Nx[1][3];
+      t134 = Nx[2][2]*BHi[3][2]*BHi[2][1];
+      t136 = t85*Nx[1][2];
+      t145 = Nx[0][2]*BHi[3][1]*BHi[2][2];
+      t149 = Nx[2][2]*BHi[3][1]*BHi[2][2];
+      t153 = -t75*Nx[1][1]*BHi[3][1]*BHi[1][2]+t75*Nx[1][2]*BHi[3][2]*BHi[2][1]
+-t75*Nx[1][2]*BHi[3][1]*BHi[2][2]-t86*t115*BHi[1][2]+t136*t118*BHi[2][2]+t90*
+t118*BHi[1][2]+t124*t28*BHi[2][2]-t124*t46*BHi[2][1]-t136*t91*BHi[2][1]+t63*t34
+*BHi[1][2]-t65*t110+t79*t110-t127*t129+t127*t145+t131*t129-t131*t145+t86*t134-
+t86*t149;
+      t155 = BHi[0][1]*BHi[1][0];
+      t156 = t155*Nx[0][0];
+      t157 = Nx[2][2]*Nx[1][1];
+      t158 = t157*BHi[2][2];
+      t160 = Nx[1][2]*Nx[2][1];
+      t161 = t160*BHi[2][2];
+      t163 = t155*Nx[0][1];
+      t164 = Nx[2][2]*Nx[1][0];
+      t165 = t164*BHi[2][2];
+      t167 = Nx[1][2]*Nx[2][0];
+      t168 = t167*BHi[2][2];
+      t170 = t155*Nx[0][2];
+      t171 = Nx[2][1]*Nx[1][0];
+      t174 = Nx[1][1]*Nx[2][0];
+      t177 = Nx[2][3]*Nx[1][1];
+      t180 = Nx[1][3]*Nx[2][1];
+      t183 = Nx[2][3]*Nx[1][0];
+      t186 = Nx[1][3]*Nx[2][0];
+      t189 = t155*Nx[0][3];
+      t194 = BHi[0][1]*BHi[2][0];
+      t195 = t194*Nx[0][0];
+      t200 = t194*Nx[0][1];
+      t205 = t194*Nx[0][2];
+      t206 = t171*BHi[1][2];
+      t208 = t174*BHi[1][2];
+      t210 = -t156*t177*BHi[3][2]+t156*t180*BHi[3][2]+t195*t157*BHi[1][2]-t195*
+t160*BHi[1][2]+t163*t183*BHi[3][2]-t163*t186*BHi[3][2]-t200*t164*BHi[1][2]+t200
+*t167*BHi[1][2]-t170*t171*BHi[2][2]+t170*t174*BHi[2][2]-t189*t171*BHi[3][2]+
+t189*t174*BHi[3][2]-t156*t158+t156*t161+t163*t165-t163*t168+t205*t206-t205*t208
+;
+      t211 = BHi[0][1]*BHi[3][0];
+      t212 = t211*Nx[0][0];
+      t217 = t211*Nx[0][1];
+      t222 = t211*Nx[0][3];
+      t225 = Nx[2][3]*Nx[1][2];
+      t228 = Nx[1][3]*Nx[2][2];
+      t232 = Nx[2][3]*Nx[0][2];
+      t236 = Nx[1][3]*Nx[0][2];
+      t237 = t236*BHi[3][2];
+      t239 = t194*Nx[0][3];
+      t252 = t236*BHi[2][2];
+      t256 = t194*Nx[1][0]*t232*BHi[3][2]-t211*Nx[1][0]*t232*BHi[2][2]-t239*
+t164*BHi[3][2]+t239*t167*BHi[3][2]+t212*t177*BHi[1][2]-t212*t180*BHi[1][2]-t217
+*t183*BHi[1][2]+t217*t186*BHi[1][2]-t194*Nx[2][0]*t237-t195*t225*BHi[3][2]+t195
+*t228*BHi[3][2]+t211*Nx[2][0]*t252+t212*t225*BHi[2][2]-t212*t228*BHi[2][2]+t222
+*t165-t222*t168+t222*t206-t222*t208;
+      t259 = BHi[0][2]*BHi[1][0];
+      t260 = t259*Nx[0][0];
+      t265 = t259*Nx[0][1];
+      t270 = t259*Nx[0][2];
+      t283 = t259*Nx[0][3];
+      t288 = BHi[0][2]*BHi[1][1];
+      t289 = t288*BHi[2][0];
+      t296 = Nx[0][1]*Nx[1][0];
+      t299 = Nx[0][1]*Nx[2][0];
+      t305 = Nx[0][2]*Nx[1][1];
+      t308 = -t289*Nx[0][0]*Nx[1][1]*Nx[2][2]+t289*Nx[0][0]*Nx[1][2]*Nx[2][1]-
+t289*Nx[0][2]*Nx[1][0]*Nx[2][1]+t260*t157*BHi[2][1]-t260*t160*BHi[2][1]-t265*
+t164*BHi[2][1]+t265*t167*BHi[2][1]+t270*t171*BHi[2][1]+t283*t171*BHi[3][1]-t270
+*t174*BHi[2][1]-t283*t174*BHi[3][1]+t260*t177*BHi[3][1]-t260*t180*BHi[3][1]-
+t265*t183*BHi[3][1]+t265*t186*BHi[3][1]+t289*t296*Nx[2][2]-t289*t299*Nx[1][2]+
+t289*t305*Nx[2][0];
+      t309 = t288*BHi[3][0];
+      t310 = Nx[0][0]*Nx[2][3];
+      t320 = Nx[0][3]*Nx[1][0];
+      t323 = Nx[0][3]*Nx[1][1];
+      t326 = BHi[0][2]*BHi[2][0];
+      t327 = t326*Nx[0][0];
+      t336 = t236*BHi[3][1];
+      t338 = t326*Nx[0][3];
+      t344 = BHi[0][2]*BHi[2][1]*BHi[3][0];
+      t356 = Nx[0][3]*Nx[1][2];
+      t359 = -t326*Nx[1][0]*t232*BHi[3][1]+t309*Nx[0][0]*Nx[2][1]*Nx[1][3]+t344
+*Nx[0][0]*Nx[2][2]*Nx[1][3]+t338*t164*BHi[3][1]-t338*t167*BHi[3][1]+t344*t183*
+Nx[0][2]-t344*t186*Nx[0][2]+t327*t225*BHi[3][1]-t327*t228*BHi[3][1]+t309*t296*
+Nx[2][3]-t309*t299*Nx[1][3]-t309*t310*Nx[1][1]-t309*t320*Nx[2][1]+t309*t323*Nx
+[2][0]-t344*t310*Nx[1][2]-t344*t320*Nx[2][2]+t326*Nx[2][0]*t336+t344*t356*Nx[2]
+[0];
+      t361 = BHi[1][0]*Nx[2][3];
+      t362 = t361*Nx[1][2];
+      t364 = Nx[0][1]*BHi[3][2]*BHi[2][1];
+      t367 = BHi[1][0]*Nx[2][2]*Nx[1][3];
+      t369 = t361*Nx[1][1];
+      t371 = t14*Nx[1][3];
+      t373 = BHi[1][0]*Nx[0][3];
+      t374 = t373*Nx[1][1];
+      t376 = t373*Nx[1][2];
+      t380 = Nx[0][1]*BHi[3][1]*BHi[2][2];
+      t388 = BHi[1][1]*BHi[2][0];
+      t389 = t388*Nx[2][3];
+      t390 = Nx[1][2]*Nx[0][1];
+      t394 = Nx[1][3]*Nx[0][1];
+      t401 = t388*Nx[0][3];
+      t406 = t388*Nx[2][2]*t394*BHi[3][2]+t376*t115*BHi[2][2]-t401*t157*BHi[3]
+[2]+t401*t160*BHi[3][2]-t388*Nx[2][1]*t237+t389*t305*BHi[3][2]-t376*t87*BHi[2]
+[1]-t389*t390*BHi[3][2]-t369*t129+t371*t129+t374*t134+t369*t145-t371*t145-t374*
+t149+t362*t364-t362*t380-t367*t364+t367*t380;
+      t407 = BHi[1][1]*BHi[3][0];
+      t408 = t407*Nx[2][3];
+      t418 = t407*Nx[0][3];
+      t421 = BHi[1][2]*BHi[2][0];
+      t422 = t421*Nx[2][3];
+      t432 = t421*Nx[0][3];
+      t438 = BHi[1][2]*BHi[2][1]*BHi[3][0];
+      t451 = -t407*Nx[2][2]*t394*BHi[2][2]-t421*Nx[2][2]*t394*BHi[3][1]+t432*
+t157*BHi[3][1]-t432*t160*BHi[3][1]+t438*t177*Nx[0][2]-t438*t180*Nx[0][2]-t438*
+t225*Nx[0][1]+t438*t228*Nx[0][1]+t407*Nx[2][1]*t252-t408*t305*BHi[2][2]-t422*
+t305*BHi[3][1]-t438*t323*Nx[2][2]+t421*Nx[2][1]*t336+t438*t356*Nx[2][1]+t408*
+t390*BHi[2][2]+t422*t390*BHi[3][1]+t418*t158-t418*t161;
+      t455 = pow(t106+t153+t210+t256+t308+t359+t406+t451,2.0);
+      t456 = log(t455);
+      t457 = t6+t12+t18+t24+t30+t36+t42+t48+t54-3.0-t456;
+      t460 = t456*t456;
+      t464 = (lame2*t457/2.0+lame1*t460/8.0)*V0;</Text-field>
+</Output>
+</Group>
+<Group labelreference="L158" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"><Equation executable="true" style="2D Input" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbW9HRiQ2LVEhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y0LyUpc3RyZXRjaHlHRjQvJSpzeW1tZXRyaWNHRjQvJShsYXJnZW9wR0Y0LyUubW92YWJsZWxpbWl0c0dGNC8lJ2FjY2VudEdGNC8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkMvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUrZXhlY3V0YWJsZUdGNEYv">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbW9HRiQ2LVEhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y0LyUpc3RyZXRjaHlHRjQvJSpzeW1tZXRyaWNHRjQvJShsYXJnZW9wR0Y0LyUubW92YWJsZWxpbWl0c0dGNC8lJ2FjY2VudEdGNC8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkMvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUrZXhlY3V0YWJsZUdGNEYv</Equation></Text-field>
+</Input>
+</Group>
+<Group labelreference="L159" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">C(vgx,optimized);</Text-field>
+</Input>
+<Output><Text-field style="Line Printed Output" layout="Line Printed Output">      t1 = BHi[0][0]*Nx[0][0];
+      t3 = BHi[2][0]*Nx[0][2];
+      t4 = BHi[3][0]*Nx[0][3];</Text-field><Text-field style="Line Printed Output" layout="Line Printed Output">      t5 = BHi[1][0]*Nx[0][1]+t1+t3+t4;
+      t9 = BHi[2][1]*Nx[0][2];
+      t10 = BHi[3][1]*Nx[0][3];
+      t11 = BHi[0][1]*Nx[0][0]+BHi[1][1]*Nx[0][1]+t10+t9;
+      t15 = BHi[2][2]*Nx[0][2];
+      t16 = BHi[3][2]*Nx[0][3];
+      t17 = BHi[0][2]*Nx[0][0]+BHi[1][2]*Nx[0][1]+t15+t16;
+      t19 = t1*Nx[1][1];
+      t20 = BHi[2][2]*Nx[2][2];
+      t21 = t20*BHi[1][1];
+      t23 = t1*Nx[1][2];
+      t25 = Nx[2][1]*BHi[2][2]*BHi[1][1];
+      t27 = BHi[0][0]*Nx[0][1];
+      t28 = t27*Nx[1][0];
+      t30 = t27*Nx[2][0];
+      t31 = BHi[2][2]*Nx[1][2];
+      t34 = BHi[0][0]*Nx[0][2];
+      t35 = t34*Nx[1][0];
+      t37 = t34*Nx[1][1];
+      t41 = t1*Nx[2][3];
+      t45 = t1*Nx[2][1];
+      t46 = BHi[3][2]*Nx[1][3];
+      t47 = t46*BHi[1][1];
+      t49 = BHi[3][2]*Nx[2][3];
+      t53 = BHi[0][0]*Nx[0][3];
+      t54 = t53*Nx[1][0];
+      t55 = Nx[2][1]*BHi[3][2];
+      t58 = t53*Nx[1][1];
+      t59 = Nx[2][0]*BHi[3][2];
+      t62 = BHi[2][1]*Nx[2][2];
+      t63 = t62*BHi[1][2];
+      t66 = Nx[2][1]*BHi[2][1]*BHi[1][2];
+      t69 = BHi[2][1]*Nx[1][2];
+      t76 = -t37*Nx[2][0]*BHi[2][2]*BHi[1][1]+t37*Nx[2][0]*BHi[2][1]*BHi[1][2]+
+t41*Nx[1][1]*BHi[3][2]*BHi[1][1]-t28*t49*BHi[1][1]+t30*t31*BHi[1][1]-t30*t69*
+BHi[1][2]+t54*t55*BHi[1][1]-t58*t59*BHi[1][1]+t19*t21-t19*t63-t28*t21-t23*t25+
+t23*t66+t35*t25+t28*t63+t30*t47-t35*t66-t45*t47;
+      t80 = BHi[3][1]*Nx[1][3];
+      t81 = t80*BHi[1][2];
+      t83 = BHi[3][1]*Nx[2][3];
+      t87 = Nx[2][1]*BHi[3][1];
+      t90 = Nx[2][0]*BHi[3][1];
+      t96 = t1*Nx[2][2];
+      t99 = BHi[0][0]*Nx[1][0];
+      t100 = t99*Nx[2][3];
+      t101 = Nx[0][2]*BHi[3][2];
+      t102 = t101*BHi[2][1];
+      t104 = BHi[0][0]*Nx[2][0];
+      t105 = t104*Nx[1][3];
+      t108 = Nx[2][2]*BHi[3][2]*BHi[2][1];
+      t110 = t53*Nx[1][2];
+      t118 = Nx[0][2]*BHi[3][1];
+      t119 = t118*BHi[2][2];
+      t123 = Nx[2][2]*BHi[3][1]*BHi[2][2];
+      t127 = -t41*Nx[1][1]*BHi[3][1]*BHi[1][2]+t41*Nx[1][2]*BHi[3][2]*BHi[2][1]
+-t41*Nx[1][2]*BHi[3][1]*BHi[2][2]-t110*t59*BHi[2][1]+t110*t90*BHi[2][2]+t28*t83
+*BHi[1][2]-t96*t46*BHi[2][1]-t54*t87*BHi[1][2]+t58*t90*BHi[1][2]+t96*t80*BHi[2]
+[2]-t100*t102+t100*t119+t105*t102-t105*t119+t54*t108-t54*t123-t30*t81+t45*t81;
+      t129 = BHi[0][1]*BHi[1][0];
+      t130 = t129*Nx[0][0];
+      t131 = Nx[2][2]*Nx[1][1];
+      t132 = t131*BHi[2][2];
+      t134 = Nx[1][2]*Nx[2][1];
+      t135 = t134*BHi[2][2];
+      t137 = t129*Nx[0][1];
+      t138 = Nx[2][2]*Nx[1][0];
+      t139 = t138*BHi[2][2];
+      t141 = Nx[1][2]*Nx[2][0];
+      t142 = t141*BHi[2][2];
+      t144 = t129*Nx[0][2];
+      t145 = Nx[2][1]*Nx[1][0];
+      t146 = t145*BHi[2][2];
+      t148 = Nx[1][1]*Nx[2][0];
+      t149 = t148*BHi[2][2];
+      t151 = Nx[2][3]*Nx[1][1];
+      t152 = t151*BHi[3][2];
+      t154 = Nx[1][3]*Nx[2][1];
+      t155 = t154*BHi[3][2];
+      t157 = Nx[2][3]*Nx[1][0];
+      t158 = t157*BHi[3][2];
+      t160 = Nx[1][3]*Nx[2][0];
+      t161 = t160*BHi[3][2];
+      t163 = t129*Nx[0][3];
+      t164 = t145*BHi[3][2];
+      t166 = t148*BHi[3][2];
+      t168 = BHi[0][1]*BHi[2][0];
+      t169 = t168*Nx[0][0];
+      t174 = t168*Nx[0][1];
+      t179 = t168*Nx[0][2];
+      t180 = t145*BHi[1][2];
+      t182 = t148*BHi[1][2];
+      t184 = t169*t131*BHi[1][2]-t169*t134*BHi[1][2]-t174*t138*BHi[1][2]+t174*
+t141*BHi[1][2]-t130*t132+t130*t135-t130*t152+t130*t155+t137*t139-t137*t142+t137
+*t158-t137*t161-t144*t146+t144*t149-t163*t164+t163*t166+t179*t180-t179*t182;
+      t185 = BHi[0][1]*BHi[3][0];
+      t186 = t185*Nx[0][0];
+      t191 = t185*Nx[0][1];
+      t196 = t185*Nx[0][3];
+      t199 = Nx[2][3]*Nx[1][2];
+      t200 = t199*BHi[3][2];
+      t202 = Nx[1][3]*Nx[2][2];
+      t203 = t202*BHi[3][2];
+      t206 = Nx[2][3]*Nx[0][2];
+      t207 = t206*BHi[3][2];
+      t210 = Nx[1][3]*Nx[0][2];
+      t211 = t210*BHi[3][2];
+      t213 = t168*Nx[0][3];
+      t214 = t138*BHi[3][2];
+      t216 = t141*BHi[3][2];
+      t226 = t210*BHi[2][2];
+      t230 = -t185*Nx[1][0]*t206*BHi[2][2]+t186*t151*BHi[1][2]-t186*t154*BHi[1]
+[2]-t191*t157*BHi[1][2]+t191*t160*BHi[1][2]+t168*Nx[1][0]*t207-t168*Nx[2][0]*
+t211+t185*Nx[2][0]*t226+t186*t199*BHi[2][2]-t186*t202*BHi[2][2]+t196*t139-t196*
+t142-t169*t200+t169*t203+t196*t180-t196*t182-t213*t214+t213*t216;
+      t233 = BHi[0][2]*BHi[1][0];
+      t234 = t233*Nx[0][0];
+      t235 = t131*BHi[2][1];
+      t237 = t134*BHi[2][1];
+      t239 = t233*Nx[0][1];
+      t240 = t138*BHi[2][1];
+      t242 = t141*BHi[2][1];
+      t244 = t233*Nx[0][2];
+      t245 = t145*BHi[2][1];
+      t247 = t148*BHi[2][1];
+      t249 = t151*BHi[3][1];
+      t251 = t154*BHi[3][1];
+      t253 = t157*BHi[3][1];
+      t255 = t160*BHi[3][1];
+      t257 = t233*Nx[0][3];
+      t258 = t145*BHi[3][1];
+      t260 = t148*BHi[3][1];
+      t262 = BHi[0][2]*BHi[1][1];
+      t263 = t262*BHi[2][0];
+      t270 = Nx[0][1]*Nx[1][0];
+      t273 = Nx[0][1]*Nx[2][0];
+      t279 = Nx[0][2]*Nx[1][1];
+      t282 = -t263*Nx[0][0]*Nx[1][1]*Nx[2][2]+t263*Nx[0][0]*Nx[1][2]*Nx[2][1]-
+t263*Nx[0][2]*Nx[1][0]*Nx[2][1]+t263*t270*Nx[2][2]-t263*t273*Nx[1][2]+t263*t279
+*Nx[2][0]+t234*t235-t234*t237+t234*t249-t234*t251-t239*t240+t239*t242-t239*t253
++t239*t255+t244*t245-t244*t247+t257*t258-t257*t260;
+      t283 = t262*BHi[3][0];
+      t284 = Nx[0][0]*Nx[2][3];
+      t294 = Nx[0][3]*Nx[1][0];
+      t297 = Nx[0][3]*Nx[1][1];
+      t300 = BHi[0][2]*BHi[2][0];
+      t301 = t300*Nx[0][0];
+      t302 = t199*BHi[3][1];
+      t304 = t202*BHi[3][1];
+      t307 = t206*BHi[3][1];
+      t310 = t210*BHi[3][1];
+      t312 = t300*Nx[0][3];
+      t313 = t138*BHi[3][1];
+      t315 = t141*BHi[3][1];
+      t317 = BHi[0][2]*BHi[2][1];
+      t318 = t317*BHi[3][0];
+      t330 = Nx[0][3]*Nx[1][2];
+      t333 = t283*Nx[0][0]*Nx[2][1]*Nx[1][3]+t318*Nx[0][0]*Nx[2][2]*Nx[1][3]+
+t318*t157*Nx[0][2]-t318*t160*Nx[0][2]+t283*t270*Nx[2][3]-t283*t273*Nx[1][3]-
+t283*t284*Nx[1][1]-t283*t294*Nx[2][1]+t283*t297*Nx[2][0]-t318*t284*Nx[1][2]-
+t318*t294*Nx[2][2]-t300*Nx[1][0]*t307+t300*Nx[2][0]*t310+t318*t330*Nx[2][0]+
+t301*t302-t301*t304+t312*t313-t312*t315;
+      t335 = BHi[1][0]*Nx[2][3];
+      t336 = t335*Nx[1][2];
+      t337 = Nx[0][1]*BHi[3][2];
+      t338 = t337*BHi[2][1];
+      t341 = BHi[1][0]*Nx[2][2]*Nx[1][3];
+      t343 = t335*Nx[1][1];
+      t345 = BHi[1][0]*Nx[2][1];
+      t346 = t345*Nx[1][3];
+      t348 = BHi[1][0]*Nx[0][3];
+      t349 = t348*Nx[1][1];
+      t351 = t348*Nx[1][2];
+      t354 = Nx[0][1]*BHi[3][1];
+      t355 = t354*BHi[2][2];
+      t363 = BHi[1][1]*BHi[2][0];
+      t364 = t363*Nx[2][3];
+      t365 = Nx[1][2]*Nx[0][1];
+      t366 = t365*BHi[3][2];
+      t369 = Nx[1][3]*Nx[0][1];
+      t370 = t369*BHi[3][2];
+      t372 = t279*BHi[3][2];
+      t376 = t363*Nx[0][3];
+      t377 = t131*BHi[3][2];
+      t379 = t134*BHi[3][2];
+      t381 = -t363*Nx[2][1]*t211-t351*t55*BHi[2][1]+t351*t87*BHi[2][2]+t363*Nx
+[2][2]*t370-t343*t102+t346*t102+t349*t108+t343*t119-t346*t119-t349*t123+t336*
+t338-t336*t355-t338*t341+t341*t355-t364*t366+t364*t372-t376*t377+t376*t379;
+      t382 = BHi[1][1]*BHi[3][0];
+      t383 = t382*Nx[2][3];
+      t384 = t365*BHi[2][2];
+      t389 = t279*BHi[2][2];
+      t393 = t382*Nx[0][3];
+      t396 = BHi[1][2]*BHi[2][0];
+      t397 = t396*Nx[2][3];
+      t398 = t365*BHi[3][1];
+      t401 = t369*BHi[3][1];
+      t403 = t279*BHi[3][1];
+      t407 = t396*Nx[0][3];
+      t408 = t131*BHi[3][1];
+      t410 = t134*BHi[3][1];
+      t412 = BHi[1][2]*BHi[2][1];
+      t413 = t412*BHi[3][0];
+      t426 = -t382*Nx[2][2]*t369*BHi[2][2]+t413*t151*Nx[0][2]-t413*t154*Nx[0]
+[2]-t413*t199*Nx[0][1]+t413*t202*Nx[0][1]+t382*Nx[2][1]*t226-t413*t297*Nx[2][2]
++t396*Nx[2][1]*t310+t413*t330*Nx[2][1]-t396*Nx[2][2]*t401+t393*t132-t393*t135+
+t383*t384-t383*t389+t397*t398-t397*t403+t407*t408-t407*t410;
+      t429 = t76+t127+t184+t230+t282+t333+t381+t426;
+      t430 = 1/t429;
+      t431 = BHi[0][0]*BHi[1][1];
+      t436 = BHi[0][0]*BHi[1][2];
+      t441 = BHi[0][0]*BHi[2][1];
+      t444 = BHi[0][0]*BHi[2][2];
+      t451 = BHi[0][1]*BHi[1][2];
+      t452 = BHi[2][0]*Nx[1][1];
+      t453 = t452*Nx[2][2];
+      t455 = BHi[2][0]*Nx[1][2];
+      t456 = t455*Nx[2][1];
+      t458 = -t129*t132+t129*t135-t129*t152+t129*t155+t431*t132-t431*t135+t431*
+t152-t431*t155+t441*t200-t441*t203-t436*t235+t436*t237-t436*t249+t436*t251-t444
+*t302+t444*t304+t451*t453-t451*t456;
+      t459 = BHi[3][0]*Nx[1][1];
+      t460 = t459*Nx[2][3];
+      t462 = BHi[3][0]*Nx[1][3];
+      t463 = t462*Nx[2][1];
+      t467 = BHi[0][1]*BHi[2][2];
+      t468 = BHi[3][0]*Nx[1][2];
+      t469 = t468*Nx[2][3];
+      t471 = t462*Nx[2][2];
+      t485 = -t168*t200+t168*t203+t233*t235-t233*t237+t233*t249-t233*t251-t262*
+t453+t262*t456-t262*t460+t262*t463+t300*t302-t300*t304-t317*t469+t317*t471+t451
+*t460-t451*t463+t467*t469-t467*t471;
+      t487 = t430*(t458+t485);
+      t490 = t429*t429;
+      t491 = log(t490);
+      t492 = lame1*t491;
+      t497 = BHi[1][0]*Nx[1][1]+t455+t462+t99;
+      t501 = BHi[0][1]*Nx[1][0]+BHi[1][1]*Nx[1][1]+t69+t80;
+      t505 = BHi[0][2]*Nx[1][0]+BHi[1][2]*Nx[1][1]+t31+t46;
+      t507 = BHi[2][2]*Nx[0][1];
+      t508 = t507*Nx[2][2];
+      t510 = t15*Nx[2][1];
+      t512 = t337*Nx[2][3];
+      t514 = t16*Nx[2][1];
+      t516 = BHi[2][1]*Nx[0][1];
+      t517 = t516*Nx[2][2];
+      t519 = t9*Nx[2][1];
+      t521 = t354*Nx[2][3];
+      t523 = t10*Nx[2][1];
+      t526 = t16*Nx[2][2];
+      t529 = t10*Nx[2][2];
+      t535 = BHi[2][0]*Nx[0][1];
+      t536 = t535*Nx[2][2];
+      t538 = t3*Nx[2][1];
+      t540 = t129*t508-t129*t510+t129*t512-t129*t514-t441*t207+t444*t307-t431*
+t508+t431*t510-t431*t512+t431*t514+t436*t517-t436*t519+t436*t521-t436*t523+t441
+*t526-t444*t529-t451*t536+t451*t538;
+      t541 = BHi[3][0]*Nx[0][1];
+      t542 = t541*Nx[2][3];
+      t544 = t4*Nx[2][1];
+      t548 = BHi[3][0]*Nx[0][2];
+      t549 = t548*Nx[2][3];
+      t551 = t4*Nx[2][2];
+      t565 = t168*t207-t168*t526-t233*t517+t233*t519-t233*t521+t233*t523+t262*
+t536-t262*t538+t262*t542-t262*t544-t300*t307+t300*t529+t317*t549-t317*t551-t451
+*t542+t451*t544-t467*t549+t467*t551;
+      t567 = t430*(t540+t565);
+      t575 = BHi[2][0]*Nx[2][2]+BHi[3][0]*Nx[2][3]+t104+t345;
+      t579 = BHi[0][1]*Nx[2][0]+BHi[1][1]*Nx[2][1]+t62+t83;
+      t583 = BHi[0][2]*Nx[2][0]+BHi[1][2]*Nx[2][1]+t20+t49;
+      t588 = t16*Nx[1][1];
+      t590 = t516*Nx[1][2];
+      t592 = t9*Nx[1][1];
+      t595 = t10*Nx[1][1];
+      t598 = t16*Nx[1][2];
+      t601 = t10*Nx[1][2];
+      t607 = t535*Nx[1][2];
+      t609 = t3*Nx[1][1];
+      t611 = -t129*t370-t129*t384+t129*t389+t129*t588+t441*t211-t444*t310+t431*
+t370+t431*t384-t431*t389-t436*t401-t431*t588-t436*t590+t436*t592+t436*t595-t441
+*t598+t444*t601+t451*t607-t451*t609;
+      t612 = t541*Nx[1][3];
+      t614 = t4*Nx[1][1];
+      t618 = t548*Nx[1][3];
+      t620 = t4*Nx[1][2];
+      t634 = -t168*t211+t168*t598+t233*t401+t233*t590-t233*t592-t233*t595-t262*
+t607+t262*t609-t262*t612+t262*t614+t300*t310-t300*t601-t317*t618+t317*t620+t451
+*t612-t451*t614+t467*t618-t467*t620;
+      t636 = t430*(t611+t634);
+      t657 = Nx[1][0]*BHi[2][0];
+      t658 = t657*Nx[2][2];
+      t660 = t455*Nx[2][0];
+      t662 = BHi[3][0]*Nx[1][0];
+      t663 = t662*Nx[2][3];
+      t665 = t462*Nx[2][0];
+      t669 = t129*t139-t129*t142+t129*t158-t129*t161-t431*t139+t431*t142-t431*
+t158+t431*t161-t233*t240+t233*t242+t436*t240-t436*t242+t436*t253-t436*t255-t451
+*t658+t451*t660-t451*t663+t451*t665;
+      t676 = BHi[1][0]*BHi[2][1];
+      t679 = BHi[1][0]*BHi[2][2];
+      t684 = BHi[1][1]*BHi[2][2];
+      t691 = -t363*t200+t676*t200+t363*t203-t676*t203-t233*t253+t233*t255+t262*
+t658-t262*t660+t262*t663-t262*t665+t396*t302-t679*t302-t396*t304+t679*t304-t412
+*t469+t412*t471+t684*t469-t684*t471;
+      t693 = t430*(t669+t691);
+      t702 = BHi[2][2]*Nx[0][0];
+      t703 = t702*Nx[2][2];
+      t705 = t15*Nx[2][0];
+      t707 = BHi[3][2]*Nx[0][0];
+      t708 = t707*Nx[2][3];
+      t710 = t16*Nx[2][0];
+      t712 = BHi[2][1]*Nx[0][0];
+      t713 = t712*Nx[2][2];
+      t715 = t9*Nx[2][0];
+      t717 = BHi[3][1]*Nx[0][0];
+      t718 = t717*Nx[2][3];
+      t720 = t10*Nx[2][0];
+      t726 = BHi[2][0]*Nx[0][0];
+      t727 = t726*Nx[2][2];
+      t729 = t3*Nx[2][0];
+      t731 = BHi[3][0]*Nx[0][0];
+      t732 = t731*Nx[2][3];
+      t734 = t4*Nx[2][0];
+      t738 = -t129*t703+t129*t705-t129*t708+t129*t710+t233*t713-t233*t715+t431*
+t703-t431*t705+t431*t708-t431*t710-t436*t713+t436*t715-t436*t718+t436*t720+t451
+*t727-t451*t729+t451*t732-t451*t734;
+      t757 = t363*t207-t676*t207+t233*t718-t233*t720-t262*t727+t262*t729-t262*
+t732+t262*t734-t396*t307+t679*t307-t363*t526+t396*t529+t412*t549-t412*t551+t676
+*t526-t679*t529-t684*t549+t684*t551;
+      t759 = t430*(t738+t757);
+      t768 = t702*Nx[1][2];
+      t770 = t15*Nx[1][0];
+      t772 = t707*Nx[1][3];
+      t774 = t16*Nx[1][0];
+      t776 = t712*Nx[1][2];
+      t778 = t9*Nx[1][0];
+      t780 = t717*Nx[1][3];
+      t782 = t10*Nx[1][0];
+      t788 = t726*Nx[1][2];
+      t790 = t3*Nx[1][0];
+      t792 = t731*Nx[1][3];
+      t794 = t4*Nx[1][0];
+      t798 = t129*t768-t129*t770+t129*t772-t129*t774-t233*t776+t233*t778-t431*
+t768+t431*t770-t431*t772+t431*t774+t436*t776-t436*t778+t436*t780-t436*t782-t451
+*t788+t451*t790-t451*t792+t451*t794;
+      t817 = -t363*t211+t676*t211-t233*t780+t233*t782+t262*t788-t262*t790+t262*
+t792-t262*t794+t396*t310-t679*t310+t363*t598-t396*t601-t412*t618+t412*t620-t676
+*t598+t679*t601+t684*t618-t684*t620;
+      t819 = t430*(t798+t817);
+      t838 = t657*Nx[2][1];
+      t840 = t452*Nx[2][0];
+      t848 = -t129*t146+t129*t149+t431*t146-t431*t149+t168*t158-t441*t158-t168*
+t161+t441*t161+t233*t245-t233*t247-t436*t245+t436*t247+t444*t253-t444*t255+t451
+*t838-t451*t840-t467*t663+t467*t665;
+      t867 = t363*t152-t676*t152-t363*t155+t676*t155-t396*t249+t679*t249+t396*
+t251-t679*t251-t300*t253+t300*t255-t262*t838+t262*t840+t317*t663-t317*t665+t412
+*t460-t412*t463-t684*t460+t684*t463;
+      t869 = t430*(t848+t867);
+      t878 = t702*Nx[2][1];
+      t880 = t507*Nx[2][0];
+      t882 = t712*Nx[2][1];
+      t884 = t516*Nx[2][0];
+      t892 = t726*Nx[2][1];
+      t894 = t535*Nx[2][0];
+      t902 = t129*t878-t129*t880-t168*t708+t168*t710-t233*t882+t233*t884-t431*
+t878+t431*t880+t436*t882-t436*t884+t441*t708-t441*t710-t444*t718+t444*t720-t451
+*t892+t451*t894+t467*t732-t467*t734;
+      t921 = t262*t892-t262*t894+t300*t718-t300*t720-t317*t732+t317*t734-t363*
+t512+t363*t514+t396*t521-t396*t523-t412*t542+t412*t544+t676*t512-t676*t514-t679
+*t521+t679*t523+t684*t542-t684*t544;
+      t923 = t430*(t902+t921);
+      t932 = t702*Nx[1][1];
+      t934 = t507*Nx[1][0];
+      t936 = t712*Nx[1][1];
+      t938 = t516*Nx[1][0];
+      t946 = t726*Nx[1][1];
+      t948 = t535*Nx[1][0];
+      t956 = -t129*t932+t129*t934+t168*t772-t168*t774+t233*t936-t233*t938+t431*
+t932-t431*t934-t436*t936+t436*t938-t441*t772+t441*t774+t444*t780-t444*t782+t451
+*t946-t451*t948-t467*t792+t467*t794;
+      t975 = -t262*t946+t262*t948-t300*t780+t300*t782+t317*t792-t317*t794+t363*
+t370-t363*t588-t676*t370-t396*t401+t396*t595+t679*t401+t412*t612-t412*t614+t676
+*t588-t679*t595-t684*t612+t684*t614;
+      t977 = t430*(t956+t975);
+      t996 = t662*Nx[2][1];
+      t998 = t459*Nx[2][0];
+      t1002 = t662*Nx[2][2];
+      t1004 = t468*Nx[2][0];
+      t1008 = t467*t1002-t467*t1004-t129*t164+t129*t166+t431*t164-t431*t166-
+t168*t214+t168*t216+t441*t214-t441*t216+t233*t258-t233*t260-t436*t258+t436*t260
+-t444*t313+t444*t315+t451*t996-t451*t998;
+      t1021 = t459*Nx[2][2];
+      t1023 = t468*Nx[2][1];
+      t1029 = -t317*t1002+t317*t1004-t412*t1021+t684*t1021+t412*t1023-t684*
+t1023-t262*t996+t262*t998+t300*t313-t300*t315-t363*t377+t363*t379+t676*t377-
+t676*t379+t396*t408-t396*t410-t679*t408+t679*t410;
+      t1031 = t430*(t1008+t1029);
+      t1040 = t707*Nx[2][1];
+      t1042 = t337*Nx[2][0];
+      t1044 = t717*Nx[2][1];
+      t1046 = t354*Nx[2][0];
+      t1048 = t707*Nx[2][2];
+      t1050 = t101*Nx[2][0];
+      t1052 = t717*Nx[2][2];
+      t1054 = t118*Nx[2][0];
+      t1058 = t731*Nx[2][1];
+      t1060 = t541*Nx[2][0];
+      t1064 = t731*Nx[2][2];
+      t1066 = t548*Nx[2][0];
+      t1070 = t129*t1040-t431*t1040-t129*t1042+t431*t1042-t233*t1044+t436*t1044
++t233*t1046-t436*t1046+t168*t1048-t441*t1048-t168*t1050+t441*t1050+t444*t1052-
+t444*t1054-t451*t1058+t451*t1060-t467*t1064+t467*t1066;
+      t1077 = t337*Nx[2][2];
+      t1079 = t101*Nx[2][1];
+      t1081 = t354*Nx[2][2];
+      t1083 = t118*Nx[2][1];
+      t1087 = t541*Nx[2][2];
+      t1089 = t548*Nx[2][1];
+      t1095 = -t300*t1052+t300*t1054+t262*t1058-t262*t1060+t317*t1064-t317*
+t1066+t363*t1077-t676*t1077-t363*t1079+t676*t1079-t396*t1081+t679*t1081+t396*
+t1083-t679*t1083+t412*t1087-t684*t1087-t412*t1089+t684*t1089;
+      t1097 = t430*(t1070+t1095);
+      t1106 = t707*Nx[1][1];
+      t1108 = t337*Nx[1][0];
+      t1110 = t717*Nx[1][1];
+      t1112 = t354*Nx[1][0];
+      t1114 = t707*Nx[1][2];
+      t1116 = t101*Nx[1][0];
+      t1118 = t717*Nx[1][2];
+      t1120 = t118*Nx[1][0];
+      t1124 = t731*Nx[1][1];
+      t1126 = t541*Nx[1][0];
+      t1130 = t731*Nx[1][2];
+      t1132 = t548*Nx[1][0];
+      t1136 = -t129*t1106+t431*t1106+t129*t1108-t431*t1108+t233*t1110-t436*
+t1110-t233*t1112+t436*t1112-t168*t1114+t441*t1114+t168*t1116-t441*t1116-t444*
+t1118+t444*t1120+t451*t1124-t451*t1126+t467*t1130-t467*t1132;
+      t1149 = t541*Nx[1][2];
+      t1151 = t548*Nx[1][1];
+      t1157 = t300*t1118-t300*t1120-t262*t1124+t262*t1126-t317*t1130+t317*t1132
+-t412*t1149+t684*t1149+t412*t1151-t684*t1151-t363*t366+t363*t372+t676*t366-t676
+*t372+t396*t398-t396*t403-t679*t398+t679*t403;
+      t1159 = t430*(t1136+t1157);
+      vgx[0] = (2.0*lame2*(t11*BHi[0][1]+t17*BHi[0][2]+t5*BHi[0][0]-t487)+t492*
+t487)*V0/2.0;
+      vgx[1] = (2.0*lame2*(t497*BHi[0][0]+t501*BHi[0][1]+t505*BHi[0][2]-t567)+
+t492*t567)*V0/2.0;
+      vgx[2] = (2.0*lame2*(t575*BHi[0][0]+t579*BHi[0][1]+t583*BHi[0][2]-t636)+
+t492*t636)*V0/2.0;
+      vgx[3] = (2.0*lame2*(t11*BHi[1][1]+t17*BHi[1][2]+t5*BHi[1][0]-t693)+t492*
+t693)*V0/2.0;
+      vgx[4] = (2.0*lame2*(t497*BHi[1][0]+t501*BHi[1][1]+t505*BHi[1][2]-t759)+
+t492*t759)*V0/2.0;
+      vgx[5] = (2.0*lame2*(t575*BHi[1][0]+t579*BHi[1][1]+t583*BHi[1][2]-t819)+
+t492*t819)*V0/2.0;
+      vgx[6] = (2.0*lame2*(t11*BHi[2][1]+t17*BHi[2][2]+t5*BHi[2][0]-t869)+t492*
+t869)*V0/2.0;
+      vgx[7] = (2.0*lame2*(t497*BHi[2][0]+t501*BHi[2][1]+t505*BHi[2][2]-t923)+
+t492*t923)*V0/2.0;
+      vgx[8] = (2.0*lame2*(t575*BHi[2][0]+t579*BHi[2][1]+t583*BHi[2][2]-t977)+
+t492*t977)*V0/2.0;
+      vgx[9] = (2.0*lame2*(t11*BHi[3][1]+t17*BHi[3][2]+t5*BHi[3][0]-t1031)+t492
+*t1031)*V0/2.0;
+      vgx[10] = (2.0*lame2*(t497*BHi[3][0]+t501*BHi[3][1]+t505*BHi[3][2]-t1097)
++t492*t1097)*V0/2.0;
+      vgx[11] = (2.0*lame2*(t575*BHi[3][0]+t579*BHi[3][1]+t583*BHi[3][2]-t1159)
++t492*t1159)*V0/2.0;</Text-field>
+</Output>
+</Group>
+<Group labelreference="L161" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"><Equation executable="true" style="2D Input" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbW9HRiQ2LVEhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y0LyUpc3RyZXRjaHlHRjQvJSpzeW1tZXRyaWNHRjQvJShsYXJnZW9wR0Y0LyUubW92YWJsZWxpbWl0c0dGNC8lJ2FjY2VudEdGNC8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkMvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUrZXhlY3V0YWJsZUdGNEYv">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbW9HRiQ2LVEhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y0LyUpc3RyZXRjaHlHRjQvJSpzeW1tZXRyaWNHRjQvJShsYXJnZW9wR0Y0LyUubW92YWJsZWxpbWl0c0dGNC8lJ2FjY2VudEdGNC8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkMvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUrZXhlY3V0YWJsZUdGNEYv</Equation></Text-field>
+</Input>
+</Group>
+<Group labelreference="L164" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">C(mHx,optimized):</Text-field>
+</Input>
+<Output><Text-field style="Line Printed Output" layout="Line Printed Output">      t1 = BHi[0][0]*BHi[0][0];
+      t2 = BHi[0][1]*BHi[0][1];</Text-field><Text-field style="Line Printed Output" layout="Line Printed Output">      t3 = BHi[0][2]*BHi[0][2];
+      t4 = BHi[0][0]*Nx[0][0];
+      t5 = t4*Nx[1][1];
+      t6 = BHi[2][2]*Nx[2][2];
+      t7 = t6*BHi[1][1];
+      t9 = t4*Nx[1][2];
+      t10 = Nx[2][1]*BHi[2][2];
+      t11 = t10*BHi[1][1];
+      t13 = BHi[0][0]*Nx[0][1];
+      t14 = t13*Nx[1][0];
+      t16 = t13*Nx[2][0];
+      t17 = BHi[2][2]*Nx[1][2];
+      t20 = BHi[0][0]*Nx[0][2];
+      t21 = t20*Nx[1][0];
+      t23 = t20*Nx[1][1];
+      t24 = Nx[2][0]*BHi[2][2];
+      t27 = t4*Nx[2][3];
+      t28 = BHi[3][2]*Nx[1][1];
+      t31 = t4*Nx[2][1];
+      t32 = BHi[3][2]*Nx[1][3];
+      t33 = t32*BHi[1][1];
+      t35 = BHi[3][2]*Nx[2][3];
+      t39 = BHi[0][0]*Nx[0][3];
+      t40 = t39*Nx[1][0];
+      t41 = Nx[2][1]*BHi[3][2];
+      t44 = t39*Nx[1][1];
+      t45 = Nx[2][0]*BHi[3][2];
+      t48 = BHi[2][1]*Nx[2][2];
+      t49 = t48*BHi[1][2];
+      t51 = Nx[2][1]*BHi[2][1];
+      t52 = t51*BHi[1][2];
+      t55 = BHi[2][1]*Nx[1][2];
+      t59 = Nx[2][0]*BHi[2][1];
+      t62 = -t14*t35*BHi[1][1]+t16*t17*BHi[1][1]-t16*t55*BHi[1][2]-t23*t24*BHi
+[1][1]+t23*t59*BHi[1][2]+t27*t28*BHi[1][1]+t40*t41*BHi[1][1]-t44*t45*BHi[1][1]+
+t21*t11-t9*t11+t14*t49-t14*t7+t16*t33-t21*t52-t31*t33-t5*t49+t5*t7+t9*t52;
+      t63 = BHi[3][1]*Nx[1][1];
+      t66 = BHi[3][1]*Nx[1][3];
+      t67 = t66*BHi[1][2];
+      t69 = BHi[3][1]*Nx[2][3];
+      t73 = Nx[2][1]*BHi[3][1];
+      t76 = Nx[2][0]*BHi[3][1];
+      t79 = BHi[3][2]*Nx[1][2];
+      t82 = t4*Nx[2][2];
+      t86 = BHi[0][0]*Nx[1][0]*Nx[2][3];
+      t87 = Nx[0][2]*BHi[3][2];
+      t88 = t87*BHi[2][1];
+      t91 = BHi[0][0]*Nx[2][0]*Nx[1][3];
+      t93 = BHi[3][2]*Nx[2][2];
+      t94 = t93*BHi[2][1];
+      t96 = t39*Nx[1][2];
+      t99 = BHi[3][1]*Nx[1][2];
+      t104 = Nx[0][2]*BHi[3][1];
+      t105 = t104*BHi[2][2];
+      t108 = BHi[3][1]*Nx[2][2];
+      t109 = t108*BHi[2][2];
+      t113 = t14*t69*BHi[1][2]-t27*t63*BHi[1][2]+t27*t79*BHi[2][1]-t27*t99*BHi
+[2][2]-t82*t32*BHi[2][1]-t40*t73*BHi[1][2]+t44*t76*BHi[1][2]-t96*t45*BHi[2][1]+
+t82*t66*BHi[2][2]+t96*t76*BHi[2][2]+t86*t105-t91*t105-t40*t109-t16*t67+t31*t67+
+t40*t94-t86*t88+t91*t88;
+      t115 = BHi[0][1]*BHi[1][0];
+      t116 = t115*Nx[0][0];
+      t117 = Nx[2][2]*Nx[1][1];
+      t118 = t117*BHi[2][2];
+      t120 = Nx[1][2]*Nx[2][1];
+      t121 = t120*BHi[2][2];
+      t123 = t115*Nx[0][1];
+      t124 = Nx[2][2]*Nx[1][0];
+      t125 = t124*BHi[2][2];
+      t127 = Nx[1][2]*Nx[2][0];
+      t128 = t127*BHi[2][2];
+      t130 = t115*Nx[0][2];
+      t131 = Nx[2][1]*Nx[1][0];
+      t132 = t131*BHi[2][2];
+      t134 = Nx[1][1]*Nx[2][0];
+      t135 = t134*BHi[2][2];
+      t137 = Nx[2][3]*Nx[1][1];
+      t138 = t137*BHi[3][2];
+      t140 = Nx[1][3]*Nx[2][1];
+      t141 = t140*BHi[3][2];
+      t143 = Nx[2][3]*Nx[1][0];
+      t144 = t143*BHi[3][2];
+      t146 = Nx[1][3]*Nx[2][0];
+      t147 = t146*BHi[3][2];
+      t149 = t115*Nx[0][3];
+      t150 = t131*BHi[3][2];
+      t152 = t134*BHi[3][2];
+      t154 = BHi[0][1]*BHi[2][0];
+      t155 = t154*Nx[0][0];
+      t160 = t154*Nx[0][1];
+      t165 = t154*Nx[0][2];
+      t166 = t131*BHi[1][2];
+      t168 = t134*BHi[1][2];
+      t170 = t155*t117*BHi[1][2]-t155*t120*BHi[1][2]-t160*t124*BHi[1][2]+t160*
+t127*BHi[1][2]-t116*t118+t116*t121-t116*t138+t116*t141+t123*t125-t123*t128+t123
+*t144-t123*t147-t130*t132+t130*t135-t149*t150+t149*t152+t165*t166-t165*t168;
+      t171 = BHi[0][1]*BHi[3][0];
+      t172 = t171*Nx[0][0];
+      t177 = t171*Nx[0][1];
+      t182 = t171*Nx[0][3];
+      t185 = Nx[2][3]*Nx[1][2];
+      t186 = t185*BHi[3][2];
+      t188 = Nx[1][3]*Nx[2][2];
+      t189 = t188*BHi[3][2];
+      t192 = Nx[2][3]*Nx[0][2];
+      t193 = t192*BHi[3][2];
+      t196 = Nx[1][3]*Nx[0][2];
+      t197 = t196*BHi[3][2];
+      t199 = t154*Nx[0][3];
+      t200 = t124*BHi[3][2];
+      t202 = t127*BHi[3][2];
+      t212 = t196*BHi[2][2];
+      t216 = -t171*Nx[1][0]*t192*BHi[2][2]+t172*t137*BHi[1][2]-t172*t140*BHi[1]
+[2]-t177*t143*BHi[1][2]+t177*t146*BHi[1][2]+t154*Nx[1][0]*t193-t154*Nx[2][0]*
+t197+t171*Nx[2][0]*t212+t172*t185*BHi[2][2]-t172*t188*BHi[2][2]+t182*t125-t182*
+t128-t155*t186+t155*t189+t182*t166-t182*t168-t199*t200+t199*t202;
+      t219 = BHi[0][2]*BHi[1][0];
+      t220 = t219*Nx[0][0];
+      t221 = t117*BHi[2][1];
+      t223 = t120*BHi[2][1];
+      t225 = t219*Nx[0][1];
+      t226 = t124*BHi[2][1];
+      t228 = t127*BHi[2][1];
+      t230 = t219*Nx[0][2];
+      t231 = t131*BHi[2][1];
+      t233 = t134*BHi[2][1];
+      t235 = t137*BHi[3][1];
+      t237 = t140*BHi[3][1];
+      t239 = t143*BHi[3][1];
+      t241 = t146*BHi[3][1];
+      t243 = t219*Nx[0][3];
+      t244 = t131*BHi[3][1];
+      t246 = t134*BHi[3][1];
+      t248 = BHi[0][2]*BHi[1][1];
+      t249 = t248*BHi[2][0];
+      t256 = Nx[0][1]*Nx[1][0];
+      t259 = Nx[0][1]*Nx[2][0];
+      t265 = Nx[0][2]*Nx[1][1];
+      t268 = -t249*Nx[0][0]*Nx[1][1]*Nx[2][2]+t249*Nx[0][0]*Nx[1][2]*Nx[2][1]-
+t249*Nx[0][2]*Nx[1][0]*Nx[2][1]+t249*t256*Nx[2][2]-t249*t259*Nx[1][2]+t249*t265
+*Nx[2][0]+t220*t221-t220*t223+t220*t235-t220*t237-t225*t226+t225*t228-t225*t239
++t225*t241+t230*t231-t230*t233+t243*t244-t243*t246;
+      t269 = t248*BHi[3][0];
+      t270 = Nx[0][0]*Nx[2][3];
+      t280 = Nx[0][3]*Nx[1][0];
+      t283 = Nx[0][3]*Nx[1][1];
+      t286 = BHi[0][2]*BHi[2][0];
+      t287 = t286*Nx[0][0];
+      t288 = t185*BHi[3][1];
+      t290 = t188*BHi[3][1];
+      t293 = t192*BHi[3][1];
+      t296 = t196*BHi[3][1];
+      t298 = t286*Nx[0][3];
+      t299 = t124*BHi[3][1];
+      t301 = t127*BHi[3][1];
+      t303 = BHi[0][2]*BHi[2][1];
+      t304 = t303*BHi[3][0];
+      t316 = Nx[0][3]*Nx[1][2];
+      t319 = t269*Nx[0][0]*Nx[2][1]*Nx[1][3]+t304*Nx[0][0]*Nx[2][2]*Nx[1][3]+
+t304*t143*Nx[0][2]-t304*t146*Nx[0][2]+t269*t256*Nx[2][3]-t269*t259*Nx[1][3]-
+t269*t270*Nx[1][1]-t269*t280*Nx[2][1]+t269*t283*Nx[2][0]-t304*t270*Nx[1][2]-
+t304*t280*Nx[2][2]-t286*Nx[1][0]*t293+t286*Nx[2][0]*t296+t304*t316*Nx[2][0]+
+t287*t288-t287*t290+t298*t299-t298*t301;
+      t321 = BHi[1][0]*Nx[2][3];
+      t322 = t321*Nx[1][2];
+      t323 = Nx[0][1]*BHi[3][2];
+      t324 = t323*BHi[2][1];
+      t327 = BHi[1][0]*Nx[2][2]*Nx[1][3];
+      t329 = t321*Nx[1][1];
+      t332 = BHi[1][0]*Nx[2][1]*Nx[1][3];
+      t334 = BHi[1][0]*Nx[0][3];
+      t335 = t334*Nx[1][1];
+      t337 = t334*Nx[1][2];
+      t340 = Nx[0][1]*BHi[3][1];
+      t341 = t340*BHi[2][2];
+      t349 = BHi[1][1]*BHi[2][0];
+      t350 = t349*Nx[2][3];
+      t351 = Nx[1][2]*Nx[0][1];
+      t352 = t351*BHi[3][2];
+      t355 = Nx[1][3]*Nx[0][1];
+      t356 = t355*BHi[3][2];
+      t358 = t265*BHi[3][2];
+      t362 = t349*Nx[0][3];
+      t363 = t117*BHi[3][2];
+      t365 = t120*BHi[3][2];
+      t367 = -t349*Nx[2][1]*t197-t337*t41*BHi[2][1]+t337*t73*BHi[2][2]+t349*Nx
+[2][2]*t356+t329*t105-t332*t105-t335*t109+t322*t324-t322*t341-t327*t324+t327*
+t341-t329*t88+t332*t88+t335*t94-t350*t352+t350*t358-t362*t363+t362*t365;
+      t368 = BHi[1][1]*BHi[3][0];
+      t369 = t368*Nx[2][3];
+      t370 = t351*BHi[2][2];
+      t375 = t265*BHi[2][2];
+      t379 = t368*Nx[0][3];
+      t382 = BHi[1][2]*BHi[2][0];
+      t383 = t382*Nx[2][3];
+      t384 = t351*BHi[3][1];
+      t387 = t355*BHi[3][1];
+      t389 = t265*BHi[3][1];
+      t393 = t382*Nx[0][3];
+      t394 = t117*BHi[3][1];
+      t396 = t120*BHi[3][1];
+      t398 = BHi[1][2]*BHi[2][1];
+      t399 = t398*BHi[3][0];
+      t412 = -t368*Nx[2][2]*t355*BHi[2][2]+t399*t137*Nx[0][2]-t399*t140*Nx[0]
+[2]-t399*t185*Nx[0][1]+t399*t188*Nx[0][1]+t368*Nx[2][1]*t212-t399*t283*Nx[2][2]
++t382*Nx[2][1]*t296+t399*t316*Nx[2][1]-t382*Nx[2][2]*t387+t379*t118-t379*t121+
+t369*t370-t369*t375+t383*t384-t383*t389+t393*t394-t393*t396;
+      t415 = t62+t113+t170+t216+t268+t319+t367+t412;
+      t416 = t415*t415;
+      t417 = 1/t416;
+      t418 = BHi[0][0]*BHi[1][1];
+      t423 = BHi[0][0]*BHi[1][2];
+      t428 = BHi[0][0]*BHi[2][1];
+      t431 = BHi[0][0]*BHi[2][2];
+      t438 = BHi[0][1]*BHi[1][2];
+      t439 = BHi[2][0]*Nx[1][1];
+      t440 = t439*Nx[2][2];
+      t442 = BHi[2][0]*Nx[1][2];
+      t443 = t442*Nx[2][1];
+      t445 = -t115*t118+t115*t121-t115*t138+t115*t141+t418*t118-t418*t121+t418*
+t138-t418*t141+t428*t186-t428*t189-t423*t221+t423*t223-t423*t235+t423*t237-t431
+*t288+t431*t290+t438*t440-t438*t443;
+      t446 = BHi[3][0]*Nx[1][1];
+      t447 = t446*Nx[2][3];
+      t449 = BHi[3][0]*Nx[1][3];
+      t450 = t449*Nx[2][1];
+      t454 = BHi[0][1]*BHi[2][2];
+      t455 = BHi[3][0]*Nx[1][2];
+      t456 = t455*Nx[2][3];
+      t458 = t449*Nx[2][2];
+      t472 = -t154*t186+t154*t189+t219*t221-t219*t223+t219*t235-t219*t237-t248*
+t440+t248*t443-t248*t447+t248*t450+t286*t288-t286*t290-t303*t456+t303*t458+t438
+*t447-t438*t450+t454*t456-t454*t458;
+      t473 = t445+t472;
+      t474 = t473*t473;
+      t475 = t417*t474;
+      t479 = lame1*t417;
+      t481 = log(t416);
+      t482 = lame1*t481;
+      t487 = lame2*t417;
+      t488 = BHi[2][2]*Nx[0][1];
+      t489 = t488*Nx[2][2];
+      t491 = BHi[2][2]*Nx[0][2];
+      t492 = t491*Nx[2][1];
+      t494 = t323*Nx[2][3];
+      t496 = BHi[3][2]*Nx[0][3];
+      t497 = t496*Nx[2][1];
+      t499 = BHi[2][1]*Nx[0][1];
+      t500 = t499*Nx[2][2];
+      t502 = BHi[2][1]*Nx[0][2];
+      t503 = t502*Nx[2][1];
+      t505 = t340*Nx[2][3];
+      t507 = BHi[3][1]*Nx[0][3];
+      t508 = t507*Nx[2][1];
+      t511 = t496*Nx[2][2];
+      t514 = t507*Nx[2][2];
+      t520 = BHi[2][0]*Nx[0][1];
+      t521 = t520*Nx[2][2];
+      t523 = BHi[2][0]*Nx[0][2];
+      t524 = t523*Nx[2][1];
+      t526 = t115*t489-t115*t492+t115*t494-t115*t497-t428*t193+t431*t293-t418*
+t489+t418*t492-t418*t494+t418*t497+t423*t500-t423*t503+t423*t505-t423*t508+t428
+*t511-t431*t514-t438*t521+t438*t524;
+      t527 = BHi[3][0]*Nx[0][1];
+      t528 = t527*Nx[2][3];
+      t530 = BHi[3][0]*Nx[0][3];
+      t531 = t530*Nx[2][1];
+      t535 = BHi[3][0]*Nx[0][2];
+      t536 = t535*Nx[2][3];
+      t538 = t530*Nx[2][2];
+      t552 = t154*t193-t154*t511-t219*t500+t219*t503-t219*t505+t219*t508+t248*
+t521-t248*t524+t248*t528-t248*t531-t286*t293+t286*t514+t303*t536-t303*t538-t438
+*t528+t438*t531-t454*t536+t454*t538;
+      t553 = t526+t552;
+      t554 = t473*t553;
+      t557 = t417*t473;
+      t562 = (t487*t554+t479*t554-t482*t557*t553/2.0)*V0;
+      t566 = t496*Nx[1][1];
+      t568 = t499*Nx[1][2];
+      t570 = t502*Nx[1][1];
+      t573 = t507*Nx[1][1];
+      t576 = t496*Nx[1][2];
+      t579 = t507*Nx[1][2];
+      t585 = t520*Nx[1][2];
+      t587 = t523*Nx[1][1];
+      t589 = -t115*t356-t115*t370+t115*t375+t115*t566+t428*t197-t431*t296+t356*
+t418+t370*t418-t375*t418-t387*t423-t418*t566-t423*t568+t423*t570+t423*t573-t428
+*t576+t431*t579+t438*t585-t438*t587;
+      t590 = t527*Nx[1][3];
+      t592 = t530*Nx[1][1];
+      t596 = t535*Nx[1][3];
+      t598 = t530*Nx[1][2];
+      t612 = -t154*t197+t154*t576+t219*t387+t219*t568-t219*t570-t219*t573-t248*
+t585+t248*t587-t248*t590+t248*t592+t286*t296-t286*t579-t303*t596+t303*t598+t438
+*t590-t438*t592+t454*t596-t454*t598;
+      t613 = t589+t612;
+      t614 = t473*t613;
+      t621 = (t487*t614+t479*t614-t482*t557*t613/2.0)*V0;
+      t622 = BHi[1][0]*BHi[0][0];
+      t623 = BHi[1][1]*BHi[0][1];
+      t624 = BHi[1][2]*BHi[0][2];
+      t637 = Nx[1][0]*BHi[2][0];
+      t638 = t637*Nx[2][2];
+      t640 = t442*Nx[2][0];
+      t642 = BHi[3][0]*Nx[1][0];
+      t643 = t642*Nx[2][3];
+      t645 = t449*Nx[2][0];
+      t649 = t115*t125-t115*t128+t115*t144-t115*t147-t125*t418+t128*t418-t144*
+t418+t147*t418-t219*t226+t219*t228+t226*t423-t228*t423+t239*t423-t241*t423-t438
+*t638+t438*t640-t438*t643+t438*t645;
+      t656 = BHi[1][0]*BHi[2][1];
+      t659 = BHi[1][0]*BHi[2][2];
+      t664 = BHi[1][1]*BHi[2][2];
+      t671 = -t186*t349+t186*t656+t189*t349-t189*t656-t219*t239+t219*t241+t248*
+t638-t248*t640+t248*t643-t248*t645+t288*t382-t288*t659-t290*t382+t290*t659-t398
+*t456+t398*t458+t456*t664-t458*t664;
+      t672 = t649+t671;
+      t673 = t557*t672;
+      t682 = (lame2*(t622+t623+t624+t673)+t479*t672*t473-t482*t673/2.0)*V0;
+      t683 = BHi[2][2]*Nx[0][0];
+      t684 = t683*Nx[2][2];
+      t686 = t491*Nx[2][0];
+      t688 = BHi[3][2]*Nx[0][0];
+      t689 = t688*Nx[2][3];
+      t691 = t496*Nx[2][0];
+      t693 = BHi[2][1]*Nx[0][0];
+      t694 = t693*Nx[2][2];
+      t696 = t502*Nx[2][0];
+      t698 = BHi[3][1]*Nx[0][0];
+      t699 = t698*Nx[2][3];
+      t701 = t507*Nx[2][0];
+      t707 = BHi[2][0]*Nx[0][0];
+      t708 = t707*Nx[2][2];
+      t710 = t523*Nx[2][0];
+      t712 = BHi[3][0]*Nx[0][0];
+      t713 = t712*Nx[2][3];
+      t715 = t530*Nx[2][0];
+      t719 = -t115*t684+t115*t686-t115*t689+t115*t691+t219*t694-t219*t696+t418*
+t684-t418*t686+t418*t689-t418*t691-t423*t694+t423*t696-t423*t699+t423*t701+t438
+*t708-t438*t710+t438*t713-t438*t715;
+      t738 = t193*t349-t193*t656+t219*t699-t219*t701-t248*t708+t248*t710-t248*
+t713+t248*t715-t293*t382+t293*t659-t349*t511+t382*t514+t398*t536-t398*t538+t511
+*t656-t514*t659-t536*t664+t538*t664;
+      t739 = t719+t738;
+      t740 = t557*t739;
+      t741 = 1/t415;
+      t748 = BHi[2][0]*Nx[2][2];
+      t750 = BHi[3][0]*Nx[2][3];
+      t756 = -t115*t35-t115*t6+t219*t48+t219*t69-t248*t748-t248*t750+t35*t418+
+t418*t6-t423*t48-t423*t69+t438*t748+t438*t750;
+      t757 = t741*t756;
+      t768 = (lame2*(t740-t757)+t479*t739*t473-t482*t740/2.0+t482*t757/2.0)*V0;
+      t769 = t683*Nx[1][2];
+      t771 = t491*Nx[1][0];
+      t773 = t688*Nx[1][3];
+      t775 = t496*Nx[1][0];
+      t777 = t693*Nx[1][2];
+      t779 = t502*Nx[1][0];
+      t781 = t698*Nx[1][3];
+      t783 = t507*Nx[1][0];
+      t789 = t707*Nx[1][2];
+      t791 = t523*Nx[1][0];
+      t793 = t712*Nx[1][3];
+      t795 = t530*Nx[1][0];
+      t799 = t115*t769-t115*t771+t115*t773-t115*t775-t219*t777+t219*t779-t418*
+t769+t418*t771-t418*t773+t418*t775+t423*t777-t423*t779+t423*t781-t423*t783-t438
+*t789+t438*t791-t438*t793+t438*t795;
+      t818 = -t197*t349+t197*t656-t219*t781+t219*t783+t248*t789-t248*t791+t248*
+t793-t248*t795+t296*t382-t296*t659+t349*t576-t382*t579-t398*t596+t398*t598-t576
+*t656+t579*t659+t596*t664-t598*t664;
+      t819 = t799+t818;
+      t820 = t557*t819;
+      t833 = t115*t17+t115*t32-t17*t418-t219*t55-t219*t66+t248*t442+t248*t449-
+t32*t418+t423*t55+t423*t66-t438*t442-t438*t449;
+      t834 = t741*t833;
+      t845 = (lame2*(t820-t834)+t479*t819*t473-t482*t820/2.0+t482*t834/2.0)*V0;
+      t846 = BHi[2][0]*BHi[0][0];
+      t847 = BHi[2][1]*BHi[0][1];
+      t848 = BHi[2][2]*BHi[0][2];
+      t859 = t637*Nx[2][1];
+      t861 = t439*Nx[2][0];
+      t869 = -t115*t132+t115*t135+t132*t418-t135*t418+t144*t154-t144*t428-t147*
+t154+t147*t428+t219*t231-t219*t233-t231*t423+t233*t423+t239*t431-t241*t431+t438
+*t859-t438*t861-t454*t643+t454*t645;
+      t888 = t138*t349-t138*t656-t141*t349+t141*t656-t235*t382+t235*t659+t237*
+t382-t237*t659-t239*t286+t241*t286-t248*t859+t248*t861+t303*t643-t303*t645+t398
+*t447-t398*t450-t447*t664+t450*t664;
+      t889 = t869+t888;
+      t890 = t557*t889;
+      t899 = (lame2*(t846+t847+t848+t890)+t479*t889*t473-t482*t890/2.0)*V0;
+      t900 = t683*Nx[2][1];
+      t902 = t488*Nx[2][0];
+      t904 = t693*Nx[2][1];
+      t906 = t499*Nx[2][0];
+      t914 = t707*Nx[2][1];
+      t916 = t520*Nx[2][0];
+      t924 = t115*t900-t115*t902-t154*t689+t154*t691-t219*t904+t219*t906-t418*
+t900+t418*t902+t423*t904-t423*t906+t428*t689-t428*t691-t431*t699+t431*t701-t438
+*t914+t438*t916+t454*t713-t454*t715;
+      t943 = t248*t914-t248*t916+t286*t699-t286*t701-t303*t713+t303*t715-t349*
+t494+t349*t497+t382*t505-t382*t508-t398*t528+t398*t531+t494*t656-t497*t656-t505
+*t659+t508*t659+t528*t664-t531*t664;
+      t944 = t924+t943;
+      t945 = t557*t944;
+      t951 = BHi[2][0]*Nx[2][1];
+      t959 = t10*t115-t10*t418-t154*t35-t219*t51+t248*t951+t286*t69-t303*t750+
+t35*t428+t423*t51-t431*t69-t438*t951+t454*t750;
+      t960 = t741*t959;
+      t971 = (lame2*(t945-t960)+t479*t944*t473-t482*t945/2.0+t482*t960/2.0)*V0;
+      t972 = t683*Nx[1][1];
+      t974 = t488*Nx[1][0];
+      t976 = t693*Nx[1][1];
+      t978 = t499*Nx[1][0];
+      t986 = t707*Nx[1][1];
+      t988 = t520*Nx[1][0];
+      t996 = -t115*t972+t115*t974+t154*t773-t154*t775+t219*t976-t219*t978+t418*
+t972-t418*t974-t423*t976+t423*t978-t428*t773+t428*t775+t431*t781-t431*t783+t438
+*t986-t438*t988-t454*t793+t454*t795;
+      t1015 = -t248*t986+t248*t988-t286*t781+t286*t783+t303*t793-t303*t795+t349
+*t356-t349*t566-t356*t656-t382*t387+t382*t573+t387*t659+t398*t590-t398*t592+
+t566*t656-t573*t659-t590*t664+t592*t664;
+      t1016 = t996+t1015;
+      t1017 = t557*t1016;
+      t1018 = BHi[2][2]*Nx[1][1];
+      t1020 = BHi[2][1]*Nx[1][1];
+      t1032 = -t1018*t115+t1018*t418+t1020*t219-t1020*t423+t154*t32-t248*t439-
+t286*t66+t303*t449-t32*t428+t431*t66+t438*t439-t449*t454;
+      t1033 = t741*t1032;
+      t1044 = (lame2*(t1017-t1033)+t479*t1016*t473-t482*t1017/2.0+t482*t1033/
+2.0)*V0;
+      t1045 = BHi[3][0]*BHi[0][0];
+      t1046 = BHi[3][1]*BHi[0][1];
+      t1047 = BHi[3][2]*BHi[0][2];
+      t1058 = t642*Nx[2][1];
+      t1060 = t446*Nx[2][0];
+      t1064 = t642*Nx[2][2];
+      t1066 = t455*Nx[2][0];
+      t1070 = t1058*t438-t1060*t438+t1064*t454-t1066*t454-t115*t150+t115*t152+
+t150*t418-t152*t418-t154*t200+t154*t202+t200*t428-t202*t428+t219*t244-t219*t246
+-t244*t423+t246*t423-t299*t431+t301*t431;
+      t1083 = t446*Nx[2][2];
+      t1085 = t455*Nx[2][1];
+      t1091 = -t1058*t248+t1060*t248-t1064*t303+t1066*t303-t1083*t398+t1083*
+t664+t1085*t398-t1085*t664+t286*t299-t286*t301-t349*t363+t349*t365+t363*t656-
+t365*t656+t382*t394-t382*t396-t394*t659+t396*t659;
+      t1092 = t1070+t1091;
+      t1093 = t557*t1092;
+      t1102 = (lame2*(t1045+t1046+t1047+t1093)+t479*t1092*t473-t482*t1093/2.0)*
+V0;
+      t1103 = t688*Nx[2][1];
+      t1105 = t323*Nx[2][0];
+      t1107 = t698*Nx[2][1];
+      t1109 = t340*Nx[2][0];
+      t1111 = t688*Nx[2][2];
+      t1113 = t87*Nx[2][0];
+      t1115 = t698*Nx[2][2];
+      t1117 = t104*Nx[2][0];
+      t1121 = t712*Nx[2][1];
+      t1123 = t527*Nx[2][0];
+      t1127 = t712*Nx[2][2];
+      t1129 = t535*Nx[2][0];
+      t1133 = t1103*t115-t1103*t418-t1105*t115+t1105*t418-t1107*t219+t1107*t423
++t1109*t219-t1109*t423+t1111*t154-t1111*t428-t1113*t154+t1113*t428+t1115*t431-
+t1117*t431-t1121*t438+t1123*t438-t1127*t454+t1129*t454;
+      t1140 = t323*Nx[2][2];
+      t1142 = t87*Nx[2][1];
+      t1144 = t340*Nx[2][2];
+      t1146 = t104*Nx[2][1];
+      t1150 = t527*Nx[2][2];
+      t1152 = t535*Nx[2][1];
+      t1158 = -t1115*t286+t1117*t286+t1121*t248-t1123*t248+t1127*t303-t1129*
+t303+t1140*t349-t1140*t656-t1142*t349+t1142*t656-t1144*t382+t1144*t659+t1146*
+t382-t1146*t659+t1150*t398-t1150*t664-t1152*t398+t1152*t664;
+      t1159 = t1133+t1158;
+      t1160 = t557*t1159;
+      t1166 = BHi[3][0]*Nx[2][1];
+      t1169 = BHi[3][0]*Nx[2][2];
+      t1175 = -t108*t286+t108*t431+t115*t41+t1166*t248-t1166*t438+t1169*t303-
+t1169*t454+t154*t93-t219*t73-t41*t418+t423*t73-t428*t93;
+      t1176 = t741*t1175;
+      t1187 = (lame2*(t1160-t1176)+t479*t1159*t473-t482*t1160/2.0+t482*t1176/
+2.0)*V0;
+      t1188 = t688*Nx[1][1];
+      t1190 = t323*Nx[1][0];
+      t1192 = t698*Nx[1][1];
+      t1194 = t340*Nx[1][0];
+      t1196 = t688*Nx[1][2];
+      t1198 = t87*Nx[1][0];
+      t1200 = t698*Nx[1][2];
+      t1202 = t104*Nx[1][0];
+      t1206 = t712*Nx[1][1];
+      t1208 = t527*Nx[1][0];
+      t1212 = t712*Nx[1][2];
+      t1214 = t535*Nx[1][0];
+      t1218 = -t115*t1188+t115*t1190+t1188*t418-t1190*t418+t1192*t219-t1192*
+t423-t1194*t219+t1194*t423-t1196*t154+t1196*t428+t1198*t154-t1198*t428-t1200*
+t431+t1202*t431+t1206*t438-t1208*t438+t1212*t454-t1214*t454;
+      t1231 = t527*Nx[1][2];
+      t1233 = t535*Nx[1][1];
+      t1239 = t1200*t286-t1202*t286-t1206*t248+t1208*t248-t1212*t303+t1214*t303
+-t1231*t398+t1231*t664+t1233*t398-t1233*t664-t349*t352+t349*t358+t352*t656-t358
+*t656+t382*t384-t382*t389-t384*t659+t389*t659;
+      t1240 = t1218+t1239;
+      t1241 = t557*t1240;
+      t1254 = -t115*t28-t154*t79+t219*t63-t248*t446+t28*t418+t286*t99-t303*t455
+-t423*t63+t428*t79-t431*t99+t438*t446+t454*t455;
+      t1255 = t741*t1254;
+      t1266 = (lame2*(t1241-t1255)+t479*t1240*t473-t482*t1241/2.0+t482*t1255/
+2.0)*V0;
+      t1267 = t553*t553;
+      t1268 = t417*t1267;
+      t1277 = t553*t613;
+      t1280 = t417*t553;
+      t1285 = (t487*t1277+t479*t1277-t482*t1280*t613/2.0)*V0;
+      t1286 = t1280*t672;
+      t1287 = -t741*t756;
+      t1298 = (lame2*(t1286-t1287)+t479*t672*t553-t482*t1286/2.0+t482*t1287/2.0
+)*V0;
+      t1299 = t1280*t739;
+      t1308 = (lame2*(t622+t623+t624+t1299)+t479*t739*t553-t482*t1299/2.0)*V0;
+      t1309 = t1280*t819;
+      t1322 = -t115*t491-t115*t496+t219*t502+t219*t507-t248*t523-t248*t530+t418
+*t491+t418*t496-t423*t502-t423*t507+t438*t523+t438*t530;
+      t1323 = t741*t1322;
+      t1334 = (lame2*(t1309-t1323)+t479*t819*t553-t482*t1309/2.0+t482*t1323/2.0
+)*V0;
+      t1335 = t1280*t889;
+      t1336 = -t741*t959;
+      t1347 = (lame2*(t1335-t1336)+t479*t889*t553-t482*t1335/2.0+t482*t1336/2.0
+)*V0;
+      t1348 = t1280*t944;
+      t1357 = (lame2*(t846+t847+t848+t1348)+t479*t944*t553-t482*t1348/2.0)*V0;
+      t1358 = t1280*t1016;
+      t1371 = t115*t488-t154*t496-t219*t499+t248*t520+t286*t507-t303*t530-t418*
+t488+t423*t499+t428*t496-t431*t507-t438*t520+t454*t530;
+      t1372 = t741*t1371;
+      t1383 = (lame2*(t1358-t1372)+t479*t1016*t553-t482*t1358/2.0+t482*t1372/
+2.0)*V0;
+      t1384 = t1280*t1092;
+      t1385 = -t741*t1175;
+      t1396 = (lame2*(t1384-t1385)+t479*t1092*t553-t482*t1384/2.0+t482*t1385/
+2.0)*V0;
+      t1397 = t1280*t1159;
+      t1406 = (lame2*(t1045+t1046+t1047+t1397)+t479*t1159*t553-t482*t1397/2.0)*
+V0;
+      t1407 = t1280*t1240;
+      t1420 = -t104*t286+t104*t431+t115*t323+t154*t87-t219*t340+t248*t527+t303*
+t535-t323*t418+t340*t423-t428*t87-t438*t527-t454*t535;
+      t1421 = t741*t1420;
+      t1432 = (lame2*(t1407-t1421)+t479*t1240*t553-t482*t1407/2.0+t482*t1421/
+2.0)*V0;
+      t1433 = t613*t613;
+      t1434 = t417*t1433;
+      t1443 = t417*t613;
+      t1444 = t1443*t672;
+      t1445 = -t741*t833;
+      t1456 = (lame2*(t1444-t1445)+t479*t672*t613-t482*t1444/2.0+t482*t1445/2.0
+)*V0;
+      t1457 = t1443*t739;
+      t1458 = -t741*t1322;
+      t1469 = (lame2*(t1457-t1458)+t479*t739*t613-t482*t1457/2.0+t482*t1458/2.0
+)*V0;
+      t1470 = t1443*t819;
+      t1479 = (lame2*(t622+t623+t624+t1470)+t479*t819*t613-t482*t1470/2.0)*V0;
+      t1480 = t1443*t889;
+      t1481 = -t741*t1032;
+      t1492 = (lame2*(t1480-t1481)+t479*t889*t613-t482*t1480/2.0+t482*t1481/2.0
+)*V0;
+      t1493 = t1443*t944;
+      t1494 = -t741*t1371;
+      t1505 = (lame2*(t1493-t1494)+t479*t944*t613-t482*t1493/2.0+t482*t1494/2.0
+)*V0;
+      t1506 = t1443*t1016;
+      t1515 = (lame2*(t846+t847+t848+t1506)+t479*t1016*t613-t482*t1506/2.0)*V0;
+      t1516 = t1443*t1092;
+      t1517 = -t741*t1254;
+      t1528 = (lame2*(t1516-t1517)+t479*t1092*t613-t482*t1516/2.0+t482*t1517/
+2.0)*V0;
+      t1529 = t1443*t1159;
+      t1530 = -t741*t1420;
+      t1541 = (lame2*(t1529-t1530)+t479*t1159*t613-t482*t1529/2.0+t482*t1530/
+2.0)*V0;
+      t1542 = t1443*t1240;
+      t1551 = (lame2*(t1045+t1046+t1047+t1542)+t479*t1240*t613-t482*t1542/2.0)*
+V0;
+      t1552 = BHi[1][0]*BHi[1][0];
+      t1553 = BHi[1][1]*BHi[1][1];
+      t1554 = BHi[1][2]*BHi[1][2];
+      t1555 = t672*t672;
+      t1556 = t417*t1555;
+      t1565 = t672*t739;
+      t1568 = t417*t672;
+      t1573 = (t487*t1565+t479*t1565-t482*t1568*t739/2.0)*V0;
+      t1574 = t672*t819;
+      t1581 = (t487*t1574+t479*t1574-t482*t1568*t819/2.0)*V0;
+      t1582 = BHi[2][0]*BHi[1][0];
+      t1583 = BHi[2][1]*BHi[1][1];
+      t1584 = BHi[2][2]*BHi[1][2];
+      t1585 = t1568*t889;
+      t1594 = (lame2*(t1582+t1583+t1584+t1585)+t479*t889*t672-t482*t1585/2.0)*
+V0;
+      t1595 = t1568*t944;
+      t1599 = BHi[2][0]*Nx[2][0];
+      t1609 = -t115*t24-t1599*t248+t1599*t438+t219*t59+t24*t418-t349*t35+t35*
+t656+t382*t69-t398*t750-t423*t59-t659*t69+t664*t750;
+      t1610 = t741*t1609;
+      t1621 = (lame2*(t1595-t1610)+t479*t944*t672-t482*t1595/2.0+t482*t1610/2.0
+)*V0;
+      t1622 = t1568*t1016;
+      t1623 = BHi[2][2]*Nx[1][0];
+      t1625 = Nx[1][0]*BHi[2][1];
+      t1637 = t115*t1623-t1623*t418-t1625*t219+t1625*t423+t248*t637+t32*t349-
+t32*t656-t382*t66+t398*t449-t438*t637-t449*t664+t659*t66;
+      t1638 = t741*t1637;
+      t1649 = (lame2*(t1622-t1638)+t479*t1016*t672-t482*t1622/2.0+t482*t1638/
+2.0)*V0;
+      t1650 = BHi[3][0]*BHi[1][0];
+      t1651 = BHi[3][1]*BHi[1][1];
+      t1652 = BHi[3][2]*BHi[1][2];
+      t1653 = t1568*t1092;
+      t1662 = (lame2*(t1650+t1651+t1652+t1653)+t479*t1092*t672-t482*t1653/2.0)*
+V0;
+      t1663 = t1568*t1159;
+      t1667 = BHi[3][0]*Nx[2][0];
+      t1677 = -t108*t382+t108*t659-t115*t45+t1169*t398-t1169*t664-t1667*t248+
+t1667*t438+t219*t76+t349*t93+t418*t45-t423*t76-t656*t93;
+      t1678 = t741*t1677;
+      t1689 = (lame2*(t1663-t1678)+t479*t1159*t672-t482*t1663/2.0+t482*t1678/
+2.0)*V0;
+      t1690 = t1568*t1240;
+      t1691 = BHi[3][2]*Nx[1][0];
+      t1693 = BHi[3][1]*Nx[1][0];
+      t1705 = t115*t1691-t1691*t418-t1693*t219+t1693*t423+t248*t642-t349*t79+
+t382*t99-t398*t455-t438*t642+t455*t664+t656*t79-t659*t99;
+      t1706 = t741*t1705;
+      t1717 = (lame2*(t1690-t1706)+t479*t1240*t672-t482*t1690/2.0+t482*t1706/
+2.0)*V0;
+      t1718 = t739*t739;
+      t1719 = t417*t1718;
+      t1728 = t739*t819;
+      t1731 = t417*t739;
+      t1736 = (t487*t1728+t479*t1728-t482*t1731*t819/2.0)*V0;
+      t1737 = t1731*t889;
+      t1738 = -t741*t1609;
+      t1749 = (lame2*(t1737-t1738)+t479*t889*t739-t482*t1737/2.0+t482*t1738/2.0
+)*V0;
+      t1750 = t1731*t944;
+      t1759 = (lame2*(t1582+t1583+t1584+t1750)+t479*t944*t739-t482*t1750/2.0)*
+V0;
+      t1760 = t1731*t1016;
+      t1773 = -t115*t683+t219*t693-t248*t707-t349*t496+t382*t507-t398*t530+t418
+*t683-t423*t693+t438*t707+t496*t656-t507*t659+t530*t664;
+      t1774 = t741*t1773;
+      t1785 = (lame2*(t1760-t1774)+t479*t1016*t739-t482*t1760/2.0+t482*t1774/
+2.0)*V0;
+      t1786 = t1731*t1092;
+      t1787 = -t741*t1677;
+      t1798 = (lame2*(t1786-t1787)+t479*t1092*t739-t482*t1786/2.0+t482*t1787/
+2.0)*V0;
+      t1799 = t1731*t1159;
+      t1808 = (lame2*(t1650+t1651+t1652+t1799)+t479*t1159*t739-t482*t1799/2.0)*
+V0;
+      t1809 = t1731*t1240;
+      t1822 = -t104*t382+t104*t659-t115*t688+t219*t698-t248*t712+t349*t87+t398*
+t535+t418*t688-t423*t698+t438*t712-t535*t664-t656*t87;
+      t1823 = t741*t1822;
+      t1834 = (lame2*(t1809-t1823)+t479*t1240*t739-t482*t1809/2.0+t482*t1823/
+2.0)*V0;
+      t1835 = t819*t819;
+      t1836 = t417*t1835;
+      t1845 = t417*t819;
+      t1846 = t1845*t889;
+      t1847 = -t741*t1637;
+      t1858 = (lame2*(t1846-t1847)+t479*t889*t819-t482*t1846/2.0+t482*t1847/2.0
+)*V0;
+      t1859 = t1845*t944;
+      t1860 = -t741*t1773;
+      t1871 = (lame2*(t1859-t1860)+t479*t944*t819-t482*t1859/2.0+t482*t1860/2.0
+)*V0;
+      t1872 = t1845*t1016;
+      t1881 = (lame2*(t1582+t1583+t1584+t1872)+t479*t1016*t819-t482*t1872/2.0)*
+V0;
+      t1882 = t1845*t1092;
+      t1883 = -t741*t1705;
+      t1894 = (lame2*(t1882-t1883)+t479*t1092*t819-t482*t1882/2.0+t482*t1883/
+2.0)*V0;
+      t1895 = t1845*t1159;
+      t1896 = -t741*t1822;
+      t1907 = (lame2*(t1895-t1896)+t479*t1159*t819-t482*t1895/2.0+t482*t1896/
+2.0)*V0;
+      t1908 = t1845*t1240;
+      t1917 = (lame2*(t1650+t1651+t1652+t1908)+t479*t1240*t819-t482*t1908/2.0)*
+V0;
+      t1918 = BHi[2][0]*BHi[2][0];
+      t1919 = BHi[2][1]*BHi[2][1];
+      t1920 = BHi[2][2]*BHi[2][2];
+      t1921 = t889*t889;
+      t1922 = t417*t1921;
+      t1931 = t889*t944;
+      t1934 = t417*t889;
+      t1939 = (t487*t1931+t479*t1931-t482*t1934*t944/2.0)*V0;
+      t1940 = t889*t1016;
+      t1947 = (t487*t1940+t479*t1940-t482*t1934*t1016/2.0)*V0;
+      t1948 = BHi[3][0]*BHi[2][0];
+      t1949 = BHi[3][1]*BHi[2][1];
+      t1950 = BHi[3][2]*BHi[2][2];
+      t1951 = t1934*t1092;
+      t1960 = (lame2*(t1948+t1949+t1950+t1951)+t479*t1092*t889-t482*t1951/2.0)*
+V0;
+      t1961 = t1934*t1159;
+      t1974 = -t1166*t398+t1166*t664-t154*t45-t1667*t303+t1667*t454+t286*t76-
+t349*t41+t382*t73+t41*t656+t428*t45-t431*t76-t659*t73;
+      t1975 = t741*t1974;
+      t1986 = (lame2*(t1961-t1975)+t479*t1159*t889-t482*t1961/2.0+t482*t1975/
+2.0)*V0;
+      t1987 = t1934*t1240;
+      t2000 = t154*t1691-t1691*t428-t1693*t286+t1693*t431+t28*t349-t28*t656+
+t303*t642-t382*t63+t398*t446-t446*t664-t454*t642+t63*t659;
+      t2001 = t741*t2000;
+      t2012 = (lame2*(t1987-t2001)+t479*t1240*t889-t482*t1987/2.0+t482*t2001/
+2.0)*V0;
+      t2013 = t944*t944;
+      t2014 = t417*t2013;
+      t2023 = t944*t1016;
+      t2026 = t417*t944;
+      t2031 = (t487*t2023+t479*t2023-t482*t2026*t1016/2.0)*V0;
+      t2032 = t2026*t1092;
+      t2033 = -t741*t1974;
+      t2044 = (lame2*(t2032-t2033)+t479*t1092*t944-t482*t2032/2.0+t482*t2033/
+2.0)*V0;
+      t2045 = t2026*t1159;
+      t2054 = (lame2*(t1948+t1949+t1950+t2045)+t479*t1159*t944-t482*t2045/2.0)*
+V0;
+      t2055 = t2026*t1240;
+      t2068 = -t154*t688+t286*t698-t303*t712-t323*t349+t323*t656+t340*t382-t340
+*t659-t398*t527+t428*t688-t431*t698+t454*t712+t527*t664;
+      t2069 = t741*t2068;
+      t2080 = (lame2*(t2055-t2069)+t479*t1240*t944-t482*t2055/2.0+t482*t2069/
+2.0)*V0;
+      t2081 = t1016*t1016;
+      t2082 = t417*t2081;
+      t2091 = t417*t1016;
+      t2092 = t2091*t1092;
+      t2093 = -t741*t2000;
+      t2104 = (lame2*(t2092-t2093)+t479*t1092*t1016-t482*t2092/2.0+t482*t2093/
+2.0)*V0;
+      t2105 = t2091*t1159;
+      t2106 = -t741*t2068;
+      t2117 = (lame2*(t2105-t2106)+t479*t1159*t1016-t482*t2105/2.0+t482*t2106/
+2.0)*V0;
+      t2118 = t2091*t1240;
+      t2127 = (lame2*(t1948+t1949+t1950+t2118)+t479*t1240*t1016-t482*t2118/2.0)
+*V0;
+      t2128 = BHi[3][0]*BHi[3][0];
+      t2129 = BHi[3][1]*BHi[3][1];
+      t2130 = BHi[3][2]*BHi[3][2];
+      t2131 = t1092*t1092;
+      t2132 = t417*t2131;
+      t2141 = t1092*t1159;
+      t2144 = t417*t1092;
+      t2149 = (t487*t2141+t479*t2141-t482*t2144*t1159/2.0)*V0;
+      t2150 = t1092*t1240;
+      t2157 = (t487*t2150+t479*t2150-t482*t2144*t1240/2.0)*V0;
+      t2158 = t1159*t1159;
+      t2159 = t417*t2158;
+      t2168 = t1159*t1240;
+      t2176 = (t487*t2168+t479*t2168-t482*t417*t1159*t1240/2.0)*V0;
+      t2177 = t1240*t1240;
+      t2178 = t417*t2177;
+      mHx[0][0] = (lame2*(t1+t2+t3+t475)+t479*t474-t482*t475/2.0)*V0;
+      mHx[0][1] = t562;
+      mHx[0][2] = t621;
+      mHx[0][3] = t682;
+      mHx[0][4] = t768;
+      mHx[0][5] = t845;
+      mHx[0][6] = t899;
+      mHx[0][7] = t971;
+      mHx[0][8] = t1044;
+      mHx[0][9] = t1102;
+      mHx[0][10] = t1187;
+      mHx[0][11] = t1266;
+      mHx[1][0] = t562;
+      mHx[1][1] = (lame2*(t1+t2+t3+t1268)+t479*t1267-t482*t1268/2.0)*V0;
+      mHx[1][2] = t1285;
+      mHx[1][3] = t1298;
+      mHx[1][4] = t1308;
+      mHx[1][5] = t1334;
+      mHx[1][6] = t1347;
+      mHx[1][7] = t1357;
+      mHx[1][8] = t1383;
+      mHx[1][9] = t1396;
+      mHx[1][10] = t1406;
+      mHx[1][11] = t1432;
+      mHx[2][0] = t621;
+      mHx[2][1] = t1285;
+      mHx[2][2] = (lame2*(t1+t2+t3+t1434)+t479*t1433-t482*t1434/2.0)*V0;
+      mHx[2][3] = t1456;
+      mHx[2][4] = t1469;
+      mHx[2][5] = t1479;
+      mHx[2][6] = t1492;
+      mHx[2][7] = t1505;
+      mHx[2][8] = t1515;
+      mHx[2][9] = t1528;
+      mHx[2][10] = t1541;
+      mHx[2][11] = t1551;
+      mHx[3][0] = t682;
+      mHx[3][1] = t1298;
+      mHx[3][2] = t1456;
+      mHx[3][3] = (lame2*(t1552+t1553+t1554+t1556)+t479*t1555-t482*t1556/2.0)*
+V0;
+      mHx[3][4] = t1573;
+      mHx[3][5] = t1581;
+      mHx[3][6] = t1594;
+      mHx[3][7] = t1621;
+      mHx[3][8] = t1649;
+      mHx[3][9] = t1662;
+      mHx[3][10] = t1689;
+      mHx[3][11] = t1717;
+      mHx[4][0] = t768;
+      mHx[4][1] = t1308;
+      mHx[4][2] = t1469;
+      mHx[4][3] = t1573;
+      mHx[4][4] = (lame2*(t1552+t1553+t1554+t1719)+t479*t1718-t482*t1719/2.0)*
+V0;
+      mHx[4][5] = t1736;
+      mHx[4][6] = t1749;
+      mHx[4][7] = t1759;
+      mHx[4][8] = t1785;
+      mHx[4][9] = t1798;
+      mHx[4][10] = t1808;
+      mHx[4][11] = t1834;
+      mHx[5][0] = t845;
+      mHx[5][1] = t1334;
+      mHx[5][2] = t1479;
+      mHx[5][3] = t1581;
+      mHx[5][4] = t1736;
+      mHx[5][5] = (lame2*(t1552+t1553+t1554+t1836)+t479*t1835-t482*t1836/2.0)*
+V0;
+      mHx[5][6] = t1858;
+      mHx[5][7] = t1871;
+      mHx[5][8] = t1881;
+      mHx[5][9] = t1894;
+      mHx[5][10] = t1907;
+      mHx[5][11] = t1917;
+      mHx[6][0] = t899;
+      mHx[6][1] = t1347;
+      mHx[6][2] = t1492;
+      mHx[6][3] = t1594;
+      mHx[6][4] = t1749;
+      mHx[6][5] = t1858;
+      mHx[6][6] = (lame2*(t1918+t1919+t1920+t1922)+t479*t1921-t482*t1922/2.0)*
+V0;
+      mHx[6][7] = t1939;
+      mHx[6][8] = t1947;
+      mHx[6][9] = t1960;
+      mHx[6][10] = t1986;
+      mHx[6][11] = t2012;
+      mHx[7][0] = t971;
+      mHx[7][1] = t1357;
+      mHx[7][2] = t1505;
+      mHx[7][3] = t1621;
+      mHx[7][4] = t1759;
+      mHx[7][5] = t1871;
+      mHx[7][6] = t1939;
+      mHx[7][7] = (lame2*(t1918+t1919+t1920+t2014)+t479*t2013-t482*t2014/2.0)*
+V0;
+      mHx[7][8] = t2031;
+      mHx[7][9] = t2044;
+      mHx[7][10] = t2054;
+      mHx[7][11] = t2080;
+      mHx[8][0] = t1044;
+      mHx[8][1] = t1383;
+      mHx[8][2] = t1515;
+      mHx[8][3] = t1649;
+      mHx[8][4] = t1785;
+      mHx[8][5] = t1881;
+      mHx[8][6] = t1947;
+      mHx[8][7] = t2031;
+      mHx[8][8] = (lame2*(t1918+t1919+t1920+t2082)+t479*t2081-t482*t2082/2.0)*
+V0;
+      mHx[8][9] = t2104;
+      mHx[8][10] = t2117;
+      mHx[8][11] = t2127;
+      mHx[9][0] = t1102;
+      mHx[9][1] = t1396;
+      mHx[9][2] = t1528;
+      mHx[9][3] = t1662;
+      mHx[9][4] = t1798;
+      mHx[9][5] = t1894;
+      mHx[9][6] = t1960;
+      mHx[9][7] = t2044;
+      mHx[9][8] = t2104;
+      mHx[9][9] = (lame2*(t2128+t2129+t2130+t2132)+t479*t2131-t482*t2132/2.0)*
+V0;
+      mHx[9][10] = t2149;
+      mHx[9][11] = t2157;
+      mHx[10][0] = t1187;
+      mHx[10][1] = t1406;
+      mHx[10][2] = t1541;
+      mHx[10][3] = t1689;
+      mHx[10][4] = t1808;
+      mHx[10][5] = t1907;
+      mHx[10][6] = t1986;
+      mHx[10][7] = t2054;
+      mHx[10][8] = t2117;
+      mHx[10][9] = t2149;
+      mHx[10][10] = (lame2*(t2128+t2129+t2130+t2159)+t479*t2158-t482*t2159/2.0)
+*V0;
+      mHx[10][11] = t2176;
+      mHx[11][0] = t1266;
+      mHx[11][1] = t1432;
+      mHx[11][2] = t1551;
+      mHx[11][3] = t1717;
+      mHx[11][4] = t1834;
+      mHx[11][5] = t1917;
+      mHx[11][6] = t2012;
+      mHx[11][7] = t2080;
+      mHx[11][8] = t2127;
+      mHx[11][9] = t2157;
+      mHx[11][10] = t2176;
+      mHx[11][11] = (lame2*(t2128+t2129+t2130+t2178)+t479*t2177-t482*t2178/2.0)
+*V0;</Text-field>
+</Output>
+</Group>
+<Group labelreference="L163" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group labelreference="L157" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">toC(U,&quot;FEMVol_CoNH_Test_Energy.mcg&quot;);</Text-field>
+</Input>
+</Group>
+<Group labelreference="L165" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">toC(vgx,&quot;FEMVol_CoNH_Test_Gradient.mcg&quot;);</Text-field>
+</Input>
+</Group>
+<Group labelreference="L168" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">toC(mHx,&quot;FEMVol_CoNH_Test_Hessian.mcg&quot;);</Text-field>
+</Input>
+</Group>
+<Group labelreference="L167" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+</Worksheet>

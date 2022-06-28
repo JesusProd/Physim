@@ -1,0 +1,10 @@
+		double t2 = E*rh*rw;
+		double t3 = x12[0]*x12[0];
+		double t4 = x12[1]*x12[1];
+		double t5 = x12[2]*x12[2];
+		double t7 = sqrt(t3+t4+t5);
+		double t11 = M_PI*(t7/L0-0.1E1);
+		double t12 = 1/t7;
+      vfx[0] = -0.1E1*t2*t11*t12*x12[0];
+      vfx[1] = -0.1E1*t2*t11*t12*x12[1];
+      vfx[2] = -0.1E1*t2*t11*t12*x12[2];

@@ -1,0 +1,4 @@
+		double t2 = pow(x0[0]-xt[0],2.0);
+		double t4 = pow(x0[1]-xt[1],2.0);
+		double t6 = pow(x0[2]-xt[2],2.0);
+		double t9 = 0.5*kA*(t2+t4+t6);
