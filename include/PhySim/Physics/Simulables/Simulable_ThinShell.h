@@ -11,81 +11,76 @@
 
 #include <PhySim/CommonIncludes.h>
 
-
 #include <PhySim/Geometry/Meshes/Mesh_Face.h>
 
 #include <PhySim/Physics/Simulables/Simulable_FEM_Surface.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	class EnergyElement_DiscreteShells;
+class EnergyElement_DiscreteShells;
 
-	/**
-	* Simulable_ThinShell.
-	*
-	* TODO.
-	*/
-	class Simulable_ThinShell : public Simulable_FEM_Surface
-	{
-	public:
+/**
+ * Simulable_ThinShell.
+ *
+ * TODO.
+ */
+class Simulable_ThinShell : public Simulable_FEM_Surface {
+ public:
+  /**
+   * TODO.
+   */
+  struct Options : public Simulable_FEM_Surface::Options {
+    ParameterSet m_material;
 
-		/**
-		* TODO.
-		*/
-		struct Options : public Simulable_FEM_Surface::Options
-		{
-			ParameterSet m_material;
+    Options() {
+      // Nothing to do here...
+    }
+  };
 
-			Options()
-			{
-				// Nothing to do here...
-			}
-		};
+ protected:
+  vector<EnergyElement_DiscreteShells*> m_venergyEle_bending;
 
-	protected:
+ public:
+  virtual string GetName() const override { return "[Thin-Shells]"; }
 
-		vector<EnergyElement_DiscreteShells*> m_venergyEle_bending;
+  virtual Options& SetupOptions() override;
 
-	public:
+  /**
+   * Constructor.
+   */
+  Simulable_ThinShell();
 
-		virtual string GetName() const override { return "[Thin-Shells]"; }
+  /**
+   * Destructor.
+   */
+  virtual ~Simulable_ThinShell();
 
-		virtual Options& SetupOptions() override;
+  /**
+   * FreeInternal extra allocated memory.
+   */
+  virtual void FreeInternal() override;
 
-		/**
-		* Constructor.
-		*/
-		Simulable_ThinShell();
+  virtual void ComputePlanarStrain(vector<vector<Matrix2d>>& vmEp);
+  virtual void ComputeBendingStrain(vector<vector<Matrix2d>>& vmEb);
+  virtual void ComputeTotalStrain(vector<vector<Matrix2d>>& vmEt);
+  virtual void ComputeStressIntegral(const vector<vector<Matrix2d>>& vmE,
+                                     vector<Matrix2d>& vmS);
+  virtual void ComputeStressDensity(const vector<vector<Matrix2d>>& vmE,
+                                    vector<Matrix2d>& vmS);
+  virtual Matrix2d ComputeStressForE(const Matrix2d& mE);
 
-		/**
-		* Destructor.
-		*/
-		virtual ~Simulable_ThinShell();
+  virtual void ComputeNodalBendingStrain(vector<Matrix2d>& vmEb);
+  virtual void ComputeNodalBendingStress(vector<Matrix2d>& vmSb);
 
-		/**
-		* FreeInternal extra allocated memory.
-		*/
-		virtual void FreeInternal() override;
+  virtual const vector<EnergyElement_DiscreteShells*>&
+  GetEnergyElements_ShellHinge() const {
+    return this->m_venergyEle_bending;
+  }
 
-		virtual void ComputePlanarStrain(vector<vector<Matrix2d>>& vmEp);
-		virtual void ComputeBendingStrain(vector<vector<Matrix2d>>& vmEb);
-		virtual void ComputeTotalStrain(vector<vector<Matrix2d>>& vmEt);
-		virtual void ComputeStressIntegral(const vector<vector<Matrix2d>>& vmE, vector<Matrix2d>& vmS);
-		virtual void ComputeStressDensity(const vector<vector<Matrix2d>>& vmE, vector<Matrix2d>& vmS);
-		virtual Matrix2d ComputeStressForE(const Matrix2d& mE);
-
-		virtual void ComputeNodalBendingStrain(vector<Matrix2d>& vmEb);
-		virtual void ComputeNodalBendingStress(vector<Matrix2d>& vmSb);
-
-		virtual const vector<EnergyElement_DiscreteShells*>& GetEnergyElements_ShellHinge() const { return this->m_venergyEle_bending; }
-
-	protected:
-
-		virtual void CreateEnergyElements(vector<IEnergyElement*>& vEnergies) override;
-
-	};
-}
-
+ protected:
+  virtual void CreateEnergyElements(
+      vector<IEnergyElement*>& vEnergies) override;
+};
+}  // namespace PhySim

@@ -1,11 +1,9 @@
 #include <math.h>
 
-void getRBNodeJacobianQuat (
-  const double *vec,
-  const double *cen,
-  const double *rot,
-  double *nodeJacobian)
-{
+void getRBNodeJacobianQuat(const double* vec,
+                           const double* cen,
+                           const double* rot,
+                           double* nodeJacobian) {
   double t1;
   double t10;
   double t102;
@@ -185,19 +183,37 @@ void getRBNodeJacobianQuat (
   t111 = vec[0];
   t115 = vec[1];
   t121 = vec[2];
-  nodeJacobian[3] = ((-t15 + t21 - t25 + t27) * t111 + (-t33 + t36 - t41 + t45 - t47 + t49) * t115 + (t53 - t54 + t58 + t62 - t64 + t66) * t121);
-  nodeJacobian[4] = ((-t73 + t75 - t76 - t80 + t82) * t111 + (-t86 + t87 - t90 + t15 - t21 + t92) * t115 + (t95 - t96 + t99 - t102 + t106 - t109) * t121);
-  nodeJacobian[5] = ((-t116 + t118 - t122 + t124 - t125) * t111 + (-t128 + t129 - t132 + t102 + t106 - t109) * t115 + (t86 - t87 + t90 + t25 - t27 + t92) * t121);
+  nodeJacobian[3] = ((-t15 + t21 - t25 + t27) * t111 +
+                     (-t33 + t36 - t41 + t45 - t47 + t49) * t115 +
+                     (t53 - t54 + t58 + t62 - t64 + t66) * t121);
+  nodeJacobian[4] = ((-t73 + t75 - t76 - t80 + t82) * t111 +
+                     (-t86 + t87 - t90 + t15 - t21 + t92) * t115 +
+                     (t95 - t96 + t99 - t102 + t106 - t109) * t121);
+  nodeJacobian[5] = ((-t116 + t118 - t122 + t124 - t125) * t111 +
+                     (-t128 + t129 - t132 + t102 + t106 - t109) * t115 +
+                     (t86 - t87 + t90 + t25 - t27 + t92) * t121);
   nodeJacobian[6] = 0;
   nodeJacobian[7] = 1;
   nodeJacobian[8] = 0;
-  nodeJacobian[9] = ((t33 - t36 + t41 + t45 - t47 + t49) * t111 + (-t143 + t145 - t146 - t25 + t27) * t115 + (-t149 + t150 - t153 + t102 + t106 - t109) * t121);
-  nodeJacobian[10] = ((t86 - t87 + t90 + t15 - t21 + t92) * t111 + (-t45 + t47 - t80 + t82) * t115 + (-t53 + t54 - t58 + t116 - t118 + t66) * t121);
-  nodeJacobian[11] = ((t128 - t129 + t132 - t102 + t106 - t109) * t111 + (-t62 + t64 - t122 + t124 - t125) * t115 + (-t33 + t36 - t41 + t80 - t82 + t49) * t121);
+  nodeJacobian[9] = ((t33 - t36 + t41 + t45 - t47 + t49) * t111 +
+                     (-t143 + t145 - t146 - t25 + t27) * t115 +
+                     (-t149 + t150 - t153 + t102 + t106 - t109) * t121);
+  nodeJacobian[10] = ((t86 - t87 + t90 + t15 - t21 + t92) * t111 +
+                      (-t45 + t47 - t80 + t82) * t115 +
+                      (-t53 + t54 - t58 + t116 - t118 + t66) * t121);
+  nodeJacobian[11] = ((t128 - t129 + t132 - t102 + t106 - t109) * t111 +
+                      (-t62 + t64 - t122 + t124 - t125) * t115 +
+                      (-t33 + t36 - t41 + t80 - t82 + t49) * t121);
   nodeJacobian[12] = 0;
   nodeJacobian[13] = 0;
   nodeJacobian[14] = 1;
-  nodeJacobian[15] = ((-t53 + t54 - t58 + t62 - t64 + t66) * t111 + (t149 - t150 + t153 - t102 + t106 - t109) * t115 + (-t143 + t145 - t146 - t15 + t21) * t121);
-  nodeJacobian[16] = ((-t95 + t96 - t99 + t102 + t106 - t109) * t111 + (t53 - t54 + t58 + t116 - t118 + t66) * t115 + (-t45 + t47 - t73 + t75 - t76) * t121);
-  nodeJacobian[17] = ((-t86 + t87 - t90 + t25 - t27 + t92) * t111 + (t33 - t36 + t41 + t80 - t82 + t49) * t115 + (-t62 + t64 - t116 + t118) * t121);
+  nodeJacobian[15] = ((-t53 + t54 - t58 + t62 - t64 + t66) * t111 +
+                      (t149 - t150 + t153 - t102 + t106 - t109) * t115 +
+                      (-t143 + t145 - t146 - t15 + t21) * t121);
+  nodeJacobian[16] = ((-t95 + t96 - t99 + t102 + t106 - t109) * t111 +
+                      (t53 - t54 + t58 + t116 - t118 + t66) * t115 +
+                      (-t45 + t47 - t73 + t75 - t76) * t121);
+  nodeJacobian[17] = ((-t86 + t87 - t90 + t25 - t27 + t92) * t111 +
+                      (t33 - t36 + t41 + t80 - t82 + t49) * t115 +
+                      (-t62 + t64 - t116 + t118) * t121);
 }

@@ -33,7 +33,7 @@ Real computeEnergyDensity_3Din3D_StVK(const VectorXd& Fv,
   const Real& lame1 = material[ParameterSet::Param_Lame1];
   const Real& lame2 = material[ParameterSet::Param_Lame2];
 
-#include "../Maple/FEMVol_StVK_Energy.mcg"
+#include "../include/PhySim/Utils/Auto/FEMVol_StVK_Energy.mcg"
 
   return t58;
 }
@@ -46,7 +46,7 @@ void computeCauchyStress_3Din3D_StVK(const VectorXd& Fv,
 
   Real vgx[9];
 
-#include "../Maple/FEMVol_StVK_Gradient.mcg"
+#include "../include/PhySim/Utils/Auto/FEMVol_StVK_Gradient.mcg"
 
   dUdF.resize(9);
   for (int i = 0; i < 9; ++i)
@@ -61,7 +61,7 @@ void computeDCauchyStressDF_3Din3D_StVK(const VectorXd& Fv,
 
   Real mHx[9][9];
 
-#include "../Maple/FEMVol_StVK_Hessian.mcg"
+#include "../include/PhySim/Utils/Auto/FEMVol_StVK_Hessian.mcg"
 
   dPdF.resize(9, 9);
   for (int i = 0; i < 9; ++i)
@@ -74,7 +74,7 @@ Real computeEnergyDensity_3Din3D_CoNH(const VectorXd& Fv,
   const Real& lame1 = material[ParameterSet::Param_Lame1];
   const Real& lame2 = material[ParameterSet::Param_Lame2];
 
-#include "../Maple/FEMVol_CoNH_Energy.mcg"
+#include "../include/PhySim/Utils/Auto/FEMVol_CoNH_Energy.mcg"
 
   return t31;
 
@@ -100,7 +100,7 @@ void computeCauchyStress_3Din3D_CoNH(const VectorXd& Fv,
 
   Real vgx[9];
 
-#include "../Maple/FEMVol_CoNH_Gradient.mcg"
+#include "../include/PhySim/Utils/Auto/FEMVol_CoNH_Gradient.mcg"
 
   dUdF.resize(9);
   for (int i = 0; i < 9; ++i)
@@ -138,7 +138,7 @@ void computeDCauchyStressDF_3Din3D_CoNH(const VectorXd& Fv,
 
   Real mHx[9][9];
 
-#include "../Maple/FEMVol_CoNH_Hessian.mcg"
+#include "../include/PhySim/Utils/Auto/FEMVol_CoNH_Hessian.mcg"
 
   dPdF.resize(9, 9);
   for (int i = 0; i < 9; ++i)
@@ -184,7 +184,7 @@ Real computeEnergyDensity_3Din3D_CoMR(const VectorXd& Fv,
   const Real& mr01 = material[ParameterSet::Param_Mooney01];
   const Real& mr10 = material[ParameterSet::Param_Mooney10];
 
-#include "../Maple/FEMVol_CoMR_Energy.mcg"
+#include "../include/PhySim/Utils/Auto/FEMVol_CoMR_Energy.mcg"
 
   return t61;
 }
@@ -198,7 +198,7 @@ void computeCauchyStress_3Din3D_CoMR(const VectorXd& Fv,
 
   Real vgx[9];
 
-#include "../Maple/FEMVol_CoMR_Gradient.mcg"
+#include "../include/PhySim/Utils/Auto/FEMVol_CoMR_Gradient.mcg"
 
   dUdF.resize(9);
   for (int i = 0; i < 9; ++i)
@@ -214,7 +214,7 @@ void computeDCauchyStressDF_3Din3D_CoMR(const VectorXd& Fv,
 
   Real mHx[9][9];
 
-#include "../Maple/FEMVol_CoMR_Hessian.mcg"
+#include "../include/PhySim/Utils/Auto/FEMVol_CoMR_Hessian.mcg"
 
   dPdF.resize(9, 9);
   for (int i = 0; i < 9; ++i)
@@ -268,7 +268,7 @@ Real computeEnergyDensity_2Din3D_StVK(const VectorXd& Fv,
   // const Real& Y = material[ParameterSet::Param_Young];
   // const Real& v = material[ParameterSet::Param_Poisson];
 
-#include "../Maple/FEMMem_StVK_Energy.mcg"
+#include "../include/PhySim/Utils/Auto/FEMMem_StVK_Energy.mcg"
 
   return t32;
 }
@@ -284,7 +284,7 @@ void computeCauchyStress_2Din3D_StVK(const VectorXd& Fv,
 
   Real vgx[6];
 
-#include "../Maple/FEMMem_StVK_Gradient.mcg"
+#include "../include/PhySim/Utils/Auto/FEMMem_StVK_Gradient.mcg"
 
   dUdF.resize(6);
   for (int i = 0; i < 6; ++i)
@@ -302,7 +302,7 @@ void computeDCauchyStressDF_2Din3D_StVK(const VectorXd& Fv,
 
   Real mHx[6][6];
 
-#include "../Maple/FEMMem_StVK_Hessian.mcg"
+#include "../include/PhySim/Utils/Auto/FEMMem_StVK_Hessian.mcg"
 
   dPdF.resize(6, 6);
   for (int i = 0; i < 6; ++i)
@@ -315,7 +315,7 @@ Real computeEnergyDensity_2Din3D_CoNH(const VectorXd& Fv,
   const Real& lame1 = material[ParameterSet::Param_Lame1];
   const Real& lame2 = material[ParameterSet::Param_Lame2];
 
-#include "../Maple/FEMMem_CoNH_Energy.mcg"
+#include "../include/PhySim/Utils/Auto/FEMMem_CoNH_Energy.mcg"
 
   return t32;
 }
@@ -328,7 +328,7 @@ void computeCauchyStress_2Din3D_CoNH(const VectorXd& Fv,
 
   Real vgx[6];
 
-#include "../Maple/FEMMem_CoNH_Gradient.mcg"
+#include "../include/PhySim/Utils/Auto/FEMMem_CoNH_Gradient.mcg"
 
   dUdF.resize(6);
   for (int i = 0; i < 6; ++i)
@@ -343,7 +343,7 @@ void computeDCauchyStressDF_2Din3D_CoNH(const VectorXd& Fv,
 
   Real mHx[6][6];
 
-#include "../Maple/FEMMem_CoNH_Hessian.mcg"
+#include "../include/PhySim/Utils/Auto/FEMMem_CoNH_Hessian.mcg"
 
   dPdF.resize(6, 6);
   for (int i = 0; i < 6; ++i)
@@ -356,7 +356,7 @@ Real computeEnergyDensity_2Din3D_InNH(const VectorXd& Fv,
   const Real& lame1 = material[ParameterSet::Param_Lame1];
   const Real& lame2 = material[ParameterSet::Param_Lame2];
 
-#include "../Maple/FEMMem_InNH_Energy.mcg"
+#include "../include/PhySim/Utils/Auto/FEMMem_InNH_Energy.mcg"
 
   return t26;
 }
@@ -369,7 +369,7 @@ void computeCauchyStress_2Din3D_InNH(const VectorXd& Fv,
 
   Real vgx[6];
 
-#include "../Maple/FEMMem_InNH_Gradient.mcg"
+#include "../include/PhySim/Utils/Auto/FEMMem_InNH_Gradient.mcg"
 
   dUdF.resize(6);
   for (int i = 0; i < 6; ++i)
@@ -384,7 +384,7 @@ void computeDCauchyStressDF_2Din3D_InNH(const VectorXd& Fv,
 
   Real mHx[6][6];
 
-#include "../Maple/FEMMem_InNH_Hessian.mcg"
+#include "../include/PhySim/Utils/Auto/FEMMem_InNH_Hessian.mcg"
 
   dPdF.resize(6, 6);
   for (int i = 0; i < 6; ++i)

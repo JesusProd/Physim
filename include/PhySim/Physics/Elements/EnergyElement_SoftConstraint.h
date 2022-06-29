@@ -11,35 +11,32 @@
 
 #include <PhySim/CommonIncludes.h>
 
-
-#include <PhySim/Physics/Elements/EnergyElement.h>
 #include <PhySim/Physics/Elements/ConstraintSet.h>
+#include <PhySim/Physics/Elements/EnergyElement.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	class EnergyElement_SoftConstraint : public EnergyElement
-	{
+class EnergyElement_SoftConstraint : public EnergyElement {
+ protected:
+  PtrS<ConstraintSet> m_pCon;
+  Real m_k;
 
-	protected:
-		PtrS<ConstraintSet> m_pCon;
-		Real m_k;
+ public:
+  EnergyElement_SoftConstraint(Simulable* pModel,
+                               const PtrS<ConstraintSet>& pCon,
+                               Real k,
+                               bool isDynamic = true);
+  virtual ~EnergyElement_SoftConstraint(void);
 
-	public:
-		EnergyElement_SoftConstraint(Simulable* pModel, const PtrS<ConstraintSet>& pCon, Real k, bool isDynamic = true);
-		virtual ~EnergyElement_SoftConstraint(void);
+  virtual void Init();
 
-		virtual void Init();
+  virtual Real& Stiffness() { return this->m_k; }
 
-		virtual Real& Stiffness() { return this->m_k; }
+  virtual void ComputeAndStore_Energy_Internal();
+  virtual void ComputeAndStore_Gradient_Internal();
+  virtual void ComputeAndStore_Hessian_Internal();
+};
 
-		virtual void ComputeAndStore_Energy_Internal();
-		virtual void ComputeAndStore_Gradient_Internal();
-		virtual void ComputeAndStore_Hessian_Internal();
-	};
-
-}
-
-
+}  // namespace PhySim

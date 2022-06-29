@@ -11,36 +11,33 @@
 
 #include <PhySim/CommonIncludes.h>
 
-
 #include <PhySim/Physics/Elements/ConstraintSet.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	class Face;
-	class Simulable;
+class Face;
+class Simulable;
 
-	class ConstraintSet_AlignFace: public ConstraintSet
-	{
-	protected:
+class ConstraintSet_AlignFace : public ConstraintSet {
+ protected:
+  Vector3d m_vn;
 
-		Vector3d m_vn;
+ public:
+  ConstraintSet_AlignFace(Simulable* pModel,
+                          Face* pFace,
+                          const Vector3d& vn,
+                          bool isSoft = false);
 
-	public:
+  virtual ~ConstraintSet_AlignFace(void);
 
-		ConstraintSet_AlignFace(Simulable* pModel, Face* pFace, const Vector3d& vn, bool isSoft = false);
+  inline virtual Vector3d& Normal() { return this->m_vn; }
 
-		virtual ~ConstraintSet_AlignFace(void);
+  virtual void Init();
 
-		inline virtual Vector3d& Normal() { return this->m_vn; }
-
-		virtual void Init();
-
-		virtual void ProjectConstraint();
-		virtual void ComputeAndStore_Values();
-		virtual void ComputeAndStore_Jacobian();
-
-	};
-}
+  virtual void ProjectConstraint();
+  virtual void ComputeAndStore_Values();
+  virtual void ComputeAndStore_Jacobian();
+};
+}  // namespace PhySim

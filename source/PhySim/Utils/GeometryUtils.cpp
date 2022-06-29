@@ -17,7 +17,7 @@ using namespace std;
 using namespace Eigen;
 
 namespace GeometryUtils {
-    using namespace MathUtils;
+using namespace MathUtils;
 
 void eulerRotation(const double* eulerAngles,
                    const double* vectorOriginal,

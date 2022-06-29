@@ -12,38 +12,35 @@
 #include <PhySim/Geometry/Polytopes/Edge.h>
 #include <PhySim/Geometry/Polytopes/Node.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+#include <PhySim/Utils/IOUtils.h>
 
-	Curve::Curve()
-	{
-		// Nothing to do here...
-	}
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	Curve::Curve(const MatrixXd& mV, const vector<Tag>& vs)
-	{
-		this->Init(mV, vs);
-	}
+Curve::Curve() {
+  // Nothing to do here...
+}
 
-	void Curve::Init(const MatrixXd& mV, const vector<Tag>& vs)
-	{
-		int numV = (int) mV.rows();
-		MatrixXi mE(numV - 1, 2);
-		for (int i = 0; i < numV - 1; ++i)
-			mE.row(i) = Vector2i(i, i + 1);
+Curve::Curve(const MatrixXd& mV, const vector<Tag>& vs) {
+  this->Init(mV, vs);
+}
 
-		Mesh_Edge::Init(mV, mE, Discretization_Edge2, vs);
-	}
+void Curve::Init(const MatrixXd& mV, const vector<Tag>& vs) {
+  int numV = (int)mV.rows();
+  MatrixXi mE(numV - 1, 2);
+  for (int i = 0; i < numV - 1; ++i)
+    mE.row(i) = Vector2i(i, i + 1);
 
-	Curve::~Curve()
-	{
-		this->FreeInternal();
+  Mesh_Edge::Init(mV, mE, Discretization_Edge2, vs);
+}
+
+Curve::~Curve() {
+  this->FreeInternal();
 
 #ifndef NDEBUG
-		logTrace(Verbosity::V1_Default, "\n[DEBUG] Deleting Curve");
-#endif 
-	}
-
+  IOUtils::logTrace(Verbosity::V1_Default, "\n[DEBUG] Deleting Curve");
+#endif
 }
+
+}  // namespace PhySim

@@ -1,20 +1,18 @@
 #include <math.h>
 
-double getRBConEnergyOPT (
-  double young,
-  double shear,
-  double radw,
-  double radh,
-  double hL0,
-  const double *iniMatTanRB,
-  const double *iniMatNorRB,
-  const double *iniRefTanRO,
-  const double *iniRefNorRO,
-  double rtx,
-  const double *rotationAnglesRB,
-  const double *ex,
-  double thetax)
-{
+double getRBConEnergyOPT(double young,
+                         double shear,
+                         double radw,
+                         double radh,
+                         double hL0,
+                         const double* iniMatTanRB,
+                         const double* iniMatNorRB,
+                         const double* iniRefTanRO,
+                         const double* iniRefNorRO,
+                         double rtx,
+                         const double* rotationAnglesRB,
+                         const double* ex,
+                         double thetax) {
   double t10;
   double t101;
   double t104;
@@ -186,26 +184,40 @@ double getRBConEnergyOPT (
   t172 = t123 * t140 + t156 * t150 - t136 * t130 + t163 * t146;
   t179 = t123 * t150 + t146 * t130 - t156 * t140 + t163 * t136;
   t184 = t15 * t7;
-  t193 = (0.1e1 * t184 * t165 + 0.1e1 * t16 * t179 + 0.1e1 * t62 * t172) * (0.1e1 - t71);
-  t196 = t71 * t165 + t167 * (0.1e1 * t16 * t172 - 0.1e1 * t62 * t179) + 0.1e1 * t193 * t184;
+  t193 = (0.1e1 * t184 * t165 + 0.1e1 * t16 * t179 + 0.1e1 * t62 * t172) *
+         (0.1e1 - t71);
+  t196 = t71 * t165 + t167 * (0.1e1 * t16 * t172 - 0.1e1 * t62 * t179) +
+         0.1e1 * t193 * t184;
   t202 = t29 * t44 + t43 * t30 - t52 * t37 + t57 * t36;
   t207 = 0.1e1 * t62 * t202 - 0.1e1 * t184 * t59;
-  t217 = t71 * t179 + t167 * (0.1e1 * t62 * t165 - 0.1e1 * t184 * t172) + 0.1e1 * t193 * t16;
+  t217 = t71 * t179 + t167 * (0.1e1 * t62 * t165 - 0.1e1 * t184 * t172) +
+         0.1e1 * t193 * t16;
   t223 = 0.1e1 * t184 * t67 - 0.1e1 * t16 * t202;
-  t233 = t71 * t172 + t167 * (0.1e1 * t184 * t179 - 0.1e1 * t16 * t165) + 0.1e1 * t193 * t62;
-  t240 = atan2(t70 * t196 + t207 * t217 + t223 * t233, t202 * t196 + t67 * t217 + t59 * t233);
+  t233 = t71 * t172 + t167 * (0.1e1 * t184 * t179 - 0.1e1 * t16 * t165) +
+         0.1e1 * t193 * t62;
+  t240 = atan2(t70 * t196 + t207 * t217 + t223 * t233,
+               t202 * t196 + t67 * t217 + t59 * t233);
   t242 = pow(thetax + rtx - t240, 0.2e1);
   t243 = 0.1e1 / hL0;
   t251 = t162 * t156;
   t252 = cos(thetax);
   t254 = sin(thetax);
-  t264 = (0.1e1 * t184 * t202 + 0.1e1 * t16 * t67 + 0.1e1 * t62 * t59) * (0.1e1 - t252);
+  t264 = (0.1e1 * t184 * t202 + 0.1e1 * t16 * t67 + 0.1e1 * t62 * t59) *
+         (0.1e1 - t252);
   t267 = t252 * t59 + t254 * t223 + 0.1e1 * t264 * t62;
   t274 = t252 * t67 + t254 * t207 + 0.1e1 * t264 * t16;
   t280 = t162 * t136;
   t285 = t252 * t202 + t254 * t70 + 0.1e1 * t264 * t184;
   t293 = t162 * t146;
-  t302 = pow(0.2e1 * t251 * (0.1e1 * t16 * t267 - 0.1e1 * t62 * t274) + 0.2e1 * t280 * (0.1e1 * t62 * t285 - 0.1e1 * t184 * t267) + 0.2e1 * t293 * (0.1e1 * t184 * t274 - 0.1e1 * t16 * t285), 0.2e1);
-  t316 = pow(-0.2e1 * t251 * t285 - 0.2e1 * t280 * t274 - 0.2e1 * t293 * t267, 0.2e1);
-  return(0.1250000000e0 * shear * radw * radh * M_PI * (t3 + t4) * t242 * t243 + (0.25e0 * young * radw * t4 * radh * M_PI * t302 + 0.25e0 * young * t3 * radw * radh * M_PI * t316) * t243 / 0.2e1);
+  t302 = pow(0.2e1 * t251 * (0.1e1 * t16 * t267 - 0.1e1 * t62 * t274) +
+                 0.2e1 * t280 * (0.1e1 * t62 * t285 - 0.1e1 * t184 * t267) +
+                 0.2e1 * t293 * (0.1e1 * t184 * t274 - 0.1e1 * t16 * t285),
+             0.2e1);
+  t316 = pow(-0.2e1 * t251 * t285 - 0.2e1 * t280 * t274 - 0.2e1 * t293 * t267,
+             0.2e1);
+  return (0.1250000000e0 * shear * radw * radh * M_PI * (t3 + t4) * t242 *
+              t243 +
+          (0.25e0 * young * radw * t4 * radh * M_PI * t302 +
+           0.25e0 * young * t3 * radw * radh * M_PI * t316) *
+              t243 / 0.2e1);
 }

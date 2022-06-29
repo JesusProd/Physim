@@ -11,83 +11,85 @@
 
 #include <PhySim/CommonIncludes.h>
 
-
 #include <PhySim/Utils/CustomTimer.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	struct LinearSolverOptions
-	{
-		Real maxError;
-		int maxIters;
-		int regIters;
-		Real regSign;
-		LSSolverType type;
-		bool profileTime;
+struct LinearSolverOptions {
+  Real maxError;
+  int maxIters;
+  int regIters;
+  Real regSign;
+  LSSolverType type;
+  bool profileTime;
 
-		LinearSolverOptions()
-		{
-			type = LSSolverType::LS_EigenLDLT;
-			maxError = 1e-6;
-			maxIters = 1000;
-			regIters = 10;
-			regSign = 1;
-			profileTime = true;
-		}
-	};
-	
-	class ILinearSolver
-	{
-	public:
-		ILinearSolver() { };
-		virtual ~ILinearSolver() { };
+  LinearSolverOptions() {
+    type = LSSolverType::LS_EigenLDLT;
+    maxError = 1e-6;
+    maxIters = 1000;
+    regIters = 10;
+    regSign = 1;
+    profileTime = true;
+  }
+};
 
-		virtual void Init(const MatrixSd& mA, const LinearSolverOptions& options) = 0;
-		virtual LSResult Solve(MatrixSd& mA, const VectorXd& vb, VectorXd& vx) = 0;
-		virtual LSResult Solve(MatrixSd& mA, const MatrixXd& mB, MatrixXd& mX) = 0;
-		virtual LSResult Solve(MatrixSd& mA, const MatrixSd& mB, MatrixSd& mX) = 0;
+class ILinearSolver {
+ public:
+  ILinearSolver(){};
+  virtual ~ILinearSolver(){};
 
-		virtual void GetMatrixData(const MatrixSd& mA, Real& normA, Real& sinT, Real& regT) = 0;
-	};
+  virtual void Init(const MatrixSd& mA, const LinearSolverOptions& options) = 0;
+  virtual LSResult Solve(MatrixSd& mA, const VectorXd& vb, VectorXd& vx) = 0;
+  virtual LSResult Solve(MatrixSd& mA, const MatrixXd& mB, MatrixXd& mX) = 0;
+  virtual LSResult Solve(MatrixSd& mA, const MatrixSd& mB, MatrixSd& mX) = 0;
 
-	class LinearSolver: public ILinearSolver
-	{
-	protected:
+  virtual void GetMatrixData(const MatrixSd& mA,
+                             Real& normA,
+                             Real& sinT,
+                             Real& regT) = 0;
+};
 
-		LinearSolverOptions m_options;
+class LinearSolver : public ILinearSolver {
+ protected:
+  LinearSolverOptions m_options;
 
-		CustomTimer m_timerLinearSolve;
+  CustomTimer m_timerLinearSolve;
 
-		bool m_isInitialized;
+  bool m_isInitialized;
 
-		MatrixSd m_mR;
+  MatrixSd m_mR;
 
-	public:
+ public:
+  LinearSolver();
+  LinearSolver(const MatrixSd& mA, const LinearSolverOptions& options);
+  virtual void Init(const MatrixSd& mA, const LinearSolverOptions& options);
+  virtual ~LinearSolver();
 
-		LinearSolver();
-		LinearSolver(const MatrixSd& mA, const LinearSolverOptions& options);
-		virtual void Init(const MatrixSd& mA, const LinearSolverOptions& options);
-		virtual ~LinearSolver();
+  virtual LinearSolverOptions& SetupOptions() { return this->m_options; }
+  virtual void SetOptions(LinearSolverOptions& op) { m_options = op; }
 
-		virtual LinearSolverOptions& SetupOptions() { return this->m_options; }
-		virtual void SetOptions(LinearSolverOptions& op) { m_options = op; }
+  virtual void GetMatrixData(const MatrixSd& mA,
+                             Real& normA,
+                             Real& sinT,
+                             Real& regT);
 
-		virtual void GetMatrixData(const MatrixSd& mA, Real& normA, Real& sinT, Real& regT);
+  virtual LSResult Solve(MatrixSd& mA, const VectorXd& vb, VectorXd& vx);
+  virtual LSResult Solve(MatrixSd& mA, const MatrixXd& mB, MatrixXd& mX);
+  virtual LSResult Solve(MatrixSd& mA, const MatrixSd& mB, MatrixSd& mX);
 
-		virtual LSResult Solve(MatrixSd& mA, const VectorXd& vb, VectorXd& vx);
-		virtual LSResult Solve(MatrixSd& mA, const MatrixXd& mB, MatrixXd& mX);
-		virtual LSResult Solve(MatrixSd& mA, const MatrixSd& mB, MatrixSd& mX);
+ protected:
+  virtual LSResult SolveInternal(MatrixSd& mA,
+                                 const VectorXd& vb,
+                                 VectorXd& vx) = 0;
+  virtual LSResult SolveInternal(MatrixSd& mA,
+                                 const MatrixXd& mB,
+                                 MatrixXd& mX) = 0;
+  virtual LSResult SolveInternal(MatrixSd& mA,
+                                 const MatrixSd& mB,
+                                 MatrixSd& mX) = 0;
 
-	protected:
-
-		virtual LSResult SolveInternal(MatrixSd& mA, const VectorXd& vb, VectorXd& vx) = 0;
-		virtual LSResult SolveInternal(MatrixSd& mA, const MatrixXd& mB, MatrixXd& mX) = 0;
-		virtual LSResult SolveInternal(MatrixSd& mA, const MatrixSd& mB, MatrixSd& mX) = 0;
-
-		virtual void FreeInternal();
-
-	};
-}
+  virtual void FreeInternal();
+};
+}  // namespace PhySim

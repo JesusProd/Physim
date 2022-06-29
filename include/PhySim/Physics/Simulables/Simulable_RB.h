@@ -11,86 +11,79 @@
 
 #include <PhySim/CommonIncludes.h>
 
-#include <PhySim/Physics/Simulables/Simulable.h>
 #include <PhySim/Geometry/Meshes/Mesh.h>
+#include <PhySim/Physics/Simulables/Simulable.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	/**
-	* Simulable_RB.
-	*
-	* TODO.
-	*/
-	class Simulable_RB : public Simulable
-	{
-	public:
+/**
+ * Simulable_RB.
+ *
+ * TODO.
+ */
+class Simulable_RB : public Simulable {
+ public:
+  /**
+   * TODO.
+   */
+  struct Options {
+    /**
+     * The input meshes.
+     */
+    vector<PtrS<Geometry>> m_vpGeometries;
 
-		/**
-		* TODO.
-		*/
-		struct Options
-		{
-			/**
-			* The input meshes.
-			*/
-			vector<PtrS<Geometry>> m_vpGeometries;
+    vector<PtrS<ParameterSet>> m_vpMaterials;
 
-			vector<PtrS<ParameterSet>> m_vpMaterials;
+    MatrixXi m_couplings;
 
-			MatrixXi m_couplings;
+    vector<MatrixXd> m_params;
 
-			vector<MatrixXd> m_params;
+    std::string m_patientNumber;
+    bool m_shoulderJoint;
 
-			std::string m_patientNumber;
-			bool m_shoulderJoint;
+    Options() { m_vpGeometries.clear(); }
 
-			Options()
-			{
-				m_vpGeometries.clear();
-			}
+    virtual ~Options() {
+      // Nothing to do here...
+    }
+  };
 
-			virtual ~Options()
-			{
-				// Nothing to do here...
-			}
-		};
+ protected:
+  Options* m_pOptions;
 
-	protected:
+ public:
+  virtual string GetName() const override { return "RB System"; }
 
-		Options* m_pOptions;
+  virtual Simulable_RB::Options& SetupOptions();
 
-	public:
+  /**
+   * Constructor.
+   */
+  Simulable_RB();
 
-		virtual string GetName() const override { return "RB System"; }
+  /**
+   * Denstructor.
+   */
+  virtual ~Simulable_RB();
 
-		virtual Simulable_RB::Options& SetupOptions();
+  virtual void SetState(const VectorXd& vs) override;
+  virtual void SetDOFVector(const VectorXd& vx, Tag s) override;
 
-		/**
-		* Constructor.
-		*/
-		Simulable_RB();
+  virtual vector<PtrS<Geometry>> Geometries() const override {
+    return this->m_pOptions->m_vpGeometries;
+  }
+  // virtual PtrS<Geometry> GetGeometry(int i) const { return
+  // this->m_pOptions->m_vpGeometries[i]; } virtual PtrS<ParameterSet>
+  // Materials(int i) const { return this->m_pOptions->m_vpMaterials[i]; }
 
-		/**
-		* Denstructor.
-		*/
-		virtual ~Simulable_RB();
+  // virtual KEleRigidBody3D* RigidBody(int i) { return
+  // static_cast<KEleRigidBody3D*>(this->m_pOptions->m_vpGeometries[i]->Traits().Kinematics(Tag_DOF_0));
+  // }
 
-		virtual void SetState(const VectorXd& vs) override;
-		virtual void SetDOFVector(const VectorXd& vx, Tag s) override;
-
-		virtual vector<PtrS<Geometry>> Geometries() const override { return this->m_pOptions->m_vpGeometries; }
-		//virtual PtrS<Geometry> GetGeometry(int i) const { return this->m_pOptions->m_vpGeometries[i]; }
-		//virtual PtrS<ParameterSet> Materials(int i) const { return this->m_pOptions->m_vpMaterials[i]; }
-
-		//virtual KEleRigidBody3D* RigidBody(int i) { return static_cast<KEleRigidBody3D*>(this->m_pOptions->m_vpGeometries[i]->Traits().Kinematics(Tag_DOF_0)); }
-
-	protected:
-
-		virtual void InitInternal() override;
-		virtual void FreeInternal() override;
-
-	};
-}
+ protected:
+  virtual void InitInternal() override;
+  virtual void FreeInternal() override;
+};
+}  // namespace PhySim

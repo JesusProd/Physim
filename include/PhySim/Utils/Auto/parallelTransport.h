@@ -1,9 +1,7 @@
-void parallelTransport (
-  double *v0,
-  double *v1,
-  double *vectorOriginal,
-  double cgret[3])
-{
+void parallelTransport(double* v0,
+                       double* v1,
+                       double* vectorOriginal,
+                       double cgret[3]) {
   double t1;
   double t10;
   double t11;

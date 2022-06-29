@@ -1,11 +1,9 @@
 #include <math.h>
 
-void rigidBodyTransformEuler (
-    const double *vec,
-	const double *cen,
-	const double *rot,
-	double *pos)
-{
+void rigidBodyTransformEuler(const double* vec,
+                             const double* cen,
+                             const double* rot,
+                             double* pos) {
   double t1;
   double t10;
   double t13;
@@ -34,7 +32,9 @@ void rigidBodyTransformEuler (
   t13 = vec[0];
   t18 = vec[1];
   t24 = vec[2];
-  pos[0] = cen[0] + t1 * t2 * t13 + (-t10 * t9 + t6 * t7) * t18 + (t10 * t6 + t7 * t9) * t24;
-  pos[1] = cen[1] + t9 * t2 * t13 + (t1 * t10 + t21 * t7) * t18 + (-t1 * t7 + t10 * t21) * t24;
+  pos[0] = cen[0] + t1 * t2 * t13 + (-t10 * t9 + t6 * t7) * t18 +
+           (t10 * t6 + t7 * t9) * t24;
+  pos[1] = cen[1] + t9 * t2 * t13 + (t1 * t10 + t21 * t7) * t18 +
+           (-t1 * t7 + t10 * t21) * t24;
   pos[2] = t10 * t2 * t24 + t18 * t2 * t7 - t13 * t5 + cen[2];
 }

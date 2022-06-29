@@ -14,24 +14,25 @@
 //
 //#include <PhySim/Kinematics/KinematicsEle.h>
 //
-//namespace PhySim
+// namespace PhySim
 //{
 //	using namespace std;
 //	using namespace Eigen;
 //
-//	EnergyElement_Gravity::EnergyElement_Gravity(Simulable_Mesh* pModel) : EnergyElement(pModel)
+//	EnergyElement_Gravity::EnergyElement_Gravity(Simulable_Mesh* pModel) :
+//EnergyElement(pModel)
 //	{
 //		const vector<PtrS<KinematicsEle>>& vKine = pModel->GetDoFSets();
 //
 //		this->m_vDoF.reserve((int) vKine.size());
 //		for (int i = 0; i < (int) vKine.size(); ++i)
 //		{
-//			if (!vKine[i]->Active()) 
+//			if (!vKine[i]->Active())
 //				continue; // Not DoF
 //
 //			this->m_vDoF.push_back(vKine[i].get());
 //		}
-//	
+//
 //		this->m_vgravity = Vector3d(0, -9.8, 0);
 //	}
 //
@@ -62,8 +63,10 @@
 //
 //		for (size_t i = 0; i < pModel->GetMesh().NumNodes(); ++i)
 //		{
-//			IDoFSet* pDoF = pModel->GetMesh().Nodes()[i]->Traits().Kinematics(Tag_DOF_0);
-//			this->m_vgradient.block(pDoF->Offset(), 0, 3, 1) = -this->m_vgravity;
+//			IDoFSet* pDoF =
+//pModel->GetMesh().Nodes()[i]->Traits().Kinematics(Tag_DOF_0);
+//			this->m_vgradient.block(pDoF->Offset(), 0, 3, 1) =
+//-this->m_vgravity;
 //		}
 //
 //		m_vgradient = m_mM*m_vgradient;

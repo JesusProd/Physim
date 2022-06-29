@@ -1,11 +1,9 @@
 #include <math.h>
 
-void rigidBodyTransformQuat (
-  const double *vec,
-  const double *cen,
-  const double *rot,
-  double *pos)
-{
+void rigidBodyTransformQuat(const double* vec,
+                            const double* cen,
+                            const double* rot,
+                            double* pos) {
   double t1;
   double t10;
   double t11;
@@ -60,7 +58,10 @@ void rigidBodyTransformQuat (
   t31 = vec[0];
   t34 = vec[1];
   t39 = vec[2];
-  pos[0] = cen[0] + (0.1e1 - t12 - t14) * t31 + 0.2e1 * (t21 + t23) * t34 + 0.2e1 * (-t27 + t29) * t39;
-  pos[1] = cen[1] + 0.2e1 * (-t21 + t23) * t31 + (0.1e1 - t36 - t14) * t34 + 0.2e1 * (t40 + t42) * t39;
-  pos[2] = cen[2] + 0.2e1 * (t27 + t29) * t31 + 0.2e1 * (-t40 + t42) * t34 + (0.1e1 - t36 - t12) * t39;
+  pos[0] = cen[0] + (0.1e1 - t12 - t14) * t31 + 0.2e1 * (t21 + t23) * t34 +
+           0.2e1 * (-t27 + t29) * t39;
+  pos[1] = cen[1] + 0.2e1 * (-t21 + t23) * t31 + (0.1e1 - t36 - t14) * t34 +
+           0.2e1 * (t40 + t42) * t39;
+  pos[2] = cen[2] + 0.2e1 * (t27 + t29) * t31 + 0.2e1 * (-t40 + t42) * t34 +
+           (0.1e1 - t36 - t12) * t39;
 }

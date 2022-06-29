@@ -485,8 +485,10 @@ void Simulable::AddGradient(AVectorXd& vgradient, bool addBC) {
     //#pragma omp parallel for
     //#endif
     //			for (int i = 0; i < (int)m_vBC.size(); ++i)
-    //				for (int j = 0; j < (int)m_vBC[i]->Energies().size();
-    //++j) 					m_vBC[i]->Energies()[j]->PreprocessAssembly(vgradient.Layer());
+    //				for (int j = 0; j <
+    //(int)m_vBC[i]->Energies().size();
+    //++j)
+    //m_vBC[i]->Energies()[j]->PreprocessAssembly(vgradient.Layer());
 
 #ifdef NDEBUG
 #pragma omp parallel for
@@ -663,8 +665,10 @@ void Simulable::AddHessian(AMatrixSd& mHessian, bool addBC) {
     //#pragma omp parallel for
     //#endif
     //			for (int i = 0; i < (int)m_vBC.size(); ++i)
-    //				for (int j = 0; j < (int)m_vBC[i]->Energies().size();
-    //++j) 					m_vBC[i]->Energies()[j]->PreprocessAssembly(mHessian.Layer());
+    //				for (int j = 0; j <
+    //(int)m_vBC[i]->Energies().size();
+    //++j)
+    //m_vBC[i]->Energies()[j]->PreprocessAssembly(mHessian.Layer());
 
 #ifdef NDEBUG
 #pragma omp parallel for
@@ -1406,14 +1410,18 @@ void Simulable::TestGlobalHessian() {
       IOUtils::logTrace(Verbosity::V1_Default,
                         "\n[FAILURE] Global Hessian test error: %f",
                         diffNorm / realNorm);
-      IOUtils::logFile("csvHessianTest_F.csv", IOUtils::matrixToString_CSV(mHF));
-      IOUtils::logFile("csvHessianTest_A.csv", IOUtils::matrixToString_CSV(mHA));
+      IOUtils::logFile("csvHessianTest_F.csv",
+                       IOUtils::matrixToString_CSV(mHF));
+      IOUtils::logFile("csvHessianTest_A.csv",
+                       IOUtils::matrixToString_CSV(mHA));
     } else {
       IOUtils::logTrace(Verbosity::V1_Default,
                         "\n[SUCCESS] Global Hessian test error: %f",
                         diffNorm / realNorm);
-      IOUtils::logFile("csvHessianTest_F.csv", IOUtils::matrixToString_CSV(mHF));
-      IOUtils::logFile("csvHessianTest_A.csv", IOUtils::matrixToString_CSV(mHA));
+      IOUtils::logFile("csvHessianTest_F.csv",
+                       IOUtils::matrixToString_CSV(mHF));
+      IOUtils::logFile("csvHessianTest_A.csv",
+                       IOUtils::matrixToString_CSV(mHA));
     }
   }
 }

@@ -1,9 +1,8 @@
 #pragma once
-inline void parallelTransportNormalized (
-  double fromV[3],
-  double toV[3],
-  double x[3],
-  double parallelTransportResult[3]) {
+inline void parallelTransportNormalized(double fromV[3],
+                                        double toV[3],
+                                        double x[3],
+                                        double parallelTransportResult[3]) {
   double t1;
   double t10;
   double t11;

@@ -1,11 +1,9 @@
 #include <math.h>
 
-inline void rodriguesRotation (
-  double *k,
-  double theta,
-  double *v,
-  double cgret[3])
-{
+inline void rodriguesRotation(double* k,
+                              double theta,
+                              double* v,
+                              double cgret[3]) {
   double r[3];
   double t1;
   double t13;

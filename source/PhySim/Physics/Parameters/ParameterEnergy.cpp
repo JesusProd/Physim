@@ -11,7 +11,7 @@
 //
 //#include <PhySim/Utils/DerivativeAssembler.h>
 //
-//namespace PhySim
+// namespace PhySim
 //{
 //	using namespace std;
 //	using namespace Eigen;
@@ -39,8 +39,9 @@
 //	{
 //		if (this->m_vDEDp.size() == 0)
 //			return; // Ignore assembly
-//		
-//		this->m_pElement->m_pAssembler->PropagateAndAssembleGradient(this->m_vDEDp, this->m_vDoF, vglobalDEDp);
+//
+//		this->m_pElement->m_pAssembler->PropagateAndAssembleGradient(this->m_vDEDp,
+//this->m_vDoF, vglobalDEDp);
 //	}
 //
 //	void ParameterEnergy::AssembleGlobal_DE2Dxp(AMatrixSd& mglobalDE2Dxp)
@@ -48,7 +49,8 @@
 //		if (this->m_mDE2Dxp.size() == 0)
 //			return; // Ignore assembly
 //
-//		this->m_pElement->m_pAssembler->AssembleJacobian(this->m_mDE2Dxp, this->m_vDoF, mglobalDE2Dxp);
+//		this->m_pElement->m_pAssembler->AssembleJacobian(this->m_mDE2Dxp,
+//this->m_vDoF, mglobalDE2Dxp);
 //	}
 //
 //	void ParameterEnergy::AssembleGlobal_DE2Dpp(AMatrixSd& mglobalDE2Dxp)
@@ -56,7 +58,8 @@
 //		if (this->m_mDE2Dxp.size() == 0)
 //			return; // Ignore assembly
 //
-//		//this->m_pElement->m_pAssembler->AssembleHessian(this->m_mDE2Dpp, this->m_vDoF, mglobalDE2Dxp);
+//		//this->m_pElement->m_pAssembler->AssembleHessian(this->m_mDE2Dpp,
+//this->m_vDoF, mglobalDE2Dxp);
 //	}
 //
 //	bool ParameterEnergy::TestLocalDEDp()
@@ -113,7 +116,8 @@
 //		Real diffNorm = vgD.norm();
 //		if (realNorm < 1e-6)
 //		{
-//			logTrace(Verbosity::V1_Default, "\n[INVALID] Finite difference DEDp near zero: %f", realNorm);
+//			logTrace(Verbosity::V1_Default, "\n[INVALID] Finite
+//difference DEDp near zero: %f", realNorm);
 //
 //			return true;
 //		}
@@ -121,7 +125,8 @@
 //		{
 //			if (diffNorm / realNorm > 1e-6)
 //			{
-//				logTrace(Verbosity::V1_Default, "\n[FAILURE] %s DEDp test error: %f", this->GetName().c_str(), diffNorm / realNorm);
+//				logTrace(Verbosity::V1_Default, "\n[FAILURE] %s DEDp
+//test error: %f", this->GetName().c_str(), diffNorm / realNorm);
 //
 //				MatrixXd mResult(vgA.size(), 3);
 //				mResult.col(0) = vgA;
@@ -129,17 +134,21 @@
 //				mResult.col(2) = vgD;
 //
 //				ostringstream str;
-//				str << endl << "Analitic|Estimated|Difference:" << endl << mResult << endl;
-//				logTrace(Verbosity::V1_Default, "%s", str.str().c_str());
+//				str << endl << "Analitic|Estimated|Difference:" <<
+//endl << mResult << endl; 				logTrace(Verbosity::V1_Default, "%s",
+//str.str().c_str());
 //
-//				//logFile("csvDEDpTest_F.csv", vectorToString_CSV(vgF));
-//				//logFile("csvDEDpTest_A.csv", vectorToString_CSV(vgA));
+//				//logFile("csvDEDpTest_F.csv",
+//vectorToString_CSV(vgF));
+//				//logFile("csvDEDpTest_A.csv",
+//vectorToString_CSV(vgA));
 //
 //				return false;
 //			}
 //			else
 //			{
-//				logTrace(Verbosity::V1_Default, "\n[SUCCESS] %s gradient test error: %f", this->GetName().c_str(), diffNorm / realNorm);
+//				logTrace(Verbosity::V1_Default, "\n[SUCCESS] %s
+//gradient test error: %f", this->GetName().c_str(), diffNorm / realNorm);
 //
 //				return true;
 //			}

@@ -560,7 +560,7 @@ void logFile(const string& path, const string& content, bool append) {
   fclose(fp);
 }
 
-//bool readMatrix_CSV(const string& path, MatrixXd& mV) {
+// bool readMatrix_CSV(const string& path, MatrixXd& mV) {
 //  vector<string> vlines;
 //  if (!readFileLines(path, vlines))
 //    return false;  // Invalid file

@@ -1,6 +1,0 @@
-# Format Style Options - Created with Clang Power Tools
----
-BasedOnStyle: Chromium
-ColumnLimit: 120
-IndentWidth: 4
-...

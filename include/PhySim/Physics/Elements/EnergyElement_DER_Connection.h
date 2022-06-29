@@ -11,39 +11,33 @@
 
 #include <PhySim/CommonIncludes.h>
 
-
 #include <PhySim/Physics/Elements/EnergyElement.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	class Node;
-	class Edge;
-	class Simulable_DER;
+class Node;
+class Edge;
+class Simulable_DER;
 
-	class EnergyElement_DER_Connection: public EnergyElement
-	{
+class EnergyElement_DER_Connection : public EnergyElement {
+ protected:
+  Node* m_pCenter;
+  Edge* m_pEdge;
+  MatrixXd m_mDeDx;
+  Simulable_DER* m_pModelDER;
 
-	protected:
-		Node* m_pCenter;
-		Edge* m_pEdge;
-		MatrixXd m_mDeDx;
-		Simulable_DER* m_pModelDER;
+ public:
+  EnergyElement_DER_Connection(Simulable* pModel, Node* pCenter, Edge* pEdge);
+  virtual ~EnergyElement_DER_Connection(void);
 
-	public:
-		EnergyElement_DER_Connection(Simulable* pModel, Node* pCenter, Edge* pEdge);
-		virtual ~EnergyElement_DER_Connection(void);
+  virtual string GetName() const override { return "[DERConnection]"; };
 
-		virtual string GetName() const override { return "[DERConnection]"; };
+  virtual void Init();
 
-		virtual void Init();
-
-		virtual void ComputeAndStore_Energy_Internal();
-		virtual void ComputeAndStore_Gradient_Internal();
-		virtual void ComputeAndStore_Hessian_Internal();
-
-	};
-}
-
+  virtual void ComputeAndStore_Energy_Internal();
+  virtual void ComputeAndStore_Gradient_Internal();
+  virtual void ComputeAndStore_Hessian_Internal();
+};
+}  // namespace PhySim

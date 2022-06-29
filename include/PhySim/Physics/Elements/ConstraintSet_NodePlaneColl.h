@@ -11,37 +11,36 @@
 
 #include <PhySim/CommonIncludes.h>
 
-
-#include <PhySim/Physics/Elements/ConstraintSet.h>
 #include <PhySim/Kinematics/KEleParticle3D.h>
+#include <PhySim/Physics/Elements/ConstraintSet.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	class ConstraintSet_NodePlaneColl : public ConstraintSet
-	{
-	protected:
+class ConstraintSet_NodePlaneColl : public ConstraintSet {
+ protected:
+  Vector3d m_vpoints;
+  Vector3d m_vn;
+  Real m_tol;
 
-		Vector3d m_vpoints;
-		Vector3d m_vn;
-		Real m_tol;
+ public:
+  ConstraintSet_NodePlaneColl(Simulable* pModel,
+                              bool isSoft,
+                              KEleParticle3D* pDOF,
+                              const Vector3d& vp,
+                              const Vector3d& vn,
+                              Real tol);
 
-	public:
+  virtual ~ConstraintSet_NodePlaneColl(void);
 
-		ConstraintSet_NodePlaneColl(Simulable* pModel, bool isSoft, KEleParticle3D* pDOF, const Vector3d& vp, const Vector3d& vn, Real tol);
+  inline virtual Vector3d& PlaneNormal() { return this->m_vn; }
 
-		virtual ~ConstraintSet_NodePlaneColl(void);
+  virtual void Init();
 
-		inline virtual Vector3d& PlaneNormal() { return this->m_vn; }
-
-		virtual void Init();
-
-		virtual void ProjectConstraint();
-		virtual void ComputeAndStore_Values();
-		virtual void ComputeAndStore_Jacobian();
-		virtual void ComputeAndStore_Hessian();
-
-	};
-}
+  virtual void ProjectConstraint();
+  virtual void ComputeAndStore_Values();
+  virtual void ComputeAndStore_Jacobian();
+  virtual void ComputeAndStore_Hessian();
+};
+}  // namespace PhySim

@@ -11,33 +11,29 @@
 
 #include <PhySim/CommonIncludes.h>
 
-
 #include <PhySim/Physics/Elements/ConstraintSet.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	class ConstraintSet_FixedPosition : public ConstraintSet
-	{
-	protected:
+class ConstraintSet_FixedPosition : public ConstraintSet {
+ protected:
+  VectorXd m_vt;
 
-		VectorXd m_vt;
+ public:
+  ConstraintSet_FixedPosition(Simulable* pModel,
+                              KinematicsEle* pDoF,
+                              const VectorXd& vt);
 
-	public:
+  virtual ~ConstraintSet_FixedPosition(void);
 
-		ConstraintSet_FixedPosition(Simulable* pModel, KinematicsEle* pDoF, const VectorXd& vt);
+  inline virtual VectorXd& Target() { return this->m_vt; }
 
-		virtual ~ConstraintSet_FixedPosition(void);
+  virtual void Init();
 
-		inline virtual VectorXd& Target() { return this->m_vt; }
-
-		virtual void Init();
-
-		virtual void ProjectConstraint();
-		virtual void ComputeAndStore_Values();
-		virtual void ComputeAndStore_Jacobian();
-
-	};
-}
+  virtual void ProjectConstraint();
+  virtual void ComputeAndStore_Values();
+  virtual void ComputeAndStore_Jacobian();
+};
+}  // namespace PhySim

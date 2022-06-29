@@ -13,92 +13,89 @@
 
 #include <array>
 
-namespace PhySim
-{
-    /////////////////////////////////////////////////////////////////////////////////////////////
+namespace PhySim {
+/////////////////////////////////////////////////////////////////////////////////////////////
 
-    using Layer = unsigned char;
+using Layer = unsigned char;
 
-    /////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
 
-    class LayerMask
-    {
-    public:
-        LayerMask();
-        LayerMask(size_t bitMask);
+class LayerMask {
+ public:
+  LayerMask();
+  LayerMask(size_t bitMask);
 
-        LayerMask(const LayerMask& other) = default;
-        LayerMask& operator=(const LayerMask& other) = default;
+  LayerMask(const LayerMask& other) = default;
+  LayerMask& operator=(const LayerMask& other) = default;
 
-        LayerMask(LayerMask&& other) = default;
-        LayerMask& operator=(LayerMask&& other) = default;
+  LayerMask(LayerMask&& other) = default;
+  LayerMask& operator=(LayerMask&& other) = default;
 
-    public:
-        void Clear();
-        void Add(Layer layer);
-        void Remove(Layer layer);
-        void Invert();
-        
-    public:
-        LayerMask Union(LayerMask other) const;
-        LayerMask Intersection(LayerMask other) const;
-        bool Overlaps(LayerMask other) const;
-        bool Contains(Layer layer) const;
-        bool Empty() const;
+ public:
+  void Clear();
+  void Add(Layer layer);
+  void Remove(Layer layer);
+  void Invert();
 
-    public:
-        friend LayerMask operator+(LayerMask mask, Layer layer);
-        friend LayerMask operator+(Layer layer, LayerMask mask);
-        friend LayerMask operator-(LayerMask mask, Layer layer);
-        friend LayerMask operator-(Layer layer, LayerMask mask);
-        LayerMask& operator+=(Layer layer);
-        LayerMask& operator-=(Layer layer);
-        friend LayerMask operator!(LayerMask mask);
+ public:
+  LayerMask Union(LayerMask other) const;
+  LayerMask Intersection(LayerMask other) const;
+  bool Overlaps(LayerMask other) const;
+  bool Contains(Layer layer) const;
+  bool Empty() const;
 
-        LayerMask operator|(LayerMask other) const;
-        LayerMask operator&(LayerMask other) const;
-        LayerMask& operator|=(const LayerMask& other);
-        LayerMask& operator&=(const LayerMask& other);
+ public:
+  friend LayerMask operator+(LayerMask mask, Layer layer);
+  friend LayerMask operator+(Layer layer, LayerMask mask);
+  friend LayerMask operator-(LayerMask mask, Layer layer);
+  friend LayerMask operator-(Layer layer, LayerMask mask);
+  LayerMask& operator+=(Layer layer);
+  LayerMask& operator-=(Layer layer);
+  friend LayerMask operator!(LayerMask mask);
 
-        friend bool operator&&(LayerMask lhsMask, LayerMask rhsMask);
-        friend bool operator&&(Layer lhsLayer, LayerMask rhsMask);
-        friend bool operator&&(LayerMask lhsMask, Layer rhsLayer);
+  LayerMask operator|(LayerMask other) const;
+  LayerMask operator&(LayerMask other) const;
+  LayerMask& operator|=(const LayerMask& other);
+  LayerMask& operator&=(const LayerMask& other);
 
-    protected:
-        size_t m_BitMask;
+  friend bool operator&&(LayerMask lhsMask, LayerMask rhsMask);
+  friend bool operator&&(Layer lhsLayer, LayerMask rhsMask);
+  friend bool operator&&(LayerMask lhsMask, Layer rhsLayer);
 
-    public:
-        static LayerMask All;
-        static LayerMask None;
-    };
+ protected:
+  size_t m_BitMask;
 
-    /////////////////////////////////////////////////////////////////////////////////////////////
+ public:
+  static LayerMask All;
+  static LayerMask None;
+};
 
-    class LayerMaskMatrix
-    {
-    public:
-        LayerMaskMatrix();
-        LayerMaskMatrix(bool value);
-        LayerMaskMatrix(const LayerMaskMatrix& other) = default;
-        LayerMaskMatrix& operator=(const LayerMaskMatrix& other) = default;
-        LayerMaskMatrix(LayerMaskMatrix&& other) = default;
-        LayerMaskMatrix& operator=(LayerMaskMatrix&& other) = default;
+/////////////////////////////////////////////////////////////////////////////////////////////
 
-    public:
-        void Clear();
-        void Add(Layer lhsLayer, Layer rhsLayer);
-        void Remove(Layer lhsLayer, Layer rhsLayer);
-        void Invert();
+class LayerMaskMatrix {
+ public:
+  LayerMaskMatrix();
+  LayerMaskMatrix(bool value);
+  LayerMaskMatrix(const LayerMaskMatrix& other) = default;
+  LayerMaskMatrix& operator=(const LayerMaskMatrix& other) = default;
+  LayerMaskMatrix(LayerMaskMatrix&& other) = default;
+  LayerMaskMatrix& operator=(LayerMaskMatrix&& other) = default;
 
-    public:
-        bool operator()(Layer lhsLayer, Layer rhsLayer) const;
+ public:
+  void Clear();
+  void Add(Layer lhsLayer, Layer rhsLayer);
+  void Remove(Layer lhsLayer, Layer rhsLayer);
+  void Invert();
 
-    private:
-        size_t IndexOf(Layer lhsLayer, Layer rhsLayer) const;
+ public:
+  bool operator()(Layer lhsLayer, Layer rhsLayer) const;
 
-    public:
-        std::array<bool, 2080> m_Matrix;
-    };
+ private:
+  size_t IndexOf(Layer lhsLayer, Layer rhsLayer) const;
 
-    /////////////////////////////////////////////////////////////////////////////////////////////
-}
+ public:
+  std::array<bool, 2080> m_Matrix;
+};
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+}  // namespace PhySim

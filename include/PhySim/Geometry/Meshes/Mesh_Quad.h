@@ -11,37 +11,39 @@
 
 #include <PhySim/CommonIncludes.h>
 
-
 #include <PhySim/Geometry/Meshes/Mesh_Face.h>
 #include <PhySim/Geometry/Polytopes/Face_Quad.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	class Mesh_Quad : public Mesh_Face
-	{
+class Mesh_Quad : public Mesh_Face {
+ protected:
+ public:
+  Mesh_Quad();
+  Mesh_Quad(const Mesh_Quad& toCopy);
+  Mesh_Quad(const MatrixXd& mV,
+            const MatrixXi& mF,
+            Discretization D = Discretization_Quad4,
+            const vector<Tag>& vnTraits = vector<Tag>());
+  void Init(const MatrixXd& mV,
+            const MatrixXi& mF,
+            Discretization D = Discretization_Quad4,
+            const vector<Tag>& vnTraits = vector<Tag>());
+  virtual ~Mesh_Quad(void);
 
-	protected:
+  virtual Mesh* Clone() const override { return new Mesh_Quad(*this); }
 
-	public:
-		Mesh_Quad();
-		Mesh_Quad(const Mesh_Quad& toCopy);
-		Mesh_Quad(const MatrixXd& mV, const MatrixXi& mF, Discretization D = Discretization_Quad4, const vector<Tag>& vnTraits = vector<Tag>());
-		void Init(const MatrixXd& mV, const MatrixXi& mF, Discretization D = Discretization_Quad4, const vector<Tag>& vnTraits = vector<Tag>());
-		virtual ~Mesh_Quad(void);
+  virtual Face_Quad* GetFace(int i) {
+    return static_cast<Face_Quad*>(this->m_velems[i]);
+  }
 
-		virtual Mesh* Clone() const override { return new Mesh_Quad(*this); }
+  virtual Real VolumeSpace(Tag s) const override;
 
-		virtual Face_Quad* GetFace(int i) { return static_cast<Face_Quad*>(this->m_velems[i]); }
+ private:
+  void UpdateMetadata();
+  void FreeMetadata();
+};
 
-		virtual Real VolumeSpace(Tag s) const override;
-
-	private:
-		void UpdateMetadata();
-		void FreeMetadata();
-
-	};
-
-}
+}  // namespace PhySim

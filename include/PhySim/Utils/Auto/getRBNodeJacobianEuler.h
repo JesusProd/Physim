@@ -1,11 +1,9 @@
 #include <math.h>
 
-void getRBNodeJacobianEuler (
-	const double *vec,
-	const double *cen,
-	const double *rot,
-	double *nodeJacobian)
-{
+void getRBNodeJacobianEuler(const double* vec,
+                            const double* cen,
+                            const double* rot,
+                            double* nodeJacobian) {
   double t1;
   double t10;
   double t13;

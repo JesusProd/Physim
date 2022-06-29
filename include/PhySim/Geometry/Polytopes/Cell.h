@@ -11,22 +11,17 @@
 
 #include <PhySim/CommonIncludes.h>
 
-
 #include <PhySim/Geometry/Polytopes/Poly.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	class Cell : public Poly
-	{
+class Cell : public Poly {
+ public:
+  Cell(int ID, const vector<Node*>& vnodes);
+  virtual ~Cell(void);
 
-	public:
-		Cell(int ID, const vector<Node*>& vnodes);
-		virtual ~Cell(void);
-
-		inline int DimBasis() const override { return 3; }
-
-	};
-}
+  inline int DimBasis() const override { return 3; }
+};
+}  // namespace PhySim

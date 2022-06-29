@@ -11,44 +11,40 @@
 
 #include <PhySim/CommonIncludes.h>
 
-
 #include <PhySim/Physics/Elements/EnergyElement.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	class Edge;
-	class Simulable;
-	class ParameterSet;
+class Edge;
+class Simulable;
+class ParameterSet;
 
-	class EnergyElement_SpringHinge : public EnergyElement
-	{
+class EnergyElement_SpringHinge : public EnergyElement {
+ protected:
+  Edge* m_pEdge0;
+  Edge* m_pEdge1;
+  Real m_restAngle;
+  ParameterSet* m_pMaterial;
 
-	protected:
+ public:
+  EnergyElement_SpringHinge(Simulable* pModel,
+                            Edge* pEdge0,
+                            Edge* pEdge1,
+                            ParameterSet* pMaterial);
+  virtual ~EnergyElement_SpringHinge(void);
 
-		Edge* m_pEdge0;
-		Edge* m_pEdge1;
-		Real m_restAngle;
-		ParameterSet* m_pMaterial;
+  virtual void Init();
 
-	public:
-		EnergyElement_SpringHinge(Simulable* pModel, Edge* pEdge0, Edge* pEdge1, ParameterSet* pMaterial);
-		virtual ~EnergyElement_SpringHinge(void);
+  virtual Real ComputeRestAngle();
+  inline virtual Real GetRestAngle() const { return this->m_restAngle; }
+  inline virtual void SetRestAngle(Real rl) { this->m_restAngle = rl; }
 
-		virtual void Init();
+  inline virtual ParameterSet* GetMaterial() { return this->m_pMaterial; }
 
-		virtual Real ComputeRestAngle();
-		inline virtual Real GetRestAngle() const { return this->m_restAngle; }
-		inline virtual void SetRestAngle(Real rl) { this->m_restAngle = rl; }
-
-		inline virtual ParameterSet* GetMaterial() { return this->m_pMaterial; }
-
-		virtual void ComputeAndStore_Energy_Internal();
-		virtual void ComputeAndStore_Gradient_Internal();
-		virtual void ComputeAndStore_Hessian_Internal();
-
-	};
-}
-
+  virtual void ComputeAndStore_Energy_Internal();
+  virtual void ComputeAndStore_Gradient_Internal();
+  virtual void ComputeAndStore_Hessian_Internal();
+};
+}  // namespace PhySim

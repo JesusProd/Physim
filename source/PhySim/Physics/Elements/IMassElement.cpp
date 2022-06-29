@@ -9,13 +9,12 @@
 
 #include <PhySim/Physics/Elements/IMassElement.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	//IMassElement::IMassElement(Simulable* pModel) : EnergyElement(pModel)
-	//{
-	//	// Nothing to do here...
-	//}
-}
+// IMassElement::IMassElement(Simulable* pModel) : EnergyElement(pModel)
+//{
+//	// Nothing to do here...
+//}
+}  // namespace PhySim

@@ -12,6 +12,7 @@
 #include <PhySim/Geometry/Polytopes/Cell_Hexa.h>
 #include <PhySim/Geometry/Polytopes/Node.h>
 
+#include <PhySim/Utils/IOUtils.h>
 #include <PhySim/Utils/MeshUtils.h>
 
 namespace PhySim {
@@ -1078,7 +1079,7 @@ Mesh_Grid::~Mesh_Grid(void) {
   this->FreeMetadata();
 
 #ifndef NDEBUG
-  logTrace(Verbosity::V1_Default, "\n[DEBUG] Deleting Mesh_Grid");
+  IOUtils::logTrace(Verbosity::V1_Default, "\n[DEBUG] Deleting Mesh_Grid");
 #endif
 }
 

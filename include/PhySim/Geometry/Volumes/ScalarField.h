@@ -11,20 +11,18 @@
 
 #include <PhySim/CommonIncludes.h>
 
-namespace PhySim
-{
-    template <typename T>
-    class ScalarField
-    {
-    public:
-        using Scalar = T;
-        using Vector3s = Vector<T, 3>;
-        
-    public:
-        virtual Scalar Sample(const Vector3d& vPoint) const = 0;
+namespace PhySim {
+template <typename T>
+class ScalarField {
+ public:
+  using Scalar = T;
+  using Vector3s = Vector<T, 3>;
 
-        virtual Vector3s Gradient(const Vector3d& vPoint) const = 0;
+ public:
+  virtual Scalar Sample(const Vector3d& vPoint) const = 0;
 
-        Scalar operator()(const Vector3d& vPoint) { return Sample(vPoint); }
-    };
-}
+  virtual Vector3s Gradient(const Vector3d& vPoint) const = 0;
+
+  Scalar operator()(const Vector3d& vPoint) { return Sample(vPoint); }
+};
+}  // namespace PhySim

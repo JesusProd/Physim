@@ -1,13 +1,11 @@
 #ifndef COMPUTE_REFERENCE_TWIST_CHANGE_H
 #define COMPUTE_REFERENCE_TWIST_CHANGE_H
 
-inline double computeReferenceTwistChange (
-  double *refTan1,
-  double *refNor1,
-  double *refTan2,
-  double *refNor2,
-  double refTwistPrev)
-{
+inline double computeReferenceTwistChange(double* refTan1,
+                                          double* refNor1,
+                                          double* refTan2,
+                                          double* refNor2,
+                                          double refTwistPrev) {
   double t10;
   double t11;
   double t12;
@@ -67,8 +65,10 @@ inline double computeReferenceTwistChange (
   t68 = refNor2[0];
   t78 = t10 * t55 + t44 * (t6 * t42 - t12 * t49) + t64 * t3;
   t89 = t10 * t49 + t44 * (t12 * t55 - t3 * t42) + t64 * t6;
-  t96 = atan2((t3 * t4 - t6 * t7) * t66 + (t6 * t68 - t12 * t4) * t78 + (t12 * t7 - t3 * t68) * t89, t68 * t66 + t7 * t78 + t4 * t89);
-  return(-t96);
+  t96 = atan2((t3 * t4 - t6 * t7) * t66 + (t6 * t68 - t12 * t4) * t78 +
+                  (t12 * t7 - t3 * t68) * t89,
+              t68 * t66 + t7 * t78 + t4 * t89);
+  return (-t96);
 }
 
 #endif

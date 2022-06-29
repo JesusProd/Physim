@@ -1,10 +1,8 @@
 #include <math.h>
 
-void getRBNodeJacobian (
-  const double *trans,
-  const double *eulerR,
-  double *nodeJacobian)
-{
+void getRBNodeJacobian(const double* trans,
+                       const double* eulerR,
+                       double* nodeJacobian) {
   double t1;
   double t10;
   double t13;

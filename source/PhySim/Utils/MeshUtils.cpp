@@ -10,10 +10,10 @@
 #include <PhySim/Utils/MeshUtils.h>
 
 #include <PhySim/Geometry/Meshes/Mesh_Tri.h>
-#include <PhySim/Solvers/OptimSolver_USQP_LS.h>
-#include <PhySim/Solvers/OptimProblem_BasicStatic.h>
-#include <PhySim/Physics/Simulables/Simulable_ThinShell.h>
 #include <PhySim/Physics/Elements/EnergyElement_DiscreteShells.h>
+#include <PhySim/Physics/Simulables/Simulable_ThinShell.h>
+#include <PhySim/Solvers/OptimProblem_BasicStatic.h>
+#include <PhySim/Solvers/OptimSolver_USQP_LS.h>
 #include <PhySim/Utils/Utils.h>
 
 #include <igl/boundary_loop.h>

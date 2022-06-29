@@ -11,32 +11,29 @@
 
 #include <PhySim/CommonIncludes.h>
 
-
 #include <PhySim/Geometry/Polytopes/Poly.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	/**
-	* TODO
-	**/
-	class Node : public Poly
-	{
-	public:
-		Node(int ID, const Vector3d& vpos = Vector3d::Zero(), const vector<Tag>& vtraits = vector<Tag>());
-		virtual ~Node(void);
+/**
+ * TODO
+ **/
+class Node : public Poly {
+ public:
+  Node(int ID,
+       const Vector3d& vpos = Vector3d::Zero(),
+       const vector<Tag>& vtraits = vector<Tag>());
+  virtual ~Node(void);
 
-		inline int DimBasis() const override { return 0; }
+  inline int DimBasis() const override { return 0; }
 
-		virtual Real VolumeSpace(Tag s) const override { return 0; }
+  virtual Real VolumeSpace(Tag s) const override { return 0; }
 
-		VectorXd InterpolateValue(const VectorXd& vp, Tag s) const override
-		{
-			return this->Traits().Vector3d(s);
-		}
+  VectorXd InterpolateValue(const VectorXd& vp, Tag s) const override {
+    return this->Traits().Vector3d(s);
+  }
+};
 
-	};
-
-}
+}  // namespace PhySim

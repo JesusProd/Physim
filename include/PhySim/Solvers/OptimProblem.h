@@ -183,17 +183,17 @@ class OptimProblem : public IOptimProblem {
     // this->GetName().c_str()); logTrace(Verbosity::V1_Default, "\nVariable
     // number: %i", this->m_N); logTrace(Verbosity::V1_Default, "\nConstraint
     // number: %i", this->m_M); logTrace(Verbosity::V1_Default, "\nInitial
-    // energy: %f", e); logTrace(Verbosity::V1_Default, "\nInitial Gradient norm:
-    // %f", vg0.norm()); logTrace(Verbosity::V1_Default, "\nInitial Hessian norm:
-    // %f", mH0.norm()); if (this->m_M > 0)
+    // energy: %f", e); logTrace(Verbosity::V1_Default, "\nInitial Gradient
+    // norm: %f", vg0.norm()); logTrace(Verbosity::V1_Default, "\nInitial
+    // Hessian norm: %f", mH0.norm()); if (this->m_M > 0)
     //{
     //	VectorXd vc0;
     //	MatrixSd mJ0;
     //	this->GetConstraint(vc0);
     //	this->GetJacobian(mJ0);
     //	logTrace(Verbosity::V1_Default, "\nInitial Constraints norm: %f",
-    //vc0.norm()); 	logTrace(Verbosity::V1_Default, "\nInitial Jacobian norm:
-    //%f", mJ0.norm());
+    // vc0.norm()); 	logTrace(Verbosity::V1_Default, "\nInitial Jacobian
+    // norm: %f", mJ0.norm());
     //}
     // logTrace(Verbosity::V1_Default, "\n--");
   }

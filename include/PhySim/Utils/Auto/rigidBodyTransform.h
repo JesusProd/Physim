@@ -1,11 +1,9 @@
 #include <math.h>
 
-void rigidBodyTransform (
-  const double *trans,
-  const double *center,
-  const double *eulerR,
-  double *position)
-{
+void rigidBodyTransform(const double* trans,
+                        const double* center,
+                        const double* eulerR,
+                        double* position) {
   double t1;
   double t10;
   double t13;
@@ -34,7 +32,9 @@ void rigidBodyTransform (
   t13 = trans[0];
   t18 = trans[1];
   t24 = trans[2];
-  position[0] = center[0] + t1 * t2 * t13 + (-t10 * t9 + t6 * t7) * t18 + (t10 * t6 + t7 * t9) * t24;
-  position[1] = center[1] + t9 * t2 * t13 + (t1 * t10 + t21 * t7) * t18 + (-t1 * t7 + t10 * t21) * t24;
+  position[0] = center[0] + t1 * t2 * t13 + (-t10 * t9 + t6 * t7) * t18 +
+                (t10 * t6 + t7 * t9) * t24;
+  position[1] = center[1] + t9 * t2 * t13 + (t1 * t10 + t21 * t7) * t18 +
+                (-t1 * t7 + t10 * t21) * t24;
   position[2] = t10 * t2 * t24 + t18 * t2 * t7 - t13 * t5 + center[2];
 }

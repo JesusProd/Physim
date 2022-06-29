@@ -11,69 +11,73 @@
 
 #include <PhySim/CommonIncludes.h>
 
-
 #include <PhySim/Physics/Elements/IConstraintSet.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	class Simulable;
-	class KinematicsEle;
+class Simulable;
+class KinematicsEle;
 
-	class ConstraintSet : public IConstraintSet
-	{
-	protected:
+class ConstraintSet : public IConstraintSet {
+ protected:
+  Simulable* m_pModel;
 
-		Simulable* m_pModel;
+  Type m_type;
+  int m_size;
+  int m_index;
+  int m_offset;
+  bool m_soft;
 
-		Type m_type;
-		int m_size;
-		int m_index;
-		int m_offset;
-		bool m_soft;
+  vector<KinematicsEle*> m_vDoFs;
 
-		vector<KinematicsEle*> m_vDoFs;
+  VectorXd m_vvalues;           // Local element constraint
+  MatrixXd m_mJacobian;         // Local element Jacobian
+  vector<MatrixXd> m_vHessian;  // Local element Hessians
 
-		VectorXd			m_vvalues;			// Local element constraint
-		MatrixXd			m_mJacobian;		// Local element Jacobian
-		vector<MatrixXd>	m_vHessian;			// Local element Hessians
+ public:
+  ConstraintSet(Simulable* pModel, bool soft);
 
-	public:
+  virtual ~ConstraintSet(void);
 
-		ConstraintSet(Simulable* pModel, bool soft);
+  virtual void Init() {}
 
-		virtual ~ConstraintSet(void);
+  virtual const bool& IsSoft() const override { return this->m_soft; }
+  virtual const Type& GetType() const override { return this->m_type; };
+  virtual const int& GetSize() const override { return this->m_size; };
 
-		virtual void Init() {}
+  virtual int& Offset() override { return this->m_offset; }
+  virtual bool IsActive() override;
 
-		virtual const bool& IsSoft() const override { return this->m_soft; }
-		virtual const Type& GetType() const override { return this->m_type; };
-		virtual const int& GetSize() const override { return this->m_size; };
+  inline virtual int GetSupportSize() const override;
 
-		virtual int& Offset() override { return this->m_offset; }
-		virtual bool IsActive() override;
+  inline virtual const vector<KinematicsEle*> GetSupportDoF() const {
+    return this->m_vDoFs;
+  }
 
-		inline virtual int GetSupportSize() const override;
+  virtual void UpdateKinematics() override {}
+  virtual void UpdateMechanics() override {}
+  virtual void ProjectConstraint() override {}
+  virtual void ComputeAndStore_Constraint() override {}
+  virtual void ComputeAndStore_Jacobian() override {}
+  virtual void ComputeAndStore_Hessian() override {}
 
-		inline virtual const vector<KinematicsEle*> GetSupportDoF() const { return this->m_vDoFs; }
+  virtual void AssembleGlobal_Values(VectorXd& vtotalVector) override;
+  virtual void AssembleGlobal_Jacobian(VectorTd& vtotalTriplets) override;
 
-		virtual void UpdateKinematics() override {}
-		virtual void UpdateMechanics() override {}
-		virtual void ProjectConstraint() override {}
-		virtual void ComputeAndStore_Constraint() override {}
-		virtual void ComputeAndStore_Jacobian() override {}
-		virtual void ComputeAndStore_Hessian() override {}
+  virtual int GetJacobianSize() const override {
+    return this->GetSize() * this->GetSupportSize();
+  };
 
-		virtual void AssembleGlobal_Values(VectorXd& vtotalVector) override;
-		virtual void AssembleGlobal_Jacobian(VectorTd& vtotalTriplets) override;
-
-		virtual int GetJacobianSize() const override { return this->GetSize()*this->GetSupportSize(); };
-
-		inline const VectorXd& GetConstraint() const override { return this->m_vvalues; }
-		inline const MatrixXd& GetJacobian() const override { return this->m_mJacobian; }
-		inline const vector<MatrixXd>& GetLocalHessian() const override { return this->m_vHessian; }
-
-	};
-}
+  inline const VectorXd& GetConstraint() const override {
+    return this->m_vvalues;
+  }
+  inline const MatrixXd& GetJacobian() const override {
+    return this->m_mJacobian;
+  }
+  inline const vector<MatrixXd>& GetLocalHessian() const override {
+    return this->m_vHessian;
+  }
+};
+}  // namespace PhySim

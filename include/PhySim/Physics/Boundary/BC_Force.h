@@ -11,33 +11,33 @@
 
 #include <PhySim/CommonIncludes.h>
 
-
 #include <PhySim/Physics/Boundary/BCondition.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	class EnergyElement_Force;
+class EnergyElement_Force;
 
-	class BC_Force : public BCondition
-	{
-	protected:
-		vector<KinematicsEle*>				m_vpDoF;
+class BC_Force : public BCondition {
+ protected:
+  vector<KinematicsEle*> m_vpDoF;
 
-		PtrS<EnergyElement_Force>		m_pEleForce;
+  PtrS<EnergyElement_Force> m_pEleForce;
 
-	public:
-		BC_Force(Simulable* pModel, const vector<KinematicsEle*>& vpDoF, const VectorXd& vf);
-		BC_Force(Simulable* pModel, const vector<KinematicsEle*>& vpDoF, const vector<VectorXd>& vf);
-		
-		virtual ~BC_Force(void);
+ public:
+  BC_Force(Simulable* pModel,
+           const vector<KinematicsEle*>& vpDoF,
+           const VectorXd& vf);
+  BC_Force(Simulable* pModel,
+           const vector<KinematicsEle*>& vpDoF,
+           const vector<VectorXd>& vf);
 
-		inline virtual string Name() const { return "Force"; };
+  virtual ~BC_Force(void);
 
-		virtual void Init() override;
-		virtual void Update() override;
+  inline virtual string Name() const { return "Force"; };
 
-	};
-}
+  virtual void Init() override;
+  virtual void Update() override;
+};
+}  // namespace PhySim

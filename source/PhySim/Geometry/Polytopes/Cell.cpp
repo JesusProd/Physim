@@ -11,19 +11,16 @@
 
 #include <PhySim/Geometry/Polytopes/Node.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	Cell::Cell(int ID, const vector<Node*>& m_vnodes) : Poly(ID)
-	{
-		this->m_vnodes = m_vnodes;
-	}
-
-	Cell::~Cell(void)
-	{
-		// Nothing to do here...
-	}
-
+Cell::Cell(int ID, const vector<Node*>& m_vnodes) : Poly(ID) {
+  this->m_vnodes = m_vnodes;
 }
+
+Cell::~Cell(void) {
+  // Nothing to do here...
+}
+
+}  // namespace PhySim

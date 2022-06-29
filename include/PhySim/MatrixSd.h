@@ -11,14 +11,10 @@
 
 #include <PhySim/CommonIncludes.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	class MatrixXdPlus
-	{
+class MatrixXdPlus {};
 
-	};
-
-}
+}  // namespace PhySim

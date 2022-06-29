@@ -23,15 +23,12 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${PROJECT_SOURCE_DIR}/external/tinyobj)
 
 # Required
-include_directories(${NANOFLANN_DIR}/include)
-include_directories(${CEREAL_DIR}/include)
 include_directories(${EIGEN_DIR})
 include_directories(${LIBIGL_DIR}/include)
 include_directories(${LIBIGL_DIR}/external/tetgen)
 include_directories(${LIBIGL_DIR}/external/triangle)
 
 # Optional
-include_directories(${CETM_INC_DIR})
 include_directories(${KNITROSAMP_INC_DIR})
 include_directories(${KNITROCORE_INC_DIR})
 include_directories(${SS_SPQR_INC_DIR})
@@ -53,12 +50,6 @@ option(LIBIGL_WITH_CORK             	"Use CORK"           				OFF)
 option(LIBIGL_WITH_MATLAB           	"Use Matlab"         				OFF)
 option(LIBIGL_WITH_MOSEK            	"Use MOSEK"          				OFF)
 option(LIBIGL_WITH_TRIANGLE           	"Use TRIANGLE"          			OFF)
-
-##########################################################
-################## Other build options ###################
-##########################################################
-
-option(GENERATE_EXAMPLES                "Generate examples"                  OFF)
 
 ##########################################################
 ################# Gather source files ####################
@@ -84,8 +75,6 @@ file(GLOB SRCFILES
 	source/PhySim/Utils/*.cpp
 	source/PhySim/Utils/Auto/*.cpp
 	source/PhySim/Utils/Third/*.cpp
-	source/PhySim/Extensions/*.cpp
-	source/PhySim/Extensions/Chen/*.cpp
 	)
 	
 file(GLOB INCFILES 
@@ -109,8 +98,6 @@ file(GLOB INCFILES
 	include/PhySim/Utils/Auto/*.h
 	include/PhySim/Utils/Third/*.h
 	include/PhySim/Utils/Third/*.hpp
-	include/PhySim/Extensions/*.h
-	include/PhySim/Extensions/Chen/*.h
 	)
 
 source_group(TREE ${PROJECT_SOURCE_DIR}/source/PhySim PREFIX Source FILES ${SRCFILES})
@@ -173,16 +160,6 @@ endif (UNIX)
 
 set(LIBLINKS_DEBUG_LIST ${LIBLINKS_DEBUG_LIST} ${PROJECT_SOURCE_DIR}/external/tinyobj/build/Debug/tinyobjloader.lib)
 set(LIBLINKS_RELEASE_LIST ${LIBLINKS_RELEASE_LIST} ${PROJECT_SOURCE_DIR}/external/tinyobj/build/Release/tinyobjloader.lib)
-
-########################################################
-##################### Link CETM ########################
-########################################################
-
-if (USE_CETM)
-add_definitions(-DUSE_CETM)
-set(LIBLINKS_DEBUG_LIST ${LIBLINKS_DEBUG_LIST} ${CETM_LIB_DIR}/Debug/cetm.lib)
-set(LIBLINKS_RELEASE_LIST ${LIBLINKS_RELEASE_LIST} ${CETM_LIB_DIR}/Release/cetm.lib)
-endif (USE_CETM)
 
 #########################################################
 ###################### Link CUDA ########################
@@ -248,14 +225,3 @@ add_library(${PROJECT_NAME} STATIC ${SRCFILES} ${INCFILES} ${NVISFILES})
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
 set_property(TARGET ${PROJECT_NAME} PROPERTY LIBLINKS_DEBUG ${LIBLINKS_DEBUG_LIST})
 set_property(TARGET ${PROJECT_NAME} PROPERTY LIBLINKS_RELEASE ${LIBLINKS_RELEASE_LIST})
-
-#########################################################
-################### Create Examples #####################
-#########################################################
-
-if (GENERATE_EXAMPLES)
-	add_subdirectory(examples/SimulatorLite_Cylinders)
-	add_subdirectory(examples/SimulatorLite_EmbeddedRigid)
-	add_subdirectory(examples/Simulator_CompositeWithCollisions)
-	add_subdirectory(examples/Geometry_SurfaceSampler)
-endif()

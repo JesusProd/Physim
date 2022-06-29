@@ -9,9 +9,9 @@
 
 #include <PhySim/Geometry/Polytopes/ShapeFunctions.h>
 
+#include <PhySim/Utils/IOUtils.h>
 #include <PhySim/Utils/MathUtils.h>
 #include <PhySim/Utils/MeshUtils.h>
-#include <PhySim/Utils/IOUtils.h>
 
 namespace PhySim {
 using namespace std;
@@ -335,8 +335,8 @@ void ShapeFunction_Chen::UpdateKinematicsAtSamples(
   MatrixXd mR = SVD.matrixU() * SVD.matrixV().transpose();
 
   IOUtils::logTrace(Verbosity::V1_Default,
-           "\n[TRACE] Updated Chen's rotation. norm(R0 - Rnew) = %f",
-           (mR - pData->m_mR).norm());
+                    "\n[TRACE] Updated Chen's rotation. norm(R0 - Rnew) = %f",
+                    (mR - pData->m_mR).norm());
 
   pData->m_mR = mR;
 }

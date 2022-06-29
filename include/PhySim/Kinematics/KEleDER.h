@@ -11,125 +11,119 @@
 
 #include <PhySim/CommonIncludes.h>
 
-
-#include <PhySim/Physics/DoFSet.h>
-#include <PhySim/Kinematics/KinematicsEle.h>
 #include <PhySim/Geometry/Meshes/Mesh_DER.h>
+#include <PhySim/Kinematics/KinematicsEle.h>
+#include <PhySim/Physics/DoFSet.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	class KEleDERConnRot : public KinematicsEle
-	{
-	protected:
-		Mesh_DER* m_pMeshDER;
+class KEleDERConnRot : public KinematicsEle {
+ protected:
+  Mesh_DER* m_pMeshDER;
 
-	public:
+ public:
+  inline KEleDERConnRot(Simulable* pModel, Poly* pGeom)
+      : KinematicsEle(pModel, pGeom, 3) {
+    this->m_pMeshDER = static_cast<Mesh_DER*>(pGeom->GetMesh());
+  }
 
-		inline KEleDERConnRot(Simulable* pModel, Poly* pGeom) : KinematicsEle(pModel, pGeom, 3)
-		{
-			this->m_pMeshDER = static_cast<Mesh_DER*>(pGeom->GetMesh());
-		}
+  ///////////////////// KinematicsEle /////////////////////
 
-		///////////////////// KinematicsEle /////////////////////
+  virtual PtrS<KinematicsEle> Clone() override {
+    throw PhySim::exception("Not implemented");
+  }
 
-		virtual PtrS<KinematicsEle> Clone() override { throw PhySim::exception("Not implemented"); }
+  void Initialize() override;
 
-		void Initialize() override;
+  virtual int GetFullStateSize() const override;
 
-		virtual int GetFullStateSize() const override;
+  virtual VectorXd GetFullState() const override;
+  virtual VectorXd GetPositionX() const override;
+  virtual VectorXd GetVelocity() const override;
+  virtual VectorXd GetPosition0() const override;
 
-		virtual VectorXd GetFullState() const override;
-		virtual VectorXd GetPositionX() const override;
-		virtual VectorXd GetVelocity() const override;
-		virtual VectorXd GetPosition0() const override;
+  virtual void SetFullState(const VectorXd& vs) override;
+  virtual void SetPositionX(const VectorXd& vp) override;
+  virtual void SetVelocity(const VectorXd& vp) override;
+  virtual void SetPosition0(const VectorXd& vp) override;
 
-		virtual void SetFullState(const VectorXd& vs) override;
-		virtual void SetPositionX(const VectorXd& vp) override;
-		virtual void SetVelocity(const VectorXd& vp) override;
-		virtual void SetPosition0(const VectorXd& vp) override;
+  virtual bool UpdateKinematics();
 
-		virtual bool UpdateKinematics();
+  ///////////////////// KinematicsEle /////////////////////
+};
 
-		///////////////////// KinematicsEle /////////////////////
+class KEleDERMatTwist : public KinematicsEle {
+ protected:
+  Mesh_DER* m_pMeshDER;
 
-	};
+ public:
+  inline KEleDERMatTwist(Simulable* pModel, Poly* pGeom)
+      : KinematicsEle(pModel, pGeom, 1) {
+    this->m_pMeshDER = static_cast<Mesh_DER*>(pGeom->GetMesh());
+  }
 
+  ///////////////////// KinematicsEle /////////////////////
 
-	class KEleDERMatTwist : public KinematicsEle
-	{
-	protected:
-		Mesh_DER* m_pMeshDER;
+  virtual PtrS<KinematicsEle> Clone() override {
+    throw PhySim::exception("Not implemented");
+  }
 
-	public:
-		inline KEleDERMatTwist(Simulable* pModel, Poly* pGeom) : KinematicsEle(pModel, pGeom, 1)
-		{
-			this->m_pMeshDER = static_cast<Mesh_DER*>(pGeom->GetMesh());
-		}
+  virtual void Initialize() override;
 
-		///////////////////// KinematicsEle /////////////////////
+  virtual int GetFullStateSize() const override;
 
-		virtual PtrS<KinematicsEle> Clone() override { throw PhySim::exception("Not implemented"); }
+  virtual VectorXd GetFullState() const override;
+  virtual VectorXd GetPositionX() const override;
+  virtual VectorXd GetPosition0() const override;
+  virtual VectorXd GetVelocity() const override;
 
-		virtual void Initialize() override;
+  virtual void SetFullState(const VectorXd& vs) override;
+  virtual void SetPositionX(const VectorXd& vp) override;
+  virtual void SetPosition0(const VectorXd& vp) override;
+  virtual void SetVelocity(const VectorXd& vp) override;
 
-		virtual int GetFullStateSize() const override;
+  virtual bool UpdateKinematics();
 
-		virtual VectorXd GetFullState() const override;
-		virtual VectorXd GetPositionX() const override;
-		virtual VectorXd GetPosition0() const override;
-		virtual VectorXd GetVelocity() const override;
+  ///////////////////// KinematicsEle /////////////////////
+};
 
-		virtual void SetFullState(const VectorXd& vs) override;
-		virtual void SetPositionX(const VectorXd& vp) override;
-		virtual void SetPosition0(const VectorXd& vp) override;
-		virtual void SetVelocity(const VectorXd& vp) override;
+class KEleDERRefTwist : public KinematicsEle {
+ protected:
+  Mesh_DER* m_pMeshDER;
 
-		virtual bool UpdateKinematics();
+ public:
+  KEleDERRefTwist(Simulable* pModel, Poly* pGeom)
+      : KinematicsEle(pModel, pGeom, 1) {
+    this->m_pMeshDER = static_cast<Mesh_DER*>(pGeom->GetMesh());
 
-		///////////////////// KinematicsEle /////////////////////
+    this->Active() = false;
+  }
 
-	};
+  ///////////////////// KinematicsEle /////////////////////
 
+  virtual PtrS<KinematicsEle> Clone() override {
+    throw PhySim::exception("Not implemented");
+  }
 
-	class KEleDERRefTwist : public KinematicsEle
-	{
-	protected:
-		Mesh_DER* m_pMeshDER;
+  virtual void Initialize() override;
 
-	public:
+  virtual int GetFullStateSize() const override;
 
-		KEleDERRefTwist(Simulable* pModel, Poly* pGeom) : KinematicsEle(pModel, pGeom, 1)
-		{
-			this->m_pMeshDER = static_cast<Mesh_DER*>(pGeom->GetMesh());
+  virtual VectorXd GetFullState() const override;
+  virtual VectorXd GetPositionX() const override;
+  virtual VectorXd GetPosition0() const override;
+  virtual VectorXd GetVelocity() const override;
 
-			this->Active() = false;
-		}
+  virtual void SetFullState(const VectorXd& vs) override;
+  virtual void SetPositionX(const VectorXd& vp) override;
+  virtual void SetPosition0(const VectorXd& vp) override;
+  virtual void SetVelocity(const VectorXd& vp) override;
 
-		///////////////////// KinematicsEle /////////////////////
+  virtual bool UpdateKinematics();
 
-		virtual PtrS<KinematicsEle> Clone() override { throw PhySim::exception("Not implemented"); }
+  ///////////////////// KinematicsEle /////////////////////
+};
 
-		virtual void Initialize() override;
-
-		virtual int GetFullStateSize() const override;
-
-		virtual VectorXd GetFullState() const override;
-		virtual VectorXd GetPositionX() const override;
-		virtual VectorXd GetPosition0() const override;
-		virtual VectorXd GetVelocity() const override;
-
-		virtual void SetFullState(const VectorXd& vs) override;
-		virtual void SetPositionX(const VectorXd& vp) override;
-		virtual void SetPosition0(const VectorXd& vp) override;
-		virtual void SetVelocity(const VectorXd& vp) override;
-
-		virtual bool UpdateKinematics();
-
-		///////////////////// KinematicsEle /////////////////////
-
-	};
-
-}
+}  // namespace PhySim

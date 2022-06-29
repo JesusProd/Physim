@@ -15,6 +15,8 @@
 
 #include <PhySim/Utils/GeometryUtils.h>
 
+#include <PhySim/Utils/IOUtils.h>
+
 namespace PhySim {
 using namespace std;
 using namespace Eigen;
@@ -71,7 +73,7 @@ Mesh_Frame::~Mesh_Frame(void) {
   this->FreeInternal();
 
 #ifndef NDEBUG
-  logTrace(Verbosity::V1_Default, "\n[DEBUG] Deleting Mesh_Frame");
+  IOUtils::logTrace(Verbosity::V1_Default, "\n[DEBUG] Deleting Mesh_Frame");
 #endif
 }
 
@@ -199,8 +201,8 @@ void Mesh_Frame::ParallalelTransportForward(Tag s,
 void Mesh_Frame::ParallalelTransportBackward(Tag s,
                                              const Frame3d& F,
                                              vector<Edge*> vrod) {
-  vrod.back()->Traits().Frame3d(s) =
-      GeometryUtils::parallelTransport(F, vrod.front()->Traits().Frame3d(s).tan);
+  vrod.back()->Traits().Frame3d(s) = GeometryUtils::parallelTransport(
+      F, vrod.front()->Traits().Frame3d(s).tan);
 
   for (int i = (int)vrod.size() - 2; i >= 0; --i)
     vrod[i]->Traits().Frame3d(s) = GeometryUtils::parallelTransport(

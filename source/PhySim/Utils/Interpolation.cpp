@@ -9,8 +9,8 @@
 
 #include <PhySim/Utils/Interpolation.h>
 
-#include <PhySim/Utils/MathUtils.h>
 #include <PhySim/Utils/GeometryUtils.h>
+#include <PhySim/Utils/MathUtils.h>
 
 namespace PhySim {
 using namespace std;
@@ -153,8 +153,7 @@ void interpolateCurve_Hermite(const MatrixXd& mVin,
     const Vector3d& p1 = mVin.row(itD + 1);  // In point 1
     const Vector3d& t1 = mTin.row(itD + 1);  // In tangent 1
 
-    mVout.row(i) = evaluate_CubicHermite01(
-        p0, p1, t0 * ds, t1 * ds, x);
+    mVout.row(i) = evaluate_CubicHermite01(p0, p1, t0 * ds, t1 * ds, x);
   }
 
   mVout.row(Nout - 1) = mVin.row(Nin - 1);

@@ -11,26 +11,22 @@
 
 #include <PhySim/CommonIncludes.h>
 
-
 #include <PhySim/Physics/Boundary/BCondition.h>
 
-namespace PhySim
-{
-	using namespace std;
-	using namespace Eigen;
+namespace PhySim {
+using namespace std;
+using namespace Eigen;
 
-	class BC_Gravity : public BCondition
-	{
-	public:
-		BC_Gravity(Simulable* pModel, const Vector3d& vg);
-		virtual ~BC_Gravity(void);
+class BC_Gravity : public BCondition {
+ public:
+  BC_Gravity(Simulable* pModel, const Vector3d& vg);
+  virtual ~BC_Gravity(void);
 
-		inline virtual string Name() const { return "Gravity"; };
+  inline virtual string Name() const { return "Gravity"; };
 
-		inline virtual VectorXd& Gravity() { return this->m_vini[0]; }
+  inline virtual VectorXd& Gravity() { return this->m_vini[0]; }
 
-		virtual void Init() override;
-		virtual void Update() override;
-
-	};
-}
+  virtual void Init() override;
+  virtual void Update() override;
+};
+}  // namespace PhySim

@@ -12,19 +12,20 @@
 //
 //#include <PhySim/Traits.h>
 //
-//namespace PhySim
+// namespace PhySim
 //{
 //	using namespace std;
 //	using namespace Eigen;
 //
-//	PhySim::IDoFSet* TraitSet::DoFSet(Tag s) 
+//	PhySim::IDoFSet* TraitSet::DoFSet(Tag s)
 //	{
 //		return *static_cast<PhySim::IDoFSet**>(m_mData.at(s)->pValue);
 //	}
 //
 //	PhySim::KinematicsEle* TraitSet::Kinematics(Tag s)
 //	{
-//		return *static_cast<PhySim::KinematicsEle**>(m_mData.at(s)->pValue);
+//		return
+//*static_cast<PhySim::KinematicsEle**>(m_mData.at(s)->pValue);
 //	}
 //
 //	const PhySim::IDoFSet* TraitSet::DoFSet(Tag s) const
@@ -34,7 +35,8 @@
 //
 //	const PhySim::KinematicsEle* TraitSet::Kinematics(Tag s) const
 //	{
-//		return *static_cast<PhySim::KinematicsEle**>(m_mData.at(s)->pValue);
+//		return
+//*static_cast<PhySim::KinematicsEle**>(m_mData.at(s)->pValue);
 //	}
 //
 //}
