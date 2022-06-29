@@ -136,8 +136,8 @@ class DoFSet : public IDoFSet {
 //		this->Offset() = pKineDoF->Offset();
 //	}
 //	inline virtual VectorXd GetValue() const override { return
-//m_pKineDoF->GetPosition(Tag_Position_X); } 	inline virtual void SetValue(const
-//VectorXd& vv) override { m_pKineDoF->SetPosition(vv, Tag_Position_X); }
+//m_pKineDoF->GetPosition(Tag::Tag_Position_X); } 	inline virtual void SetValue(const
+//VectorXd& vv) override { m_pKineDoF->SetPosition(vv, Tag::Tag_Position_X); }
 //};
 
 // class DoFRest : public DoFSet
@@ -153,8 +153,8 @@ class DoFSet : public IDoFSet {
 //		this->Offset() = pKineDoF->Offset();
 //	}
 //	inline virtual VectorXd GetValue() const override { return
-//m_pKineDoF->GetPosition(Tag_Position_0); } 	inline virtual void SetValue(const
-//VectorXd& vv) override { m_pKineDoF->SetPosition(vv, Tag_Position_0); }
+//m_pKineDoF->GetPosition(Tag::Tag_Position_0); } 	inline virtual void SetValue(const
+//VectorXd& vv) override { m_pKineDoF->SetPosition(vv, Tag::Tag_Position_0); }
 //};
 
 }  // namespace PhySim

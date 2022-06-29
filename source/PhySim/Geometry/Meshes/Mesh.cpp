@@ -75,7 +75,7 @@ void Mesh::Init(const MatrixXd& mV,
 
   this->m_vnodeTraits = vnTraits;
   if (this->m_vnodeTraits.empty())
-    this->m_vnodeTraits.push_back(Tag_Position_X);
+    this->m_vnodeTraits.push_back(Tag::Tag_Position_X);
 
   // Initialize nodes
 
@@ -93,40 +93,40 @@ void Mesh::Init(const MatrixXd& mV,
       vnodes[j] = this->m_vnodes[mE(i, j)];
 
     switch (D) {
-      case Discretization_Nodes:
+      case Discretization::Discretization_Nodes:
         this->m_dimBasis = 0;
         throw exception("Not implemented");
         break;
-      case Discretization_Edge2:
-      case Discretization_Edge3:
+      case Discretization::Discretization_Edge2:
+      case Discretization::Discretization_Edge3:
         this->m_dimBasis = 1;
         this->m_velems.push_back(new Edge(i, vnodes));
         break;
-      case Discretization_Tri3:
+      case Discretization::Discretization_Tri3:
         this->m_dimBasis = 2;
         this->m_velems.push_back(new Face_Tri3(i, vnodes));
         break;
-      case Discretization_Tri6:
+      case Discretization::Discretization_Tri6:
         this->m_dimBasis = 2;
         this->m_velems.push_back(new Face_Tri6(i, vnodes));
         break;
-      case Discretization_Quad4:
+      case Discretization::Discretization_Quad4:
         this->m_dimBasis = 2;
         this->m_velems.push_back(new Face_Quad4(i, vnodes));
         break;
-      case Discretization_Quad8:
+      case Discretization::Discretization_Quad8:
         this->m_dimBasis = 2;
         this->m_velems.push_back(new Face_Quad8(i, vnodes));
         break;
-      case Discretization_Tet4:
+      case Discretization::Discretization_Tet4:
         this->m_dimBasis = 3;
         this->m_velems.push_back(new Cell_Tetra4(i, vnodes));
         break;
-      case Discretization_Tet10:
+      case Discretization::Discretization_Tet10:
         this->m_dimBasis = 3;
         this->m_velems.push_back(new Cell_Tetra10(i, vnodes));
         break;
-      case Discretization_Hex8:
+      case Discretization::Discretization_Hex8:
         this->m_dimBasis = 3;
         this->m_velems.push_back(new Cell_Hexa8(i, vnodes));
         break;

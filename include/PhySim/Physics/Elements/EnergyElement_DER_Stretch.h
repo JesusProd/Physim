@@ -38,7 +38,7 @@ class EnergyElement_DER_Stretch : public EnergyElement {
   virtual void ComputeAndStore_Gradient_Internal();
   virtual void ComputeAndStore_Hessian_Internal();
 
-  virtual Real ComputeLength(Tag s = Tag_Position_X);
+  virtual Real ComputeLength(Tag s = Tag::Tag_Position_X);
 
   inline virtual Real GetRestLength() const { return this->m_intVolume; }
   inline virtual void SetRestLength(Real l0) { this->m_intVolume = l0; }

@@ -30,7 +30,7 @@ void KMapEmbedding::Init(Simulable* pModel,
   vector<PtrS<KinematicsEle>> vIn(N);
   for (int i = 0; i < N; ++i)
     vIn[i].reset(
-        pEmbedding->Master()->Nodes()[i]->Traits().Kinematics(Tag_DOF_0));
+        pEmbedding->Master()->Nodes()[i]->Traits().Kinematics(Tag::Tag_DOF_0));
   vOut[0] = pParticle;
 
   KinematicsMap::Init(pModel, vIn, vOut);

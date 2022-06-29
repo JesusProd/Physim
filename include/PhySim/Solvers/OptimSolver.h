@@ -213,7 +213,7 @@ class OptimSolver : public IOptimSolver {
                                       Real& objNew,
                                       AVectorXd& vgNew,
                                       int& numBis);
-  virtual bool LSearch_None(const VectorXd& dxIn,
+  virtual bool LineSearch_None(const VectorXd& dxIn,
                             VectorXd& dxOut,
                             Real& objNew,
                             AVectorXd& vgNew,

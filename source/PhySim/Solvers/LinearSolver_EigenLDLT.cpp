@@ -36,7 +36,7 @@ void LinearSolver_EigenLDLT::Init(const MatrixSd& mA,
 
   this->m_solver.analyzePattern(mA);
 
-  if (m_solver.info() != LS_SUCCESS) {
+  if (m_solver.info() != ComputationInfo::Success) {
     IOUtils::logTrace(Verbosity::V1_Default,
                       "\n[FAILURE] Linear solver: error during analysis");
   }
@@ -78,7 +78,7 @@ LSResult LinearSolver_EigenLDLT::SolveInternal(MatrixSd& mA,
 
     // Check computation
 
-    if (m_solver.info() != LS_SUCCESS) {
+    if (m_solver.info() != ComputationInfo::Success) {
       IOUtils::logTrace(Verbosity::V1_Default,
                         "\n[FAILURE] Linear solve: error during factorization");
       continue;  // Iterate again
@@ -105,7 +105,7 @@ LSResult LinearSolver_EigenLDLT::SolveInternal(MatrixSd& mA,
 
     // Check calculation
 
-    if (m_solver.info() != LS_SUCCESS) {
+    if (m_solver.info() != ComputationInfo::Success) {
       IOUtils::logTrace(Verbosity::V1_Default,
                         "\n[FAILURE] Linear solve: error during calculation");
       continue;  // Iterate again

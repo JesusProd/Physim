@@ -38,13 +38,13 @@ EnergyElement_FaceNodeColl_Quad::~EnergyElement_FaceNodeColl_Quad(void) {
 
 void EnergyElement_FaceNodeColl_Quad::ComputeAndStore_Energy_Internal() {
   //		const Vector3d& x0 =
-  //this->m_vDoF[0]->Geometry()->Traits().Vector3d(Tag_Position_X); 		const
+  //this->m_vDoF[0]->Geometry()->Traits().Vector3d(Tag::Tag_Position_X); 		const
   //Vector3d& x1 =
-  //this->m_vDoF[1]->Geometry()->Traits().Vector3d(Tag_Position_X); 		const
+  //this->m_vDoF[1]->Geometry()->Traits().Vector3d(Tag::Tag_Position_X); 		const
   //Vector3d& x2 =
-  //this->m_vDoF[2]->Geometry()->Traits().Vector3d(Tag_Position_X); 		const
+  //this->m_vDoF[2]->Geometry()->Traits().Vector3d(Tag::Tag_Position_X); 		const
   //Vector3d& x3 =
-  //this->m_vDoF[3]->Geometry()->Traits().Vector3d(Tag_Position_X); 		Vector3d e0
+  //this->m_vDoF[3]->Geometry()->Traits().Vector3d(Tag::Tag_Position_X); 		Vector3d e0
   //= (x1 - x0).normalized(); 		Vector3d e1 = (x2 - x0).normalized(); 		Vector3d e3
   //= x3 - x0; 		Real D = e0.cross(e1).dot(e3); 		Real T =
   //(*this->m_pMaterial)[ParameterSet::Param_CollT]; 		Real K =
@@ -61,13 +61,13 @@ void EnergyElement_FaceNodeColl_Quad::ComputeAndStore_Energy_Internal() {
 
 void EnergyElement_FaceNodeColl_Quad::ComputeAndStore_Gradient_Internal() {
   //		const Vector3d& x0 =
-  //this->m_vDoF[0]->Geometry()->Traits().Vector3d(Tag_Position_X); 		const
+  //this->m_vDoF[0]->Geometry()->Traits().Vector3d(Tag::Tag_Position_X); 		const
   //Vector3d& x1 =
-  //this->m_vDoF[1]->Geometry()->Traits().Vector3d(Tag_Position_X); 		const
+  //this->m_vDoF[1]->Geometry()->Traits().Vector3d(Tag::Tag_Position_X); 		const
   //Vector3d& x2 =
-  //this->m_vDoF[2]->Geometry()->Traits().Vector3d(Tag_Position_X); 		const
+  //this->m_vDoF[2]->Geometry()->Traits().Vector3d(Tag::Tag_Position_X); 		const
   //Vector3d& x3 =
-  //this->m_vDoF[3]->Geometry()->Traits().Vector3d(Tag_Position_X); 		Vector3d e0
+  //this->m_vDoF[3]->Geometry()->Traits().Vector3d(Tag::Tag_Position_X); 		Vector3d e0
   //= (x1 - x0).normalized(); 		Vector3d e1 = (x2 - x0).normalized(); 		Vector3d e3
   //= x3 - x0; 		Real D = e0.cross(e1).dot(e3); 		Real T =
   //(*this->m_pMaterial)[ParameterSet::Param_CollT]; 		Real K =
@@ -87,13 +87,13 @@ void EnergyElement_FaceNodeColl_Quad::ComputeAndStore_Gradient_Internal() {
 
 void EnergyElement_FaceNodeColl_Quad::ComputeAndStore_Hessian_Internal() {
   //		const Vector3d& x0 =
-  //this->m_vDoF[0]->Geometry()->Traits().Vector3d(Tag_Position_X); 		const
+  //this->m_vDoF[0]->Geometry()->Traits().Vector3d(Tag::Tag_Position_X); 		const
   //Vector3d& x1 =
-  //this->m_vDoF[1]->Geometry()->Traits().Vector3d(Tag_Position_X); 		const
+  //this->m_vDoF[1]->Geometry()->Traits().Vector3d(Tag::Tag_Position_X); 		const
   //Vector3d& x2 =
-  //this->m_vDoF[2]->Geometry()->Traits().Vector3d(Tag_Position_X); 		const
+  //this->m_vDoF[2]->Geometry()->Traits().Vector3d(Tag::Tag_Position_X); 		const
   //Vector3d& x3 =
-  //this->m_vDoF[3]->Geometry()->Traits().Vector3d(Tag_Position_X); 		Vector3d e0
+  //this->m_vDoF[3]->Geometry()->Traits().Vector3d(Tag::Tag_Position_X); 		Vector3d e0
   //= (x1 - x0).normalized(); 		Vector3d e1 = (x2 - x0).normalized(); 		Vector3d e3
   //= x3 - x0; 		Real D = e0.cross(e1).dot(e3); 		Real T =
   //(*this->m_pMaterial)[ParameterSet::Param_CollT]; 		Real K =

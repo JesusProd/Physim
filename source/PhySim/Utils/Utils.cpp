@@ -119,7 +119,7 @@ bool presolveStaticsForFixedDoF(Simulable& simulable,
 
   VectorXd vxFull = VectorXd::Zero(numFree);
   VectorXd dxFull = VectorXd::Zero(numFull);
-  simulable.GetDOFVector(vxFull, Tag_Position_X);
+  simulable.GetDOFVector(vxFull, Tag::Tag_Position_X);
 
   for (size_t i = 0; i < vDoF.size(); ++i) {
     int numDim = vDoF[i]->NumDim();
@@ -166,7 +166,7 @@ bool presolveStaticsForFixedDoF(Simulable& simulable,
 
   // Set the new positions
 
-  simulable.SetDOFVector(vxFull, Tag_Position_X);
+  simulable.SetDOFVector(vxFull, Tag::Tag_Position_X);
 
   return true;
 }

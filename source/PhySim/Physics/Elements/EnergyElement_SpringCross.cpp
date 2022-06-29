@@ -42,9 +42,9 @@ EnergyElement_SpringCross::~EnergyElement_SpringCross() {
 }
 
 void EnergyElement_SpringCross::Init() {
-  this->m_restStrain = this->ComputeStrain(Tag_Position_0);
-  this->m_intVolume = (this->m_pEdge0->VolumeBasis(Tag_Position_0) +
-                       this->m_pEdge1->VolumeBasis(Tag_Position_0));
+  this->m_restStrain = this->ComputeStrain(Tag::Tag_Position_0);
+  this->m_intVolume = (this->m_pEdge0->VolumeBasis(Tag::Tag_Position_0) +
+                       this->m_pEdge1->VolumeBasis(Tag::Tag_Position_0));
 }
 
 Real EnergyElement_SpringCross::ComputeStrain(Tag s) {

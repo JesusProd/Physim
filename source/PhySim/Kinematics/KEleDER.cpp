@@ -14,20 +14,20 @@ using namespace std;
 using namespace Eigen;
 
 void KEleDERMatTwist::Initialize() {
-  if (!this->m_pGeometry->Traits().HasTrait(Tag_Angle_X))
-    this->m_pGeometry->Traits().AddTrait(Tag_Angle_X, 0.0);
+  if (!this->m_pGeometry->Traits().HasTrait(Tag::Tag_Angle_X))
+    this->m_pGeometry->Traits().AddTrait(Tag::Tag_Angle_X, 0.0);
 
-  if (!this->m_pGeometry->Traits().HasTrait(Tag_Angle_0))
-    this->m_pGeometry->Traits().AddTrait(Tag_Angle_0, 0.0);
+  if (!this->m_pGeometry->Traits().HasTrait(Tag::Tag_Angle_0))
+    this->m_pGeometry->Traits().AddTrait(Tag::Tag_Angle_0, 0.0);
 
-  if (!this->m_pGeometry->Traits().HasTrait(Tag_Angle_V))
-    this->m_pGeometry->Traits().AddTrait(Tag_Angle_V, 0.0);
+  if (!this->m_pGeometry->Traits().HasTrait(Tag::Tag_Angle_V))
+    this->m_pGeometry->Traits().AddTrait(Tag::Tag_Angle_V, 0.0);
 
-  if (!this->m_pGeometry->Traits().HasTrait(Tag_Frame_X))
-    this->m_pGeometry->Traits().AddTrait(Tag_Frame_X, Frame3d());
+  if (!this->m_pGeometry->Traits().HasTrait(Tag::Tag_Frame_X))
+    this->m_pGeometry->Traits().AddTrait(Tag::Tag_Frame_X, Frame3d());
 
-  if (!this->m_pGeometry->Traits().HasTrait(Tag_Frame_0))
-    this->m_pGeometry->Traits().AddTrait(Tag_Frame_0, Frame3d());
+  if (!this->m_pGeometry->Traits().HasTrait(Tag::Tag_Frame_0))
+    this->m_pGeometry->Traits().AddTrait(Tag::Tag_Frame_0, Frame3d());
 }
 
 int KEleDERMatTwist::GetFullStateSize() const {
@@ -39,7 +39,7 @@ VectorXd KEleDERMatTwist::GetFullState() const {
   vs(0) = this->GetPositionX()[0];
   vs(1) = this->GetVelocity()[0];
 
-  Frame3d F = this->m_pGeometry->Traits().Frame3d(Tag_Frame_X);
+  Frame3d F = this->m_pGeometry->Traits().Frame3d(Tag::Tag_Frame_X);
 
   vs.segment(2, 3) = F.tan;
   vs.segment(5, 3) = F.bin;
@@ -50,19 +50,19 @@ VectorXd KEleDERMatTwist::GetFullState() const {
 
 VectorXd KEleDERMatTwist::GetPositionX() const {
   VectorXd vx(1);
-  vx[0] = this->m_pGeometry->Traits().Double(Tag_Angle_X);
+  vx[0] = this->m_pGeometry->Traits().Double(Tag::Tag_Angle_X);
   return vx;
 }
 
 VectorXd KEleDERMatTwist::GetPosition0() const {
   VectorXd vx(1);
-  vx[0] = this->m_pGeometry->Traits().Double(Tag_Angle_0);
+  vx[0] = this->m_pGeometry->Traits().Double(Tag::Tag_Angle_0);
   return vx;
 }
 
 VectorXd KEleDERMatTwist::GetVelocity() const {
   VectorXd vx(1);
-  vx[0] = this->m_pGeometry->Traits().Double(Tag_Angle_V);
+  vx[0] = this->m_pGeometry->Traits().Double(Tag::Tag_Angle_V);
   return vx;
 }
 
@@ -76,36 +76,36 @@ void KEleDERMatTwist::SetFullState(const VectorXd& vs) {
   F.bin = vs.segment(5, 3);
   F.nor = vs.segment(8, 3);
 
-  this->m_pGeometry->Traits().Frame3d(Tag_Frame_X) = F;
+  this->m_pGeometry->Traits().Frame3d(Tag::Tag_Frame_X) = F;
 }
 
 void KEleDERMatTwist::SetPositionX(const VectorXd& vp) {
-  this->m_pGeometry->Traits().Double(Tag_Angle_X) = vp[0];
+  this->m_pGeometry->Traits().Double(Tag::Tag_Angle_X) = vp[0];
 }
 
 void KEleDERMatTwist::SetPosition0(const VectorXd& vp) {
-  this->m_pGeometry->Traits().Double(Tag_Angle_0) = vp[0];
+  this->m_pGeometry->Traits().Double(Tag::Tag_Angle_0) = vp[0];
 }
 
 void KEleDERMatTwist::SetVelocity(const VectorXd& vp) {
-  this->m_pGeometry->Traits().Double(Tag_Angle_V) = vp[0];
+  this->m_pGeometry->Traits().Double(Tag::Tag_Angle_V) = vp[0];
 }
 
 bool KEleDERMatTwist::UpdateKinematics() {
-  this->m_pMeshDER->AdaptReferenceFrame(this->m_pGeometry->ID(), Tag_Frame_X);
+  this->m_pMeshDER->AdaptReferenceFrame(this->m_pGeometry->ID(), Tag::Tag_Frame_X);
 
   return true;
 }
 
 void KEleDERConnRot::Initialize() {
-  if (!this->m_pGeometry->Traits().HasTrait(Tag_Euler_X))
-    this->m_pGeometry->Traits().AddTrait(Tag_Euler_X, Vector3d::Zero());
+  if (!this->m_pGeometry->Traits().HasTrait(Tag::Tag_Euler_X))
+    this->m_pGeometry->Traits().AddTrait(Tag::Tag_Euler_X, Vector3d::Zero());
 
-  if (!this->m_pGeometry->Traits().HasTrait(Tag_Euler_V))
-    this->m_pGeometry->Traits().AddTrait(Tag_Euler_V, Vector3d::Zero());
+  if (!this->m_pGeometry->Traits().HasTrait(Tag::Tag_Euler_V))
+    this->m_pGeometry->Traits().AddTrait(Tag::Tag_Euler_V, Vector3d::Zero());
 
-  if (!this->m_pGeometry->Traits().HasTrait(Tag_Rotat_X))
-    this->m_pGeometry->Traits().AddTrait(Tag_Rotat_X, Matrix3d::Identity());
+  if (!this->m_pGeometry->Traits().HasTrait(Tag::Tag_Rotat_X))
+    this->m_pGeometry->Traits().AddTrait(Tag::Tag_Rotat_X, Matrix3d::Identity());
 }
 
 int KEleDERConnRot::GetFullStateSize() const {
@@ -117,7 +117,7 @@ VectorXd KEleDERConnRot::GetFullState() const {
   vs.segment(0, 3) = this->GetPositionX();
   vs.segment(3, 3) = this->GetVelocity();
 
-  Matrix3d R = this->m_pGeometry->Traits().Matrix3d(Tag_Rotat_X);
+  Matrix3d R = this->m_pGeometry->Traits().Matrix3d(Tag::Tag_Rotat_X);
 
   vs.segment(6, 3) = R.col(0);
   vs.segment(9, 3) = R.col(1);
@@ -127,11 +127,11 @@ VectorXd KEleDERConnRot::GetFullState() const {
 }
 
 VectorXd KEleDERConnRot::GetPositionX() const {
-  return this->m_pGeometry->Traits().Vector3d(Tag_Euler_X);
+  return this->m_pGeometry->Traits().Vector3d(Tag::Tag_Euler_X);
 }
 
 VectorXd KEleDERConnRot::GetVelocity() const {
-  return this->m_pGeometry->Traits().Vector3d(Tag_Euler_V);
+  return this->m_pGeometry->Traits().Vector3d(Tag::Tag_Euler_V);
 }
 
 VectorXd KEleDERConnRot::GetPosition0() const {
@@ -148,15 +148,15 @@ void KEleDERConnRot::SetFullState(const VectorXd& vs) {
   R.col(1) = vs.segment(9, 3);
   R.col(2) = vs.segment(12, 3);
 
-  this->m_pGeometry->Traits().Matrix3d(Tag_Rotat_X) = R;
+  this->m_pGeometry->Traits().Matrix3d(Tag::Tag_Rotat_X) = R;
 }
 
 void KEleDERConnRot::SetPositionX(const VectorXd& vp) {
-  this->m_pGeometry->Traits().Vector3d(Tag_Euler_X) = vp;
+  this->m_pGeometry->Traits().Vector3d(Tag::Tag_Euler_X) = vp;
 }
 
 void KEleDERConnRot::SetVelocity(const VectorXd& vp) {
-  this->m_pGeometry->Traits().Vector3d(Tag_Euler_V) = vp;
+  this->m_pGeometry->Traits().Vector3d(Tag::Tag_Euler_V) = vp;
 }
 
 void KEleDERConnRot::SetPosition0(const VectorXd& vp) {
@@ -171,8 +171,8 @@ bool KEleDERConnRot::UpdateKinematics() {
 }
 
 void KEleDERRefTwist::Initialize() {
-  if (!this->m_pGeometry->Traits().HasTrait(Tag_Twist_X))
-    this->m_pGeometry->Traits().AddTrait(Tag_Twist_X, 0.0);
+  if (!this->m_pGeometry->Traits().HasTrait(Tag::Tag_Twist_X))
+    this->m_pGeometry->Traits().AddTrait(Tag::Tag_Twist_X, 0.0);
 }
 
 int KEleDERRefTwist::GetFullStateSize() const {
@@ -185,7 +185,7 @@ VectorXd KEleDERRefTwist::GetFullState() const {
 
 VectorXd KEleDERRefTwist::GetPositionX() const {
   VectorXd vx(1);
-  vx[0] = this->m_pGeometry->Traits().Double(Tag_Twist_X);
+  vx[0] = this->m_pGeometry->Traits().Double(Tag::Tag_Twist_X);
   return vx;
 }
 
@@ -202,7 +202,7 @@ void KEleDERRefTwist::SetFullState(const VectorXd& vs) {
 }
 
 void KEleDERRefTwist::SetPositionX(const VectorXd& vp) {
-  this->m_pGeometry->Traits().Double(Tag_Twist_X) = vp(0);
+  this->m_pGeometry->Traits().Double(Tag::Tag_Twist_X) = vp(0);
 }
 
 void KEleDERRefTwist::SetPosition0(const VectorXd& vp) {

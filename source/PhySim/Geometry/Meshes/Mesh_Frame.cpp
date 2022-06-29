@@ -42,13 +42,13 @@ void Mesh_Frame::Init(const MatrixXd& mV,
                       const vector<Frame3d>& vF,
                       const vector<Tag>& vnTraits,
                       const vector<Tag>& vfTraits) {
-  Mesh_Edge::Init(mV, mE, Discretization_Edge2, vnTraits);
+  Mesh_Edge::Init(mV, mE, Discretization::Discretization_Edge2, vnTraits);
 
   // Add frames
 
   this->m_velemTraits = vfTraits;
   if (this->m_velemTraits.empty())
-    this->m_velemTraits.push_back(Tag_Frame_X);
+    this->m_velemTraits.push_back(Tag::Tag_Frame_X);
 
   for (int i = 0; i < (int)m_velems.size(); ++i) {
     for (int j = 0; j < (int)this->m_velemTraits.size(); ++j) {

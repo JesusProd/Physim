@@ -67,7 +67,7 @@ void ShapeFunction::Compute_Matrix0(
 
     MatrixXd mA;
     VectorXd vb;
-    pFace->TransformNat2Bas(vb, mA, Tag_Position_0);
+    pFace->TransformNat2Bas(vb, mA, Tag::Tag_Position_0);
 
     mN0 = (mA * mN0).eval();
   }
@@ -80,7 +80,7 @@ void ShapeFunction::Compute_Matrix0(
 
     MatrixXd mA;
     VectorXd vb;
-    pEdge->TransformNat2Bas(vb, mA, Tag_Position_0);
+    pEdge->TransformNat2Bas(vb, mA, Tag::Tag_Position_0);
 
     mN0 = (mA * mN0).eval();
   }

@@ -20,7 +20,7 @@ using namespace Eigen;
 EnergyElement_AlignNode::EnergyElement_AlignNode(Simulable* pModel, Node* pNode)
     : EnergyElement(pModel) {
   this->m_vDoF.resize(1);
-  this->m_vDoF[0] = pNode->Traits().Kinematics(Tag_DOF_0);
+  this->m_vDoF[0] = pNode->Traits().Kinematics(Tag::Tag_DOF_0);
 
   this->m_vgradient.resize(3);
   this->m_mHessian.resize(3, 3);
@@ -35,7 +35,7 @@ EnergyElement_AlignNode::~EnergyElement_AlignNode() {
 void EnergyElement_AlignNode::Init() {
   // Set target normal
 
-  this->m_vxt = this->m_pEmbedding->Traits().Vector3d(Tag_Position_X);
+  this->m_vxt = this->m_pEmbedding->Traits().Vector3d(Tag::Tag_Position_X);
 
   // Set align stiffness
 
@@ -45,7 +45,7 @@ void EnergyElement_AlignNode::Init() {
 void EnergyElement_AlignNode::ComputeAndStore_Energy_Internal() {
   this->m_energy = 0;
 
-  VectorXd x0 = this->m_pEmbedding->Traits().Vector3d(Tag_Position_X);
+  VectorXd x0 = this->m_pEmbedding->Traits().Vector3d(Tag::Tag_Position_X);
 
   Vector3d xt = this->m_vxt;
 
@@ -61,7 +61,7 @@ void EnergyElement_AlignNode::ComputeAndStore_Energy_Internal() {
 void EnergyElement_AlignNode::ComputeAndStore_Gradient_Internal() {
   this->m_energy = 0;
 
-  VectorXd x0 = this->m_pEmbedding->Traits().Vector3d(Tag_Position_X);
+  VectorXd x0 = this->m_pEmbedding->Traits().Vector3d(Tag::Tag_Position_X);
 
   Vector3d xt = this->m_vxt;
 
@@ -81,7 +81,7 @@ void EnergyElement_AlignNode::ComputeAndStore_Gradient_Internal() {
 void EnergyElement_AlignNode::ComputeAndStore_Hessian_Internal() {
   this->m_energy = 0;
 
-  VectorXd x0 = this->m_pEmbedding->Traits().Vector3d(Tag_Position_X);
+  VectorXd x0 = this->m_pEmbedding->Traits().Vector3d(Tag::Tag_Position_X);
 
   Vector3d xt = this->m_vxt;
 

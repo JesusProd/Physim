@@ -31,11 +31,11 @@ EnergyElement_DER_BendTwist::EnergyElement_DER_BendTwist(
   this->m_vedges = vedges;
 
   this->m_vDoF.resize(5);
-  this->m_vDoF[0] = vedges[0]->GetTail()->Traits().Kinematics(Tag_DOF_0);
-  this->m_vDoF[1] = vedges[0]->GetHead()->Traits().Kinematics(Tag_DOF_0);
-  this->m_vDoF[2] = vedges[1]->GetHead()->Traits().Kinematics(Tag_DOF_0);
-  this->m_vDoF[3] = vedges[0]->Traits().Kinematics(Tag_DOF_0);
-  this->m_vDoF[4] = vedges[1]->Traits().Kinematics(Tag_DOF_0);
+  this->m_vDoF[0] = vedges[0]->GetTail()->Traits().Kinematics(Tag::Tag_DOF_0);
+  this->m_vDoF[1] = vedges[0]->GetHead()->Traits().Kinematics(Tag::Tag_DOF_0);
+  this->m_vDoF[2] = vedges[1]->GetHead()->Traits().Kinematics(Tag::Tag_DOF_0);
+  this->m_vDoF[3] = vedges[0]->Traits().Kinematics(Tag::Tag_DOF_0);
+  this->m_vDoF[4] = vedges[1]->Traits().Kinematics(Tag::Tag_DOF_0);
 
   this->m_vgradient.resize(11);
   this->m_mHessian.resize(11, 11);
@@ -57,24 +57,24 @@ EnergyElement_DER_BendTwist::~EnergyElement_DER_BendTwist(void) {
 }
 
 void EnergyElement_DER_BendTwist::Init() {
-  this->m_intVolume = 0.5 * this->m_vedges[0]->VolumeBasis(Tag_Position_0) +
-                      0.5 * this->m_vedges[1]->VolumeBasis(Tag_Position_0);
+  this->m_intVolume = 0.5 * this->m_vedges[0]->VolumeBasis(Tag::Tag_Position_0) +
+                      0.5 * this->m_vedges[1]->VolumeBasis(Tag::Tag_Position_0);
 
-  this->m_bend0 = this->ComputeBendStrain(Tag_Position_0);
-  this->m_twist0 = this->ComputeTwistStrain(Tag_Position_0);
+  this->m_bend0 = this->ComputeBendStrain(Tag::Tag_Position_0);
+  this->m_twist0 = this->ComputeTwistStrain(Tag::Tag_Position_0);
 }
 
 void EnergyElement_DER_BendTwist::ComputeAndStore_Energy_Internal() {
   // Get data
 
-  Vector3d e1 = this->m_vedges[0]->Vector(Tag_Position_X);
-  Vector3d e2 = this->m_vedges[1]->Vector(Tag_Position_X);
+  Vector3d e1 = this->m_vedges[0]->Vector(Tag::Tag_Position_X);
+  Vector3d e2 = this->m_vedges[1]->Vector(Tag::Tag_Position_X);
 
-  const Frame3d& Fr_e = this->m_vedges[0]->Traits().Frame3d(Tag_Frame_X);
-  const Frame3d& Fr_f = this->m_vedges[1]->Traits().Frame3d(Tag_Frame_X);
-  const Real& t_e = this->m_vedges[0]->Traits().Double(Tag_Angle_X);
-  const Real& t_f = this->m_vedges[1]->Traits().Double(Tag_Angle_X);
-  const Real& rt = this->m_vedges[0]->GetHead()->Traits().Double(Tag_Twist_X);
+  const Frame3d& Fr_e = this->m_vedges[0]->Traits().Frame3d(Tag::Tag_Frame_X);
+  const Frame3d& Fr_f = this->m_vedges[1]->Traits().Frame3d(Tag::Tag_Frame_X);
+  const Real& t_e = this->m_vedges[0]->Traits().Double(Tag::Tag_Angle_X);
+  const Real& t_f = this->m_vedges[1]->Traits().Double(Tag::Tag_Angle_X);
+  const Real& rt = this->m_vedges[0]->GetHead()->Traits().Double(Tag::Tag_Twist_X);
 
   // Get material
 
@@ -92,17 +92,17 @@ void EnergyElement_DER_BendTwist::ComputeAndStore_Energy_Internal() {
 
   // Get radius
 
-  Real vradh[2] = {this->m_vedges[0]->Traits().Double(Tag_Size_0),
-                   this->m_vedges[1]->Traits().Double(Tag_Size_0)};
-  Real vradw[2] = {this->m_vedges[0]->Traits().Double(Tag_Size_1),
-                   this->m_vedges[1]->Traits().Double(Tag_Size_1)};
+  Real vradh[2] = {this->m_vedges[0]->Traits().Double(Tag::Tag_Size_0),
+                   this->m_vedges[1]->Traits().Double(Tag::Tag_Size_0)};
+  Real vradw[2] = {this->m_vedges[0]->Traits().Double(Tag::Tag_Size_1),
+                   this->m_vedges[1]->Traits().Double(Tag::Tag_Size_1)};
 
   // Compute
 
   this->m_energy = getBTEnergyOPT(
       vshear, vyoung, vradw, vradh,
-      this->m_vedges[0]->VolumeBasis(Tag_Position_0),
-      this->m_vedges[1]->VolumeBasis(Tag_Position_0), this->m_bend0.data(),
+      this->m_vedges[0]->VolumeBasis(Tag::Tag_Position_0),
+      this->m_vedges[1]->VolumeBasis(Tag::Tag_Position_0), this->m_bend0.data(),
       this->m_twist0, Fr_e.nor.data(), Fr_e.tan.data(), Fr_f.nor.data(),
       Fr_f.tan.data(), rt, e1.data(), e2.data(), t_e, t_f);
 }
@@ -110,14 +110,14 @@ void EnergyElement_DER_BendTwist::ComputeAndStore_Energy_Internal() {
 void EnergyElement_DER_BendTwist::ComputeAndStore_Gradient_Internal() {
   // Get data
 
-  Vector3d e1 = this->m_vedges[0]->Vector(Tag_Position_X);
-  Vector3d e2 = this->m_vedges[1]->Vector(Tag_Position_X);
+  Vector3d e1 = this->m_vedges[0]->Vector(Tag::Tag_Position_X);
+  Vector3d e2 = this->m_vedges[1]->Vector(Tag::Tag_Position_X);
 
-  const Frame3d& Fr_e = this->m_vedges[0]->Traits().Frame3d(Tag_Frame_X);
-  const Frame3d& Fr_f = this->m_vedges[1]->Traits().Frame3d(Tag_Frame_X);
-  const Real& t_e = this->m_vedges[0]->Traits().Double(Tag_Angle_X);
-  const Real& t_f = this->m_vedges[1]->Traits().Double(Tag_Angle_X);
-  const Real& rt = this->m_vedges[0]->GetHead()->Traits().Double(Tag_Twist_X);
+  const Frame3d& Fr_e = this->m_vedges[0]->Traits().Frame3d(Tag::Tag_Frame_X);
+  const Frame3d& Fr_f = this->m_vedges[1]->Traits().Frame3d(Tag::Tag_Frame_X);
+  const Real& t_e = this->m_vedges[0]->Traits().Double(Tag::Tag_Angle_X);
+  const Real& t_f = this->m_vedges[1]->Traits().Double(Tag::Tag_Angle_X);
+  const Real& rt = this->m_vedges[0]->GetHead()->Traits().Double(Tag::Tag_Twist_X);
 
   // Get material
 
@@ -135,18 +135,18 @@ void EnergyElement_DER_BendTwist::ComputeAndStore_Gradient_Internal() {
 
   // Get radius
 
-  Real vradh[2] = {this->m_vedges[0]->Traits().Double(Tag_Size_0),
-                   this->m_vedges[1]->Traits().Double(Tag_Size_0)};
-  Real vradw[2] = {this->m_vedges[0]->Traits().Double(Tag_Size_1),
-                   this->m_vedges[1]->Traits().Double(Tag_Size_1)};
+  Real vradh[2] = {this->m_vedges[0]->Traits().Double(Tag::Tag_Size_0),
+                   this->m_vedges[1]->Traits().Double(Tag::Tag_Size_0)};
+  Real vradw[2] = {this->m_vedges[0]->Traits().Double(Tag::Tag_Size_1),
+                   this->m_vedges[1]->Traits().Double(Tag::Tag_Size_1)};
 
   // Compute
 
   VectorXd vg(8);
 
   getBTGradientOPT(vshear, vyoung, vradw, vradh,
-                   this->m_vedges[0]->VolumeBasis(Tag_Position_0),
-                   this->m_vedges[1]->VolumeBasis(Tag_Position_0),
+                   this->m_vedges[0]->VolumeBasis(Tag::Tag_Position_0),
+                   this->m_vedges[1]->VolumeBasis(Tag::Tag_Position_0),
                    this->m_bend0.data(), this->m_twist0, Fr_e.nor.data(),
                    Fr_e.tan.data(), Fr_f.nor.data(), Fr_f.tan.data(), rt,
                    e1.data(), e2.data(), t_e, t_f, vg.data());
@@ -159,8 +159,8 @@ void EnergyElement_DER_BendTwist::ComputeAndStore_Gradient_Internal() {
 
   //	gt_e = (getBTEnergyOPT(
   //		vshear, vyoung, vradw, vradh,
-  //		this->m_vedges[0]->VolumeBasis(Tag_Position_0),
-  //		this->m_vedges[1]->VolumeBasis(Tag_Position_0),
+  //		this->m_vedges[0]->VolumeBasis(Tag::Tag_Position_0),
+  //		this->m_vedges[1]->VolumeBasis(Tag::Tag_Position_0),
   //		this->m_bend0.data(), this->m_twist0,
   //		Fr_e.nor.data(), Fr_e.tan.data(),
   //		Fr_f.nor.data(), Fr_f.tan.data(),
@@ -168,8 +168,8 @@ void EnergyElement_DER_BendTwist::ComputeAndStore_Gradient_Internal() {
   //		-
   //		getBTEnergyOPT(
   //			vshear, vyoung, vradw, vradh,
-  //			this->m_vedges[0]->VolumeBasis(Tag_Position_0),
-  //			this->m_vedges[1]->VolumeBasis(Tag_Position_0),
+  //			this->m_vedges[0]->VolumeBasis(Tag::Tag_Position_0),
+  //			this->m_vedges[1]->VolumeBasis(Tag::Tag_Position_0),
   //			this->m_bend0.data(), this->m_twist0,
   //			Fr_e.nor.data(), Fr_e.tan.data(),
   //			Fr_f.nor.data(), Fr_f.tan.data(),
@@ -178,8 +178,8 @@ void EnergyElement_DER_BendTwist::ComputeAndStore_Gradient_Internal() {
 
   //	gt_f = (getBTEnergyOPT(
   //		vshear, vyoung, vradw, vradh,
-  //		this->m_vedges[0]->VolumeBasis(Tag_Position_0),
-  //		this->m_vedges[1]->VolumeBasis(Tag_Position_0),
+  //		this->m_vedges[0]->VolumeBasis(Tag::Tag_Position_0),
+  //		this->m_vedges[1]->VolumeBasis(Tag::Tag_Position_0),
   //		this->m_bend0.data(), this->m_twist0,
   //		Fr_e.nor.data(), Fr_e.tan.data(),
   //		Fr_f.nor.data(), Fr_f.tan.data(),
@@ -187,8 +187,8 @@ void EnergyElement_DER_BendTwist::ComputeAndStore_Gradient_Internal() {
   //		-
   //		getBTEnergyOPT(
   //			vshear, vyoung, vradw, vradh,
-  //			this->m_vedges[0]->VolumeBasis(Tag_Position_0),
-  //			this->m_vedges[1]->VolumeBasis(Tag_Position_0),
+  //			this->m_vedges[0]->VolumeBasis(Tag::Tag_Position_0),
+  //			this->m_vedges[1]->VolumeBasis(Tag::Tag_Position_0),
   //			this->m_bend0.data(), this->m_twist0,
   //			Fr_e.nor.data(), Fr_e.tan.data(),
   //			Fr_f.nor.data(), Fr_f.tan.data(),
@@ -204,14 +204,14 @@ void EnergyElement_DER_BendTwist::ComputeAndStore_Gradient_Internal() {
 void EnergyElement_DER_BendTwist::ComputeAndStore_Hessian_Internal() {
   // Get data
 
-  Vector3d e1 = this->m_vedges[0]->Vector(Tag_Position_X);
-  Vector3d e2 = this->m_vedges[1]->Vector(Tag_Position_X);
+  Vector3d e1 = this->m_vedges[0]->Vector(Tag::Tag_Position_X);
+  Vector3d e2 = this->m_vedges[1]->Vector(Tag::Tag_Position_X);
 
-  const Frame3d& Fr_e = this->m_vedges[0]->Traits().Frame3d(Tag_Frame_X);
-  const Frame3d& Fr_f = this->m_vedges[1]->Traits().Frame3d(Tag_Frame_X);
-  const Real& t_e = this->m_vedges[0]->Traits().Double(Tag_Angle_X);
-  const Real& t_f = this->m_vedges[1]->Traits().Double(Tag_Angle_X);
-  const Real& rt = this->m_vedges[0]->GetHead()->Traits().Double(Tag_Twist_X);
+  const Frame3d& Fr_e = this->m_vedges[0]->Traits().Frame3d(Tag::Tag_Frame_X);
+  const Frame3d& Fr_f = this->m_vedges[1]->Traits().Frame3d(Tag::Tag_Frame_X);
+  const Real& t_e = this->m_vedges[0]->Traits().Double(Tag::Tag_Angle_X);
+  const Real& t_f = this->m_vedges[1]->Traits().Double(Tag::Tag_Angle_X);
+  const Real& rt = this->m_vedges[0]->GetHead()->Traits().Double(Tag::Tag_Twist_X);
 
   // Get material
 
@@ -229,18 +229,18 @@ void EnergyElement_DER_BendTwist::ComputeAndStore_Hessian_Internal() {
 
   // Get radius
 
-  Real vradh[2] = {this->m_vedges[0]->Traits().Double(Tag_Size_0),
-                   this->m_vedges[1]->Traits().Double(Tag_Size_0)};
-  Real vradw[2] = {this->m_vedges[0]->Traits().Double(Tag_Size_1),
-                   this->m_vedges[1]->Traits().Double(Tag_Size_1)};
+  Real vradh[2] = {this->m_vedges[0]->Traits().Double(Tag::Tag_Size_0),
+                   this->m_vedges[1]->Traits().Double(Tag::Tag_Size_0)};
+  Real vradw[2] = {this->m_vedges[0]->Traits().Double(Tag::Tag_Size_1),
+                   this->m_vedges[1]->Traits().Double(Tag::Tag_Size_1)};
 
   // Compute
 
   MatrixXd mH(8, 8);
 
   getBTHessianOPT(vshear, vyoung, vradw, vradh,
-                  this->m_vedges[0]->VolumeBasis(Tag_Position_0),
-                  this->m_vedges[1]->VolumeBasis(Tag_Position_0),
+                  this->m_vedges[0]->VolumeBasis(Tag::Tag_Position_0),
+                  this->m_vedges[1]->VolumeBasis(Tag::Tag_Position_0),
                   this->m_bend0.data(), this->m_twist0, Fr_e.nor.data(),
                   Fr_e.tan.data(), Fr_f.nor.data(), Fr_f.tan.data(), rt,
                   e1.data(), e2.data(), t_e, t_f, mH.transpose().data());
@@ -249,7 +249,7 @@ void EnergyElement_DER_BendTwist::ComputeAndStore_Hessian_Internal() {
 }
 
 Vector2d EnergyElement_DER_BendTwist::ComputeBendStrain(Tag s) {
-  if (s != Tag_Position_0 && s != Tag_Position_X)
+  if (s != Tag::Tag_Position_0 && s != Tag::Tag_Position_X)
     throw PhySim::exception("Invalid Tag: [Position_0 | Position_X]");
 
   Vector3d e;
@@ -260,28 +260,28 @@ Vector2d EnergyElement_DER_BendTwist::ComputeBendStrain(Tag s) {
   Real t_f;
   Real rt;
 
-  if (s == Tag_Position_0) {
-    e = this->m_vedges[0]->Vector(Tag_Position_0);
-    f = this->m_vedges[1]->Vector(Tag_Position_0);
+  if (s == Tag::Tag_Position_0) {
+    e = this->m_vedges[0]->Vector(Tag::Tag_Position_0);
+    f = this->m_vedges[1]->Vector(Tag::Tag_Position_0);
 
-    Fr_e = this->m_vedges[0]->Traits().Frame3d(Tag_Frame_0);
-    Fr_f = this->m_vedges[1]->Traits().Frame3d(Tag_Frame_0);
-    t_e = this->m_vedges[0]->Traits().Double(Tag_Angle_0);
-    t_f = this->m_vedges[1]->Traits().Double(Tag_Angle_0);
+    Fr_e = this->m_vedges[0]->Traits().Frame3d(Tag::Tag_Frame_0);
+    Fr_f = this->m_vedges[1]->Traits().Frame3d(Tag::Tag_Frame_0);
+    t_e = this->m_vedges[0]->Traits().Double(Tag::Tag_Angle_0);
+    t_f = this->m_vedges[1]->Traits().Double(Tag::Tag_Angle_0);
 
     rt = 0;
   }
 
-  if (s == Tag_Position_X) {
-    e = this->m_vedges[0]->Vector(Tag_Position_X);
-    f = this->m_vedges[1]->Vector(Tag_Position_X);
+  if (s == Tag::Tag_Position_X) {
+    e = this->m_vedges[0]->Vector(Tag::Tag_Position_X);
+    f = this->m_vedges[1]->Vector(Tag::Tag_Position_X);
 
-    Fr_e = this->m_vedges[0]->Traits().Frame3d(Tag_Frame_X);
-    Fr_f = this->m_vedges[1]->Traits().Frame3d(Tag_Frame_X);
-    t_e = this->m_vedges[0]->Traits().Double(Tag_Angle_X);
-    t_f = this->m_vedges[1]->Traits().Double(Tag_Angle_X);
+    Fr_e = this->m_vedges[0]->Traits().Frame3d(Tag::Tag_Frame_X);
+    Fr_f = this->m_vedges[1]->Traits().Frame3d(Tag::Tag_Frame_X);
+    t_e = this->m_vedges[0]->Traits().Double(Tag::Tag_Angle_X);
+    t_f = this->m_vedges[1]->Traits().Double(Tag::Tag_Angle_X);
 
-    rt = this->m_vedges[0]->GetHead()->Traits().Double(Tag_Twist_X);
+    rt = this->m_vedges[0]->GetHead()->Traits().Double(Tag::Tag_Twist_X);
   }
 
   // Compute curvature binormal
@@ -304,24 +304,24 @@ Vector2d EnergyElement_DER_BendTwist::ComputeBendStrain(Tag s) {
 }
 
 Real EnergyElement_DER_BendTwist::ComputeTwistStrain(Tag s) {
-  if (s != Tag_Position_0 && s != Tag_Position_X)
+  if (s != Tag::Tag_Position_0 && s != Tag::Tag_Position_X)
     throw PhySim::exception("Invalid Tag: [Position_0 | Position_X]");
 
   Real t_e;
   Real t_f;
   Real rt;
 
-  if (s == Tag_Position_0) {
-    t_e = this->m_vedges[0]->Traits().Double(Tag_Angle_0);  // Material twist
-    t_f = this->m_vedges[1]->Traits().Double(Tag_Angle_0);  // Material twist
+  if (s == Tag::Tag_Position_0) {
+    t_e = this->m_vedges[0]->Traits().Double(Tag::Tag_Angle_0);  // Material twist
+    t_f = this->m_vedges[1]->Traits().Double(Tag::Tag_Angle_0);  // Material twist
     rt = 0;
   }
 
-  if (s == Tag_Position_X) {
-    t_e = this->m_vedges[0]->Traits().Double(Tag_Angle_X);  // Material twist
-    t_f = this->m_vedges[1]->Traits().Double(Tag_Angle_X);  // Material twist
+  if (s == Tag::Tag_Position_X) {
+    t_e = this->m_vedges[0]->Traits().Double(Tag::Tag_Angle_X);  // Material twist
+    t_f = this->m_vedges[1]->Traits().Double(Tag::Tag_Angle_X);  // Material twist
     rt = this->m_vedges[0]->GetHead()->Traits().Double(
-        Tag_Twist_X);  // Reference twist
+        Tag::Tag_Twist_X);  // Reference twist
   }
 
   return t_f - t_e + rt;

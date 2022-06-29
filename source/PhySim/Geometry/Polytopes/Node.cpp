@@ -24,10 +24,10 @@ Node::Node(int ID, const Vector3d& vpos, const vector<Tag>& vtraits)
   this->m_pSFunction = ShapeFunction_Node::Instance();
 
   // If there are not define traits, the position of
-  // the node is stored in the Tag_Position_0 data layer.
+  // the node is stored in the Tag::Tag_Position_0 data layer.
 
   if (vtraits.empty()) {
-    m_traits.AddTrait(Tag_Position_0, vpos);
+    m_traits.AddTrait(Tag::Tag_Position_0, vpos);
   } else {
     for (int i = 0; i < (int)vtraits.size(); ++i)
       m_traits.AddTrait(vtraits[i], vpos);

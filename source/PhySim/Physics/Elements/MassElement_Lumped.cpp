@@ -48,7 +48,7 @@ void MassElement_Lumped::ComputeAndStore_Mass() {
   Real density = m_pParams->GetParameter(ParameterSet::Param_Density);
 
   int numDOF = this->GetSupportSize();
-  double mass = density * m_pPoly->VolumeBasis(Tag_Position_0);
+  double mass = density * m_pPoly->VolumeBasis(Tag::Tag_Position_0);
   this->m_mMass =
       MatrixXd::Identity(numDOF, numDOF) * mass / m_pPoly->NumNodes();
 }

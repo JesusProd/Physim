@@ -32,7 +32,7 @@ void Curve::Init(const MatrixXd& mV, const vector<Tag>& vs) {
   for (int i = 0; i < numV - 1; ++i)
     mE.row(i) = Vector2i(i, i + 1);
 
-  Mesh_Edge::Init(mV, mE, Discretization_Edge2, vs);
+  Mesh_Edge::Init(mV, mE, Discretization::Discretization_Edge2, vs);
 }
 
 Curve::~Curve() {

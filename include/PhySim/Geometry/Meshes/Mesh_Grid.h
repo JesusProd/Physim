@@ -101,14 +101,14 @@ class Mesh_Grid : public Mesh_Hexa {
             const Vector3d& vsize,
             const Vector3i& vdims,
             const iVector& voccup,
-            Discretization D = Discretization_Hex8,
+            Discretization D = Discretization::Discretization_Hex8,
             const vector<Tag>& vs = vector<Tag>());
 
   void Init(const Vector3d& vorigin,
             const Vector3d& vsize,
             const Vector3i& vdims,
             const iVector& voccup,
-            Discretization D = Discretization_Hex8,
+            Discretization D = Discretization::Discretization_Hex8,
             const vector<Tag>& vs = vector<Tag>());
 
   virtual ~Mesh_Grid(void);

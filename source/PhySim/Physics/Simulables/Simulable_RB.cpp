@@ -64,7 +64,7 @@ void Simulable_RB::InitInternal() {
 
     PtrS<KEleRigidBody3D> pRB(new KEleRigidBody3D(this, pGeom.get()));
     pRB->Initialize();
-    pGeom->Traits().AddTrait<IDoFSet*>(Tag_DOF_0, pRB.get());
+    pGeom->Traits().AddTrait<IDoFSet*>(Tag::Tag_DOF_0, pRB.get());
     vpEle[i] = dynamic_pointer_cast<KinematicsEle>(pRB);
 
     // Add particle kinematics
@@ -79,7 +79,7 @@ void Simulable_RB::InitInternal() {
         vpPar[j]->Initialize();
       }
 
-      pGeom->Nodes()[j]->Traits().AddTrait<IDoFSet*>(Tag_DOF_0, vpPar[j].get());
+      pGeom->Nodes()[j]->Traits().AddTrait<IDoFSet*>(Tag::Tag_DOF_0, vpPar[j].get());
     }
     KMapRB2Particle3D* pMapRB = new KMapRB2Particle3D();
     // PtrS<KMapRB2Particle3D> pMapRB = make_shared<KMapRB2Particle3D>();

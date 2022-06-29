@@ -42,7 +42,7 @@ MassElement_RigidBody::~MassElement_RigidBody(void) {
 
 void MassElement_RigidBody::Init() {
   Real rho = this->m_pParams->GetParameter(ParameterSet::Param_Density);
-  this->m_pGeom->MassProperties(Tag_Position_0, rho, this->m_mass0, this->m_vc0,
+  this->m_pGeom->MassProperties(Tag::Tag_Position_0, rho, this->m_mass0, this->m_vc0,
                                 this->m_mI0);
 }
 

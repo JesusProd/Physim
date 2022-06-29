@@ -35,7 +35,7 @@ BC_PlaneColl::BC_PlaneColl(Simulable* pModel,
   this->m_vini[1] = m_vn;
 
   this->m_pFilter.reset(new GeometryFilter_PlaneDistNode(
-      Tag_Position_X, vp, vn, Vector2d(-HUGE_VAL, tol)));
+      Tag::Tag_Position_X, vp, vn, Vector2d(-HUGE_VAL, tol)));
 }
 
 BC_PlaneColl::~BC_PlaneColl(void) {

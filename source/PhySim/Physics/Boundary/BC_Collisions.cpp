@@ -43,7 +43,7 @@ void BC_Collisions::Init() {
 }
 
 void BC_Collisions::Update() {
-  IOUtils::logTrace(V1_Default, "\n[TRACE] Detecting collisions...");
+  IOUtils::logTrace(Verbosity::V1_Default, "\n[TRACE] Detecting collisions...");
 
   // Signal that collision detection is about to begin.
   OnDetectCollisions.Emit(this);
@@ -85,12 +85,12 @@ void BC_Collisions::Update() {
             rContactSet.vContactsA, rContactSet.vContactsB);
       } else {
         IOUtils::logTrace(
-            V3_HardDebug, "Unsupported contact detection between %s and %s",
+            Verbosity::V3_HardDebug, "Unsupported contact detection between %s and %s",
             m_vColliders[i]->Name().c_str(), m_vColliders[j]->Name().c_str());
       }
     }
 
-  IOUtils::logTrace(V1_Default, "\n[TRACE] Generating contacts...");
+  IOUtils::logTrace(Verbosity::V1_Default, "\n[TRACE] Generating contacts...");
 
   // After generating all contacts, iterate through all the contacts
   // and generate the corresponding constraints and energy elements.
@@ -107,7 +107,7 @@ void BC_Collisions::Update() {
                      rContactSet.vpEnergyElements.end());
     }
 
-  IOUtils::logTrace(V1_Default, "\n[TRACE] Generated %i contact constraints",
+  IOUtils::logTrace(Verbosity::V1_Default, "\n[TRACE] Generated %i contact constraints",
                     m_vpCon.size());
 
   // Signal that collision detection just finished.
@@ -139,8 +139,8 @@ void BC_Collisions::DetectContacts(const PtrS<Collider_SphereCloud>& pColliderA,
     const Collider_SphereCloud::Point& pPointA = vpPointsA[Candidate.first];
     const Collider_SphereCloud::Point& pPointB = vpPointsB[Candidate.second];
 
-    VectorXd PositionA = pPointA.Position->InterpolateValue(Tag_Position_X);
-    VectorXd PositionB = pPointB.Position->InterpolateValue(Tag_Position_X);
+    VectorXd PositionA = pPointA.Position->InterpolateValue(Tag::Tag_Position_X);
+    VectorXd PositionB = pPointB.Position->InterpolateValue(Tag::Tag_Position_X);
     Real RadiusA = pPointA.Radius;
     Real RadiusB = pPointB.Radius;
     Real TotalRadius = RadiusA + RadiusB;
@@ -154,9 +154,9 @@ void BC_Collisions::DetectContacts(const PtrS<Collider_SphereCloud>& pColliderA,
     // with adjacent neighbors.
     if (IsSelfCollision) {
       VectorXd RestPositionA =
-          pPointA.Position->InterpolateValue(Tag_Position_0);
+          pPointA.Position->InterpolateValue(Tag::Tag_Position_0);
       VectorXd RestPositionB =
-          pPointB.Position->InterpolateValue(Tag_Position_0);
+          pPointB.Position->InterpolateValue(Tag::Tag_Position_0);
 
       Real RestDistance = (RestPositionA - RestPositionB).squaredNorm() -
                           TotalRadius * TotalRadius;

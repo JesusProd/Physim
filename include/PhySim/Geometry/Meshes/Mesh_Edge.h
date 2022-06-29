@@ -37,11 +37,11 @@ class Mesh_Edge : public Mesh {
   Mesh_Edge(const Mesh_Edge& toCopy);
   Mesh_Edge(const MatrixXd& mV,
             const MatrixXi& mE,
-            Discretization D = Discretization_Edge2,
+            Discretization D = Discretization::Discretization_Edge2,
             const vector<Tag>& vnodeTraits = vector<Tag>());
   void Init(const MatrixXd& mV,
             const MatrixXi& mE,
-            Discretization D = Discretization_Edge2,
+            Discretization D = Discretization::Discretization_Edge2,
             const vector<Tag>& vnodeTraits = vector<Tag>());
   virtual ~Mesh_Edge(void);
 

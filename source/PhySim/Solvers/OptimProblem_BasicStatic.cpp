@@ -36,17 +36,17 @@ void OptimProblem_BasicStatic::Init(ISimulable* pM) {
 }
 
 void OptimProblem_BasicStatic::GetVariables(VectorXd& vx) const {
-  m_pM->GetDOFVector(vx, Tag_Position_X);
+  m_pM->GetDOFVector(vx, Tag::Tag_Position_X);
 }
 
 void OptimProblem_BasicStatic::IncVariables(const VectorXd& vx) {
   VectorXd vx0;
-  m_pM->GetDOFVector(vx0, Tag_Position_X);
-  m_pM->SetDOFVector(vx0 + vx, Tag_Position_X);
+  m_pM->GetDOFVector(vx0, Tag::Tag_Position_X);
+  m_pM->SetDOFVector(vx0 + vx, Tag::Tag_Position_X);
 }
 
 void OptimProblem_BasicStatic::SetVariables(const VectorXd& vx) {
-  m_pM->SetDOFVector(vx, Tag_Position_X);
+  m_pM->SetDOFVector(vx, Tag::Tag_Position_X);
 }
 
 bool OptimProblem_BasicStatic::GetEnergy(Real& e) {

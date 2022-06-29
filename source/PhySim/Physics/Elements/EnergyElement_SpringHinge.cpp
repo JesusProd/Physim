@@ -42,8 +42,8 @@ EnergyElement_SpringHinge::~EnergyElement_SpringHinge() {
 
 void EnergyElement_SpringHinge::Init() {
   this->m_restAngle = this->ComputeRestAngle();
-  this->m_intVolume = 0.5 * (this->m_pEdge0->VolumeBasis(Tag_Position_0) +
-                             this->m_pEdge1->VolumeBasis(Tag_Position_0));
+  this->m_intVolume = 0.5 * (this->m_pEdge0->VolumeBasis(Tag::Tag_Position_0) +
+                             this->m_pEdge1->VolumeBasis(Tag::Tag_Position_0));
 }
 
 Real EnergyElement_SpringHinge::ComputeRestAngle() {

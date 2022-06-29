@@ -138,17 +138,17 @@ inline int Simulable::GetNumFixedDOF() const {
 void Simulable::GetDOFVector(VectorXd& vx, Tag s) const {
   vx.resize(this->GetNumFullDOF());
 
-  if (s == Tag_Position_X) {
+  if (s == Tag::Tag_Position_X) {
     this->m_pTree->GetPositionX(vx);
     return;
   }
 
-  if (s == Tag_Position_0) {
+  if (s == Tag::Tag_Position_0) {
     this->m_pTree->GetPosition0(vx);
     return;
   }
 
-  if (s == Tag_Velocity) {
+  if (s == Tag::Tag_Velocity) {
     this->m_pTree->GetVelocity(vx);
     return;
   }
@@ -157,19 +157,19 @@ void Simulable::GetDOFVector(VectorXd& vx, Tag s) const {
 void Simulable::SetDOFVector(const VectorXd& vx, Tag s) {
   assert(vx.size() == this->GetNumFullDOF());
 
-  if (s == Tag_Position_X) {
+  if (s == Tag::Tag_Position_X) {
     this->m_pTree->SetPositionX(vx);
     this->DirtyKinematics();
     return;
   }
 
-  if (s == Tag_Velocity) {
+  if (s == Tag::Tag_Velocity) {
     this->m_pTree->SetVelocity(vx);
     this->DirtyKinematics();
     return;
   }
 
-  if (s == Tag_Position_0) {
+  if (s == Tag::Tag_Position_0) {
     this->m_pTree->SetPosition0(vx);
     this->DirtyRest();
     return;
@@ -259,8 +259,6 @@ inline const VectorXd& Simulable::GetConstraint() {
     this->ComputeAndStore_Constraint();
 
   throw new PhySim::exception("Not implemented: deprecated");
-
-  return VectorXd();
 }
 
 inline const MatrixSd& Simulable::GetJacobian() {
@@ -268,8 +266,6 @@ inline const MatrixSd& Simulable::GetJacobian() {
     this->ComputeAndStore_Jacobian();
 
   throw new PhySim::exception("Not implemented: deprecated");
-
-  return MatrixSd();
 }
 
 void Simulable::GetEnergy(Real& energy, bool addBC) {
@@ -912,43 +908,52 @@ void Simulable::DirtyFixed() {
 }
 
 bool Simulable::IsDirty_Energy() const {
-  return (this->m_dirtyFlags & (int)DirtyFlags::Dirty_Energy) != 0;
+  return (this->m_dirtyFlags & DirtyFlags::Dirty_Energy) != DirtyFlags::Dirty_None;
 }
 
 bool Simulable::IsDirty_Gradient() const {
-  return (this->m_dirtyFlags & (int)DirtyFlags::Dirty_Gradient) != 0;
+  return (this->m_dirtyFlags & DirtyFlags::Dirty_Gradient) !=
+         DirtyFlags::Dirty_None;
 }
 
 bool Simulable::IsDirty_Hessian() const {
-  return (this->m_dirtyFlags & (int)DirtyFlags::Dirty_Hessian) != 0;
+  return (this->m_dirtyFlags & DirtyFlags::Dirty_Hessian) !=
+         DirtyFlags::Dirty_None;
 }
 
 bool Simulable::IsDirty_Mass() const {
-  return (this->m_dirtyFlags & (int)DirtyFlags::Dirty_Mass) != 0;
+  return (this->m_dirtyFlags & DirtyFlags::Dirty_Mass) !=
+         DirtyFlags::Dirty_None;
 }
 
 bool Simulable::IsDirty_Rest() const {
-  return (this->m_dirtyFlags & (int)DirtyFlags::Dirty_Rest) != 0;
+  return (this->m_dirtyFlags & DirtyFlags::Dirty_Rest) !=
+         DirtyFlags::Dirty_None;
 }
 
 bool Simulable::IsDirty_Constraint() const {
-  return (this->m_dirtyFlags & (int)DirtyFlags::Dirty_Constraint) != 0;
+  return (this->m_dirtyFlags & DirtyFlags::Dirty_Constraint) !=
+         DirtyFlags::Dirty_None;
 }
 
 bool Simulable::IsDirty_Jacobian() const {
-  return (this->m_dirtyFlags & (int)DirtyFlags::Dirty_Jacobian) != 0;
+  return (this->m_dirtyFlags & DirtyFlags::Dirty_Jacobian) !=
+         DirtyFlags::Dirty_None;
 }
 
 bool Simulable::IsDirty_Fixed() const {
-  return (this->m_dirtyFlags & (int)DirtyFlags::Dirty_Fixed) != 0;
+  return (this->m_dirtyFlags & DirtyFlags::Dirty_Fixed) !=
+         DirtyFlags::Dirty_None;
 }
 
 bool Simulable::IsDirty_Kinematics() const {
-  return (this->m_dirtyFlags & (int)DirtyFlags::Dirty_Kinematics) != 0;
+  return (this->m_dirtyFlags & DirtyFlags::Dirty_Kinematics) !=
+         DirtyFlags::Dirty_None;
 }
 
 bool Simulable::IsDirty_Mechanics() const {
-  return (this->m_dirtyFlags & (int)DirtyFlags::Dirty_Mechanics) != 0;
+  return (this->m_dirtyFlags & DirtyFlags::Dirty_Mechanics) !=
+         DirtyFlags::Dirty_None;
 }
 
 void Simulable::ComputeAndStore_Rest() {
@@ -1292,7 +1297,7 @@ void Simulable::TestGlobalGradient() {
   Real eps = 1e-6;
 
   VectorXd vxF;
-  this->GetDOFVector(vxF, Tag_Position_X);
+  this->GetDOFVector(vxF, Tag::Tag_Position_X);
 
   VectorXd vs0;
   this->GetState(vs0);
@@ -1306,7 +1311,7 @@ void Simulable::TestGlobalGradient() {
     // +
     SetState(vs0);
     vxF(i) += eps;
-    this->SetDOFVector(vxF, Tag_Position_X);
+    this->SetDOFVector(vxF, Tag::Tag_Position_X);
     // this->ComputeAndStore_Energy();
     Real ep;
     GetEnergy(ep);
@@ -1314,7 +1319,7 @@ void Simulable::TestGlobalGradient() {
     // -
     SetState(vs0);
     vxF(i) -= 2 * eps;
-    this->SetDOFVector(vxF, Tag_Position_X);
+    this->SetDOFVector(vxF, Tag::Tag_Position_X);
     // this->ComputeAndStore_Energy();
     Real em;
     GetEnergy(em);
@@ -1358,7 +1363,7 @@ void Simulable::TestGlobalHessian() {
   Real eps = 1e-6;
 
   VectorXd vxF;
-  this->GetDOFVector(vxF, Tag_Position_X);
+  this->GetDOFVector(vxF, Tag::Tag_Position_X);
 
   VectorXd vs0;
   this->GetState(vs0);
@@ -1370,7 +1375,7 @@ void Simulable::TestGlobalHessian() {
     // +
     SetState(vs0);
     vxF(i) += eps;
-    this->SetDOFVector(vxF, Tag_Position_X);
+    this->SetDOFVector(vxF, Tag::Tag_Position_X);
     // this->ComputeAndStore_Gradient();
     AVectorXd vgp;
     GetGradient(vgp);
@@ -1378,7 +1383,7 @@ void Simulable::TestGlobalHessian() {
     // -
     SetState(vs0);
     vxF(i) -= 2 * eps;
-    this->SetDOFVector(vxF, Tag_Position_X);
+    this->SetDOFVector(vxF, Tag::Tag_Position_X);
     // this->ComputeAndStore_Gradient();
     AVectorXd vgm;
     GetGradient(vgm);

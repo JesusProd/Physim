@@ -47,12 +47,12 @@ void ConstraintSet_NodeInCurve::ComputeAndStore_Values() {
 
   vector<PtrS<Embedding>> ve;
 
-  this->m_pCurve->ComputeProjection(vx.transpose(), ve, Tag_Position_0);
+  this->m_pCurve->ComputeProjection(vx.transpose(), ve, Tag::Tag_Position_0);
 
   const Edge* pEdge = static_cast<const Edge*>(ve[0]->Master());
-  this->m_v0 = pEdge->GetTail()->Traits().Vector3d(Tag_Position_0);
-  this->m_v1 = pEdge->GetHead()->Traits().Vector3d(Tag_Position_0);
-  this->m_vt = pEdge->Tangent(Tag_Position_0);
+  this->m_v0 = pEdge->GetTail()->Traits().Vector3d(Tag::Tag_Position_0);
+  this->m_v1 = pEdge->GetHead()->Traits().Vector3d(Tag::Tag_Position_0);
+  this->m_vt = pEdge->Tangent(Tag::Tag_Position_0);
   this->m_mP = Matrix3d::Identity() - m_vt * m_vt.transpose();
 
   // Compute constraint

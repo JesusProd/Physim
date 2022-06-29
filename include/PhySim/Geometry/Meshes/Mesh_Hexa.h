@@ -25,12 +25,12 @@ class Mesh_Hexa : public Mesh_Cell {
   Mesh_Hexa(const Mesh_Hexa& toCopy);
   Mesh_Hexa(const MatrixXd& mV,
             const MatrixXi& mC,
-            Discretization D = Discretization_Hex8,
+            Discretization D = Discretization::Discretization_Hex8,
             const vector<Tag>& vs = vector<Tag>());
 
   void Init(const MatrixXd& mV,
             const MatrixXi& mF,
-            Discretization D = Discretization_Hex8,
+            Discretization D = Discretization::Discretization_Hex8,
             const vector<Tag>& vs = vector<Tag>());
 
   virtual ~Mesh_Hexa(void);

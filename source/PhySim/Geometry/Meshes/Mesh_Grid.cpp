@@ -512,8 +512,8 @@ vector<Node*> Mesh_Grid::ClusterNodes(map<Poly*, vector<Node*>>& mcandidates) {
             pThatNode = pThatElem->Nodes()[vthatSide[j]];
           else
             pThatNode = mcandidates[pThatElem][vthatSide[j]];
-          assert((pThisNode->Traits().Vector3d(Tag_Position_X) -
-                  pThatNode->Traits().Vector3d(Tag_Position_X))
+          assert((pThisNode->Traits().Vector3d(Tag::Tag_Position_X) -
+                  pThatNode->Traits().Vector3d(Tag::Tag_Position_X))
                      .norm() < 1e-6);
           bool found = false;
           for (auto it = vclusters.begin(); it != vclusters.end(); ++it)
@@ -546,8 +546,8 @@ vector<Node*> Mesh_Grid::ClusterNodes(map<Poly*, vector<Node*>>& mcandidates) {
             pThatNode = pThatElem->Nodes()[vthatSide[j]];
           else
             pThatNode = mcandidates[pThatElem][vthatSide[j]];
-          assert((pThisNode->Traits().Vector3d(Tag_Position_X) -
-                  pThatNode->Traits().Vector3d(Tag_Position_X))
+          assert((pThisNode->Traits().Vector3d(Tag::Tag_Position_X) -
+                  pThatNode->Traits().Vector3d(Tag::Tag_Position_X))
                      .norm() < 1e-6);
           bool found = false;
           for (auto it = vclusters.begin(); it != vclusters.end(); ++it)
@@ -580,8 +580,8 @@ vector<Node*> Mesh_Grid::ClusterNodes(map<Poly*, vector<Node*>>& mcandidates) {
             pThatNode = pThatElem->Nodes()[vthatSide[j]];
           else
             pThatNode = mcandidates[pThatElem][vthatSide[j]];
-          assert((pThisNode->Traits().Vector3d(Tag_Position_X) -
-                  pThatNode->Traits().Vector3d(Tag_Position_X))
+          assert((pThisNode->Traits().Vector3d(Tag::Tag_Position_X) -
+                  pThatNode->Traits().Vector3d(Tag::Tag_Position_X))
                      .norm() < 1e-6);
           bool found = false;
           for (auto it = vclusters.begin(); it != vclusters.end(); ++it)
@@ -614,8 +614,8 @@ vector<Node*> Mesh_Grid::ClusterNodes(map<Poly*, vector<Node*>>& mcandidates) {
             pThatNode = pThatElem->Nodes()[vthatSide[j]];
           else
             pThatNode = mcandidates[pThatElem][vthatSide[j]];
-          assert((pThisNode->Traits().Vector3d(Tag_Position_X) -
-                  pThatNode->Traits().Vector3d(Tag_Position_X))
+          assert((pThisNode->Traits().Vector3d(Tag::Tag_Position_X) -
+                  pThatNode->Traits().Vector3d(Tag::Tag_Position_X))
                      .norm() < 1e-6);
           bool found = false;
           for (auto it = vclusters.begin(); it != vclusters.end(); ++it)
@@ -649,8 +649,8 @@ vector<Node*> Mesh_Grid::ClusterNodes(map<Poly*, vector<Node*>>& mcandidates) {
             pThatNode = pThatElem->Nodes()[vthatSide[j]];
           else
             pThatNode = mcandidates[pThatElem][vthatSide[j]];
-          assert((pThisNode->Traits().Vector3d(Tag_Position_X) -
-                  pThatNode->Traits().Vector3d(Tag_Position_X))
+          assert((pThisNode->Traits().Vector3d(Tag::Tag_Position_X) -
+                  pThatNode->Traits().Vector3d(Tag::Tag_Position_X))
                      .norm() < 1e-6);
           bool found = false;
           for (auto it = vclusters.begin(); it != vclusters.end(); ++it)
@@ -683,8 +683,8 @@ vector<Node*> Mesh_Grid::ClusterNodes(map<Poly*, vector<Node*>>& mcandidates) {
             pThatNode = pThatElem->Nodes()[vthatSide[j]];
           else
             pThatNode = mcandidates[pThatElem][vthatSide[j]];
-          assert((pThisNode->Traits().Vector3d(Tag_Position_X) -
-                  pThatNode->Traits().Vector3d(Tag_Position_X))
+          assert((pThisNode->Traits().Vector3d(Tag::Tag_Position_X) -
+                  pThatNode->Traits().Vector3d(Tag::Tag_Position_X))
                      .norm() < 1e-6);
           bool found = false;
           for (auto it = vclusters.begin(); it != vclusters.end(); ++it)
@@ -1053,7 +1053,7 @@ void Mesh_Grid::CollectCutAffectedNodesAndElems(const Matrix3d& mR,
   set<Poly*> selems;
 
   for (auto i = pCut->vcutNodes.begin(); i != pCut->vcutNodes.end(); ++i) {
-    const GridNodeMeta& gridNodeMeta = (*i)->Trait<GridNodeMeta>(Tag_GridMeta);
+    const GridNodeMeta& gridNodeMeta = (*i)->Trait<GridNodeMeta>(Tag::Tag_GridMeta);
     selems.insert(gridNodeMeta.vNeiElems.begin(), gridNodeMeta.vNeiElems.end());
   }
 
@@ -1085,8 +1085,8 @@ Mesh_Grid::~Mesh_Grid(void) {
 
 void Mesh_Grid::FreeMetadata() {
   this->m_mdualEdges.clear();
-  this->DelNodesTrait(Tag_GridMeta);
-  this->DelElemsTrait(Tag_GridMeta);
+  this->DelNodesTrait(Tag::Tag_GridMeta);
+  this->DelElemsTrait(Tag::Tag_GridMeta);
 }
 
 void Mesh_Grid::UpdateMetadata() {

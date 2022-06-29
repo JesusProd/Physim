@@ -53,9 +53,9 @@ ConstraintSet_NodeNodeColl::ConstraintSet_NodeNodeColl(Simulable* pModel,
   if (this->m_isTwoWay) {
     this->m_vDoFs.reserve(m_NumNodesA + m_NumNodesB);
     for (auto pNode : pMasterA->Nodes())
-      this->m_vDoFs.push_back(pNode->Traits().Kinematics(Tag_DOF_0));
+      this->m_vDoFs.push_back(pNode->Traits().Kinematics(Tag::Tag_DOF_0));
     for (auto pNode : pMasterB->Nodes())
-      this->m_vDoFs.push_back(pNode->Traits().Kinematics(Tag_DOF_0));
+      this->m_vDoFs.push_back(pNode->Traits().Kinematics(Tag::Tag_DOF_0));
 
     this->m_size = 1;
     this->m_vvalues.resize(1);
@@ -66,7 +66,7 @@ ConstraintSet_NodeNodeColl::ConstraintSet_NodeNodeColl(Simulable* pModel,
   } else {
     this->m_vDoFs.reserve(m_NumNodesA);
     for (auto pNode : pMasterA->Nodes())
-      this->m_vDoFs.push_back(pNode->Traits().Kinematics(Tag_DOF_0));
+      this->m_vDoFs.push_back(pNode->Traits().Kinematics(Tag::Tag_DOF_0));
 
     this->m_size = 1;
     this->m_vvalues.resize(1);
@@ -110,8 +110,8 @@ void ConstraintSet_NodeNodeColl::ComputeAndStore_Constraint() {
   // L = |D|
   // C = tol - L
 
-  Vector3d vxA = m_pEmbedA->InterpolateValue(Tag_Position_X);
-  Vector3d vxB = m_pEmbedB->InterpolateValue(Tag_Position_X);
+  Vector3d vxA = m_pEmbedA->InterpolateValue(Tag::Tag_Position_X);
+  Vector3d vxB = m_pEmbedB->InterpolateValue(Tag::Tag_Position_X);
 
   const Vector3d vD = vxA - vxB;
   const Real L = vD.norm();
@@ -121,7 +121,7 @@ void ConstraintSet_NodeNodeColl::ComputeAndStore_Constraint() {
   /*
   for (size_t i = 0; i < m_vDoFs.size(); ++i)
   {
-      Vector3d x = m_vDoFs[i]->Geometry()->Traits().Vector3d(Tag_Position_X);
+      Vector3d x = m_vDoFs[i]->Geometry()->Traits().Vector3d(Tag::Tag_Position_X);
       cout << i << " = " << x.transpose() << endl;
   }
 
@@ -137,8 +137,8 @@ void ConstraintSet_NodeNodeColl::ComputeAndStore_Jacobian() {
   //   dL/da = (D^T / L) * dD/da
 
   // Compute Jacobian w.r.t xa and xb.
-  Vector3d vxA = m_pEmbedA->InterpolateValue(Tag_Position_X);
-  Vector3d vxB = m_pEmbedB->InterpolateValue(Tag_Position_X);
+  Vector3d vxA = m_pEmbedA->InterpolateValue(Tag::Tag_Position_X);
+  Vector3d vxB = m_pEmbedB->InterpolateValue(Tag::Tag_Position_X);
 
   const Vector3d vD = vxA - vxB;
   const Real L = vD.norm();
@@ -166,8 +166,8 @@ void ConstraintSet_NodeNodeColl::ComputeAndStore_Hessian() {
   // d2L/dadb = (1 / L) * [(dD/db)^T * dD/da + D^T * d2D/dadb - dL/da * dL/db^T]
 
   // Compute Hessian w.r.t xa and xb.
-  Vector3d vxA = m_pEmbedA->InterpolateValue(Tag_Position_X);
-  Vector3d vxB = m_pEmbedB->InterpolateValue(Tag_Position_X);
+  Vector3d vxA = m_pEmbedA->InterpolateValue(Tag::Tag_Position_X);
+  Vector3d vxB = m_pEmbedB->InterpolateValue(Tag::Tag_Position_X);
   const Vector3d vD = vxA - vxB;
   const Real L = vD.norm();
 

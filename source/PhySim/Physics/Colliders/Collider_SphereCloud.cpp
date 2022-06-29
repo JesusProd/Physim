@@ -24,7 +24,7 @@ size_t Collider_SphereCloud::Object::NumElements() const {
 
 AlignedBox3d Collider_SphereCloud::Object::BBox(size_t index) const {
   const Point& rPoint = pInstance->m_vPoints[index];
-  const Vector3d vPosition = rPoint.Position->InterpolateValue(Tag_Position_X);
+  const Vector3d vPosition = rPoint.Position->InterpolateValue(Tag::Tag_Position_X);
   const Real Radius = rPoint.Radius;
 
   const Vector3d vMinAABB = vPosition - Vector3d::Constant(Radius);
@@ -68,7 +68,7 @@ void Collider_SphereCloud::Init(Geometry* pGeom,
                     "\n[TRACE] Collider radius set to %f", Radius);
 
   // Compute the embeddings with respect to the simulable objects.
-  pMesh->ComputeEmbedding(mPoints, m_vEmbeddings, Tag_Position_0);
+  pMesh->ComputeEmbedding(mPoints, m_vEmbeddings, Tag::Tag_Position_0);
 
   // Build point cloud based upon this information.
   m_vPoints.reserve(m_vEmbeddings.size());

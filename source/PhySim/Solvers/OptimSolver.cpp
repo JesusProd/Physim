@@ -265,22 +265,22 @@ const OptimState& OptimSolver::SolveFull() {
 
   string status;
   switch (this->m_state.m_result) {
-    case OR_FAILURE:
+    case OSResult::OR_FAILURE:
       status = "[FAILURE]";
       break;
-    case OR_SUCCESS:
+    case OSResult::OR_SUCCESS:
       status = "[SUCCESS]";
       break;
-    case OR_MINSTEP:
+    case OSResult::OR_MINSTEP:
       status = "[MINSTEP]";
       break;
-    case OR_MINIMPR:
+    case OSResult::OR_MINIMPR:
       status = "[MINIMPR]";
       break;
-    case OR_MAXITER:
+    case OSResult::OR_MAXITER:
       status = "[MAXITER]";
       break;
-    case OR_NONDESC:
+    case OSResult::OR_NONDESC:
       status = "[NONDESC]";
       break;
   }
@@ -376,7 +376,7 @@ bool OptimSolver::LineSearch(const VectorXd& dxTry,
           this->LineSearch_WolfeStrong(dxTry, dxFin, objNew, vgNew, numBis);
       break;
     case LSearchType::LSearch_None:
-      improved = this->LSearch_None(dxTry, dxFin, objNew, vgNew, numBis);
+      improved = this->LineSearch_None(dxTry, dxFin, objNew, vgNew, numBis);
       break;
     default:
       throw exception("Invalid line search type");
@@ -883,7 +883,7 @@ bool OptimSolver::LineSearch_WolfeStrong(const VectorXd& dxIn,
   return improved;
 }
 
-bool OptimSolver::LSearch_None(const VectorXd& dxIn,
+bool OptimSolver::LineSearch_None(const VectorXd& dxIn,
                                VectorXd& dxOut,
                                Real& objNew,
                                AVectorXd& vgNew,

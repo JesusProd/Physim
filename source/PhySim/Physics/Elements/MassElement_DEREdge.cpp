@@ -40,9 +40,9 @@ void MassElement_DEREdge::Init() {
 void MassElement_DEREdge::ComputeAndStore_Mass() {
   Real rho = (*m_pModelDER->SetupOptions().m_pMatParams->GetValueAtDomainPoint(
       this->m_pEdge->ID()))[ParameterSet::Param_Density];
-  Real rw = this->m_pEdge->Traits().Double(Tag_Size_0);
-  Real rh = this->m_pEdge->Traits().Double(Tag_Size_1);
-  Real V = this->m_pEdge->VolumeBasis(Tag_Position_0);
+  Real rw = this->m_pEdge->Traits().Double(Tag::Tag_Size_0);
+  Real rh = this->m_pEdge->Traits().Double(Tag::Tag_Size_1);
+  Real V = this->m_pEdge->VolumeBasis(Tag::Tag_Position_0);
   Real ra = 0.5 * (rw + rh);
 
   this->m_mMass(0, 0) = (rho * V * ra * ra) / 2;

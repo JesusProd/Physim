@@ -75,7 +75,7 @@ class Mesh_GridCoarsen : public Mesh_Grid {
                    const Vector3i& vfineDims,
                    const Vector3i& vcoarDims,
                    const iVector& vfineOccu,
-                   Discretization D = Discretization_Hex8,
+                   Discretization D = Discretization::Discretization_Hex8,
                    const vector<Tag>& vs = vector<Tag>());
 
   void Init(const Vector3d& vorigin,
@@ -83,7 +83,7 @@ class Mesh_GridCoarsen : public Mesh_Grid {
             const Vector3i& vfineDims,
             const Vector3i& vcoarDims,
             const iVector& vfineOccu,
-            Discretization D = Discretization_Hex8,
+            Discretization D = Discretization::Discretization_Hex8,
             const vector<Tag>& vs = vector<Tag>());
 
   virtual ~Mesh_GridCoarsen(void);

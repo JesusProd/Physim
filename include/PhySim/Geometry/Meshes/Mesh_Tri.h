@@ -24,11 +24,11 @@ class Mesh_Tri : public Mesh_Face {
   Mesh_Tri(const Mesh_Tri& toCopy);
   Mesh_Tri(const MatrixXd& mV,
            const MatrixXi& mF,
-           Discretization D = Discretization_Tri3,
+           Discretization D = Discretization::Discretization_Tri3,
            const vector<Tag>& vnTraits = vector<Tag>());
   void Init(const MatrixXd& mV,
             const MatrixXi& mF,
-            Discretization D = Discretization_Tri3,
+            Discretization D = Discretization::Discretization_Tri3,
             const vector<Tag>& vnTraits = vector<Tag>());
   virtual ~Mesh_Tri(void);
 

@@ -48,25 +48,25 @@ EnergyElement_DiscreteShells::~EnergyElement_DiscreteShells(void) {
 }
 
 void EnergyElement_DiscreteShells::Init() {
-  this->m_shape0 = this->ComputeShape(Tag_Position_0);
-  this->m_theta0 = this->ComputeDihedral(Tag_Position_0);
+  this->m_shape0 = this->ComputeShape(Tag::Tag_Position_0);
+  this->m_theta0 = this->ComputeDihedral(Tag::Tag_Position_0);
   this->m_intVolume = this->m_shape0;
 }
 
 void EnergyElement_DiscreteShells::ComputeAndStore_Energy_Internal() {
-  Vector3d x0 = this->m_vnodes[0]->Traits().Vector3d(Tag_Position_X);
-  Vector3d x1 = this->m_vnodes[1]->Traits().Vector3d(Tag_Position_X);
-  Vector3d x2 = this->m_vnodes[2]->Traits().Vector3d(Tag_Position_X);
-  Vector3d x3 = this->m_vnodes[3]->Traits().Vector3d(Tag_Position_X);
+  Vector3d x0 = this->m_vnodes[0]->Traits().Vector3d(Tag::Tag_Position_X);
+  Vector3d x1 = this->m_vnodes[1]->Traits().Vector3d(Tag::Tag_Position_X);
+  Vector3d x2 = this->m_vnodes[2]->Traits().Vector3d(Tag::Tag_Position_X);
+  Vector3d x3 = this->m_vnodes[3]->Traits().Vector3d(Tag::Tag_Position_X);
 
   Real kB = 0;
 
-  if (this->m_pEdge->Traits().HasTrait(Tag_Mat_BendingK)) {
-    kB = this->m_pEdge->Traits().Double(Tag_Mat_BendingK);
+  if (this->m_pEdge->Traits().HasTrait(Tag::Tag_Mat_BendingK)) {
+    kB = this->m_pEdge->Traits().Double(Tag::Tag_Mat_BendingK);
   } else {
-    Real Y = this->m_pEdge->Traits().Double(Tag_Mat_Young);
-    Real v = this->m_pEdge->Traits().Double(Tag_Mat_Poisson);
-    Real t = this->m_pEdge->Traits().Double(Tag_Mat_Thickness);
+    Real Y = this->m_pEdge->Traits().Double(Tag::Tag_Mat_Young);
+    Real v = this->m_pEdge->Traits().Double(Tag::Tag_Mat_Poisson);
+    Real t = this->m_pEdge->Traits().Double(Tag::Tag_Mat_Thickness);
     kB = (Y * t * t * t) / (12 * (1 - v * v));
   }
 
@@ -81,19 +81,19 @@ void EnergyElement_DiscreteShells::ComputeAndStore_Energy_Internal() {
 }
 
 void EnergyElement_DiscreteShells::ComputeAndStore_Gradient_Internal() {
-  Vector3d x0 = this->m_vnodes[0]->Traits().Vector3d(Tag_Position_X);
-  Vector3d x1 = this->m_vnodes[1]->Traits().Vector3d(Tag_Position_X);
-  Vector3d x2 = this->m_vnodes[2]->Traits().Vector3d(Tag_Position_X);
-  Vector3d x3 = this->m_vnodes[3]->Traits().Vector3d(Tag_Position_X);
+  Vector3d x0 = this->m_vnodes[0]->Traits().Vector3d(Tag::Tag_Position_X);
+  Vector3d x1 = this->m_vnodes[1]->Traits().Vector3d(Tag::Tag_Position_X);
+  Vector3d x2 = this->m_vnodes[2]->Traits().Vector3d(Tag::Tag_Position_X);
+  Vector3d x3 = this->m_vnodes[3]->Traits().Vector3d(Tag::Tag_Position_X);
 
   Real kB = 0;
 
-  if (this->m_pEdge->Traits().HasTrait(Tag_Mat_BendingK)) {
-    kB = this->m_pEdge->Traits().Double(Tag_Mat_BendingK);
+  if (this->m_pEdge->Traits().HasTrait(Tag::Tag_Mat_BendingK)) {
+    kB = this->m_pEdge->Traits().Double(Tag::Tag_Mat_BendingK);
   } else {
-    Real Y = this->m_pEdge->Traits().Double(Tag_Mat_Young);
-    Real v = this->m_pEdge->Traits().Double(Tag_Mat_Poisson);
-    Real t = this->m_pEdge->Traits().Double(Tag_Mat_Thickness);
+    Real Y = this->m_pEdge->Traits().Double(Tag::Tag_Mat_Young);
+    Real v = this->m_pEdge->Traits().Double(Tag::Tag_Mat_Poisson);
+    Real t = this->m_pEdge->Traits().Double(Tag::Tag_Mat_Thickness);
     kB = (Y * t * t * t) / (12 * (1 - v * v));
   }
 
@@ -109,12 +109,12 @@ void EnergyElement_DiscreteShells::ComputeAndStore_Gradient_Internal() {
       m_vgradient[i] = vg[i];
   }
 
-  // Real theta = this->ComputeDihedral(Tag_Position_X);
+  // Real theta = this->ComputeDihedral(Tag::Tag_Position_X);
 
   // Mesh_Face::HE_Edge* pheEdge =
   // this->m_pMesh->GetHEEdge(this->m_pEdge->ID()); Vector3d vn0 =
-  // pheEdge->m_pheHalf0->m_pheFace->m_pHandle->Normal(Tag_Position_X); Vector3d
-  // vn1 = pheEdge->m_pheHalf1->m_pheFace->m_pHandle->Normal(Tag_Position_X);
+  // pheEdge->m_pheHalf0->m_pheFace->m_pHandle->Normal(Tag::Tag_Position_X); Vector3d
+  // vn1 = pheEdge->m_pheHalf1->m_pheFace->m_pHandle->Normal(Tag::Tag_Position_X);
   // Real h0 = this->helperDistance(x2, x0, x1);
   // Real h1 = this->helperDistance(x3, x0, x1);
   // Vector2d w0 = this->helperBarycentric(x2, x0, x1);
@@ -129,19 +129,19 @@ void EnergyElement_DiscreteShells::ComputeAndStore_Gradient_Internal() {
 }
 
 void EnergyElement_DiscreteShells::ComputeAndStore_Hessian_Internal() {
-  Vector3d x0 = this->m_vnodes[0]->Traits().Vector3d(Tag_Position_X);
-  Vector3d x1 = this->m_vnodes[1]->Traits().Vector3d(Tag_Position_X);
-  Vector3d x2 = this->m_vnodes[2]->Traits().Vector3d(Tag_Position_X);
-  Vector3d x3 = this->m_vnodes[3]->Traits().Vector3d(Tag_Position_X);
+  Vector3d x0 = this->m_vnodes[0]->Traits().Vector3d(Tag::Tag_Position_X);
+  Vector3d x1 = this->m_vnodes[1]->Traits().Vector3d(Tag::Tag_Position_X);
+  Vector3d x2 = this->m_vnodes[2]->Traits().Vector3d(Tag::Tag_Position_X);
+  Vector3d x3 = this->m_vnodes[3]->Traits().Vector3d(Tag::Tag_Position_X);
 
   Real kB = 0;
 
-  if (this->m_pEdge->Traits().HasTrait(Tag_Mat_BendingK)) {
-    kB = this->m_pEdge->Traits().Double(Tag_Mat_BendingK);
+  if (this->m_pEdge->Traits().HasTrait(Tag::Tag_Mat_BendingK)) {
+    kB = this->m_pEdge->Traits().Double(Tag::Tag_Mat_BendingK);
   } else {
-    Real Y = this->m_pEdge->Traits().Double(Tag_Mat_Young);
-    Real v = this->m_pEdge->Traits().Double(Tag_Mat_Poisson);
-    Real t = this->m_pEdge->Traits().Double(Tag_Mat_Thickness);
+    Real Y = this->m_pEdge->Traits().Double(Tag::Tag_Mat_Young);
+    Real v = this->m_pEdge->Traits().Double(Tag::Tag_Mat_Poisson);
+    Real t = this->m_pEdge->Traits().Double(Tag::Tag_Mat_Thickness);
     kB = (Y * t * t * t) / (12 * (1 - v * v));
   }
 
@@ -158,13 +158,13 @@ void EnergyElement_DiscreteShells::ComputeAndStore_Hessian_Internal() {
         m_mHessian(i, j) = mHspd[i][j];
   }
 
-  // Real theta = this->ComputeDihedral(Tag_Position_X);
+  // Real theta = this->ComputeDihedral(Tag::Tag_Position_X);
 
   // Mesh_Face* pMeshFace = static_cast<Mesh_Face*>(this->m_pMesh);
   // Mesh_Face::HE_Edge* pheEdge = pMeshFace->GetHEEdge(this->m_pEdge->ID());
   // Vector3d vn0 =
-  // pheEdge->m_pheHalf0->m_pheFace->m_pHandle->Normal(Tag_Position_X); Vector3d
-  // vn1 = pheEdge->m_pheHalf1->m_pheFace->m_pHandle->Normal(Tag_Position_X);
+  // pheEdge->m_pheHalf0->m_pheFace->m_pHandle->Normal(Tag::Tag_Position_X); Vector3d
+  // vn1 = pheEdge->m_pheHalf1->m_pheFace->m_pHandle->Normal(Tag::Tag_Position_X);
   // Real h0 = this->helperDistance(x2, x0, x1);
   // Real h1 = this->helperDistance(x3, x0, x1);
   // Vector2d w0 = this->helperBarycentric(x2, x0, x1);

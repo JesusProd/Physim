@@ -39,7 +39,7 @@ void LinearSolver_BiCGSTAB::Init(const MatrixSd& mA,
   this->m_solver.setMaxIterations(options.maxIters);
   this->m_solver.analyzePattern(mAFull);
 
-  if (m_solver.info() != LS_SUCCESS) {
+  if (m_solver.info() != ComputationInfo::Success) {
     IOUtils::logTrace(
         Verbosity::V1_Default,
         "\n[WARNING] Linear solve: error during preconditioner analysis");
@@ -83,7 +83,7 @@ LSResult LinearSolver_BiCGSTAB::SolveInternal(MatrixSd& mA,
 
     // Check computation
 
-    if (m_solver.info() != LS_SUCCESS) {
+    if (m_solver.info() != ComputationInfo::Success) {
       IOUtils::logTrace(Verbosity::V1_Default,
                         "\n[FAILURE] Linear solve: error during preconditioner "
                         "factorization");
@@ -94,7 +94,7 @@ LSResult LinearSolver_BiCGSTAB::SolveInternal(MatrixSd& mA,
 
     // Check calculation
 
-    if (m_solver.info() != LS_SUCCESS) {
+    if (m_solver.info() != ComputationInfo::Success) {
       IOUtils::logTrace(
           Verbosity::V1_Default,
           "\n[WARNING] Linear solve: it was impossible to solve accurately");

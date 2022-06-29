@@ -35,7 +35,7 @@ BC_NodeInCurve::BC_NodeInCurve(Simulable* pModel,
 
   this->m_vini.resize(this->m_pCurve->NumNodes());
   for (int i = 0; i < this->m_pCurve->NumNodes(); ++i)
-    this->m_vini[i] = pCurve->Nodes()[i]->Traits().Vector3d(Tag_Position_0);
+    this->m_vini[i] = pCurve->Nodes()[i]->Traits().Vector3d(Tag::Tag_Position_0);
 }
 
 BC_NodeInCurve::~BC_NodeInCurve(void) {
@@ -73,7 +73,7 @@ void BC_NodeInCurve::Update() {
   this->GetCurValues(vval);
 
   for (int i = 0; i < vval.size(); ++i) {
-    this->m_pCurve->Nodes()[i]->Traits().Vector3d(Tag_Position_0) = vval[i];
+    this->m_pCurve->Nodes()[i]->Traits().Vector3d(Tag::Tag_Position_0) = vval[i];
   }
 
   if (this->m_isSoft) {

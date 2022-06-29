@@ -17,7 +17,7 @@ using namespace Eigen;
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
-enum Discretization {
+enum struct Discretization {
   Discretization_Nodes,
   Discretization_Edge2,  // Linear edge
   Discretization_Edge3,  // Quadratic edge
@@ -33,7 +33,7 @@ enum Discretization {
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
-enum LSSolverType {
+enum struct LSSolverType {
   LS_EigenLU,
   LS_EigenCG,
   LS_EigenLDLT,
@@ -45,7 +45,7 @@ enum LSSolverType {
   LS_CUDASC
 };
 
-enum QPSolverType {
+enum struct QPSolverType {
   QP_Steepest,
   QP_Newton,
   QP_LBFGS,
@@ -54,7 +54,7 @@ enum QPSolverType {
   QP_BFGS_I,
 };
 
-enum LSearchType {
+enum struct LSearchType {
   LSearch_None,
   LSearch_Simple,
   LSearch_Armijo,
@@ -62,9 +62,9 @@ enum LSearchType {
   LSearch_WolfeStrong
 };
 
-enum StepSelType { SS_LineSearch, SS_TrustRegion };
+enum struct StepSelType { SS_LineSearch, SS_TrustRegion };
 
-enum LSResult {
+enum struct LSResult {
   LS_SUCCESS,   // Generic success
   LS_FAILURE,   // Generic failure
   LS_SINGULAR,  // Singular matrix (rank deficient)
@@ -72,7 +72,7 @@ enum LSResult {
   LS_MAXITER,   // Maximum iterations reached
 };
 
-enum OSResult {
+enum struct OSResult {
   OR_ONGOING,  // Not finished yet
   OR_SUCCESS,  // Generic success
   OR_MINSTEP,  // Minimum step reached
@@ -84,7 +84,7 @@ enum OSResult {
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
-enum DirtyFlags {
+enum struct DirtyFlags : int {
   Dirty_None = 0,
   Dirty_Energy = 1,
   Dirty_Gradient = 2,
@@ -120,7 +120,7 @@ inline DirtyFlags operator~(DirtyFlags a) {
 
 // Data semantics
 
-enum Tag {
+enum struct Tag {
   // DoF
 
   Tag_DOF_0,
@@ -284,7 +284,7 @@ struct exception {
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
-enum Verbosity {
+enum struct Verbosity {
   V0_Silence,
   V1_Default,
   V2_SoftDebug,

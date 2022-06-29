@@ -73,8 +73,8 @@ void EnergyElement_FEM::Init() {
 
   m_pSampleData = pShape->CreateDeformationData();
   m_pSampleData->SetPoly(m_pElemPoly);
-  m_pSampleData->SetTag0(Tag_Position_0);
-  m_pSampleData->SetTagX(Tag_Position_X);
+  m_pSampleData->SetTag0(Tag::Tag_Position_0);
+  m_pSampleData->SetTagX(Tag::Tag_Position_X);
   m_pSampleData->SetPoints(vp);
 
   pShape->InitDeformationAtSamples(m_pSampleData);
@@ -107,7 +107,7 @@ void EnergyElement_FEM::Init() {
 
   // Set the integration volume
 
-  this->m_intVolume = this->m_pElemPoly->VolumeBasis(Tag_Position_0);
+  this->m_intVolume = this->m_pElemPoly->VolumeBasis(Tag::Tag_Position_0);
 
   // If it's 2D elemente embedded in 3D space, consider also thickness
 
@@ -125,7 +125,7 @@ void EnergyElement_FEM::Init() {
 }
 
 void EnergyElement_FEM::ComputeAndStore_Energy_Internal() {
-  if (this->m_pElemPoly->VolumeBasis(Tag_Position_X) < 0) {
+  if (this->m_pElemPoly->VolumeBasis(Tag::Tag_Position_X) < 0) {
     IOUtils::logTrace(PhySim::Verbosity::V1_Default,
                       "\n[WARNING] Inverted element detected!");
     this->m_energy = HUGE_VAL;

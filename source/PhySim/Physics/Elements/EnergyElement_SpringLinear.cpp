@@ -42,7 +42,7 @@ void EnergyElement_SpringLinear::Init() {
 }
 
 Real EnergyElement_SpringLinear::ComputeRestLength() {
-  return this->m_pEdge->VolumeBasis(Tag_Position_0);
+  return this->m_pEdge->VolumeBasis(Tag::Tag_Position_0);
 }
 
 void EnergyElement_SpringLinear::ComputeAndStore_Energy_Internal() {

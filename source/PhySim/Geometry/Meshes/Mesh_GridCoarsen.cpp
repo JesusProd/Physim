@@ -261,8 +261,8 @@ void Mesh_GridCoarsen::UpdateMetadata() {
   this->Traits().AddTrait<PtrS<Mesh>>(Tag::Tag_FineMesh_0, this->m_pFineMesh);
 
   MatrixXd mVfine;
-  this->m_pFineMesh->GetNodesTrait(mVfine, Tag_Position_0);
-  this->EmbedMesh(*this->m_pFineMesh, Tag_Position_0);
+  this->m_pFineMesh->GetNodesTrait(mVfine, Tag::Tag_Position_0);
+  this->EmbedMesh(*this->m_pFineMesh, Tag::Tag_Position_0);
 }
 
 void Mesh_GridCoarsen::InitializeCoarseElements_RegularGrid() {
@@ -505,7 +505,7 @@ void Mesh_GridCoarsen::RecomputeCoarseFineSubmesh(int coarElemIdx) {
   // position)
 
   MatrixXd mN;
-  this->Elems()[coarElemIdx]->GetNodesTrait(mN, Tag_Position_0);
+  this->Elems()[coarElemIdx]->GetNodesTrait(mN, Tag::Tag_Position_0);
   Vector3d vminBox = mN.colwise().minCoeff();
   Vector3d vmaxBox = mN.colwise().maxCoeff();
   Vector3d vranBox = vmaxBox - vminBox;
@@ -526,9 +526,9 @@ void Mesh_GridCoarsen::RecomputeCoarseFineSubmesh(int coarElemIdx) {
     for (int k = 0; k < pFineElem->NumNodes(); ++k) {
       Node* pFineNode = pFineElem->Nodes()[k];
       map<int, int>& mlocalFullIdx =
-          pFineNode->Trait<FineNodeMeta>(Tag_FineMeta).mLocalFullIdx;
+          pFineNode->Trait<FineNodeMeta>(Tag::Tag_FineMeta).mLocalFullIdx;
       map<int, int>& mlocalActiveIdx =
-          pFineNode->Trait<FineNodeMeta>(Tag_FineMeta).mLocalActiveIdx;
+          pFineNode->Trait<FineNodeMeta>(Tag::Tag_FineMeta).mLocalActiveIdx;
       mlocalFullIdx.erase(coarElemIdx);
       mlocalActiveIdx.erase(coarElemIdx);
     }
@@ -561,11 +561,11 @@ void Mesh_GridCoarsen::RecomputeCoarseFineSubmesh(int coarElemIdx) {
     for (int k = 0; k < pFineElem->NumNodes(); ++k) {
       Node* pFineNode = pFineElem->Nodes()[k];
       map<int, int>& mlocalFullIdx =
-          pFineNode->Trait<FineNodeMeta>(Tag_FineMeta).mLocalFullIdx;
+          pFineNode->Trait<FineNodeMeta>(Tag::Tag_FineMeta).mLocalFullIdx;
       map<int, int>& mlocalActiveIdx =
-          pFineNode->Trait<FineNodeMeta>(Tag_FineMeta).mLocalActiveIdx;
+          pFineNode->Trait<FineNodeMeta>(Tag::Tag_FineMeta).mLocalActiveIdx;
       if (mlocalActiveIdx.find(coarElemIdx) == mlocalActiveIdx.end()) {
-        Vector3d pos = pFineNode->Traits().Vector3d(Tag_Position_0);
+        Vector3d pos = pFineNode->Traits().Vector3d(Tag::Tag_Position_0);
         Real alphaX = 1e-6 + (pos.x() - vminBox.x()) / vranBox.x();
         Real alphaY = 1e-6 + (pos.y() - vminBox.y()) / vranBox.y();
         Real alphaZ = 1e-6 + (pos.z() - vminBox.z()) / vranBox.z();

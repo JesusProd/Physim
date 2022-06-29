@@ -47,9 +47,9 @@ void EnergyElement_SpringBetwNodes::Init() {
 }
 
 Real EnergyElement_SpringBetwNodes::ComputeRestLength() {
-  // return this->m_pEdge->VolumeBasis(Tag_Position_0);
-  Vector3d n1 = m_node1->Traits().Vector3d(Tag_Position_0);
-  Vector3d n2 = m_node2->Traits().Vector3d(Tag_Position_0);
+  // return this->m_pEdge->VolumeBasis(Tag::Tag_Position_0);
+  Vector3d n1 = m_node1->Traits().Vector3d(Tag::Tag_Position_0);
+  Vector3d n2 = m_node2->Traits().Vector3d(Tag::Tag_Position_0);
 
   return (n2 - n1).norm();
 }
