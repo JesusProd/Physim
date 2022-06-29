@@ -45,7 +45,7 @@ struct OptimSolverOptions {
   bool profileTime;
 
   OptimSolverOptions() {
-    qpSolverType = QPSolverType::QP_Newton;
+    qpSolverType = QPSolverType::Newton;
     tolMaxError = 1e-6;
     tolMinStep = 1e-5;
     minStepMaxCount = 3;
@@ -55,12 +55,12 @@ struct OptimSolverOptions {
     trySteepest = true;
     maxStepSize = 1000;
 
-    lsSolverType = LSSolverType::LS_EigenLDLT;
+    lsSolverType = LSSolverType::EigenLDLT;
     lsNumRegTrials = 10;
     lsNumMaxIters = 1000;
     lsTolMaxError = 1e-9;
 
-    lSearchType = LSearchType::LSearch_Simple;
+    lSearchType = LSearchType::Simple;
     lSearch_alpha = 0.5;
     lSearch_wolfe1 = 1e-4;
     lSearch_wolfe2 = 0.9;
@@ -214,10 +214,10 @@ class OptimSolver : public IOptimSolver {
                                       AVectorXd& vgNew,
                                       int& numBis);
   virtual bool LineSearch_None(const VectorXd& dxIn,
-                            VectorXd& dxOut,
-                            Real& objNew,
-                            AVectorXd& vgNew,
-                            int& numBis);
+                               VectorXd& dxOut,
+                               Real& objNew,
+                               AVectorXd& vgNew,
+                               int& numBis);
 
   virtual void UpdateStepResult(const VectorXd& dx,
                                 const Real& objNew,

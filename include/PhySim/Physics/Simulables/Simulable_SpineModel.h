@@ -90,11 +90,11 @@ class Simulable_SpineModel : public Simulable_Composite {
       }
       // else if (i < 17 + 24 ) {
       // ////nbVertVertJoints + nbVertRibJoints 	K = (vp.segment(6,
-      //6).cwiseProduct(m_defaultParams.segment(12, 6))).asDiagonal();
+      // 6).cwiseProduct(m_defaultParams.segment(12, 6))).asDiagonal();
       //}
       // else {
       //	K = (vp.segment(12, 6).cwiseProduct(m_defaultParams.segment(18,
-      //6))).asDiagonal();
+      // 6))).asDiagonal();
       //}
       m_rbEnergyElements[i]->SetParameters(K);
     }
@@ -103,7 +103,7 @@ class Simulable_SpineModel : public Simulable_Composite {
     // PtrS<DomainDistribution_Constant<ParameterSet>> pParamsFem =
     // dynamic_pointer_cast<DomainDistribution_Constant<ParameterSet>>(this->m_softBodyModel->SetupOptions().m_pMatParams);
     ////PtrS<DomainDistribution_Constant<ParameterSet>> pParamsFem =
-    ///dynamic_pointer_cast<DomainDistribution_Constant<ParameterSet>>(this->m_softBodyModel->SetupOptions().m_pMatParams);
+    /// dynamic_pointer_cast<DomainDistribution_Constant<ParameterSet>>(this->m_softBodyModel->SetupOptions().m_pMatParams);
     ////pParamsFem->Value()
     // ParameterSet& paramsFem= pParamsFem->Value();
     // paramsFem[ParameterSet::Param_Young] = m_defaultParams[24] * vp[4];
@@ -112,7 +112,7 @@ class Simulable_SpineModel : public Simulable_Composite {
     ////double poisson = paramsFem[ParameterSet::Param_Poisson];
 
     ////////////////            This part works for normal simulation, normal I
-    ///mean spine simulation, the full sim, for soft tissue params
+    /// mean spine simulation, the full sim, for soft tissue params
     ///////////////////////
     PtrS<ParameterSet> paramsFem = this->m_softBodyModel->SetupOptions()
                                        .m_pMatParams->GetValueAtDomainPoint(0);
@@ -137,10 +137,10 @@ class Simulable_SpineModel : public Simulable_Composite {
         new DomainDistribution_Constant<PtrS<ParameterSet>>(pMatParam));
     this->DirtyMechanics();
     ////////////////            End this part works for normal simulation,
-    ///normal I mean spine simulation, the full sim  ////////////////////
+    /// normal I mean spine simulation, the full sim  ////////////////////
 
     //////////////////// un comment above for the normal version. Below simple
-    ///example for simsceneSIMPLE ///////
+    /// example for simsceneSIMPLE ///////
     // for (int i = 0; i < m_rbEnergyElements.size(); i++) {
     //	MatrixXd K(6, 6);
     //	K.setZero();
@@ -161,7 +161,7 @@ class Simulable_SpineModel : public Simulable_Composite {
     //}
     //
     //////////////////// end un comment above for the normal version. Below
-    ///simple example for simsceneSIMPLE ///////
+    /// simple example for simsceneSIMPLE ///////
   }
 
   void GetParameters(VectorXd& vp) const {
@@ -203,7 +203,7 @@ class Simulable_SpineModel : public Simulable_Composite {
     std::cout << "inside simulab le spine model, line 155 " << std::endl;
 
     ////////////////////// un comment above for the normal version. Below simple
-    ///exxample for simsceneSIMPLE ///////
+    /// exxample for simsceneSIMPLE ///////
     // MatrixXd K = m_rbEnergyElements[0]->GetParameters();
     // vp[0] = K(0, 0);
     // PtrS<ParameterSet> paramsFem =
@@ -214,7 +214,7 @@ class Simulable_SpineModel : public Simulable_Composite {
     // vp[2] = poisson ;
     // std::cout << "inside simulab le spine model, line 169" << std::endl;
     //////////////////// end un comment above for the normal version. Below
-    ///simple example for simsceneSIMPLE ///////
+    /// simple example for simsceneSIMPLE ///////
   }
 
   void getRigidVectors(vector<Matrix3d>& rotMat,
@@ -227,7 +227,7 @@ class Simulable_SpineModel : public Simulable_Composite {
 
       if (pEle != NULL) {
         //, then pEle is a RigidBody you can extract from the the full rotation
-        //by calling
+        // by calling
 
         rotMat.push_back(pEle->ComputeFullRotation());
         posVec.push_back(pEle->GetPositionX());

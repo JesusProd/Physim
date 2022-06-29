@@ -58,7 +58,7 @@ void Simulable::FreeInternal() {
   this->m_numFreeDoF = 0;
   this->m_numFixedDoF = 0;
 
-  this->m_dirtyFlags = DirtyFlags::Dirty_All;
+  this->m_dirtyFlags = DirtyFlags::All;
 
   m_venerEle.clear();
   m_vmassEle.clear();
@@ -138,17 +138,17 @@ inline int Simulable::GetNumFixedDOF() const {
 void Simulable::GetDOFVector(VectorXd& vx, Tag s) const {
   vx.resize(this->GetNumFullDOF());
 
-  if (s == Tag::Tag_Position_X) {
+  if (s == Tag::Position_X) {
     this->m_pTree->GetPositionX(vx);
     return;
   }
 
-  if (s == Tag::Tag_Position_0) {
+  if (s == Tag::Position_0) {
     this->m_pTree->GetPosition0(vx);
     return;
   }
 
-  if (s == Tag::Tag_Velocity) {
+  if (s == Tag::Velocity) {
     this->m_pTree->GetVelocity(vx);
     return;
   }
@@ -157,19 +157,19 @@ void Simulable::GetDOFVector(VectorXd& vx, Tag s) const {
 void Simulable::SetDOFVector(const VectorXd& vx, Tag s) {
   assert(vx.size() == this->GetNumFullDOF());
 
-  if (s == Tag::Tag_Position_X) {
+  if (s == Tag::Position_X) {
     this->m_pTree->SetPositionX(vx);
     this->DirtyKinematics();
     return;
   }
 
-  if (s == Tag::Tag_Velocity) {
+  if (s == Tag::Velocity) {
     this->m_pTree->SetVelocity(vx);
     this->DirtyKinematics();
     return;
   }
 
-  if (s == Tag::Tag_Position_0) {
+  if (s == Tag::Position_0) {
     this->m_pTree->SetPosition0(vx);
     this->DirtyRest();
     return;
@@ -202,7 +202,7 @@ void Simulable::UpdateKinematics() {
     this->m_timerComputeKine.StopStoreLog();
 
   this->m_dirtyFlags =
-      (DirtyFlags)(this->m_dirtyFlags & ~DirtyFlags::Dirty_Kinematics);
+      (DirtyFlags)(this->m_dirtyFlags & ~DirtyFlags::Kinematics);
 
   this->DirtyMechanics();
 
@@ -237,7 +237,7 @@ void Simulable::UpdateMechanics() {
     this->m_timerComputeMech.StopStoreLog();
 
   this->m_dirtyFlags =
-      (DirtyFlags)(this->m_dirtyFlags & ~DirtyFlags::Dirty_Mechanics);
+      (DirtyFlags)(this->m_dirtyFlags & ~DirtyFlags::Mechanics);
 
   IOUtils::logTrace(Verbosity::V4_DeepShit,
                     "\n[TRACE] Finishing Simulable %s mechanics precomputation",
@@ -484,7 +484,7 @@ void Simulable::AddGradient(AVectorXd& vgradient, bool addBC) {
     //				for (int j = 0; j <
     //(int)m_vBC[i]->Energies().size();
     //++j)
-    //m_vBC[i]->Energies()[j]->PreprocessAssembly(vgradient.Layer());
+    // m_vBC[i]->Energies()[j]->PreprocessAssembly(vgradient.Layer());
 
 #ifdef NDEBUG
 #pragma omp parallel for
@@ -664,7 +664,7 @@ void Simulable::AddHessian(AMatrixSd& mHessian, bool addBC) {
     //				for (int j = 0; j <
     //(int)m_vBC[i]->Energies().size();
     //++j)
-    //m_vBC[i]->Energies()[j]->PreprocessAssembly(mHessian.Layer());
+    // m_vBC[i]->Energies()[j]->PreprocessAssembly(mHessian.Layer());
 
 #ifdef NDEBUG
 #pragma omp parallel for
@@ -871,89 +871,79 @@ void Simulable::ComputeAndStore_Fixed() {
 }
 
 void Simulable::CleanFlags_Fixed() {
-  this->m_dirtyFlags =
-      (DirtyFlags)(this->m_dirtyFlags & ~DirtyFlags::Dirty_Fixed);
+  this->m_dirtyFlags = (DirtyFlags)(this->m_dirtyFlags & ~DirtyFlags::Fixed);
 }
 
 void Simulable::DirtyMass() {
-  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Dirty_Mass;
+  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Mass;
 
   this->DirtyMechanics();
 }
 
 void Simulable::DirtyRest() {
-  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Dirty_Rest;
-  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Dirty_Mass;
+  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Rest;
+  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Mass;
 
   this->DirtyKinematics();
 }
 
 void Simulable::DirtyKinematics() {
-  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Dirty_Kinematics;
+  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Kinematics;
 
   this->DirtyMechanics();
 }
 
 void Simulable::DirtyMechanics() {
-  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Dirty_Mechanics;
-  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Dirty_Energy;
-  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Dirty_Gradient;
-  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Dirty_Hessian;
-  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Dirty_Constraint;
-  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Dirty_Jacobian;
+  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Mechanics;
+  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Energy;
+  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Gradient;
+  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Hessian;
+  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Constraint;
+  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Jacobian;
 }
 
 void Simulable::DirtyFixed() {
-  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Dirty_Fixed;
+  this->m_dirtyFlags = this->m_dirtyFlags | DirtyFlags::Fixed;
 }
 
 bool Simulable::IsDirty_Energy() const {
-  return (this->m_dirtyFlags & DirtyFlags::Dirty_Energy) != DirtyFlags::Dirty_None;
+  return (this->m_dirtyFlags & DirtyFlags::Energy) != DirtyFlags::None;
 }
 
 bool Simulable::IsDirty_Gradient() const {
-  return (this->m_dirtyFlags & DirtyFlags::Dirty_Gradient) !=
-         DirtyFlags::Dirty_None;
+  return (this->m_dirtyFlags & DirtyFlags::Gradient) != DirtyFlags::None;
 }
 
 bool Simulable::IsDirty_Hessian() const {
-  return (this->m_dirtyFlags & DirtyFlags::Dirty_Hessian) !=
-         DirtyFlags::Dirty_None;
+  return (this->m_dirtyFlags & DirtyFlags::Hessian) != DirtyFlags::None;
 }
 
 bool Simulable::IsDirty_Mass() const {
-  return (this->m_dirtyFlags & DirtyFlags::Dirty_Mass) !=
-         DirtyFlags::Dirty_None;
+  return (this->m_dirtyFlags & DirtyFlags::Mass) != DirtyFlags::None;
 }
 
 bool Simulable::IsDirty_Rest() const {
-  return (this->m_dirtyFlags & DirtyFlags::Dirty_Rest) !=
-         DirtyFlags::Dirty_None;
+  return (this->m_dirtyFlags & DirtyFlags::Rest) != DirtyFlags::None;
 }
 
 bool Simulable::IsDirty_Constraint() const {
-  return (this->m_dirtyFlags & DirtyFlags::Dirty_Constraint) !=
-         DirtyFlags::Dirty_None;
+  return (this->m_dirtyFlags & DirtyFlags::Constraint) != DirtyFlags::None;
 }
 
 bool Simulable::IsDirty_Jacobian() const {
-  return (this->m_dirtyFlags & DirtyFlags::Dirty_Jacobian) !=
-         DirtyFlags::Dirty_None;
+  return (this->m_dirtyFlags & DirtyFlags::Jacobian) != DirtyFlags::None;
 }
 
 bool Simulable::IsDirty_Fixed() const {
-  return (this->m_dirtyFlags & DirtyFlags::Dirty_Fixed) !=
-         DirtyFlags::Dirty_None;
+  return (this->m_dirtyFlags & DirtyFlags::Fixed) != DirtyFlags::None;
 }
 
 bool Simulable::IsDirty_Kinematics() const {
-  return (this->m_dirtyFlags & DirtyFlags::Dirty_Kinematics) !=
-         DirtyFlags::Dirty_None;
+  return (this->m_dirtyFlags & DirtyFlags::Kinematics) != DirtyFlags::None;
 }
 
 bool Simulable::IsDirty_Mechanics() const {
-  return (this->m_dirtyFlags & DirtyFlags::Dirty_Mechanics) !=
-         DirtyFlags::Dirty_None;
+  return (this->m_dirtyFlags & DirtyFlags::Mechanics) != DirtyFlags::None;
 }
 
 void Simulable::ComputeAndStore_Rest() {
@@ -995,8 +985,7 @@ void Simulable::ComputeAndStore_Rest() {
   for (int i = 0; i < numMass; ++i)
     this->m_vmassEle[i]->Init();
 
-  this->m_dirtyFlags =
-      (DirtyFlags)(this->m_dirtyFlags & ~DirtyFlags::Dirty_Rest);
+  this->m_dirtyFlags = (DirtyFlags)(this->m_dirtyFlags & ~DirtyFlags::Rest);
 
   IOUtils::logTrace(Verbosity::V4_DeepShit,
                     "\n[TRACE] Finishing Simulable %s rest computation",
@@ -1016,8 +1005,7 @@ void Simulable::ComputeAndStore_Mass() {
   for (int i = 0; i < (int)this->m_vmassEle.size(); ++i)
     this->m_vmassEle[i]->ComputeAndStore_Mass();
 
-  this->m_dirtyFlags =
-      (DirtyFlags)(this->m_dirtyFlags & ~DirtyFlags::Dirty_Mass);
+  this->m_dirtyFlags = (DirtyFlags)(this->m_dirtyFlags & ~DirtyFlags::Mass);
 
   IOUtils::logTrace(Verbosity::V4_DeepShit,
                     "\n[TRACE] Finishing Simulable %s mass computation",
@@ -1078,8 +1066,7 @@ void Simulable::ComputeAndStore_Energy(bool addBC) {
 
   // Clean
 
-  this->m_dirtyFlags =
-      (DirtyFlags)(this->m_dirtyFlags & ~DirtyFlags::Dirty_Energy);
+  this->m_dirtyFlags = (DirtyFlags)(this->m_dirtyFlags & ~DirtyFlags::Energy);
 
   IOUtils::logTrace(Verbosity::V4_DeepShit,
                     "\n[TRACE] Finishing Simulable %s energy computation",
@@ -1140,8 +1127,7 @@ void Simulable::ComputeAndStore_Gradient(bool addBC) {
 
   // Clean
 
-  this->m_dirtyFlags =
-      (DirtyFlags)(this->m_dirtyFlags & ~DirtyFlags::Dirty_Gradient);
+  this->m_dirtyFlags = (DirtyFlags)(this->m_dirtyFlags & ~DirtyFlags::Gradient);
 
   IOUtils::logTrace(Verbosity::V4_DeepShit,
                     "\n[TRACE] Finishing Simulable %s gradient computation",
@@ -1202,8 +1188,7 @@ void Simulable::ComputeAndStore_Hessian(bool addBC) {
 
   // Clean
 
-  this->m_dirtyFlags =
-      (DirtyFlags)(this->m_dirtyFlags & ~DirtyFlags::Dirty_Hessian);
+  this->m_dirtyFlags = (DirtyFlags)(this->m_dirtyFlags & ~DirtyFlags::Hessian);
 
   IOUtils::logTrace(Verbosity::V4_DeepShit,
                     "\n[TRACE] Finishing Simulable %s Hessian computation",
@@ -1244,7 +1229,7 @@ void Simulable::ComputeAndStore_Constraint(bool addBC) {
   //		if (m_isProfiling) this->m_timerAssembleCons.StopStoreLog();
   //
   //		this->m_dirtyFlags = (DirtyFlags)(this->m_dirtyFlags &
-  //~DirtyFlags::Dirty_Constraint);
+  //~DirtyFlags::Constraint);
 }
 
 void Simulable::ComputeAndStore_Jacobian(bool addBC) {
@@ -1280,7 +1265,7 @@ void Simulable::ComputeAndStore_Jacobian(bool addBC) {
   //		if (m_isProfiling) this->m_timerAssembleJaco.StopStoreLog();
   //
   //		this->m_dirtyFlags = (DirtyFlags)(this->m_dirtyFlags &
-  //~DirtyFlags::Dirty_Jacobian);
+  //~DirtyFlags::Jacobian);
 }
 
 void Simulable::TestLocalGradients() {
@@ -1297,7 +1282,7 @@ void Simulable::TestGlobalGradient() {
   Real eps = 1e-6;
 
   VectorXd vxF;
-  this->GetDOFVector(vxF, Tag::Tag_Position_X);
+  this->GetDOFVector(vxF, Tag::Position_X);
 
   VectorXd vs0;
   this->GetState(vs0);
@@ -1311,7 +1296,7 @@ void Simulable::TestGlobalGradient() {
     // +
     SetState(vs0);
     vxF(i) += eps;
-    this->SetDOFVector(vxF, Tag::Tag_Position_X);
+    this->SetDOFVector(vxF, Tag::Position_X);
     // this->ComputeAndStore_Energy();
     Real ep;
     GetEnergy(ep);
@@ -1319,7 +1304,7 @@ void Simulable::TestGlobalGradient() {
     // -
     SetState(vs0);
     vxF(i) -= 2 * eps;
-    this->SetDOFVector(vxF, Tag::Tag_Position_X);
+    this->SetDOFVector(vxF, Tag::Position_X);
     // this->ComputeAndStore_Energy();
     Real em;
     GetEnergy(em);
@@ -1363,7 +1348,7 @@ void Simulable::TestGlobalHessian() {
   Real eps = 1e-6;
 
   VectorXd vxF;
-  this->GetDOFVector(vxF, Tag::Tag_Position_X);
+  this->GetDOFVector(vxF, Tag::Position_X);
 
   VectorXd vs0;
   this->GetState(vs0);
@@ -1375,7 +1360,7 @@ void Simulable::TestGlobalHessian() {
     // +
     SetState(vs0);
     vxF(i) += eps;
-    this->SetDOFVector(vxF, Tag::Tag_Position_X);
+    this->SetDOFVector(vxF, Tag::Position_X);
     // this->ComputeAndStore_Gradient();
     AVectorXd vgp;
     GetGradient(vgp);
@@ -1383,7 +1368,7 @@ void Simulable::TestGlobalHessian() {
     // -
     SetState(vs0);
     vxF(i) -= 2 * eps;
-    this->SetDOFVector(vxF, Tag::Tag_Position_X);
+    this->SetDOFVector(vxF, Tag::Position_X);
     // this->ComputeAndStore_Gradient();
     AVectorXd vgm;
     GetGradient(vgm);

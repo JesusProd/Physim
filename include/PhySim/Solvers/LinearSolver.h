@@ -26,7 +26,7 @@ struct LinearSolverOptions {
   bool profileTime;
 
   LinearSolverOptions() {
-    type = LSSolverType::LS_EigenLDLT;
+    type = LSSolverType::EigenLDLT;
     maxError = 1e-6;
     maxIters = 1000;
     regIters = 10;

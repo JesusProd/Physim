@@ -27,7 +27,7 @@ MassElement_RigidBody::MassElement_RigidBody(Simulable* pModel,
   this->m_pGeom = pGeom;
 
   this->m_vDoF.resize(1);
-  this->m_vDoF[0] = this->m_pGeom->Traits().Kinematics(Tag::Tag_DOF_0);
+  this->m_vDoF[0] = this->m_pGeom->Traits().Kinematics(Tag::DOF_0);
 
   m_vDMDtv = VectorXd::Zero(6);
   m_mMass = MatrixXd::Zero(6, 6);
@@ -42,13 +42,13 @@ MassElement_RigidBody::~MassElement_RigidBody(void) {
 
 void MassElement_RigidBody::Init() {
   Real rho = this->m_pParams->GetParameter(ParameterSet::Param_Density);
-  this->m_pGeom->MassProperties(Tag::Tag_Position_0, rho, this->m_mass0, this->m_vc0,
-                                this->m_mI0);
+  this->m_pGeom->MassProperties(Tag::Position_0, rho, this->m_mass0,
+                                this->m_vc0, this->m_mI0);
 }
 
 void MassElement_RigidBody::ComputeAndStore_Mass() {
   KEleRigidBody3D* pRB = static_cast<KEleRigidBody3D*>(
-      this->m_pGeom->Traits().Kinematics(Tag::Tag_DOF_0));
+      this->m_pGeom->Traits().Kinematics(Tag::DOF_0));
 
   Matrix3d mR = pRB->ComputeFullRotation();
   Matrix3d mI = (mR * m_mI0 * mR.transpose());
@@ -64,8 +64,8 @@ void MassElement_RigidBody::ComputeAndStore_Mass() {
 }
 
 void MassElement_RigidBody::ComputeAndStore_Energy_Internal() {
-  KEleRigidBody3D* pRB = static_cast<KEleRigidBody3D*>(
-      m_pGeom->Traits().Kinematics(Tag::Tag_DOF_0));
+  KEleRigidBody3D* pRB =
+      static_cast<KEleRigidBody3D*>(m_pGeom->Traits().Kinematics(Tag::DOF_0));
 
   this->m_energy =
       pRB->GetPositionX().segment(0, 3).dot(-this->m_vgravity * m_mass0);

@@ -71,12 +71,12 @@ class Mesh_Face : public Mesh {
   Mesh_Face(const Mesh_Face& toCopy);
   Mesh_Face(const MatrixXd& mV,
             const MatrixXi& mF,
-            Discretization D = Discretization::Discretization_Tri3,
+            Discretization D = Discretization::Tri3,
             const vector<Tag>& vnTraits = vector<Tag>());
 
   void Init(const MatrixXd& mV,
             const MatrixXi& mF,
-            Discretization D = Discretization::Discretization_Tri3,
+            Discretization D = Discretization::Tri3,
             const vector<Tag>& vnTraits = vector<Tag>());
 
   virtual ~Mesh_Face(void);

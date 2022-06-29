@@ -121,7 +121,7 @@ void Simulable_Mesh::PreInit() {
   //		PtrS<ParameterSet> pMatParam(new ParameterSet());
   //		pMatParam->InitLinearFromYoungPoisson(1e9, 0.3, 1000);
   //		this->SetupOptions().m_pMatParams.reset(new
-  //DomainDistribution_Constant<PtrS<ParameterSet>>(pMatParam));
+  // DomainDistribution_Constant<PtrS<ParameterSet>>(pMatParam));
   //	}
 }
 
@@ -142,7 +142,8 @@ void Simulable_Mesh::CreateKinematicsEle(vector<PtrS<KinematicsEle>>& vpEle) {
 
   for (size_t i = 0; i < this->m_pMesh->NumNodes(); ++i) {
     vpEle[i].reset(new KEleParticle3D(this, this->m_pMesh->Nodes()[i]));
-    m_pMesh->Nodes()[i]->Traits().AddTrait<IDoFSet*>(Tag::Tag_DOF_0, vpEle[i].get());
+    m_pMesh->Nodes()[i]->Traits().AddTrait<IDoFSet*>(Tag::DOF_0,
+                                                     vpEle[i].get());
   }
 }
 
@@ -179,18 +180,18 @@ vector<PtrS<Geometry>> Simulable_Mesh::Geometries() const {
 void Simulable_Mesh::InitSubelementPositions(const MatrixXd& mV, Tag s) {
   // assert(mV.rows() == m_pOptions->m_mNodes.rows());
 
-  if (s == Tag::Tag_Position_0) {
-    this->m_pMesh->SetNodesTrait(mV, Tag::Tag_Position_0);
+  if (s == Tag::Position_0) {
+    this->m_pMesh->SetNodesTrait(mV, Tag::Position_0);
     for (int i = 0; i < this->m_pMesh->NumElems(); ++i)
-      this->m_pMesh->Elems()[i]->InitSubelementPositions(Tag::Tag_Position_0);
+      this->m_pMesh->Elems()[i]->InitSubelementPositions(Tag::Position_0);
 
     this->DirtyRest();
   }
 
-  if (s == Tag::Tag_Position_X) {
-    this->m_pMesh->SetNodesTrait(mV, Tag::Tag_Position_X);
+  if (s == Tag::Position_X) {
+    this->m_pMesh->SetNodesTrait(mV, Tag::Position_X);
     for (int i = 0; i < this->m_pMesh->NumElems(); ++i)
-      this->m_pMesh->Elems()[i]->InitSubelementPositions(Tag::Tag_Position_X);
+      this->m_pMesh->Elems()[i]->InitSubelementPositions(Tag::Position_X);
 
     this->DirtyRest();
   }
@@ -202,10 +203,10 @@ vector<IDoFSet*> Simulable_Mesh::SelectDoF(const Vector3d& vboxMin,
   vector<IDoFSet*> vDoFs;
 
   Tag ns;
-  if (s == Tag::Tag_Position_0)
-    ns = Tag::Tag_Position_0;
-  if (s == Tag::Tag_Position_X)
-    ns = Tag::Tag_Position_X;
+  if (s == Tag::Position_0)
+    ns = Tag::Position_0;
+  if (s == Tag::Position_X)
+    ns = Tag::Position_X;
 
   for (size_t i = 0; i < this->m_pMesh->NumNodes(); ++i) {
     const Vector3d& pos = this->m_pMesh->Nodes()[i]->Traits().Vector3d(ns);
@@ -213,7 +214,7 @@ vector<IDoFSet*> Simulable_Mesh::SelectDoF(const Vector3d& vboxMin,
         pos.y() > vboxMin.y() && pos.y() < vboxMax.y() &&
         pos.z() > vboxMin.z() && pos.z() < vboxMax.z())
       vDoFs.push_back(
-          this->m_pMesh->Nodes()[i]->Traits().Kinematics(Tag::Tag_DOF_0));
+          this->m_pMesh->Nodes()[i]->Traits().Kinematics(Tag::DOF_0));
   }
 
   return vDoFs;

@@ -26,9 +26,9 @@ EnergyElement_SpringHinge::EnergyElement_SpringHinge(Simulable* pModel,
   this->m_pEdge1 = pEdge1;
 
   this->m_vDoF.resize(3);
-  this->m_vDoF[0] = pEdge0->GetTail()->Traits().Kinematics(Tag::Tag_DOF_0);
-  this->m_vDoF[1] = pEdge0->GetHead()->Traits().Kinematics(Tag::Tag_DOF_0);
-  this->m_vDoF[2] = pEdge1->GetHead()->Traits().Kinematics(Tag::Tag_DOF_0);
+  this->m_vDoF[0] = pEdge0->GetTail()->Traits().Kinematics(Tag::DOF_0);
+  this->m_vDoF[1] = pEdge0->GetHead()->Traits().Kinematics(Tag::DOF_0);
+  this->m_vDoF[2] = pEdge1->GetHead()->Traits().Kinematics(Tag::DOF_0);
 
   this->m_vgradient.resize(9);
   this->m_mHessian.resize(9, 9);
@@ -42,8 +42,8 @@ EnergyElement_SpringHinge::~EnergyElement_SpringHinge() {
 
 void EnergyElement_SpringHinge::Init() {
   this->m_restAngle = this->ComputeRestAngle();
-  this->m_intVolume = 0.5 * (this->m_pEdge0->VolumeBasis(Tag::Tag_Position_0) +
-                             this->m_pEdge1->VolumeBasis(Tag::Tag_Position_0));
+  this->m_intVolume = 0.5 * (this->m_pEdge0->VolumeBasis(Tag::Position_0) +
+                             this->m_pEdge1->VolumeBasis(Tag::Position_0));
 }
 
 Real EnergyElement_SpringHinge::ComputeRestAngle() {

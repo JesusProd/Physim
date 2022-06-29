@@ -27,8 +27,8 @@
 #endif
 
 #ifndef PUGIXML_NO_XPATH
-#include <math.h>
 #include <float.h>
+#include <math.h>
 #endif
 
 #ifndef PUGIXML_NO_STL
@@ -12084,8 +12084,8 @@ struct xpath_parser {
   //					| AdditiveExpr '-' MultiplicativeExpr
   // MultiplicativeExpr ::= UnaryExpr
   //						  | MultiplicativeExpr '*'
-  //UnaryExpr 						  | MultiplicativeExpr 'div' UnaryExpr 						  | MultiplicativeExpr 'mod'
-  //UnaryExpr
+  // UnaryExpr 						  | MultiplicativeExpr 'div'
+  // UnaryExpr | MultiplicativeExpr 'mod' UnaryExpr
   xpath_ast_node* parse_expression(int limit = 0) {
     xpath_ast_node* n = parse_path_or_unary_expression();
     if (!n)

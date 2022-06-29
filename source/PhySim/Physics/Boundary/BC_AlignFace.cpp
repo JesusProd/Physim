@@ -42,7 +42,7 @@ BC_AlignFace::BC_AlignFace(Simulable* pModel,
     if (!vn.empty())
       this->m_vini[i] = vn[i];
     else
-      this->m_vini[i] = vpFaces[i]->Normal(Tag::Tag_Position_X);
+      this->m_vini[i] = vpFaces[i]->Normal(Tag::Position_X);
   }
 }
 

@@ -229,9 +229,9 @@ void Mesh_Edge::UpdateMetadata() {
     for (int i = 0; i < numE; ++i) {
       pc->m_vedges[i] = vadjaEdges[i];
       if (vadjaEdges[i]->GetTail() == pn)
-        pc->m_vedges[i]->Traits().AddTrait(Tag::Tag_Sign_0, int(1));
+        pc->m_vedges[i]->Traits().AddTrait(Tag::Sign_0, int(1));
       else
-        pc->m_vedges[i]->Traits().AddTrait(Tag::Tag_Sign_0, int(-1));
+        pc->m_vedges[i]->Traits().AddTrait(Tag::Sign_0, int(-1));
     }
 
     this->m_vconns.push_back(pc);

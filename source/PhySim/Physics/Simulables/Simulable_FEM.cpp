@@ -58,16 +58,16 @@ void Simulable_FEM::PreInit() {
     PtrS<IMaterialModel> pMatModel;
 
     switch (this->SetupOptions().m_pMesh->MeshType()) {
-      case Discretization::Discretization_Tri3:
-      case Discretization::Discretization_Tri6:
-      case Discretization::Discretization_Quad4:
-      case Discretization::Discretization_Quad8:
+      case Discretization::Tri3:
+      case Discretization::Tri6:
+      case Discretization::Quad4:
+      case Discretization::Quad8:
         pMatModel.reset(new MaterialModel_2Din3D_StVK());
         break;
-      case Discretization::Discretization_Tet4:
-      case Discretization::Discretization_Hex8:
-      case Discretization::Discretization_Tet10:
-      case Discretization::Discretization_Hex20:
+      case Discretization::Tet4:
+      case Discretization::Hex8:
+      case Discretization::Tet10:
+      case Discretization::Hex20:
         pMatModel.reset(new MaterialModel_3Din3D_StVK());
         break;
       default:
@@ -84,28 +84,28 @@ void Simulable_FEM::PreInit() {
     PtrS<IShapeFunction> pShapeFunction;
 
     switch (this->SetupOptions().m_pMesh->MeshType()) {
-      case Discretization::Discretization_Tri3:
+      case Discretization::Tri3:
         pShapeFunction = ShapeFunction_Tri3::Instance();
         break;
-      case Discretization::Discretization_Tri6:
+      case Discretization::Tri6:
         pShapeFunction = ShapeFunction_Tri6::Instance();
         break;
-      case Discretization::Discretization_Quad4:
+      case Discretization::Quad4:
         pShapeFunction = ShapeFunction_Quad4::Instance();
         break;
-      case Discretization::Discretization_Quad8:
+      case Discretization::Quad8:
         pShapeFunction = ShapeFunction_Quad8::Instance();
         break;
-      case Discretization::Discretization_Tet4:
+      case Discretization::Tet4:
         pShapeFunction = ShapeFunction_Tet4::Instance();
         break;
-      case Discretization::Discretization_Hex8:
+      case Discretization::Hex8:
         pShapeFunction = ShapeFunction_Hex8::Instance();
         break;
-      case Discretization::Discretization_Tet10:
+      case Discretization::Tet10:
         pShapeFunction = ShapeFunction_Tet10::Instance();
         break;
-      case Discretization::Discretization_Hex20:
+      case Discretization::Hex20:
         pShapeFunction = ShapeFunction_Hex20::Instance();
         break;
       default:
@@ -122,22 +122,22 @@ void Simulable_FEM::PreInit() {
     PtrS<IQuadrature> pQuadrature;
 
     switch (this->SetupOptions().m_pMesh->MeshType()) {
-      case Discretization::Discretization_Tri3:
-      case Discretization::Discretization_Tri6:
+      case Discretization::Tri3:
+      case Discretization::Tri6:
         pQuadrature = Quadrature_Tri1::Instance();
         break;
-      case Discretization::Discretization_Tet4:
+      case Discretization::Tet4:
         pQuadrature = Quadrature_Tet1::Instance();
         break;
-      case Discretization::Discretization_Tet10:
+      case Discretization::Tet10:
         pQuadrature = Quadrature_Tet8::Instance();
         break;
-      case Discretization::Discretization_Quad4:
-      case Discretization::Discretization_Quad8:
+      case Discretization::Quad4:
+      case Discretization::Quad8:
         pQuadrature.reset(new Quadrature_Gauss(2, 2));
         break;
-      case Discretization::Discretization_Hex8:
-      case Discretization::Discretization_Hex20:
+      case Discretization::Hex8:
+      case Discretization::Hex20:
         pQuadrature.reset(new Quadrature_Gauss(3, 2));
         break;
       default:

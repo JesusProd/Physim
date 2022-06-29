@@ -62,28 +62,28 @@ void OptimSolver::Init(IOptimProblem* pProblem,
   linearOptions.maxIters = options.lsNumMaxIters;
 
   switch (linearOptions.type) {
-    case LSSolverType::LS_EigenLDLT:
+    case LSSolverType::EigenLDLT:
       this->m_pLSolver =
           new LinearSolver_EigenLDLT(this->m_state.m_mH, linearOptions);
       break;
-    case LSSolverType::LS_EigenCG:
+    case LSSolverType::EigenCG:
       this->m_pLSolver =
           new LinearSolver_EigenCG(this->m_state.m_mH, linearOptions);
       break;
-    case LSSolverType::LS_BiCGSTAB:
+    case LSSolverType::BiCGSTAB:
       this->m_pLSolver =
           new LinearSolver_BiCGSTAB(this->m_state.m_mH, linearOptions);
       break;
 #ifdef USE_SSPARSE
-    case LSSolverType::LS_CholmodLDLT:
+    case LSSolverType::CholmodLDLT:
       this->m_pLSolver = new LinearSolver_CholmodLDLT(mA, linearOptions);
       break;
-    case LSSolverType::LS_SSparseSPQR:
+    case LSSolverType::SSparseSPQR:
       this->m_pLSolver = new LinearSolver_SSparseSPQR(mA, linearOptions);
       break;
 #endif
 #ifdef USE_CUDA
-    case LSSolverType::LS_CUDASC:
+    case LSSolverType::CUDASC:
       this->m_pLSolver = new LinearSolver_CudaSC(mA, linearOptions);
       break;
 #endif
@@ -123,8 +123,8 @@ void OptimSolver::Init(IOptimProblem* pProblem,
 //	OptimSolverOptions options;
 //	options.tolMaxError = 1e-6;
 //	options.numMaxIters = 1000;
-//	options.lsSolverType = LSSolverType::LS_EigenLDLT;
-//	options.qpSolverType = QPSolverType::QP_Newton;
+//	options.lsSolverType = LSSolverType::EigenLDLT;
+//	options.qpSolverType = QPSolverType::Newton;
 //	options.lSearch_iters = 10;
 //	options.lSearch_alpha = 0.5;
 //	options.maxStepSize = 1.0;
@@ -148,7 +148,7 @@ void OptimSolver::Init(IOptimProblem* pProblem,
 const OptimState& OptimSolver::SolveStep() {
   if (this->m_state.m_steepest) {
     QPSolverType originalSol = this->m_options.qpSolverType;
-    this->m_options.qpSolverType = QPSolverType::QP_Steepest;
+    this->m_options.qpSolverType = QPSolverType::Steepest;
     this->m_state = this->SolveStepInternal();
     this->m_options.qpSolverType = originalSol;
   } else {
@@ -192,7 +192,7 @@ const OptimState& OptimSolver::SolveFull() {
                     "\n--------------------------------------------------------"
                     "-----------------------------------------");
 
-  this->m_state.m_result = OSResult::OR_SUCCESS;
+  this->m_state.m_result = OSResult::SUCCESS;
   QPSolverType qpType = m_options.qpSolverType;
   LSearchType lsType = m_options.lSearchType;
 
@@ -211,7 +211,7 @@ const OptimState& OptimSolver::SolveFull() {
     this->m_state.m_opt = this->m_state.m_vg.norm();
 
     if (this->m_pProblem->IsFullyConstrained()) {
-      if (this->m_state.m_result == OSResult::OR_NONDESC) {
+      if (this->m_state.m_result == OSResult::NONDESC) {
         if (!this->m_options.trySteepest) {
           break;  // Cannot improve
         } else {
@@ -224,7 +224,7 @@ const OptimState& OptimSolver::SolveFull() {
         }
       }
 
-      if (this->m_state.m_result == OSResult::OR_MINIMPR) {
+      if (this->m_state.m_result == OSResult::MINIMPR) {
         if (this->m_state.m_minImprCount == this->m_options.minImprMaxCount)
           break;  // Already converged
 
@@ -234,7 +234,7 @@ const OptimState& OptimSolver::SolveFull() {
         }
       }
 
-      if (this->m_state.m_result == OSResult::OR_MINSTEP) {
+      if (this->m_state.m_result == OSResult::MINSTEP) {
         if (this->m_state.m_minStepCount == this->m_options.minStepMaxCount)
           break;  // Already converged
 
@@ -244,43 +244,43 @@ const OptimState& OptimSolver::SolveFull() {
         }
       }
 
-      if (this->m_state.m_result == OSResult::OR_SUCCESS) {
+      if (this->m_state.m_result == OSResult::SUCCESS) {
         if (this->m_state.m_opt <= m_options.tolMaxError)
           break;  // Already converged
 
-        this->m_state.m_result = OSResult::OR_ONGOING;
+        this->m_state.m_result = OSResult::ONGOING;
       }
 
-      if (this->m_state.m_result == OSResult::OR_ONGOING) {
+      if (this->m_state.m_result == OSResult::ONGOING) {
         // Try the next step with selected
         this->m_state.m_steepest = false;
       }
     }
 
     if (itCount + 1 > this->m_options.numMaxIters) {
-      this->m_state.m_result = OSResult::OR_MAXITER;
+      this->m_state.m_result = OSResult::MAXITER;
       break;
     }
   }
 
   string status;
   switch (this->m_state.m_result) {
-    case OSResult::OR_FAILURE:
+    case OSResult::FAILURE:
       status = "[FAILURE]";
       break;
-    case OSResult::OR_SUCCESS:
+    case OSResult::SUCCESS:
       status = "[SUCCESS]";
       break;
-    case OSResult::OR_MINSTEP:
+    case OSResult::MINSTEP:
       status = "[MINSTEP]";
       break;
-    case OSResult::OR_MINIMPR:
+    case OSResult::MINIMPR:
       status = "[MINIMPR]";
       break;
-    case OSResult::OR_MAXITER:
+    case OSResult::MAXITER:
       status = "[MAXITER]";
       break;
-    case OSResult::OR_NONDESC:
+    case OSResult::NONDESC:
       status = "[NONDESC]";
       break;
   }
@@ -316,19 +316,19 @@ bool OptimSolver::ComputeStep(VectorXd& dx, int trial) {
   bool result = false;
 
   switch (this->m_options.qpSolverType) {
-    case QPSolverType::QP_Newton:
+    case QPSolverType::Newton:
       result = this->ComputeStep_Newton(dx, trial);
       break;
-    case QPSolverType::QP_BFGS_D:
+    case QPSolverType::BFGS_D:
       result = this->ComputeStep_BFGSDirect(dx, trial);
       break;
-    case QPSolverType::QP_BFGS_I:
+    case QPSolverType::BFGS_I:
       result = this->ComputeStep_BFGSInverse(dx, trial);
       break;
-    case QPSolverType::QP_LBFGS:
+    case QPSolverType::LBFGS:
       result = this->ComputeStep_LBFGS(dx, trial);
       break;
-    case QPSolverType::QP_Steepest:
+    case QPSolverType::Steepest:
       dx = -this->m_state.m_vg;
       result = true;
       break;
@@ -361,21 +361,21 @@ bool OptimSolver::LineSearch(const VectorXd& dxTry,
   bool improved = false;
 
   switch (this->m_options.lSearchType) {
-    case LSearchType::LSearch_Simple:
+    case LSearchType::Simple:
       improved = this->LineSearch_Simple(dxTry, dxFin, objNew, vgNew, numBis);
       break;
-    case LSearchType::LSearch_Armijo:
+    case LSearchType::Armijo:
       improved = this->LineSearch_Armijo(dxTry, dxFin, objNew, vgNew, numBis);
       break;
-    case LSearchType::LSearch_WolfeWeak:
+    case LSearchType::WolfeWeak:
       improved =
           this->LineSearch_WolfeWeak(dxTry, dxFin, objNew, vgNew, numBis);
       break;
-    case LSearchType::LSearch_WolfeStrong:
+    case LSearchType::WolfeStrong:
       improved =
           this->LineSearch_WolfeStrong(dxTry, dxFin, objNew, vgNew, numBis);
       break;
-    case LSearchType::LSearch_None:
+    case LSearchType::None:
       improved = this->LineSearch_None(dxTry, dxFin, objNew, vgNew, numBis);
       break;
     default:
@@ -410,16 +410,16 @@ void OptimSolver::UpdateStepResult(const VectorXd& dx,
 
     if (impr < this->m_options.tolMinImpr) {
       this->m_state.m_minImprCount++;
-      this->m_state.m_result = OSResult::OR_MINIMPR;
+      this->m_state.m_result = OSResult::MINIMPR;
     } else if (step < this->m_options.tolMinStep) {
       this->m_state.m_minStepCount++;
-      this->m_state.m_result = OSResult::OR_MINSTEP;
+      this->m_state.m_result = OSResult::MINSTEP;
     } else if (optNew <= this->m_options.tolMaxError) {
-      this->m_state.m_result = OSResult::OR_SUCCESS;
+      this->m_state.m_result = OSResult::SUCCESS;
       this->m_state.m_minImprCount = 0;
       this->m_state.m_minStepCount = 0;
     } else {
-      this->m_state.m_result = OSResult::OR_ONGOING;
+      this->m_state.m_result = OSResult::ONGOING;
       this->m_state.m_minImprCount = 0;
       this->m_state.m_minStepCount = 0;
     }
@@ -430,7 +430,7 @@ void OptimSolver::UpdateStepResult(const VectorXd& dx,
     this->m_state.m_obj = objNew;
     this->m_state.m_opt = optNew;
   } else {
-    this->m_state.m_result = OSResult::OR_NONDESC;
+    this->m_state.m_result = OSResult::NONDESC;
 
     // VectorXd vminPos = this->m_state.m_vx - 2 * dx;
     // VectorXd vmaxPos = this->m_state.m_vx + 2 * dx;
@@ -884,10 +884,10 @@ bool OptimSolver::LineSearch_WolfeStrong(const VectorXd& dxIn,
 }
 
 bool OptimSolver::LineSearch_None(const VectorXd& dxIn,
-                               VectorXd& dxOut,
-                               Real& objNew,
-                               AVectorXd& vgNew,
-                               int& numBis) {
+                                  VectorXd& dxOut,
+                                  Real& objNew,
+                                  AVectorXd& vgNew,
+                                  int& numBis) {
   dxOut = dxIn;
   this->m_pProblem->PrePerformStep(this->m_state);
   this->m_pProblem->IncVariables(dxOut);

@@ -33,8 +33,8 @@ void OptimProblem_BasicDynamic::Init(ISimulable* pM, Real dt) {
   this->m_N = m_pM->GetNumFullDOF();
   this->m_M = 0;
 
-  m_pM->GetDOFVector(this->m_vx0, Tag::Tag_Position_X);
-  m_pM->GetDOFVector(this->m_vv0, Tag::Tag_Velocity);
+  m_pM->GetDOFVector(this->m_vx0, Tag::Position_X);
+  m_pM->GetDOFVector(this->m_vv0, Tag::Velocity);
 
   this->m_name = "[Basic Dynamic]";
 
@@ -42,17 +42,17 @@ void OptimProblem_BasicDynamic::Init(ISimulable* pM, Real dt) {
 }
 
 void OptimProblem_BasicDynamic::GetVariables(VectorXd& vx) const {
-  m_pM->GetDOFVector(vx, Tag::Tag_Position_X);
+  m_pM->GetDOFVector(vx, Tag::Position_X);
 }
 
 void OptimProblem_BasicDynamic::IncVariables(const VectorXd& vx) {
   VectorXd vx0;
-  m_pM->GetDOFVector(vx0, Tag::Tag_Position_X);
-  m_pM->SetDOFVector(vx0 + vx, Tag::Tag_Position_X);
+  m_pM->GetDOFVector(vx0, Tag::Position_X);
+  m_pM->SetDOFVector(vx0 + vx, Tag::Position_X);
 }
 
 void OptimProblem_BasicDynamic::SetVariables(const VectorXd& vx) {
-  m_pM->SetDOFVector(vx, Tag::Tag_Position_X);
+  m_pM->SetDOFVector(vx, Tag::Position_X);
 }
 
 bool OptimProblem_BasicDynamic::GetEnergy(Real& e) {
@@ -60,8 +60,8 @@ bool OptimProblem_BasicDynamic::GetEnergy(Real& e) {
 
   VectorXd vx;
   VectorXd vv;
-  this->m_pM->GetDOFVector(vx, Tag::Tag_Position_X);
-  this->m_pM->GetDOFVector(vv, Tag::Tag_Velocity);
+  this->m_pM->GetDOFVector(vx, Tag::Position_X);
+  this->m_pM->GetDOFVector(vv, Tag::Velocity);
 
   m_pM->GetEnergy(e);
   Real dt2 = m_dt * m_dt;
@@ -81,8 +81,8 @@ bool OptimProblem_BasicDynamic::GetGradient(AVectorXd& vg) {
 
   VectorXd vx;
   VectorXd vv;
-  this->m_pM->GetDOFVector(vx, Tag::Tag_Position_X);
-  this->m_pM->GetDOFVector(vv, Tag::Tag_Velocity);
+  this->m_pM->GetDOFVector(vx, Tag::Position_X);
+  this->m_pM->GetDOFVector(vv, Tag::Velocity);
 
   m_pM->GetGradient(vg);
   m_pM->GetInertia(m_mMass);
@@ -122,12 +122,12 @@ bool OptimProblem_BasicDynamic::OnSolveStart(const OptimState& state) {
   IOUtils::logTrace(Verbosity::V1_Default,
                     "\n[TRACE] Starting step solve with dt = %f", this->m_dt);
 
-  m_pM->GetDOFVector(this->m_vx0, Tag::Tag_Position_X);
-  m_pM->GetDOFVector(this->m_vv0, Tag::Tag_Velocity);
+  m_pM->GetDOFVector(this->m_vx0, Tag::Position_X);
+  m_pM->GetDOFVector(this->m_vv0, Tag::Velocity);
 
   m_pM->StepBoundaryConditions();
 
-  m_pM->SetDOFVector(this->m_vx0 + this->m_dt * this->m_vv0, Tag::Tag_Position_X);
+  m_pM->SetDOFVector(this->m_vx0 + this->m_dt * this->m_vv0, Tag::Position_X);
 
   m_pM->UpdateKinematics();
 
@@ -157,10 +157,10 @@ bool OptimProblem_BasicDynamic::PrePerformStep(const OptimState& state) {
 bool OptimProblem_BasicDynamic::PosPerformStep(const OptimState& state) {
   VectorXd vv;
 
-  m_pM->GetDOFVector(vv, Tag::Tag_Position_X);
+  m_pM->GetDOFVector(vv, Tag::Position_X);
   vv -= this->m_vx0;
   vv /= this->m_dt;
-  m_pM->SetDOFVector(vv, Tag::Tag_Velocity);
+  m_pM->SetDOFVector(vv, Tag::Velocity);
 
   m_pM->UpdateKinematics();
 

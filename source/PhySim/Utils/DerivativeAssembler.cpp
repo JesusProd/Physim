@@ -478,7 +478,7 @@ void DerivativeAssembler::PropagateAndAssembleHessian(
 //		for (size_t j = 0; j <= i; ++j)
 //		{
 //			MatrixXd mHkl = mHessian.block(localOffset_i,
-//localOffset_j, vDoF[i]->NumDim(), vDoF[j]->NumDim());
+// localOffset_j, vDoF[i]->NumDim(), vDoF[j]->NumDim());
 // KinematicsEle* pEle_i = static_cast<KinematicsEle*>(vDoF[i]);
 // KinematicsEle* pEle_j = static_cast<KinematicsEle*>(vDoF[j]);
 
@@ -523,7 +523,7 @@ void DerivativeAssembler::PropagateAndAssembleHessian(
 //				{
 //					m_vBlocksFront.push_back(m_vBlocksBack[k]);
 //					vpFrontEle.push_back(pEle_i); //
-//Multiple times
+// Multiple times
 //				}
 //			}
 
@@ -536,7 +536,8 @@ void DerivativeAssembler::PropagateAndAssembleHessian(
 //			for (int b = 0; b < (int)m_vBlocksFront.size(); ++b)
 //			{
 //				assert(vpFrontEle[b]->NumDim() ==
-// m_vBlocksFront[b].rows()); 				assert(vpBackEle[b]->NumDim()
+// m_vBlocksFront[b].rows());
+// assert(vpBackEle[b]->NumDim()
 // == m_vBlocksFront[b].cols());
 
 //				if (this->m_isDynamic)
@@ -547,11 +548,14 @@ void DerivativeAssembler::PropagateAndAssembleHessian(
 //						mglobalHessian.AddStaticBlock(vpFrontEle[b]->Offset(),
 // vpBackEle[b]->Offset(), m_vBlocksFront[b]); else
 //					{
-//						if (this->m_vhessBlocksRef.size()
+//						if
+//(this->m_vhessBlocksRef.size()
 //<=
 // blockCount)
 // this->m_vhessBlocksRef.push_back(
-// mglobalHessian.CreateBlock( 									vpFrontEle[b]->Offset(), 									vpBackEle[b]->Offset(),
+// mglobalHessian.CreateBlock(
+// vpFrontEle[b]->Offset(),
+// vpBackEle[b]->Offset(),
 //									m_vBlocksFront[b].rows(),
 //									m_vBlocksFront[b].cols()));
 //

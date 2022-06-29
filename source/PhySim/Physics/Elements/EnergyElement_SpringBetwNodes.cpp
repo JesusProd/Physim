@@ -28,8 +28,8 @@ EnergyElement_SpringBetwNodes::EnergyElement_SpringBetwNodes(
   this->m_node2 = node2;
 
   this->m_vDoF.resize(2);
-  this->m_vDoF[0] = node1->Traits().Kinematics(Tag::Tag_DOF_0);
-  this->m_vDoF[1] = node2->Traits().Kinematics(Tag::Tag_DOF_0);
+  this->m_vDoF[0] = node1->Traits().Kinematics(Tag::DOF_0);
+  this->m_vDoF[1] = node2->Traits().Kinematics(Tag::DOF_0);
 
   this->m_vgradient.resize(6);
   this->m_mHessian.resize(6, 6);
@@ -47,9 +47,9 @@ void EnergyElement_SpringBetwNodes::Init() {
 }
 
 Real EnergyElement_SpringBetwNodes::ComputeRestLength() {
-  // return this->m_pEdge->VolumeBasis(Tag::Tag_Position_0);
-  Vector3d n1 = m_node1->Traits().Vector3d(Tag::Tag_Position_0);
-  Vector3d n2 = m_node2->Traits().Vector3d(Tag::Tag_Position_0);
+  // return this->m_pEdge->VolumeBasis(Tag::Position_0);
+  Vector3d n1 = m_node1->Traits().Vector3d(Tag::Position_0);
+  Vector3d n2 = m_node2->Traits().Vector3d(Tag::Position_0);
 
   return (n2 - n1).norm();
 }

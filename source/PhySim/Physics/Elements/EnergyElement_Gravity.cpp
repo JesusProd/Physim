@@ -20,7 +20,7 @@
 //	using namespace Eigen;
 //
 //	EnergyElement_Gravity::EnergyElement_Gravity(Simulable_Mesh* pModel) :
-//EnergyElement(pModel)
+// EnergyElement(pModel)
 //	{
 //		const vector<PtrS<KinematicsEle>>& vKine = pModel->GetDoFSets();
 //
@@ -51,7 +51,7 @@
 //		this->ComputeAndStore_Gradient();
 //
 //		VectorXd vx;
-//		this->m_pModel->GetDOFVector(vx, Tag::Tag_Position_X);
+//		this->m_pModel->GetDOFVector(vx, Tag::Position_X);
 //		this->m_energy = vx.dot(m_vgradient);
 //	}
 //
@@ -64,7 +64,7 @@
 //		for (size_t i = 0; i < pModel->GetMesh().NumNodes(); ++i)
 //		{
 //			IDoFSet* pDoF =
-//pModel->GetMesh().Nodes()[i]->Traits().Kinematics(Tag::Tag_DOF_0);
+// pModel->GetMesh().Nodes()[i]->Traits().Kinematics(Tag::DOF_0);
 //			this->m_vgradient.block(pDoF->Offset(), 0, 3, 1) =
 //-this->m_vgravity;
 //		}

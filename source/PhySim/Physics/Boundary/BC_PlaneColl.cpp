@@ -35,7 +35,7 @@ BC_PlaneColl::BC_PlaneColl(Simulable* pModel,
   this->m_vini[1] = m_vn;
 
   this->m_pFilter.reset(new GeometryFilter_PlaneDistNode(
-      Tag::Tag_Position_X, vp, vn, Vector2d(-HUGE_VAL, tol)));
+      Tag::Position_X, vp, vn, Vector2d(-HUGE_VAL, tol)));
 }
 
 BC_PlaneColl::~BC_PlaneColl(void) {
@@ -53,7 +53,7 @@ void BC_PlaneColl::Update() {
   this->m_vpEne.clear();
 
   for (int i = 0; i < vnodes.size(); ++i) {
-    KEleParticle3D* pDOF = vnodes[i]->Trait<KEleParticle3D*>(Tag::Tag_DOF_0);
+    KEleParticle3D* pDOF = vnodes[i]->Trait<KEleParticle3D*>(Tag::DOF_0);
 
     PtrS<ConstraintSet> pCon(new ConstraintSet_NodePlaneColl(
         m_pModel, this->m_isSoft, pDOF, this->m_vpoints, this->m_vn, m_tol));

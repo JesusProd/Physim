@@ -140,10 +140,10 @@ Mesh_GridCoarsen* Mesh_GridCoarsen::CreateSubCuboid(double sizeX,
 
   Vector3d vsize = Vector3d(sizeX, sizeY, sizeZ);
 
-  return new Mesh_GridCoarsen(
-      -vsize * 0.5, vsize, Vector3i(fineDimX, fineDimY, fineDimZ),
-      Vector3i(coarDimX, coarDimY, coarDimZ), voccupancy,
-      Discretization::Discretization_Hex8, vnTraits);
+  return new Mesh_GridCoarsen(-vsize * 0.5, vsize,
+                              Vector3i(fineDimX, fineDimY, fineDimZ),
+                              Vector3i(coarDimX, coarDimY, coarDimZ),
+                              voccupancy, Discretization::Hex8, vnTraits);
 }
 
 Mesh_GridCoarsen* Mesh_GridCoarsen::CreateFullCuboid(double sizeX,
@@ -173,10 +173,10 @@ Mesh_GridCoarsen* Mesh_GridCoarsen::CreateFullCuboid(double sizeX,
 
   Vector3d vsize = Vector3d(sizeX, sizeY, sizeZ);
 
-  return new Mesh_GridCoarsen(
-      -vsize * 0.5, vsize, Vector3i(fineDimX, fineDimY, fineDimZ),
-      Vector3i(coarDimX, coarDimY, coarDimZ), voccupancy,
-      Discretization::Discretization_Hex8, vnTraits);
+  return new Mesh_GridCoarsen(-vsize * 0.5, vsize,
+                              Vector3i(fineDimX, fineDimY, fineDimZ),
+                              Vector3i(coarDimX, coarDimY, coarDimZ),
+                              voccupancy, Discretization::Hex8, vnTraits);
 }
 
 Mesh_GridCoarsen* Mesh_GridCoarsen::CreateSphere(const Vector3d& center,
@@ -215,10 +215,10 @@ Mesh_GridCoarsen* Mesh_GridCoarsen::CreateSphere(const Vector3d& center,
 
   Vector3d vsize = Vector3d(sizeX, sizeY, sizeZ);
 
-  return new Mesh_GridCoarsen(
-      -vsize * 0.5, vsize, Vector3i(fineDimX, fineDimY, fineDimZ),
-      Vector3i(coarDimX, coarDimY, coarDimZ), voccupancy,
-      Discretization::Discretization_Hex8, vnTraits);
+  return new Mesh_GridCoarsen(-vsize * 0.5, vsize,
+                              Vector3i(fineDimX, fineDimY, fineDimZ),
+                              Vector3i(coarDimX, coarDimY, coarDimZ),
+                              voccupancy, Discretization::Hex8, vnTraits);
 }
 
 void Mesh_GridCoarsen::FreeMetadata() {
@@ -232,16 +232,16 @@ void Mesh_GridCoarsen::UpdateMetadata() {
 
   for (int i = 0; i < this->m_pFineMesh->NumNodes(); ++i)
     this->m_pFineMesh->Nodes()[i]->Traits().AddTrait<FineNodeMeta>(
-        Tag::Tag_FineMeta, FineNodeMeta());
+        Tag::FineMeta, FineNodeMeta());
   for (int i = 0; i < this->m_pFineMesh->NumElems(); ++i)
     this->m_pFineMesh->Elems()[i]->Traits().AddTrait<FineElemMeta>(
-        Tag::Tag_FineMeta, FineElemMeta());
+        Tag::FineMeta, FineElemMeta());
 
   for (int i = 0; i < this->NumNodes(); ++i)
-    this->Nodes()[i]->Traits().AddTrait<CoarNodeMeta>(Tag::Tag_CoarMeta,
+    this->Nodes()[i]->Traits().AddTrait<CoarNodeMeta>(Tag::CoarMeta,
                                                       CoarNodeMeta());
   for (int i = 0; i < this->NumElems(); ++i)
-    this->Elems()[i]->Traits().AddTrait<CoarElemMeta>(Tag::Tag_CoarMeta,
+    this->Elems()[i]->Traits().AddTrait<CoarElemMeta>(Tag::CoarMeta,
                                                       CoarElemMeta());
 
   // Initialize regular grid
@@ -258,11 +258,11 @@ void Mesh_GridCoarsen::UpdateMetadata() {
 
   // Setup coarse-fine link
 
-  this->Traits().AddTrait<PtrS<Mesh>>(Tag::Tag_FineMesh_0, this->m_pFineMesh);
+  this->Traits().AddTrait<PtrS<Mesh>>(Tag::FineMesh_0, this->m_pFineMesh);
 
   MatrixXd mVfine;
-  this->m_pFineMesh->GetNodesTrait(mVfine, Tag::Tag_Position_0);
-  this->EmbedMesh(*this->m_pFineMesh, Tag::Tag_Position_0);
+  this->m_pFineMesh->GetNodesTrait(mVfine, Tag::Position_0);
+  this->EmbedMesh(*this->m_pFineMesh, Tag::Position_0);
 }
 
 void Mesh_GridCoarsen::InitializeCoarseElements_RegularGrid() {
@@ -288,7 +288,7 @@ void Mesh_GridCoarsen::InitializeCoarseElements_RegularGrid() {
 
 void Mesh_GridCoarsen::RecomputeCoarseBoundaries(int coarElemIdx) {
   CoarElemMeta& coarElemMeta =
-      this->Elems()[coarElemIdx]->Trait<CoarElemMeta>(Tag::Tag_CoarMeta);
+      this->Elems()[coarElemIdx]->Trait<CoarElemMeta>(Tag::CoarMeta);
   coarElemMeta.vboundaryXm.clear();
   coarElemMeta.vboundaryXp.clear();
   coarElemMeta.vboundaryYm.clear();
@@ -298,10 +298,8 @@ void Mesh_GridCoarsen::RecomputeCoarseBoundaries(int coarElemIdx) {
 
   for (int j = 0; j < (int)coarElemMeta.vfineElem.size(); ++j) {
     Poly* pFineElem = coarElemMeta.vfineElem[j];
-    GridElemMeta& gridElemMeta =
-        pFineElem->Trait<GridElemMeta>(Tag::Tag_GridMeta);
-    FineElemMeta& fineElemMeta =
-        pFineElem->Trait<FineElemMeta>(Tag::Tag_FineMeta);
+    GridElemMeta& gridElemMeta = pFineElem->Trait<GridElemMeta>(Tag::GridMeta);
+    FineElemMeta& fineElemMeta = pFineElem->Trait<FineElemMeta>(Tag::FineMeta);
 
     if (!gridElemMeta.vDualEdgesXm.empty()) {
       Poly* pNeigElem = gridElemMeta.vDualEdgesXm[0]->elem0;
@@ -343,9 +341,9 @@ void Mesh_GridCoarsen::RecomputeCoarseBoundaries(int coarElemIdx) {
 
 void Mesh_GridCoarsen::RecomputeCoarseNeighbors(int coarElemIdx) {
   GridElemMeta& gridElemMeta =
-      this->Elems()[coarElemIdx]->Trait<GridElemMeta>(Tag::Tag_GridMeta);
+      this->Elems()[coarElemIdx]->Trait<GridElemMeta>(Tag::GridMeta);
   CoarElemMeta& coarElemMeta =
-      this->Elems()[coarElemIdx]->Trait<CoarElemMeta>(Tag::Tag_CoarMeta);
+      this->Elems()[coarElemIdx]->Trait<CoarElemMeta>(Tag::CoarMeta);
   gridElemMeta.vDualEdgesXm.clear();
   gridElemMeta.vDualEdgesXp.clear();
   gridElemMeta.vDualEdgesYm.clear();
@@ -357,7 +355,7 @@ void Mesh_GridCoarsen::RecomputeCoarseNeighbors(int coarElemIdx) {
     set<int> sneighbors;
     for (int i = 0; i < (int)coarElemMeta.vboundaryXm.size(); ++i) {
       int neigElemIdx = coarElemMeta.vboundaryXm[i]
-                            ->elem0->Trait<FineElemMeta>(Tag::Tag_FineMeta)
+                            ->elem0->Trait<FineElemMeta>(Tag::FineMeta)
                             .coarElem->ID();
       if (sneighbors.find(neigElemIdx) == sneighbors.end()) {
         pair<int, int> key(neigElemIdx, coarElemIdx);
@@ -379,7 +377,7 @@ void Mesh_GridCoarsen::RecomputeCoarseNeighbors(int coarElemIdx) {
     set<int> sneighbors;
     for (int i = 0; i < (int)coarElemMeta.vboundaryXp.size(); ++i) {
       int neigElemIdx = coarElemMeta.vboundaryXp[i]
-                            ->elem1->Trait<FineElemMeta>(Tag::Tag_FineMeta)
+                            ->elem1->Trait<FineElemMeta>(Tag::FineMeta)
                             .coarElem->ID();
       if (sneighbors.find(neigElemIdx) == sneighbors.end()) {
         pair<int, int> key(coarElemIdx, neigElemIdx);
@@ -401,7 +399,7 @@ void Mesh_GridCoarsen::RecomputeCoarseNeighbors(int coarElemIdx) {
     set<int> sneighbors;
     for (int i = 0; i < (int)coarElemMeta.vboundaryYm.size(); ++i) {
       int neigElemIdx = coarElemMeta.vboundaryYm[i]
-                            ->elem0->Trait<FineElemMeta>(Tag::Tag_FineMeta)
+                            ->elem0->Trait<FineElemMeta>(Tag::FineMeta)
                             .coarElem->ID();
       if (sneighbors.find(neigElemIdx) == sneighbors.end()) {
         pair<int, int> key(neigElemIdx, coarElemIdx);
@@ -423,7 +421,7 @@ void Mesh_GridCoarsen::RecomputeCoarseNeighbors(int coarElemIdx) {
     set<int> sneighbors;
     for (int i = 0; i < (int)coarElemMeta.vboundaryYp.size(); ++i) {
       int neigElemIdx = coarElemMeta.vboundaryYp[i]
-                            ->elem1->Trait<FineElemMeta>(Tag::Tag_FineMeta)
+                            ->elem1->Trait<FineElemMeta>(Tag::FineMeta)
                             .coarElem->ID();
       if (sneighbors.find(neigElemIdx) == sneighbors.end()) {
         pair<int, int> key(coarElemIdx, neigElemIdx);
@@ -445,7 +443,7 @@ void Mesh_GridCoarsen::RecomputeCoarseNeighbors(int coarElemIdx) {
     set<int> sneighbors;
     for (int i = 0; i < (int)coarElemMeta.vboundaryZm.size(); ++i) {
       int neigElemIdx = coarElemMeta.vboundaryZm[i]
-                            ->elem0->Trait<FineElemMeta>(Tag::Tag_FineMeta)
+                            ->elem0->Trait<FineElemMeta>(Tag::FineMeta)
                             .coarElem->ID();
       if (sneighbors.find(neigElemIdx) == sneighbors.end()) {
         pair<int, int> key(neigElemIdx, coarElemIdx);
@@ -467,7 +465,7 @@ void Mesh_GridCoarsen::RecomputeCoarseNeighbors(int coarElemIdx) {
     set<int> sneighbors;
     for (int i = 0; i < (int)coarElemMeta.vboundaryZp.size(); ++i) {
       int neigElemIdx = coarElemMeta.vboundaryZp[i]
-                            ->elem1->Trait<FineElemMeta>(Tag::Tag_FineMeta)
+                            ->elem1->Trait<FineElemMeta>(Tag::FineMeta)
                             .coarElem->ID();
       if (sneighbors.find(neigElemIdx) == sneighbors.end()) {
         pair<int, int> key(coarElemIdx, neigElemIdx);
@@ -497,7 +495,7 @@ void Mesh_GridCoarsen::RecomputeCoarseFineSubmesh(int coarElemIdx) {
   int localElemCount = 0;
   int localNodeCount = 0;
   CoarElemMeta& coarElemMeta =
-      this->Elems()[coarElemIdx]->Trait<CoarElemMeta>(Tag::Tag_CoarMeta);
+      this->Elems()[coarElemIdx]->Trait<CoarElemMeta>(Tag::CoarMeta);
   coarElemMeta.vfineNode.clear();
 
   // The bounding box of the coarse element is used to assign local
@@ -505,7 +503,7 @@ void Mesh_GridCoarsen::RecomputeCoarseFineSubmesh(int coarElemIdx) {
   // position)
 
   MatrixXd mN;
-  this->Elems()[coarElemIdx]->GetNodesTrait(mN, Tag::Tag_Position_0);
+  this->Elems()[coarElemIdx]->GetNodesTrait(mN, Tag::Position_0);
   Vector3d vminBox = mN.colwise().minCoeff();
   Vector3d vmaxBox = mN.colwise().maxCoeff();
   Vector3d vranBox = vmaxBox - vminBox;
@@ -516,19 +514,17 @@ void Mesh_GridCoarsen::RecomputeCoarseFineSubmesh(int coarElemIdx) {
 
   for (int j = 0; j < (int)coarElemMeta.vfineElem.size(); ++j) {
     Poly* pFineElem = coarElemMeta.vfineElem[j];
-    GridElemMeta& gridElemMeta =
-        pFineElem->Trait<GridElemMeta>(Tag::Tag_GridMeta);
-    FineElemMeta& fineElemMeta =
-        pFineElem->Trait<FineElemMeta>(Tag::Tag_FineMeta);
+    GridElemMeta& gridElemMeta = pFineElem->Trait<GridElemMeta>(Tag::GridMeta);
+    FineElemMeta& fineElemMeta = pFineElem->Trait<FineElemMeta>(Tag::FineMeta);
 
     // Clear fine nodes local index
 
     for (int k = 0; k < pFineElem->NumNodes(); ++k) {
       Node* pFineNode = pFineElem->Nodes()[k];
       map<int, int>& mlocalFullIdx =
-          pFineNode->Trait<FineNodeMeta>(Tag::Tag_FineMeta).mLocalFullIdx;
+          pFineNode->Trait<FineNodeMeta>(Tag::FineMeta).mLocalFullIdx;
       map<int, int>& mlocalActiveIdx =
-          pFineNode->Trait<FineNodeMeta>(Tag::Tag_FineMeta).mLocalActiveIdx;
+          pFineNode->Trait<FineNodeMeta>(Tag::FineMeta).mLocalActiveIdx;
       mlocalFullIdx.erase(coarElemIdx);
       mlocalActiveIdx.erase(coarElemIdx);
     }
@@ -553,19 +549,17 @@ void Mesh_GridCoarsen::RecomputeCoarseFineSubmesh(int coarElemIdx) {
 
   for (int j = 0; j < (int)coarElemMeta.vfineElem.size(); ++j) {
     Poly* pFineElem = coarElemMeta.vfineElem[j];
-    GridElemMeta& gridElemMeta =
-        pFineElem->Trait<GridElemMeta>(Tag::Tag_GridMeta);
-    FineElemMeta& fineElemMeta =
-        pFineElem->Trait<FineElemMeta>(Tag::Tag_FineMeta);
+    GridElemMeta& gridElemMeta = pFineElem->Trait<GridElemMeta>(Tag::GridMeta);
+    FineElemMeta& fineElemMeta = pFineElem->Trait<FineElemMeta>(Tag::FineMeta);
 
     for (int k = 0; k < pFineElem->NumNodes(); ++k) {
       Node* pFineNode = pFineElem->Nodes()[k];
       map<int, int>& mlocalFullIdx =
-          pFineNode->Trait<FineNodeMeta>(Tag::Tag_FineMeta).mLocalFullIdx;
+          pFineNode->Trait<FineNodeMeta>(Tag::FineMeta).mLocalFullIdx;
       map<int, int>& mlocalActiveIdx =
-          pFineNode->Trait<FineNodeMeta>(Tag::Tag_FineMeta).mLocalActiveIdx;
+          pFineNode->Trait<FineNodeMeta>(Tag::FineMeta).mLocalActiveIdx;
       if (mlocalActiveIdx.find(coarElemIdx) == mlocalActiveIdx.end()) {
-        Vector3d pos = pFineNode->Traits().Vector3d(Tag::Tag_Position_0);
+        Vector3d pos = pFineNode->Traits().Vector3d(Tag::Position_0);
         Real alphaX = 1e-6 + (pos.x() - vminBox.x()) / vranBox.x();
         Real alphaY = 1e-6 + (pos.y() - vminBox.y()) / vranBox.y();
         Real alphaZ = 1e-6 + (pos.z() - vminBox.z()) / vranBox.z();
@@ -596,8 +590,8 @@ void Mesh_GridCoarsen::RecomputeCoarseFineSubmesh(int coarElemIdx) {
 
     NodeLesser(int coarElemIdx) { this->m_coarElemIdx = coarElemIdx; }
     bool operator()(const Node* pA, const Node* pB) {
-      auto& nodeMetaA = pA->Trait<FineNodeMeta>(Tag::Tag_FineMeta);
-      auto& nodeMetaB = pB->Trait<FineNodeMeta>(Tag::Tag_FineMeta);
+      auto& nodeMetaA = pA->Trait<FineNodeMeta>(Tag::FineMeta);
+      auto& nodeMetaB = pB->Trait<FineNodeMeta>(Tag::FineMeta);
       return nodeMetaA.mLocalActiveIdx.at(m_coarElemIdx) <
              nodeMetaB.mLocalActiveIdx.at(m_coarElemIdx);
     }
@@ -610,7 +604,7 @@ void Mesh_GridCoarsen::RecomputeCoarseFineSubmesh(int coarElemIdx) {
 
   for (int i = 0; i < coarElemMeta.vfineNode.size(); ++i) {
     int found = coarElemMeta.vfineNode[i]
-                    ->Trait<FineNodeMeta>(Tag::Tag_FineMeta)
+                    ->Trait<FineNodeMeta>(Tag::FineMeta)
                     .mLocalActiveIdx[coarElemIdx];
     if (found != i) {
       IOUtils::logTrace(Verbosity::V1_Default,
@@ -623,11 +617,11 @@ void Mesh_GridCoarsen::RecomputeCoarseFineSubmesh(int coarElemIdx) {
 
   for (auto it = coarElemMeta.vfineNode.begin();
        it != coarElemMeta.vfineNode.end(); ++it) {
-    const Vector3d vpos = (*it)->Traits().Vector3d(Tag::Tag_Position_0);
+    const Vector3d vpos = (*it)->Traits().Vector3d(Tag::Position_0);
     Embedding embed =
-        *Elems()[coarElemIdx]->ComputeEmbedding(vpos, Tag::Tag_Position_0);
+        *Elems()[coarElemIdx]->ComputeEmbedding(vpos, Tag::Position_0);
     if (embed.Valid())
-      (*it)->Traits().AddTrait<Embedding>(Tag::Tag_Embedding_0, embed);
+      (*it)->Traits().AddTrait<Embedding>(Tag::Embedding_0, embed);
   }
 }
 
@@ -635,7 +629,7 @@ void Mesh_GridCoarsen::GetSharedNodes(int coarElemIdx,
                                       int elemSide,
                                       vector<SharedNodes>& vshared) {
   CoarElemMeta& coarElemMeta =
-      this->Elems()[coarElemIdx]->Trait<CoarElemMeta>(Tag::Tag_CoarMeta);
+      this->Elems()[coarElemIdx]->Trait<CoarElemMeta>(Tag::CoarMeta);
 
   // Choose side
 
@@ -686,7 +680,7 @@ void Mesh_GridCoarsen::GetSharedNodes(int coarElemIdx,
     }
 
     int otherCoarIdx =
-        pOtherElem->Trait<FineElemMeta>(Tag::Tag_FineMeta).coarElem->ID();
+        pOtherElem->Trait<FineElemMeta>(Tag::FineMeta).coarElem->ID();
 
     if (mcollect.find(otherCoarIdx) == mcollect.end())
       mcollect[otherCoarIdx] = set<pair<Node*, Node*>>();
@@ -769,10 +763,10 @@ void Mesh_GridCoarsen::GetSharedNodes(int coarElemIdx,
     for (; itCurPairs != itEndPairs; ++itCurPairs) {
       assert(itCurPairs->first == itCurPairs->second);
       vshared.back().vnodeIdx0.push_back(
-          itCurPairs->first->Trait<FineNodeMeta>(Tag::Tag_FineMeta)
+          itCurPairs->first->Trait<FineNodeMeta>(Tag::FineMeta)
               .mLocalActiveIdx[coarElemIdx]);
       vshared.back().vnodeIdx1.push_back(
-          itCurPairs->second->Trait<FineNodeMeta>(Tag::Tag_FineMeta)
+          itCurPairs->second->Trait<FineNodeMeta>(Tag::FineMeta)
               .mLocalActiveIdx[it->first]);
       vshared.back().vFineNodes.push_back(itCurPairs->first);
     }
@@ -833,8 +827,7 @@ void Mesh_GridCoarsen::RecomputeCoarse(
   set<Poly*> lcoarAffected;
   for (auto itCur = lfineAffected.begin(); itCur != lfineAffected.end();
        ++itCur)
-    lcoarAffected.insert(
-        (*itCur)->Trait<FineElemMeta>(Tag::Tag_FineMeta).coarElem);
+    lcoarAffected.insert((*itCur)->Trait<FineElemMeta>(Tag::FineMeta).coarElem);
 
   // Subdivide coarse elements
 
@@ -846,9 +839,9 @@ void Mesh_GridCoarsen::RecomputeCoarse(
        ++itCur) {
     Cell_Hexa* pOldCoarElem = (Cell_Hexa*)(*itCur);
     GridElemMeta& oldGridElemMeta =
-        pOldCoarElem->Trait<GridElemMeta>(Tag::Tag_GridMeta);
+        pOldCoarElem->Trait<GridElemMeta>(Tag::GridMeta);
     CoarElemMeta& oldCoarElemMeta =
-        pOldCoarElem->Trait<CoarElemMeta>(Tag::Tag_CoarMeta);
+        pOldCoarElem->Trait<CoarElemMeta>(Tag::CoarMeta);
 
     // Add the coarse element to revove
 
@@ -859,7 +852,7 @@ void Mesh_GridCoarsen::RecomputeCoarse(
     int numCoar = 0;
     for (int i = 0; i < (int)oldCoarElemMeta.vfineElem.size(); ++i)
       oldCoarElemMeta.vfineElem[i]
-          ->Trait<FineElemMeta>(Tag::Tag_FineMeta)
+          ->Trait<FineElemMeta>(Tag::FineMeta)
           .coarElem = NULL;
 
     // Group fine elements in connected componets and create new coarse elements
@@ -870,7 +863,7 @@ void Mesh_GridCoarsen::RecomputeCoarse(
 
     for (int i = 0; i < numFine && numTot != numFine; ++i) {
       if (oldCoarElemMeta.vfineElem[i]
-              ->Trait<FineElemMeta>(Tag::Tag_FineMeta)
+              ->Trait<FineElemMeta>(Tag::FineMeta)
               .coarElem == NULL) {
         // List all elements in the same connected component
 
@@ -937,23 +930,19 @@ Cell_Hexa* Mesh_GridCoarsen::CreateCoarseElement(const Cell_Hexa* pOldCoarElem,
     pNewCoarElem->Nodes()[j]->ID() = -1;
   }
 
-  pNewCoarElem->Traits().AddTrait<GridElemMeta>(Tag::Tag_GridMeta,
-                                                GridElemMeta());
-  pNewCoarElem->Traits().AddTrait<CoarElemMeta>(Tag::Tag_CoarMeta,
-                                                CoarElemMeta());
+  pNewCoarElem->Traits().AddTrait<GridElemMeta>(Tag::GridMeta, GridElemMeta());
+  pNewCoarElem->Traits().AddTrait<CoarElemMeta>(Tag::CoarMeta, CoarElemMeta());
   GridElemMeta& newGridElemMeta =
-      pNewCoarElem->Trait<GridElemMeta>(Tag::Tag_GridMeta);
+      pNewCoarElem->Trait<GridElemMeta>(Tag::GridMeta);
   CoarElemMeta& newCoarElemMeta =
-      pNewCoarElem->Trait<CoarElemMeta>(Tag::Tag_CoarMeta);
+      pNewCoarElem->Trait<CoarElemMeta>(Tag::CoarMeta);
 
   set<Node*> sfineNodes;
 
   for (auto it = lchildren.begin(); it != lchildren.end(); ++it) {
     Poly* pFineElem = (*it);
-    FineElemMeta& fineElemMeta =
-        pFineElem->Trait<FineElemMeta>(Tag::Tag_FineMeta);
-    GridElemMeta& gridElemMeta =
-        pFineElem->Trait<GridElemMeta>(Tag::Tag_GridMeta);
+    FineElemMeta& fineElemMeta = pFineElem->Trait<FineElemMeta>(Tag::FineMeta);
+    GridElemMeta& gridElemMeta = pFineElem->Trait<GridElemMeta>(Tag::GridMeta);
 
     // Set basic fine-coar element link
 
@@ -1035,8 +1024,8 @@ void Mesh_GridCoarsen::ListConnectedOrphanElements(Poly* pRoot,
     if (sselected.find(pNext) != sselected.end())
       continue;  // Already visited before!
 
-    GridElemMeta& gridElemMeta = pNext->Trait<GridElemMeta>(Tag::Tag_GridMeta);
-    FineElemMeta& fineElemMeta = pNext->Trait<FineElemMeta>(Tag::Tag_FineMeta);
+    GridElemMeta& gridElemMeta = pNext->Trait<GridElemMeta>(Tag::GridMeta);
+    FineElemMeta& fineElemMeta = pNext->Trait<FineElemMeta>(Tag::FineMeta);
     if (fineElemMeta.coarElem == NULL)  // Not asigned yet
     {
       if (!gridElemMeta.vDualEdgesXm.empty())
@@ -1064,7 +1053,7 @@ void Mesh_GridCoarsen::ListConnectedOrphanElements(Poly* pRoot,
 
 PtrS<Mesh_Hexa> Mesh_GridCoarsen::GetFineSubmesh(int coarElemIdx) {
   CoarElemMeta& coarElemMeta =
-      this->Elems()[coarElemIdx]->Trait<CoarElemMeta>(Tag::Tag_CoarMeta);
+      this->Elems()[coarElemIdx]->Trait<CoarElemMeta>(Tag::CoarMeta);
 
   MatrixXi mE(coarElemMeta.vfineElem.size(), 8);
   vector<MatrixXd> vmN(this->m_vnodeTraits.size());
@@ -1078,7 +1067,7 @@ PtrS<Mesh_Hexa> Mesh_GridCoarsen::GetFineSubmesh(int coarElemIdx) {
       Node* pFineNode =
           m_pFineMesh->Nodes()[coarElemMeta.vfineElem[i]->Nodes()[j]->ID()];
       FineNodeMeta& fineNodeMeta =
-          pFineNode->Trait<FineNodeMeta>(Tag::Tag_FineMeta);
+          pFineNode->Trait<FineNodeMeta>(Tag::FineMeta);
       mE(i, j) = fineNodeMeta.mLocalActiveIdx[coarElemIdx];
 
       for (int k = 0; k < (int)vmN.size(); ++k)
@@ -1101,7 +1090,7 @@ void Mesh_GridCoarsen::GetFineSubmesh(int coarElemIdx,
                                       MatrixXi& mE,
                                       Tag s) {
   CoarElemMeta& coarElemMeta =
-      this->Elems()[coarElemIdx]->Trait<CoarElemMeta>(Tag::Tag_CoarMeta);
+      this->Elems()[coarElemIdx]->Trait<CoarElemMeta>(Tag::CoarMeta);
 
   mN.resize(coarElemMeta.vfineNode.size(), 3);
   mE.resize(coarElemMeta.vfineElem.size(), 8);
@@ -1111,7 +1100,7 @@ void Mesh_GridCoarsen::GetFineSubmesh(int coarElemIdx,
       Node* pFineNode =
           m_pFineMesh->Nodes()[coarElemMeta.vfineElem[i]->Nodes()[j]->ID()];
       FineNodeMeta& fineNodeMeta =
-          pFineNode->Trait<FineNodeMeta>(Tag::Tag_FineMeta);
+          pFineNode->Trait<FineNodeMeta>(Tag::FineMeta);
       mN.row(fineNodeMeta.mLocalActiveIdx[coarElemIdx]) =
           pFineNode->Trait<Vector3d>(s);
       mE(i, j) = fineNodeMeta.mLocalActiveIdx[coarElemIdx];
@@ -1122,7 +1111,7 @@ void Mesh_GridCoarsen::GetOversamplingSubmesh(vector<int> vcoarElemIdx,
                                               MatrixXi& mE,
                                               Tag s) {
   // CoarElemMeta& coarElemMeta =
-  // this->Elems()[coarElemIdx]->Trait<CoarElemMeta>(Tag::Tag_CoarMeta);
+  // this->Elems()[coarElemIdx]->Trait<CoarElemMeta>(Tag::CoarMeta);
 
   // mN.resize(coarElemMeta.vfineNode.size(), 3);
   // mE.resize(coarElemMeta.vfineElem.size(), 8);
@@ -1133,7 +1122,7 @@ void Mesh_GridCoarsen::GetOversamplingSubmesh(vector<int> vcoarElemIdx,
   // 		Node* pFineNode =
   // m_pFineMesh->Nodes()[coarElemMeta.vfineElem[i]->Nodes()[j]->ID()];
   // 		FineNodeMeta& fineNodeMeta =
-  // pFineNode->Trait<FineNodeMeta>(Tag::Tag_FineMeta);
+  // pFineNode->Trait<FineNodeMeta>(Tag::FineMeta);
   // 		mN.row(fineNodeMeta.mLocalActiveIdx[coarElemIdx]) =
   // pFineNode->Trait<Vector3d>(s); 		mE(i, j) =
   // fineNodeMeta.mLocalActiveIdx[coarElemIdx];

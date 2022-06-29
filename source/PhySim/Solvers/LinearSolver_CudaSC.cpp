@@ -253,7 +253,7 @@ SolveResult LinearSolver_CudaSC::SolveInternal(MatrixSd& mA,
     // this->options.maxError)
     //{
     //	logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear solve: inexact
-    //solution, error: %.6e", relError); 	continue; // Iterate again
+    // solution, error: %.6e", relError); 	continue; // Iterate again
     //}
 
     logTrace(Verbosity::V1_Default,

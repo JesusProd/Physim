@@ -25,7 +25,7 @@ MassElement_DEREdge::MassElement_DEREdge(Simulable_DER* pModel,
   m_pModelDER = pModel;
 
   this->m_vDoF.resize(1);
-  this->m_vDoF.push_back(this->m_pEdge->Traits().Kinematics(Tag::Tag_DOF_0));
+  this->m_vDoF.push_back(this->m_pEdge->Traits().Kinematics(Tag::DOF_0));
 
   m_vDMDtv = VectorXd::Zero(0);
   m_mMass = MatrixXd::Zero(1, 1);
@@ -40,9 +40,9 @@ void MassElement_DEREdge::Init() {
 void MassElement_DEREdge::ComputeAndStore_Mass() {
   Real rho = (*m_pModelDER->SetupOptions().m_pMatParams->GetValueAtDomainPoint(
       this->m_pEdge->ID()))[ParameterSet::Param_Density];
-  Real rw = this->m_pEdge->Traits().Double(Tag::Tag_Size_0);
-  Real rh = this->m_pEdge->Traits().Double(Tag::Tag_Size_1);
-  Real V = this->m_pEdge->VolumeBasis(Tag::Tag_Position_0);
+  Real rw = this->m_pEdge->Traits().Double(Tag::Size_0);
+  Real rh = this->m_pEdge->Traits().Double(Tag::Size_1);
+  Real V = this->m_pEdge->VolumeBasis(Tag::Position_0);
   Real ra = 0.5 * (rw + rh);
 
   this->m_mMass(0, 0) = (rho * V * ra * ra) / 2;

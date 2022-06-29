@@ -79,7 +79,7 @@ class Simulable_RB : public Simulable {
   // Materials(int i) const { return this->m_pOptions->m_vpMaterials[i]; }
 
   // virtual KEleRigidBody3D* RigidBody(int i) { return
-  // static_cast<KEleRigidBody3D*>(this->m_pOptions->m_vpGeometries[i]->Traits().Kinematics(Tag::Tag_DOF_0));
+  // static_cast<KEleRigidBody3D*>(this->m_pOptions->m_vpGeometries[i]->Traits().Kinematics(Tag::DOF_0));
   // }
 
  protected:

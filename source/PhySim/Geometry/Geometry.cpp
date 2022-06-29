@@ -54,19 +54,19 @@ PtrS<Embedding> Geometry::ComputeProjection(const Vector3d& vx, Tag s) {
 
 void Geometry::InterpolateEmbeddedNodeTraits(Tag s) {
   for (int i = 0; i < this->NumNodes(); ++i)
-    if (this->Nodes()[i]->Traits().HasTrait(Tag::Tag_Embedding_0))
+    if (this->Nodes()[i]->Traits().HasTrait(Tag::Embedding_0))
       this->Nodes()[i]->Traits().Vector3d(s) =
           this->Nodes()[i]
-              ->Trait<Embedding>(Tag::Tag_Embedding_0)
+              ->Trait<Embedding>(Tag::Embedding_0)
               .InterpolateValue(s);
 }
 
 void Geometry::InterpolateEmbeddedDeformation(Tag s0, Tag sx) {
   for (int i = 0; i < this->NumNodes(); ++i)
-    if (this->Nodes()[i]->Traits().HasTrait(Tag::Tag_Embedding_0))
+    if (this->Nodes()[i]->Traits().HasTrait(Tag::Embedding_0))
       this->Nodes()[i]->Traits().Vector3d(sx) =
           this->Nodes()[i]
-              ->Trait<Embedding>(Tag::Tag_Embedding_0)
+              ->Trait<Embedding>(Tag::Embedding_0)
               .InterpolateDeformation(s0, sx);
 }
 
@@ -118,7 +118,7 @@ void Geometry::EmbedNodes(vector<Node*>& vtoEmbed, const Tag& trait) {
   this->ComputeEmbedding(mPoints, vembed, trait);
 
   for (int i = 0; i < (int)vtoEmbed.size(); ++i)
-    vtoEmbed[i]->Traits().AddTrait<Embedding>(Tag::Tag_Embedding_0, *vembed[i]);
+    vtoEmbed[i]->Traits().AddTrait<Embedding>(Tag::Embedding_0, *vembed[i]);
 }
 
 void Geometry::EmbedNodes(vector<Node*>& vtoEmbed, const VectorXi& vsel) {
@@ -127,7 +127,7 @@ void Geometry::EmbedNodes(vector<Node*>& vtoEmbed, const VectorXi& vsel) {
   this->ComputeEmbedding(vembed, vsel);
 
   for (int i = 0; i < (int)vtoEmbed.size(); ++i)
-    vtoEmbed[i]->Traits().AddTrait<Embedding>(Tag::Tag_Embedding_0, *vembed[i]);
+    vtoEmbed[i]->Traits().AddTrait<Embedding>(Tag::Embedding_0, *vembed[i]);
 }
 
 void Geometry::EmbedMesh(Mesh& mesh, const Tag& trait) {

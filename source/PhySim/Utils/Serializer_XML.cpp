@@ -286,15 +286,15 @@ bool Serializer_XML::LoadSemantics(const xml_attr& att, Tag& sema) {
   string value = att.as_string();
 
   if (value.compare("PosX") == 0) {
-    sema = Tag::Tag_Position_X;
+    sema = Tag::Position_X;
     return true;
   }
   if (value.compare("Pos0") == 0) {
-    sema = Tag::Tag_Position_0;
+    sema = Tag::Position_0;
     return true;
   }
   if (value.compare("VelX") == 0) {
-    sema = Tag::Tag_Velocity;
+    sema = Tag::Velocity;
     return true;
   }
 
@@ -311,52 +311,52 @@ bool Serializer_XML::LoadDiscretization(const xml_node& ele,
   string typeValue = ele.attribute("type").as_string();
 
   if (typeValue == "NODE") {
-    dis = Discretization::Discretization_Nodes;
+    dis = Discretization::Nodes;
     return true;
   }
 
   if (typeValue == "EDGE2") {
-    dis = Discretization::Discretization_Edge2;
+    dis = Discretization::Edge2;
     return true;
   }
   if (typeValue == "EDGE3") {
-    dis = Discretization::Discretization_Edge3;
+    dis = Discretization::Edge3;
     return true;
   }
 
   if (typeValue == "TRI3") {
-    dis = Discretization::Discretization_Tri3;
+    dis = Discretization::Tri3;
     return true;
   }
   if (typeValue == "TRI6") {
-    dis = Discretization::Discretization_Tri6;
+    dis = Discretization::Tri6;
     return true;
   }
 
   if (typeValue == "QUAD4") {
-    dis = Discretization::Discretization_Quad4;
+    dis = Discretization::Quad4;
     return true;
   }
   if (typeValue == "QUAD8") {
-    dis = Discretization::Discretization_Quad8;
+    dis = Discretization::Quad8;
     return true;
   }
 
   if (typeValue == "TET4") {
-    dis = Discretization::Discretization_Tet4;
+    dis = Discretization::Tet4;
     return true;
   }
   if (typeValue == "TET10") {
-    dis = Discretization::Discretization_Tet10;
+    dis = Discretization::Tet10;
     return true;
   }
 
   if (typeValue == "HEX8") {
-    dis = Discretization::Discretization_Hex8;
+    dis = Discretization::Hex8;
     return true;
   }
   if (typeValue == "HEX20") {
-    dis = Discretization::Discretization_Hex20;
+    dis = Discretization::Hex20;
     return true;
   }
 
@@ -738,15 +738,15 @@ bool Serializer_XML::LoadSimulableVector(const xml_attr& att,
   string value = att.as_string();
 
   if (value.compare("PosX") == 0) {
-    pModel->GetDOFVector(vx, Tag::Tag_Position_X);
+    pModel->GetDOFVector(vx, Tag::Position_X);
     return true;
   }
   if (value.compare("VelX") == 0) {
-    pModel->GetDOFVector(vx, Tag::Tag_Velocity);
+    pModel->GetDOFVector(vx, Tag::Velocity);
     return true;
   }
   if (value.compare("Pos0") == 0) {
-    pModel->GetDOFVector(vx, Tag::Tag_Position_0);
+    pModel->GetDOFVector(vx, Tag::Position_0);
     return true;
   }
   // if (value.compare("Mass") == 0) { vx = pModel->GetMass().diagonal(); return
@@ -1126,8 +1126,8 @@ bool Serializer_XML::LoadSimulable_ThinShell(const xml_node& ele,
 
   // Discretization dis;
   // bool success = this->LoadDiscretization(ele.attribute("discretization"),
-  // dis); if (!success || (dis != Discretization::Discretization_Tri3 && dis !=
-  // Discretization::Discretization_Tri6))
+  // dis); if (!success || (dis != Discretization::Tri3 && dis !=
+  // Discretization::Tri6))
   //{
   //	IOUtils::logTrace(Verbosity::V1_Default, "\n[ERROR] Invalid simulation
   // mesh
@@ -1135,15 +1135,15 @@ bool Serializer_XML::LoadSimulable_ThinShell(const xml_node& ele,
   //}
 
   // vector<Tag> vnTraits(3);
-  // vnTraits[0] = Tag::Tag_Position_X; // World configuration
-  // vnTraits[1] = Tag::Tag_Position_0; // Rest configuration
-  // vnTraits[2] = Tag::Tag_Velocity; // Rest configuration
+  // vnTraits[0] = Tag::Position_X; // World configuration
+  // vnTraits[1] = Tag::Position_0; // Rest configuration
+  // vnTraits[2] = Tag::Velocity; // Rest configuration
   // Mesh_Tri* pInputMesh = new Mesh_Tri(mV_X, mF_X, dis, vnTraits);
 
   //// Set rest and vel configuration
 
-  // pInputMesh->SetNodesTrait(mV_0, Tag::Tag_Position_0);
-  // pInputMesh->SetNodesTrait(0 * mV_0, Tag::Tag_Velocity);
+  // pInputMesh->SetNodesTrait(mV_0, Tag::Position_0);
+  // pInputMesh->SetNodesTrait(0 * mV_0, Tag::Velocity);
 
   // pModelThinShell->SetupOptions().m_pMesh.reset(pInputMesh);
 
@@ -1174,13 +1174,13 @@ bool Serializer_XML::LoadSimulable_ThinShell(const xml_node& ele,
 
   // switch (dis)
   //{
-  // case Discretization::Discretization_Tri3:
-  // case Discretization::Discretization_Tri6:
+  // case Discretization::Tri3:
+  // case Discretization::Tri6:
   //	pModelThinShell->SetupOptions().m_vpQuadratures.push_back(Quadrature_Tri1::Instance());
   // break; 	break;
 
-  // case Discretization::Discretization_Quad4:
-  // case Discretization::Discretization_Quad8:
+  // case Discretization::Quad4:
+  // case Discretization::Quad8:
   //	pModelThinShell->SetupOptions().m_vpQuadratures.push_back(PtrS<IQuadrature>(new
   // Quadrature_Gauss(2, ele.attribute("quadrature").as_int()))); 	break;
   //}
@@ -1220,8 +1220,9 @@ bool Serializer_XML::LoadSimulable_VolumeFEM(const xml_node& ele,
 
   Discretization dis;
   bool success = this->LoadDiscretization(ele.child("discretization"), dis);
-  if (!success || (dis != Discretization::Discretization_Tet4 && dis != Discretization::Discretization_Tet10 &&
-                   dis != Discretization::Discretization_Hex8 && dis != Discretization::Discretization_Hex20)) {
+  if (!success ||
+      (dis != Discretization::Tet4 && dis != Discretization::Tet10 &&
+       dis != Discretization::Hex8 && dis != Discretization::Hex20)) {
     IOUtils::logTrace(
         Verbosity::V1_Default,
         "\n[ERROR] Invalid simulation mesh discretization. Expected "
@@ -1243,16 +1244,16 @@ bool Serializer_XML::LoadSimulable_VolumeFEM(const xml_node& ele,
   ///////////////////////////////////////////////
 
   vector<Tag> vnTraits(3);
-  vnTraits[0] = Tag::Tag_Position_0;  // Rest positions
-  vnTraits[1] = Tag::Tag_Position_X;  // World positions
-  vnTraits[2] = Tag::Tag_Velocity;    // World Velocity
+  vnTraits[0] = Tag::Position_0;  // Rest positions
+  vnTraits[1] = Tag::Position_X;  // World positions
+  vnTraits[2] = Tag::Velocity;    // World Velocity
   Mesh_Cell* pInputMesh = NULL;
 
   MatrixXd mV_X, mV_0;
   MatrixXi mE_X, mE_0;
   MatrixXi mF_X, mF_0;
 
-  if (dis == Discretization::Discretization_Tet4 || dis == Discretization::Discretization_Tet10) {
+  if (dis == Discretization::Tet4 || dis == Discretization::Tet10) {
     if (!this->LoadMesh_TetVolume(ele.child("meshInit"), mV_X, mF_X, mE_X)) {
       IOUtils::logTrace(Verbosity::V1_Default,
                         "\n[ERROR] Invalid input volume mesh (world)");
@@ -1279,7 +1280,7 @@ bool Serializer_XML::LoadSimulable_VolumeFEM(const xml_node& ele,
     pInputMesh = new Mesh_Tetra(mV_X, mE_X, dis, vnTraits);
   }
 
-  if (dis == Discretization::Discretization_Hex8 || dis == Discretization::Discretization_Hex20) {
+  if (dis == Discretization::Hex8 || dis == Discretization::Hex20) {
     if (!this->LoadMesh_HexVolume(ele.child("meshInit"), mV_X, mF_X, mE_X)) {
       IOUtils::logTrace(Verbosity::V1_Default,
                         "\n[ERROR] Invalid input volume mesh (world)");
@@ -1306,9 +1307,9 @@ bool Serializer_XML::LoadSimulable_VolumeFEM(const xml_node& ele,
     pInputMesh = new Mesh_Hexa(mV_X, mE_X, dis, vnTraits);
   }
 
-  pInputMesh->SetNodesTrait(mV_0, Tag::Tag_Position_0);
-  pInputMesh->Scale(Vector3d::Zero(), Tag::Tag_Velocity);
-  pInputMesh->Traits().AddTrait(Tag::Tag_SurfaceMesh_0, mF_X);
+  pInputMesh->SetNodesTrait(mV_0, Tag::Position_0);
+  pInputMesh->Scale(Vector3d::Zero(), Tag::Velocity);
+  pInputMesh->Traits().AddTrait(Tag::SurfaceMesh_0, mF_X);
 
   pModelVolumeFEM->SetupOptions().m_pMesh.reset(pInputMesh);
 
@@ -1368,27 +1369,27 @@ bool Serializer_XML::LoadOptimSolver(const xml_node& ele,
     string value = ele.attribute("qpStep").as_string();
     if (!found && value.compare("Steepest") == 0) {
       found = true;
-      options.qpSolverType = QPSolverType::QP_Steepest;
+      options.qpSolverType = QPSolverType::Steepest;
     }
     if (!found && value.compare("Newton") == 0) {
       found = true;
-      options.qpSolverType = QPSolverType::QP_Newton;
+      options.qpSolverType = QPSolverType::Newton;
     }
     if (!found && value.compare("BFGS_D") == 0) {
       found = true;
-      options.qpSolverType = QPSolverType::QP_BFGS_D;
+      options.qpSolverType = QPSolverType::BFGS_D;
     }
     if (!found && value.compare("BFGS_I") == 0) {
       found = true;
-      options.qpSolverType = QPSolverType::QP_BFGS_I;
+      options.qpSolverType = QPSolverType::BFGS_I;
     }
     if (!found && value.compare("LBFGS") == 0) {
       found = true;
-      options.qpSolverType = QPSolverType::QP_LBFGS;
+      options.qpSolverType = QPSolverType::LBFGS;
     }
     if (!found && value.compare("Gauss") == 0) {
       found = true;
-      options.qpSolverType = QPSolverType::QP_Gauss;
+      options.qpSolverType = QPSolverType::Gauss;
     }
 
     if (!found) {
@@ -1406,38 +1407,39 @@ bool Serializer_XML::LoadOptimSolver(const xml_node& ele,
 
       string value = eleLinear.attribute("type").as_string();
       if (value.compare("CUDASC") == 0) {
-        options.lsSolverType = LSSolverType::LS_CUDASC;
+        options.lsSolverType = LSSolverType::CUDASC;
         found = true;
       }
       if (value.compare("EigenCG") == 0) {
-        options.lsSolverType = LSSolverType::LS_EigenCG;
+        options.lsSolverType = LSSolverType::EigenCG;
         found = true;
       }
       if (value.compare("EigenLU") == 0) {
-        options.lsSolverType = LSSolverType::LS_EigenLU;
+        options.lsSolverType = LSSolverType::EigenLU;
         found = true;
       }
       if (value.compare("EigenLDLT") == 0) {
-        options.lsSolverType = LSSolverType::LS_EigenLDLT;
+        options.lsSolverType = LSSolverType::EigenLDLT;
         found = true;
       }
       if (value.compare("SSparseSPQR") == 0) {
-        options.lsSolverType = LSSolverType::LS_SSparseSPQR;
+        options.lsSolverType = LSSolverType::SSparseSPQR;
         found = true;
       }
       if (value.compare("CholmodLDLT") == 0) {
-        options.lsSolverType = LSSolverType::LS_CholmodLDLT;
+        options.lsSolverType = LSSolverType::CholmodLDLT;
         found = true;
       }
       if (value.compare("BiCGSTAB") == 0) {
-        options.lsSolverType = LSSolverType::LS_BiCGSTAB;
+        options.lsSolverType = LSSolverType::BiCGSTAB;
         found = true;
       }
 
       if (!found) {
-        this->InvalidAttriValue(eleLinear.attribute("type"),
-                                "Linear solver (LSSolverType::LS_EigenCG, LSSolverType::LS_EigenLDLT...)",
-                                false);
+        this->InvalidAttriValue(
+            eleLinear.attribute("type"),
+            "Linear solver (LSSolverType::EigenCG, LSSolverType::EigenLDLT...)",
+            false);
         return false;
       }
     }
@@ -1457,23 +1459,23 @@ bool Serializer_XML::LoadOptimSolver(const xml_node& ele,
 
       string value = eleLsearch.attribute("type").as_string();
       if (value.compare("None") == 0) {
-        options.lSearchType = LSearchType::LSearch_None;
+        options.lSearchType = LSearchType::None;
         found = true;
       }
       if (value.compare("Simple") == 0) {
-        options.lSearchType = LSearchType::LSearch_Simple;
+        options.lSearchType = LSearchType::Simple;
         found = true;
       }
       if (value.compare("Armijo") == 0) {
-        options.lSearchType = LSearchType::LSearch_Armijo;
+        options.lSearchType = LSearchType::Armijo;
         found = true;
       }
       if (value.compare("WolfeWeak") == 0) {
-        options.lSearchType = LSearchType::LSearch_WolfeWeak;
+        options.lSearchType = LSearchType::WolfeWeak;
         found = true;
       }
       if (value.compare("WolfeStrong") == 0) {
-        options.lSearchType = LSearchType::LSearch_WolfeStrong;
+        options.lSearchType = LSearchType::WolfeStrong;
         found = true;
       }
 
@@ -1563,7 +1565,7 @@ bool Serializer_XML::LoadBoundary(const xml_node& ele,
     vector<IDoFSet*> vDoF((int)vgeom.size());
     vector<VectorXd> vval((int)vgeom.size());
     for (int i = 0; i < (int)vgeom.size(); ++i) {
-      vDoF[i] = vgeom[i]->Traits().Kinematics(Tag::Tag_DOF_0);
+      vDoF[i] = vgeom[i]->Traits().Kinematics(Tag::DOF_0);
       vval[i] = vDoF[i]->GetValue();
     }
 
@@ -1940,8 +1942,9 @@ void Serializer_XML::InvalidAttriValue(const xml_attr& att,
 //		//	string spacestr = ele["space"].get<string>();
 //
 //		//	Semantics space;
-//		//	if (spacestr.compare("REST") == 0) space = Tag::Tag_Rest_X;
-//		//	if (spacestr.compare("WORLD") == 0) space = Tag::Tag_World_X;
+//		//	if (spacestr.compare("REST") == 0) space = Tag::Rest_X;
+//		//	if (spacestr.compare("WORLD") == 0) space =
+// Tag::World_X;
 //
 //		//	Vector3d vmin;
 //		//	Vector3d vmax;
@@ -2117,7 +2120,7 @@ void Serializer_XML::InvalidAttriValue(const xml_attr& att,
 //	//	//{
 //	//	//	for (int i = 0; i < numVal; ++i)
 //	//	//		vval[i] =
-// vGeom[i]->Traits().Kinematics(Semantics::Tag::Tag_DOF_0).GetPosition(Tag::Tag_Position_X);
+// vGeom[i]->Traits().Kinematics(Semantics::Tag::DOF_0).GetPosition(Tag::Position_X);
 //
 //	//	//	return true;
 //	//	//}
@@ -2126,7 +2129,7 @@ void Serializer_XML::InvalidAttriValue(const xml_attr& att,
 //	//	//{
 //	//	//	for (int i = 0; i < numVal; ++i)
 //	//	//		vval[i] =
-// vGeom[i]->Traits().Kinematics(Semantics::Tag::Tag_DOF_0).GetPosition(Tag::Tag_Velocity);
+// vGeom[i]->Traits().Kinematics(Semantics::Tag::DOF_0).GetPosition(Tag::Velocity);
 //
 //	//	//	return true;
 //	//	//}
@@ -2135,7 +2138,7 @@ void Serializer_XML::InvalidAttriValue(const xml_attr& att,
 //	//	//{
 //	//	//	for (int i = 0; i < numVal; ++i)
 //	//	//		vval[i] =
-// vGeom[i]->Traits().Kinematics(Semantics::Tag::Tag_DOF_0).GetPosition(Tag::Tag_Position_0);
+// vGeom[i]->Traits().Kinematics(Semantics::Tag::DOF_0).GetPosition(Tag::Position_0);
 //
 //	//	//	return true;
 //	//	//}
@@ -2144,7 +2147,7 @@ void Serializer_XML::InvalidAttriValue(const xml_attr& att,
 //	//	//{
 //	//	//	for (int i = 0; i < numVal; ++i)
 //	//	//		vval[i] =
-// vGeom[i]->Traits().Kinematics(Semantics::Tag::Tag_DOF_0).GetPosition(Tag::Tag_Velocity_0);
+// vGeom[i]->Traits().Kinematics(Semantics::Tag::DOF_0).GetPosition(Tag::Velocity_0);
 //
 //	//	//	return true;
 //	//	//}
@@ -2155,7 +2158,7 @@ void Serializer_XML::InvalidAttriValue(const xml_attr& att,
 //	//	//	for (int i = 0; i < numVal; ++i)
 //	//	//	{
 //	//	//		const DoFSet& dof =
-// vGeom[i]->Traits().Kinematics(Semantics::Tag::Tag_DOF_0);
+// vGeom[i]->Traits().Kinematics(Semantics::Tag::DOF_0);
 //	//	//		vval[i] = vg.block(dof.Offset(), 0,
 // dof.NumDim(), 1);
 //	//	//	}
@@ -2169,7 +2172,7 @@ void Serializer_XML::InvalidAttriValue(const xml_attr& att,
 //	//	//	for (int i = 0; i < numVal; ++i)
 //	//	//	{
 //	//	//		const DoFSet& dof =
-// vGeom[i]->Traits().Kinematics(Semantics::Tag::Tag_DOF_0);
+// vGeom[i]->Traits().Kinematics(Semantics::Tag::DOF_0);
 //	//	//		vval[i] = vm.block(dof.Offset(), 0,
 // dof.NumDim(), 1);
 //	//	//	}

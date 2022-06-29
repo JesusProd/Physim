@@ -214,10 +214,10 @@ void Mesh_Tri::MassProperties(Tag s,
     vpos[3] = this->m_velems[i]->Nodes()[2];
     Cell_Tetra tetra(-1, vpos);
 
-    Vector3d x0 = vpos[0]->Trait<Vector3d>(Tag::Tag_Position_0);
-    Vector3d x1 = vpos[1]->Trait<Vector3d>(Tag::Tag_Position_0);
-    Vector3d x2 = vpos[2]->Trait<Vector3d>(Tag::Tag_Position_0);
-    Vector3d x3 = vpos[3]->Trait<Vector3d>(Tag::Tag_Position_0);
+    Vector3d x0 = vpos[0]->Trait<Vector3d>(Tag::Position_0);
+    Vector3d x1 = vpos[1]->Trait<Vector3d>(Tag::Position_0);
+    Vector3d x2 = vpos[2]->Trait<Vector3d>(Tag::Position_0);
+    Vector3d x3 = vpos[3]->Trait<Vector3d>(Tag::Position_0);
 
     // Mass
 

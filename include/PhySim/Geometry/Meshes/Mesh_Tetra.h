@@ -27,12 +27,12 @@ class Mesh_Tetra : public Mesh_Cell {
   Mesh_Tetra(const Mesh_Tetra& toCopy);
   Mesh_Tetra(const MatrixXd& mV,
              const MatrixXi& mT,
-             Discretization D = Discretization::Discretization_Tet4,
+             Discretization D = Discretization::Tet4,
              const vector<Tag>& vnTraits = vector<Tag>());
 
   void Init(const MatrixXd& mV,
             const MatrixXi& mT,
-            Discretization D = Discretization::Discretization_Tet4,
+            Discretization D = Discretization::Tet4,
             const vector<Tag>& vnTraits = vector<Tag>());
 
   virtual ~Mesh_Tetra(void);

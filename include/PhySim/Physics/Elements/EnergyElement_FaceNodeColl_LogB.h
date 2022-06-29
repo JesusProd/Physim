@@ -33,10 +33,10 @@ class EnergyElement_FaceNodeColl_LogB : public EnergyElement {
     this->m_pEmbedding = pNode;
 
     this->m_vDoF.resize(4);
-    this->m_vDoF[0] = &pFace->Nodes()[0]->Trait<IDoFSet>(Tag::Tag_DOF_0);
-    this->m_vDoF[1] = &pFace->Nodes()[1]->Trait<IDoFSet>(Tag::Tag_DOF_0);
-    this->m_vDoF[2] = &pFace->Nodes()[2]->Trait<IDoFSet>(Tag::Tag_DOF_0);
-    this->m_vDoF[3] = &pNode->Trait<IDoFSet>(Tag::Tag_DOF_0);
+    this->m_vDoF[0] = &pFace->Nodes()[0]->Trait<IDoFSet>(Tag::DOF_0);
+    this->m_vDoF[1] = &pFace->Nodes()[1]->Trait<IDoFSet>(Tag::DOF_0);
+    this->m_vDoF[2] = &pFace->Nodes()[2]->Trait<IDoFSet>(Tag::DOF_0);
+    this->m_vDoF[3] = &pNode->Trait<IDoFSet>(Tag::DOF_0);
   }
 
   virtual ~EnergyElement_FaceNodeColl_LogB(void) {

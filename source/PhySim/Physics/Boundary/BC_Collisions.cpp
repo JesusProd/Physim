@@ -84,9 +84,10 @@ void BC_Collisions::Update() {
             dynamic_pointer_cast<Collider_SphereCloud>(m_vColliders[j]),
             rContactSet.vContactsA, rContactSet.vContactsB);
       } else {
-        IOUtils::logTrace(
-            Verbosity::V3_HardDebug, "Unsupported contact detection between %s and %s",
-            m_vColliders[i]->Name().c_str(), m_vColliders[j]->Name().c_str());
+        IOUtils::logTrace(Verbosity::V3_HardDebug,
+                          "Unsupported contact detection between %s and %s",
+                          m_vColliders[i]->Name().c_str(),
+                          m_vColliders[j]->Name().c_str());
       }
     }
 
@@ -107,7 +108,8 @@ void BC_Collisions::Update() {
                      rContactSet.vpEnergyElements.end());
     }
 
-  IOUtils::logTrace(Verbosity::V1_Default, "\n[TRACE] Generated %i contact constraints",
+  IOUtils::logTrace(Verbosity::V1_Default,
+                    "\n[TRACE] Generated %i contact constraints",
                     m_vpCon.size());
 
   // Signal that collision detection just finished.
@@ -139,8 +141,8 @@ void BC_Collisions::DetectContacts(const PtrS<Collider_SphereCloud>& pColliderA,
     const Collider_SphereCloud::Point& pPointA = vpPointsA[Candidate.first];
     const Collider_SphereCloud::Point& pPointB = vpPointsB[Candidate.second];
 
-    VectorXd PositionA = pPointA.Position->InterpolateValue(Tag::Tag_Position_X);
-    VectorXd PositionB = pPointB.Position->InterpolateValue(Tag::Tag_Position_X);
+    VectorXd PositionA = pPointA.Position->InterpolateValue(Tag::Position_X);
+    VectorXd PositionB = pPointB.Position->InterpolateValue(Tag::Position_X);
     Real RadiusA = pPointA.Radius;
     Real RadiusB = pPointB.Radius;
     Real TotalRadius = RadiusA + RadiusB;
@@ -154,9 +156,9 @@ void BC_Collisions::DetectContacts(const PtrS<Collider_SphereCloud>& pColliderA,
     // with adjacent neighbors.
     if (IsSelfCollision) {
       VectorXd RestPositionA =
-          pPointA.Position->InterpolateValue(Tag::Tag_Position_0);
+          pPointA.Position->InterpolateValue(Tag::Position_0);
       VectorXd RestPositionB =
-          pPointB.Position->InterpolateValue(Tag::Tag_Position_0);
+          pPointB.Position->InterpolateValue(Tag::Position_0);
 
       Real RestDistance = (RestPositionA - RestPositionB).squaredNorm() -
                           TotalRadius * TotalRadius;

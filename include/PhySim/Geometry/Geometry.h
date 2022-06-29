@@ -82,21 +82,21 @@ class Geometry {
   template <class T>
   void SetElemsTrait(const vector<T>& vvalues, Tag s);
 
-  virtual void GetElemsTrait(MatrixXd& mN, Tag s = Tag::Tag_Position_X) const;
-  virtual void SetElemsTrait(const MatrixXd& mN, Tag s = Tag::Tag_Position_X);
-  virtual void DelElemsTrait(Tag s = Tag::Tag_Position_X);
+  virtual void GetElemsTrait(MatrixXd& mN, Tag s = Tag::Position_X) const;
+  virtual void SetElemsTrait(const MatrixXd& mN, Tag s = Tag::Position_X);
+  virtual void DelElemsTrait(Tag s = Tag::Position_X);
 
-  virtual void GetNodesTrait(MatrixXd& mN, Tag s = Tag::Tag_Position_X) const;
-  virtual void SetNodesTrait(const MatrixXd& mN, Tag s = Tag::Tag_Position_X);
-  virtual void DelNodesTrait(Tag s = Tag::Tag_Position_X);
+  virtual void GetNodesTrait(MatrixXd& mN, Tag s = Tag::Position_X) const;
+  virtual void SetNodesTrait(const MatrixXd& mN, Tag s = Tag::Position_X);
+  virtual void DelNodesTrait(Tag s = Tag::Position_X);
 
   //  Transforms
 
-  virtual void Scale(const VectorXd& vs, Tag s = Tag::Tag_Position_X);
-  virtual void Translate(const VectorXd& vt, Tag s = Tag::Tag_Position_X);
-  virtual void RotateAxis(const VectorXd& vaxi, Tag s = Tag::Tag_Position_X);
-  virtual void RotateEuler(const VectorXd& veul, Tag s = Tag::Tag_Position_X);
-  virtual void Transform(const MatrixXd& mT, Tag s = Tag::Tag_Position_X);
+  virtual void Scale(const VectorXd& vs, Tag s = Tag::Position_X);
+  virtual void Translate(const VectorXd& vt, Tag s = Tag::Position_X);
+  virtual void RotateAxis(const VectorXd& vaxi, Tag s = Tag::Position_X);
+  virtual void RotateEuler(const VectorXd& veul, Tag s = Tag::Position_X);
+  virtual void Transform(const MatrixXd& mT, Tag s = Tag::Position_X);
 
   // Data
 
@@ -112,24 +112,24 @@ class Geometry {
   }
 
   virtual PtrS<Embedding> ComputeProjection(const Vector3d& vx,
-                                            Tag s = Tag::Tag_Position_X);
+                                            Tag s = Tag::Position_X);
   virtual PtrS<Embedding> ComputeEmbedding(const Vector3d& vx,
-                                           Tag s = Tag::Tag_Position_X);
+                                           Tag s = Tag::Position_X);
 
   virtual void ComputeProjection(const MatrixXd& vpoints,
                                  vector<PtrS<Embedding>>& vembed,
-                                 Tag s = Tag::Tag_Position_X);
+                                 Tag s = Tag::Position_X);
   virtual void ComputeEmbedding(const MatrixXd& vpoints,
                                 vector<PtrS<Embedding>>& vembed,
-                                Tag s = Tag::Tag_Position_X);
+                                Tag s = Tag::Position_X);
 
   virtual void ComputeEmbedding(vector<PtrS<Embedding>>& vembed,
                                 const VectorXi& vsel = VectorXi());
   virtual void EmbedNodes(vector<Node*>& toEmbed,
-                          const Tag& trait = Tag::Tag_Position_X);
+                          const Tag& trait = Tag::Position_X);
   virtual void EmbedNodes(vector<Node*>& toEmbed,
                           const VectorXi& vsel = VectorXi());
-  virtual void EmbedMesh(Mesh& mesh, const Tag& trait = Tag::Tag_Position_X);
+  virtual void EmbedMesh(Mesh& mesh, const Tag& trait = Tag::Position_X);
   virtual void EmbedMesh(Mesh& mesh, const VectorXi& vsel = VectorXi());
 
   virtual void InterpolateEmbeddedNodeTraits(Tag s0);
@@ -140,9 +140,9 @@ class Geometry {
   virtual int DimSpace() const = 0;
   virtual int DimBasis() const = 0;
 
-  virtual Real VolumeBasis(Tag s = Tag::Tag_Position_X) const = 0;
-  virtual Real VolumeSpace(Tag s = Tag::Tag_Position_X) const = 0;
-  virtual Vector3d Centroid(Tag s = Tag::Tag_Position_X) const = 0;
+  virtual Real VolumeBasis(Tag s = Tag::Position_X) const = 0;
+  virtual Real VolumeSpace(Tag s = Tag::Position_X) const = 0;
+  virtual Vector3d Centroid(Tag s = Tag::Position_X) const = 0;
   virtual Matrix3d Rotation(Tag f, Tag t) const = 0;
 
   virtual void MassProperties(Tag s,

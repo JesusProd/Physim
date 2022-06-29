@@ -28,7 +28,7 @@ MassElement_Lumped::MassElement_Lumped(Simulable* pModel,
 
   this->m_vDoF.resize(pPoly->NumNodes());
   for (int i = 0; i < pPoly->NumNodes(); ++i) {
-    this->m_vDoF[i] = pPoly->Nodes()[i]->Traits().Kinematics(Tag::Tag_DOF_0);
+    this->m_vDoF[i] = pPoly->Nodes()[i]->Traits().Kinematics(Tag::DOF_0);
 
     N += this->m_vDoF[i]->NumDim();
   }
@@ -48,14 +48,14 @@ void MassElement_Lumped::ComputeAndStore_Mass() {
   Real density = m_pParams->GetParameter(ParameterSet::Param_Density);
 
   int numDOF = this->GetSupportSize();
-  double mass = density * m_pPoly->VolumeBasis(Tag::Tag_Position_0);
+  double mass = density * m_pPoly->VolumeBasis(Tag::Position_0);
   this->m_mMass =
       MatrixXd::Identity(numDOF, numDOF) * mass / m_pPoly->NumNodes();
 }
 
 void MassElement_Lumped::ComputeAndStore_Energy_Internal() {
   MatrixXd mX;
-  m_pPoly->GetNodesTrait(mX, Tag::Tag_Position_X);
+  m_pPoly->GetNodesTrait(mX, Tag::Position_X);
   mX.transposeInPlace();
   mX.resize(mX.size(), 1);
 

@@ -25,11 +25,11 @@ class Mesh_Quad : public Mesh_Face {
   Mesh_Quad(const Mesh_Quad& toCopy);
   Mesh_Quad(const MatrixXd& mV,
             const MatrixXi& mF,
-            Discretization D = Discretization::Discretization_Quad4,
+            Discretization D = Discretization::Quad4,
             const vector<Tag>& vnTraits = vector<Tag>());
   void Init(const MatrixXd& mV,
             const MatrixXi& mF,
-            Discretization D = Discretization::Discretization_Quad4,
+            Discretization D = Discretization::Quad4,
             const vector<Tag>& vnTraits = vector<Tag>());
   virtual ~Mesh_Quad(void);
 

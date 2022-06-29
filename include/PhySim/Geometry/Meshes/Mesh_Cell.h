@@ -23,12 +23,12 @@ class Mesh_Cell : public Mesh {
   Mesh_Cell(const Mesh_Cell& toCopy);
   Mesh_Cell(const MatrixXd& mV,
             const MatrixXi& mF,
-            Discretization D = Discretization::Discretization_Tet4,
+            Discretization D = Discretization::Tet4,
             const vector<Tag>& vnTraits = vector<Tag>());
 
   void Init(const MatrixXd& mV,
             const MatrixXi& mF,
-            Discretization D = Discretization::Discretization_Tet4,
+            Discretization D = Discretization::Tet4,
             const vector<Tag>& vnTraits = vector<Tag>());
 
   virtual ~Mesh_Cell(void);

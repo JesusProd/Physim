@@ -3,7 +3,7 @@
 //	PhySim library. Generic library for physical simulation.
 //
 //	Authors:
-//			Jesus Perez Rodriguez, URJC MAdrid
+//			Jesus Perez Rodriguez, jesusprod @ GitHub
 //
 //==========================================================
 
@@ -21,15 +21,15 @@ PtrS<KinematicsEle> KEleParticle3D::Clone() {
 }
 
 void KEleParticle3D::Initialize() {
-  if (!this->m_pGeometry->Traits().HasTrait(Tag::Tag_Position_X))
-    this->m_pGeometry->Traits().AddTrait(Tag::Tag_Position_X, Vector3d::Zero());
+  if (!this->m_pGeometry->Traits().HasTrait(Tag::Position_X))
+    this->m_pGeometry->Traits().AddTrait(Tag::Position_X, Vector3d::Zero());
 
-  if (!this->m_pGeometry->Traits().HasTrait(Tag::Tag_Velocity))
-    this->m_pGeometry->Traits().AddTrait(Tag::Tag_Velocity, Vector3d::Zero());
+  if (!this->m_pGeometry->Traits().HasTrait(Tag::Velocity))
+    this->m_pGeometry->Traits().AddTrait(Tag::Velocity, Vector3d::Zero());
 
-  if (!this->m_pGeometry->Traits().HasTrait(Tag::Tag_Position_0))
+  if (!this->m_pGeometry->Traits().HasTrait(Tag::Position_0))
     this->m_pGeometry->Traits().AddTrait(
-        Tag::Tag_Position_0, this->m_pGeometry->Traits().Vector3d(Tag::Tag_Position_X));
+        Tag::Position_0, this->m_pGeometry->Traits().Vector3d(Tag::Position_X));
 }
 
 int KEleParticle3D::GetFullStateSize() const {
@@ -44,15 +44,15 @@ VectorXd KEleParticle3D::GetFullState() const {
 }
 
 VectorXd KEleParticle3D::GetPositionX() const {
-  return VectorXd(this->m_pGeometry->Traits().Vector3d(Tag::Tag_Position_X));
+  return VectorXd(this->m_pGeometry->Traits().Vector3d(Tag::Position_X));
 }
 
 VectorXd KEleParticle3D::GetPosition0() const {
-  return VectorXd(this->m_pGeometry->Traits().Vector3d(Tag::Tag_Position_0));
+  return VectorXd(this->m_pGeometry->Traits().Vector3d(Tag::Position_0));
 }
 
 VectorXd KEleParticle3D::GetVelocity() const {
-  return this->m_pGeometry->Traits().Vector3d(Tag::Tag_Velocity);
+  return this->m_pGeometry->Traits().Vector3d(Tag::Velocity);
 }
 
 void KEleParticle3D::SetFullState(const VectorXd& vs) {
@@ -61,15 +61,15 @@ void KEleParticle3D::SetFullState(const VectorXd& vs) {
 }
 
 void KEleParticle3D::SetPositionX(const VectorXd& vp) {
-  this->m_pGeometry->Traits().Vector3d(Tag::Tag_Position_X) = vp;
+  this->m_pGeometry->Traits().Vector3d(Tag::Position_X) = vp;
 }
 
 void KEleParticle3D::SetPosition0(const VectorXd& vp) {
-  this->m_pGeometry->Traits().Vector3d(Tag::Tag_Position_0) = vp;
+  this->m_pGeometry->Traits().Vector3d(Tag::Position_0) = vp;
 }
 
 void KEleParticle3D::SetVelocity(const VectorXd& vp) {
-  this->m_pGeometry->Traits().Vector3d(Tag::Tag_Velocity) = vp;
+  this->m_pGeometry->Traits().Vector3d(Tag::Velocity) = vp;
 }
 
 }  // namespace PhySim

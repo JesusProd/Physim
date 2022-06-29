@@ -64,7 +64,7 @@ void Simulable_RB::InitInternal() {
 
     PtrS<KEleRigidBody3D> pRB(new KEleRigidBody3D(this, pGeom.get()));
     pRB->Initialize();
-    pGeom->Traits().AddTrait<IDoFSet*>(Tag::Tag_DOF_0, pRB.get());
+    pGeom->Traits().AddTrait<IDoFSet*>(Tag::DOF_0, pRB.get());
     vpEle[i] = dynamic_pointer_cast<KinematicsEle>(pRB);
 
     // Add particle kinematics
@@ -79,7 +79,8 @@ void Simulable_RB::InitInternal() {
         vpPar[j]->Initialize();
       }
 
-      pGeom->Nodes()[j]->Traits().AddTrait<IDoFSet*>(Tag::Tag_DOF_0, vpPar[j].get());
+      pGeom->Nodes()[j]->Traits().AddTrait<IDoFSet*>(Tag::DOF_0,
+                                                     vpPar[j].get());
     }
     KMapRB2Particle3D* pMapRB = new KMapRB2Particle3D();
     // PtrS<KMapRB2Particle3D> pMapRB = make_shared<KMapRB2Particle3D>();
@@ -98,20 +99,20 @@ void Simulable_RB::InitInternal() {
   // for (int i = 0; i < numEneElem; ++i)
   //{
   //	PtrS<Geometry> pGeom0 =
-  //this->m_pOptions->m_vpGeometries[m_pOptions->m_couplings(i,0)];
+  // this->m_pOptions->m_vpGeometries[m_pOptions->m_couplings(i,0)];
   //	PtrS<Geometry> pGeom1 =
-  //this->m_pOptions->m_vpGeometries[m_pOptions->m_couplings(i, 2)];
+  // this->m_pOptions->m_vpGeometries[m_pOptions->m_couplings(i, 2)];
 
   //	PtrS<ParameterSet> pMat = make_shared<ParameterSet>();
   //	pMat->AddParameter(ParameterSet::Param_StretchK, 1e6);
   //
   //	Node* node0 = pGeom0->Nodes()[m_pOptions->m_couplings(i, 1)];
   //	Node* node1 = pGeom1->Nodes()[m_pOptions->m_couplings(i, 3)];
-  //	Vector3d pos0 = node0->Traits().Vector3d(Tag::Tag_Position_X);
-  //	Vector3d pos1 = node1->Traits().Vector3d(Tag::Tag_Position_X);
+  //	Vector3d pos0 = node0->Traits().Vector3d(Tag::Position_X);
+  //	Vector3d pos1 = node1->Traits().Vector3d(Tag::Position_X);
 
   //	this->m_venerEle[i] = PtrS<IEnergyElement>(new
-  //EnergyElement_SpringBetwNodes(this, node0, node1, pMat));
+  // EnergyElement_SpringBetwNodes(this, node0, node1, pMat));
   //}
 
   // Here make a sixDjoint between the two rigids
@@ -157,8 +158,8 @@ void Simulable_RB::InitInternal() {
   // IndexOfSternumRibSternCouplingsRight);
 
   /////////////the above code is used for the old patient with the anattemplate.
-  ///The code below is to be used for hameds template with/out shoulder, comment
-  ///appropriately
+  /// The code below is to be used for hameds template with/out shoulder,
+  /// comment appropriately
 
   const std::string fileRibVertCouplingsLeft =
       "C:/workspace/homework/simvizPhySim/assets/morphedPatients/" +
@@ -277,7 +278,7 @@ void Simulable_RB::InitInternal() {
     1)]), K, R0, jointPos));
     }		*/
     /////////// comment below code for case of patient with ant template.
-    ///Comment code above in the box for case with hameds template and shoulder
+    /// Comment code above in the box for case with hameds template and shoulder
     else if (i < nbVertJoints + 12 + 12 + 10) {
       Vector3d jointPos;
       jointPos[0] =

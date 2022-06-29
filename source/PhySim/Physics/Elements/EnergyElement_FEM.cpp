@@ -31,7 +31,7 @@ EnergyElement_FEM::EnergyElement_FEM(Simulable_FEM* pSimul, Poly* pPoly)
 
   this->m_vDoF.resize(N);
   for (int i = 0; i < N; ++i) {
-    this->m_vDoF[i] = pPoly->Nodes()[i]->Traits().Kinematics(Tag::Tag_DOF_0);
+    this->m_vDoF[i] = pPoly->Nodes()[i]->Traits().Kinematics(Tag::DOF_0);
   }
 
   this->m_vgradient.resize(3 * N);
@@ -73,8 +73,8 @@ void EnergyElement_FEM::Init() {
 
   m_pSampleData = pShape->CreateDeformationData();
   m_pSampleData->SetPoly(m_pElemPoly);
-  m_pSampleData->SetTag0(Tag::Tag_Position_0);
-  m_pSampleData->SetTagX(Tag::Tag_Position_X);
+  m_pSampleData->SetTag0(Tag::Position_0);
+  m_pSampleData->SetTagX(Tag::Position_X);
   m_pSampleData->SetPoints(vp);
 
   pShape->InitDeformationAtSamples(m_pSampleData);
@@ -92,40 +92,38 @@ void EnergyElement_FEM::Init() {
     // If it's 2D element embedded in 3D space, consider thickness
 
     if (dimSpace != 2 && dimBasis == 2) {
-      this->m_vintWei[i] *=
-          m_pElemPoly->Traits().Double(Tag::Tag_Mat_Thickness);
+      this->m_vintWei[i] *= m_pElemPoly->Traits().Double(Tag::Mat_Thickness);
     }
 
     // If it's 1D element embedded in 3D space, consider thickness
 
     if (dimSpace != 1 && dimBasis == 1) {
       this->m_vintWei[i] *= M_PI *
-                            m_pElemPoly->Traits().Double(Tag::Tag_Mat_Radius0) *
-                            m_pElemPoly->Traits().Double(Tag::Tag_Mat_Radius1);
+                            m_pElemPoly->Traits().Double(Tag::Mat_Radius0) *
+                            m_pElemPoly->Traits().Double(Tag::Mat_Radius1);
     }
   }
 
   // Set the integration volume
 
-  this->m_intVolume = this->m_pElemPoly->VolumeBasis(Tag::Tag_Position_0);
+  this->m_intVolume = this->m_pElemPoly->VolumeBasis(Tag::Position_0);
 
   // If it's 2D elemente embedded in 3D space, consider also thickness
 
   if (dimSpace != 2 && dimBasis == 2) {
-    this->m_intVolume *= m_pElemPoly->Traits().Double(Tag::Tag_Mat_Thickness);
+    this->m_intVolume *= m_pElemPoly->Traits().Double(Tag::Mat_Thickness);
   }
 
   // If it's 1D elemente embedded in 3D space, consider also thickness
 
   if (dimSpace != 1 && dimBasis == 1) {
-    this->m_intVolume *= M_PI *
-                         m_pElemPoly->Traits().Double(Tag::Tag_Mat_Radius0) *
-                         m_pElemPoly->Traits().Double(Tag::Tag_Mat_Radius1);
+    this->m_intVolume *= M_PI * m_pElemPoly->Traits().Double(Tag::Mat_Radius0) *
+                         m_pElemPoly->Traits().Double(Tag::Mat_Radius1);
   }
 }
 
 void EnergyElement_FEM::ComputeAndStore_Energy_Internal() {
-  if (this->m_pElemPoly->VolumeBasis(Tag::Tag_Position_X) < 0) {
+  if (this->m_pElemPoly->VolumeBasis(Tag::Position_X) < 0) {
     IOUtils::logTrace(PhySim::Verbosity::V1_Default,
                       "\n[WARNING] Inverted element detected!");
     this->m_energy = HUGE_VAL;

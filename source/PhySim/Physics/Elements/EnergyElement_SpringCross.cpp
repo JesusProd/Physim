@@ -26,10 +26,10 @@ EnergyElement_SpringCross::EnergyElement_SpringCross(Simulable* pModel,
   this->m_pEdge1 = pEdge1;
 
   this->m_vDoF.resize(4);
-  this->m_vDoF[0] = pEdge0->GetTail()->Traits().Kinematics(Tag::Tag_DOF_0);
-  this->m_vDoF[1] = pEdge0->GetHead()->Traits().Kinematics(Tag::Tag_DOF_0);
-  this->m_vDoF[2] = pEdge1->GetTail()->Traits().Kinematics(Tag::Tag_DOF_0);
-  this->m_vDoF[3] = pEdge1->GetHead()->Traits().Kinematics(Tag::Tag_DOF_0);
+  this->m_vDoF[0] = pEdge0->GetTail()->Traits().Kinematics(Tag::DOF_0);
+  this->m_vDoF[1] = pEdge0->GetHead()->Traits().Kinematics(Tag::DOF_0);
+  this->m_vDoF[2] = pEdge1->GetTail()->Traits().Kinematics(Tag::DOF_0);
+  this->m_vDoF[3] = pEdge1->GetHead()->Traits().Kinematics(Tag::DOF_0);
 
   this->m_vgradient.resize(12);
   this->m_mHessian.resize(12, 12);
@@ -42,9 +42,9 @@ EnergyElement_SpringCross::~EnergyElement_SpringCross() {
 }
 
 void EnergyElement_SpringCross::Init() {
-  this->m_restStrain = this->ComputeStrain(Tag::Tag_Position_0);
-  this->m_intVolume = (this->m_pEdge0->VolumeBasis(Tag::Tag_Position_0) +
-                       this->m_pEdge1->VolumeBasis(Tag::Tag_Position_0));
+  this->m_restStrain = this->ComputeStrain(Tag::Position_0);
+  this->m_intVolume = (this->m_pEdge0->VolumeBasis(Tag::Position_0) +
+                       this->m_pEdge1->VolumeBasis(Tag::Position_0));
 }
 
 Real EnergyElement_SpringCross::ComputeStrain(Tag s) {

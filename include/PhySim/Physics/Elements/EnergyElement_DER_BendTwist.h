@@ -41,8 +41,8 @@ class EnergyElement_DER_BendTwist : public EnergyElement {
   virtual void ComputeAndStore_Gradient_Internal();
   virtual void ComputeAndStore_Hessian_Internal();
 
-  virtual Vector2d ComputeBendStrain(Tag s = Tag::Tag_Position_X);
-  virtual Real ComputeTwistStrain(Tag s = Tag::Tag_Position_X);
+  virtual Vector2d ComputeBendStrain(Tag s = Tag::Position_X);
+  virtual Real ComputeTwistStrain(Tag s = Tag::Position_X);
 
   inline virtual Vector2d GetRestBend() const { return this->m_bend0; }
   inline virtual void SetRestBend(Vector2d b0) { this->m_bend0 = b0; }

@@ -147,10 +147,10 @@ LSResult LinearSolver_EigenLDLT::SolveInternal(MatrixSd& mA,
                       "%d. Error: %.9e",
                       i, relError);
 
-    return LSResult::LS_SUCCESS;
+    return LSResult::SUCCESS;
   }
 
-  return LSResult::LS_FAILURE;
+  return LSResult::FAILURE;
 }
 
 LSResult LinearSolver_EigenLDLT::SolveInternal(MatrixSd& mA,
@@ -164,10 +164,10 @@ LSResult LinearSolver_EigenLDLT::SolveInternal(MatrixSd& mA,
     this->SolveInternal(mA, b, x);
     mX.block(0, i, mB.rows(), 1) = x;
   }
-  return LSResult::LS_SUCCESS;
+  return LSResult::SUCCESS;
   // throw exception("Not implemented");
 
-  // return LSResult::LS_FAILURE;
+  // return LSResult::FAILURE;
 }
 
 LSResult LinearSolver_EigenLDLT::SolveInternal(MatrixSd& mA,
@@ -175,7 +175,7 @@ LSResult LinearSolver_EigenLDLT::SolveInternal(MatrixSd& mA,
                                                MatrixSd& mX) {
   throw exception("Not implemented");
 
-  return LSResult::LS_FAILURE;
+  return LSResult::FAILURE;
 }
 
 }  // namespace PhySim

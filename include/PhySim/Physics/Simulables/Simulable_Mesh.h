@@ -80,13 +80,13 @@ class Simulable_Mesh : public Simulable {
     return m_pMesh->Elems();
   }
 
-  virtual void GetNodeDOF(MatrixXr& mV, Tag t = Tag::Tag_Position_X) const {
+  virtual void GetNodeDOF(MatrixXr& mV, Tag t = Tag::Position_X) const {
     VectorXr vx;
     this->GetDOFVector(vx, t);
     memcpy(mV.data(), vx.data(), sizeof(Real) * 3 * this->m_pMesh->NumNodes());
   };
 
-  virtual void SetNodeDOF(const MatrixXr& mV, Tag t = Tag::Tag_Position_X) {
+  virtual void SetNodeDOF(const MatrixXr& mV, Tag t = Tag::Position_X) {
     assert(mV.cols() == 3);
 
     MatrixXd mVt = mV.transpose();

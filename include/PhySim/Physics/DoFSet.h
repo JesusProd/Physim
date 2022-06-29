@@ -129,15 +129,16 @@ class DoFSet : public IDoFSet {
 //	KinematicsEle* m_pKineDoF;
 // public:
 //	DoFWorld(KinematicsEle* pKineDoF) : DoFSet(pKineDoF->GetModel(),
-//pKineDoF->NumDim(), pKineDoF->Geometry())
+// pKineDoF->NumDim(), pKineDoF->Geometry())
 //	{
 //		this->m_pKineDoF = pKineDoF;
 //		this->Index() = pKineDoF->Index();
 //		this->Offset() = pKineDoF->Offset();
 //	}
 //	inline virtual VectorXd GetValue() const override { return
-//m_pKineDoF->GetPosition(Tag::Tag_Position_X); } 	inline virtual void SetValue(const
-//VectorXd& vv) override { m_pKineDoF->SetPosition(vv, Tag::Tag_Position_X); }
+// m_pKineDoF->GetPosition(Tag::Position_X); } 	inline virtual void
+// SetValue(const VectorXd& vv) override { m_pKineDoF->SetPosition(vv,
+// Tag::Position_X); }
 //};
 
 // class DoFRest : public DoFSet
@@ -146,15 +147,16 @@ class DoFSet : public IDoFSet {
 //	KinematicsEle* m_pKineDoF;
 // public:
 //	DoFRest(KinematicsEle* pKineDoF) : DoFSet(pKineDoF->GetModel(),
-//pKineDoF->NumDim(), pKineDoF->Geometry())
+// pKineDoF->NumDim(), pKineDoF->Geometry())
 //	{
 //		this->m_pKineDoF = pKineDoF;
 //		this->Index() = pKineDoF->Index();
 //		this->Offset() = pKineDoF->Offset();
 //	}
 //	inline virtual VectorXd GetValue() const override { return
-//m_pKineDoF->GetPosition(Tag::Tag_Position_0); } 	inline virtual void SetValue(const
-//VectorXd& vv) override { m_pKineDoF->SetPosition(vv, Tag::Tag_Position_0); }
+// m_pKineDoF->GetPosition(Tag::Position_0); } 	inline virtual void
+// SetValue(const VectorXd& vv) override { m_pKineDoF->SetPosition(vv,
+// Tag::Position_0); }
 //};
 
 }  // namespace PhySim

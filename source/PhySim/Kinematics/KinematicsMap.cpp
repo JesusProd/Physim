@@ -3,7 +3,7 @@
 //	PhySim library. Generic library for physical simulation.
 //
 //	Authors:
-//			Jesus Perez Rodriguez, URJC MAdrid
+//			Jesus Perez Rodriguez, jesusprod @ GitHub
 //
 //==========================================================
 

@@ -3,7 +3,7 @@
 //	PhySim library. Generic library for physical simulation.
 //
 //	Authors:
-//			Jesus Perez Rodriguez, URJC MAdrid
+//			Jesus Perez Rodriguez, jesusprod @ GitHub
 //
 //==========================================================
 
@@ -74,7 +74,7 @@ void Simulable_DER::CreateKinematicsEle(vector<PtrS<KinematicsEle>>& vpEle) {
   for (int i = 0; i < m_pMeshDER->NumElems(); ++i) {
     vpEle.push_back(
         PtrS<KinematicsEle>(new KEleDERMatTwist(this, m_pMeshDER->Elems()[i])));
-    m_pMeshDER->Elems()[i]->Traits().AddTrait<IDoFSet*>(Tag::Tag_DOF_0,
+    m_pMeshDER->Elems()[i]->Traits().AddTrait<IDoFSet*>(Tag::DOF_0,
                                                         vpEle.back().get());
   }
 
@@ -83,7 +83,7 @@ void Simulable_DER::CreateKinematicsEle(vector<PtrS<KinematicsEle>>& vpEle) {
   for (int i = 0; i < m_pMeshDER->NumNodes(); ++i) {
     vpEle.push_back(
         PtrS<KinematicsEle>(new KEleDERRefTwist(this, m_pMeshDER->Nodes()[i])));
-    m_pMeshDER->Nodes()[i]->Traits().AddTrait<IDoFSet*>(Tag::Tag_DOF_2,
+    m_pMeshDER->Nodes()[i]->Traits().AddTrait<IDoFSet*>(Tag::DOF_2,
                                                         vpEle.back().get());
   }
 
@@ -94,12 +94,13 @@ void Simulable_DER::CreateKinematicsEle(vector<PtrS<KinematicsEle>>& vpEle) {
 
     vpEle.push_back(
         PtrS<KinematicsEle>(new KEleDERConnRot(this, pConn->m_center)));
-    pConn->m_center->Traits().AddTrait<IDoFSet*>(Tag::Tag_DOF_1, vpEle.back().get());
+    pConn->m_center->Traits().AddTrait<IDoFSet*>(Tag::DOF_1,
+                                                 vpEle.back().get());
 
     for (int j = 0; j < (int)pConn->m_vedges.size(); ++j) {
       vpEle.push_back(
           PtrS<KinematicsEle>(new KEleDERRefTwist(this, pConn->m_vedges[j])));
-      pConn->m_vedges[j]->Traits().AddTrait<IDoFSet*>(Tag::Tag_DOF_1,
+      pConn->m_vedges[j]->Traits().AddTrait<IDoFSet*>(Tag::DOF_1,
                                                       vpEle.back().get());
     }
   }

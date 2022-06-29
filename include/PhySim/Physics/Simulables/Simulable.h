@@ -367,7 +367,7 @@ class Simulable : public ISimulable {
 
   virtual bool IsDirty_Kinematics() const;
   virtual bool IsDirty_Mechanics() const;
-               
+
   virtual bool IsDirty_Energy() const;
   virtual bool IsDirty_Gradient() const;
   virtual bool IsDirty_Hessian() const;

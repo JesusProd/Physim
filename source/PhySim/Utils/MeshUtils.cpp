@@ -3,7 +3,7 @@
 //	PhySim library. Generic library for physical simulation.
 //
 //	Authors:
-//			Jesus Perez Rodriguez, FRL
+//			Jesus Perez Rodriguez, jesusprod @ GitHub
 //
 //==========================================================
 
@@ -751,7 +751,7 @@ bool remeshTriMesh_CVT(Mesh_Tri& meshIn,
 
   // Create new mesh and points
 
-  meshOut.Init(mVnew3D, mFnew, Discretization::Discretization_Tri3, meshIn.NodeTraits());
+  meshOut.Init(mVnew3D, mFnew, Discretization::Tri3, meshIn.NodeTraits());
 
   for (int i = 0; i < (int)meshIn.NodeTraits().size(); ++i) {
     if (meshIn.NodeTraits()[i] == traitPar)
@@ -848,12 +848,12 @@ bool parameterizeTriMesh_Shell(Mesh_Tri& mesh,
   PtrS<Simulable_ThinShell> pModel(new Simulable_ThinShell());
 
   vector<Tag> vnTraits;
-  vnTraits.push_back(Tag::Tag_Position_X);
-  vnTraits.push_back(Tag::Tag_Position_0);
-  vnTraits.push_back(Tag::Tag_Velocity);
-  Discretization D = Discretization::Discretization_Tri3;
+  vnTraits.push_back(Tag::Position_X);
+  vnTraits.push_back(Tag::Position_0);
+  vnTraits.push_back(Tag::Velocity);
+  Discretization D = Discretization::Tri3;
   pModel->SetupOptions().m_pMesh.reset(new Mesh_Tri(mVX, mF, D, vnTraits));
-  pModel->SetupOptions().m_pMesh->SetNodesTrait(mVX * 0, Tag::Tag_Velocity);
+  pModel->SetupOptions().m_pMesh->SetNodesTrait(mVX * 0, Tag::Velocity);
 
   pModel->SetupOptions().m_material.InitLinearFromYoungPoisson(young, poisson,
                                                                1e3);
@@ -877,8 +877,8 @@ bool parameterizeTriMesh_Shell(Mesh_Tri& mesh,
   // Create static problem and solver
 
   OptimSolverOptions options;
-  options.qpSolverType = QPSolverType::QP_Newton;
-  options.lSearchType = LSearchType::LSearch_WolfeStrong;
+  options.qpSolverType = QPSolverType::Newton;
+  options.lSearchType = LSearchType::WolfeStrong;
   options.lsearch_numTry = 50;
   options.lSearch_alpha = .5;
   options.tolMaxError = 1e-6;
@@ -891,17 +891,17 @@ bool parameterizeTriMesh_Shell(Mesh_Tri& mesh,
 
   const OptimState& state = pSolver->SolveFull();
 
-  if (state.m_result == OSResult::OR_SUCCESS) {
-    pModel->GetMesh().GetNodesTrait(mV0, Tag::Tag_Position_X);
+  if (state.m_result == OSResult::SUCCESS) {
+    pModel->GetMesh().GetNodesTrait(mV0, Tag::Position_X);
 
     // Rotate to XY plane
 
     Vector3d x0 = pModel->GetMesh().Faces()[0]->Nodes()[0]->Traits().Vector3d(
-        Tag::Tag_Position_X);
+        Tag::Position_X);
     Vector3d x1 = pModel->GetMesh().Faces()[0]->Nodes()[1]->Traits().Vector3d(
-        Tag::Tag_Position_X);
+        Tag::Position_X);
     Vector3d x2 = pModel->GetMesh().Faces()[0]->Nodes()[2]->Traits().Vector3d(
-        Tag::Tag_Position_X);
+        Tag::Position_X);
     Vector3d vi = (x1 - x0).normalized();
     Vector3d temp = (x2 - x0).normalized();
     Vector3d vj = vi.cross(temp).normalized();

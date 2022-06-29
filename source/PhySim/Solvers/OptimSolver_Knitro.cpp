@@ -111,7 +111,7 @@ int OptimSolver_Knitro::FunctionCallback(const int evalRequestCode,
 //	void* userParams)
 //{
 //	OptimSolver_Knitro* pSolver =
-//reinterpret_cast<OptimSolver_Knitro*>(userParams);
+// reinterpret_cast<OptimSolver_Knitro*>(userParams);
 
 //	pSolver->OnStepFinished();
 
@@ -214,7 +214,7 @@ SolveResult OptimSolver_Knitro::SolveFull() {
   // if (KTR_set_newpt_callback(kc, &OptimSolver_Knitro::NewPointCallback) != 0)
   //{
   //	logTrace(Verbosity::V1_Default, "\n[ERROR] Knitro solve: unable to setup
-  //Hessian callback"); 	return SolveResult::Failure;
+  // Hessian callback"); 	return SolveResult::Failure;
   //}
 
   // Init problem
@@ -341,7 +341,7 @@ SolveResult OptimSolver_Knitro::SolveFull() {
 //	catch (knitro::KTRException e)
 //	{
 //		logTrace(Verbosity::V1_Default, "\n[ERROR] Impossible to create
-//Knitro solver instance: %", e.message().c_str());
+// Knitro solver instance: %", e.message().c_str());
 
 //		return SolveResult::Failure;
 //	};
@@ -353,7 +353,7 @@ SolveResult OptimSolver_Knitro::SolveFull() {
 //	pSolver->setParam("derivcheck_type", KTR_DERIVCHECK_CENTRAL);
 
 //	logTrace(Verbosity::V1_Default, "\n[TRACE] Starting Knitro
-//optimization"); 	logTrace(Verbosity::V1_Default, "\n--");
+// optimization"); 	logTrace(Verbosity::V1_Default, "\n--");
 //	logTrace(Verbosity::V1_Default, "\n");
 
 //	int solveStatus = 0;
@@ -366,7 +366,7 @@ SolveResult OptimSolver_Knitro::SolveFull() {
 //	catch (exception e)
 //	{
 //		logTrace(Verbosity::V1_Default, "\n[ERROR] Impossible to solve
-//Knitro solver instance: %", e.what());
+// Knitro solver instance: %", e.what());
 
 //		return SolveResult::Failure;
 //	};
@@ -374,7 +374,7 @@ SolveResult OptimSolver_Knitro::SolveFull() {
 //	logTrace(Verbosity::V1_Default, "\n");
 //	logTrace(Verbosity::V1_Default, "\n--");
 //	logTrace(Verbosity::V1_Default, "\n[TRACE] Finished Knitro
-//optimization");
+// optimization");
 
 //	if (solveStatus == 0)
 //	{

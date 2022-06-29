@@ -17,7 +17,7 @@ using namespace Eigen;
 
 const OptimState& OptimSolver_USQP_LS::SolveStepInternal() {
   if (!this->m_isInitialized) {
-    this->m_state.m_result = OSResult::OR_FAILURE;
+    this->m_state.m_result = OSResult::FAILURE;
     return this->m_state;
   }
 
@@ -44,7 +44,7 @@ const OptimState& OptimSolver_USQP_LS::SolveStepInternal() {
   // Check if the gradient is near zero
 
   if (m_state.m_opt < this->m_options.tolMaxError) {
-    this->m_state.m_result = OSResult::OR_SUCCESS;
+    this->m_state.m_result = OSResult::SUCCESS;
     return this->m_state;
   }
 

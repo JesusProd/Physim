@@ -42,13 +42,13 @@ void Mesh_Frame::Init(const MatrixXd& mV,
                       const vector<Frame3d>& vF,
                       const vector<Tag>& vnTraits,
                       const vector<Tag>& vfTraits) {
-  Mesh_Edge::Init(mV, mE, Discretization::Discretization_Edge2, vnTraits);
+  Mesh_Edge::Init(mV, mE, Discretization::Edge2, vnTraits);
 
   // Add frames
 
   this->m_velemTraits = vfTraits;
   if (this->m_velemTraits.empty())
-    this->m_velemTraits.push_back(Tag::Tag_Frame_X);
+    this->m_velemTraits.push_back(Tag::Frame_X);
 
   for (int i = 0; i < (int)m_velems.size(); ++i) {
     for (int j = 0; j < (int)this->m_velemTraits.size(); ++j) {
@@ -135,7 +135,7 @@ void Mesh_Frame::SetRefFrames_TwistFreeRods(Tag s) {
       for (int k = 0; k < (int)vrod.size(); ++k)
         vvisited[vrod[k]->ID()] = true;
 
-      if (m_vconns[i]->m_vedges[j]->Traits().Int(Tag::Tag_Sign_0) > 0)
+      if (m_vconns[i]->m_vedges[j]->Traits().Int(Tag::Sign_0) > 0)
         ParallalelTransportForward(s, pEdge->Traits().Frame3d(s), vrod);
       else
         ParallalelTransportBackward(s, pEdge->Traits().Frame3d(s), vrod);

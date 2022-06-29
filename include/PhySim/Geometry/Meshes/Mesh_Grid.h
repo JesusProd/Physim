@@ -101,14 +101,14 @@ class Mesh_Grid : public Mesh_Hexa {
             const Vector3d& vsize,
             const Vector3i& vdims,
             const iVector& voccup,
-            Discretization D = Discretization::Discretization_Hex8,
+            Discretization D = Discretization::Hex8,
             const vector<Tag>& vs = vector<Tag>());
 
   void Init(const Vector3d& vorigin,
             const Vector3d& vsize,
             const Vector3i& vdims,
             const iVector& voccup,
-            Discretization D = Discretization::Discretization_Hex8,
+            Discretization D = Discretization::Hex8,
             const vector<Tag>& vs = vector<Tag>());
 
   virtual ~Mesh_Grid(void);
@@ -155,10 +155,10 @@ class Mesh_Grid : public Mesh_Hexa {
   }
 
   GridNodeMeta& GetNodeGridMeta(int idx) {
-    return this->m_vnodes[idx]->Trait<GridNodeMeta>(Tag::Tag_GridMeta);
+    return this->m_vnodes[idx]->Trait<GridNodeMeta>(Tag::GridMeta);
   }
   GridElemMeta& GetElemGridMeta(int idx) {
-    return this->m_velems[idx]->Trait<GridElemMeta>(Tag::Tag_GridMeta);
+    return this->m_velems[idx]->Trait<GridElemMeta>(Tag::GridMeta);
   }
 
   TopologyChanges CutMesh_Disc(Real radius,

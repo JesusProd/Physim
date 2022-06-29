@@ -40,8 +40,8 @@ class EnergyElement_DiscreteShells : public EnergyElement {
   virtual void ComputeAndStore_Gradient_Internal();
   virtual void ComputeAndStore_Hessian_Internal();
 
-  virtual Real ComputeShape(Tag s = Tag::Tag_Position_X);
-  virtual Real ComputeDihedral(Tag s = Tag::Tag_Position_X);
+  virtual Real ComputeShape(Tag s = Tag::Position_X);
+  virtual Real ComputeDihedral(Tag s = Tag::Position_X);
 
   inline virtual Real GetRestTheta() const { return this->m_theta0; }
   inline virtual void SetRestTheta(Real t0) { this->m_theta0 = t0; }

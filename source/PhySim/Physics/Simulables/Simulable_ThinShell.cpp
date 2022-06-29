@@ -81,32 +81,32 @@ void Simulable_ThinShell::CreateEnergyElements(
 
     // Add material
 
-    // pEdge->Traits().AddTrait<ParameterSet>(Semantics::Tag::Tag_Mat_0,
+    // pEdge->Traits().AddTrait<ParameterSet>(Semantics::Tag::Mat_0,
     // ParameterSet());
 
     Real Y = pOptions->m_material[ParameterSet::Param_Young];
     Real v = pOptions->m_material[ParameterSet::Param_Poisson];
     Real t = pOptions->m_material[ParameterSet::Param_Thickness];
-    /*			pEdge->Traits().ParameterSet(Semantics::Tag::Tag_Mat_0).AddParameter(ParameterSet::Param_Young,
+    /*			pEdge->Traits().ParameterSet(Semantics::Tag::Mat_0).AddParameter(ParameterSet::Param_Young,
     Y);
-    pEdge->Traits().ParameterSet(Semantics::Tag::Tag_Mat_0).AddParameter(ParameterSet::Param_Poisson,
+    pEdge->Traits().ParameterSet(Semantics::Tag::Mat_0).AddParameter(ParameterSet::Param_Poisson,
     v);
-    pEdge->Traits().ParameterSet(Semantics::Tag::Tag_Mat_0).AddParameter(ParameterSet::Param_Thickness,
+    pEdge->Traits().ParameterSet(Semantics::Tag::Mat_0).AddParameter(ParameterSet::Param_Thickness,
     t)*/
     ;
-    pEdge->Traits().AddTrait(Tag::Tag_Mat_Young, Y);
-    pEdge->Traits().AddTrait(Tag::Tag_Mat_Poisson, v);
-    pEdge->Traits().AddTrait(Tag::Tag_Mat_Thickness, t);
+    pEdge->Traits().AddTrait(Tag::Mat_Young, Y);
+    pEdge->Traits().AddTrait(Tag::Mat_Poisson, v);
+    pEdge->Traits().AddTrait(Tag::Mat_Thickness, t);
     if (pOptions->m_material.HasParameter(ParameterSet::Param_BendingK)) {
       Real kB = pOptions->m_material[ParameterSet::Param_BendingK];
-      // pEdge->Traits().ParameterSet(Tag::Tag_Mat_0).AddParameter(ParameterSet::Param_BendingK,
+      // pEdge->Traits().ParameterSet(Tag::Mat_0).AddParameter(ParameterSet::Param_BendingK,
       // kB);
 
       pEdge->Traits().AddTrait(
-          Tag::Tag_Mat_BendingK,
+          Tag::Mat_BendingK,
           pOptions->m_material[ParameterSet::Param_BendingK]);
     } else {
-      pEdge->Traits().AddTrait(Tag::Tag_Mat_BendingK, 0);
+      pEdge->Traits().AddTrait(Tag::Mat_BendingK, 0);
     }
 
     // Add element
@@ -133,8 +133,8 @@ void Simulable_ThinShell::ComputePlanarStrain(vector<vector<Matrix2d>>& vmEp) {
 
     vmEp[i].resize(numQ);
     for (int j = 0; j < numQ; ++j)
-      vmEp[i][j] = pMesh->ComputePlanarStrain(pMesh->Faces()[i], Tag::Tag_Position_0,
-                                              Tag::Tag_Position_X, vp[j]);
+      vmEp[i][j] = pMesh->ComputePlanarStrain(
+          pMesh->Faces()[i], Tag::Position_0, Tag::Position_X, vp[j]);
   }
 }
 
@@ -144,8 +144,8 @@ void Simulable_ThinShell::ComputeBendingStrain(vector<vector<Matrix2d>>& vmEb) {
   vmEb.resize(pMesh->NumElems());
 
   for (int i = 0; i < pMesh->NumElems(); ++i) {
-    MatrixXd mEb = pMesh->ComputeBendingStrain(pMesh->Faces()[i],
-                                               Tag::Tag_Position_0, Tag::Tag_Position_X);
+    MatrixXd mEb = pMesh->ComputeBendingStrain(
+        pMesh->Faces()[i], Tag::Position_0, Tag::Position_X);
 
     int numQ = this->SetupOptions()
                    .m_pQuadratures->GetValueAtDomainPoint(i)
@@ -165,7 +165,7 @@ void Simulable_ThinShell::ComputeNodalBendingStrain(vector<Matrix2d>& vmEb) {
   MatrixXd PD1, PD2;
   VectorXd PV1, PV2;
   pMesh->GetElemMatrix(mF);
-  pMesh->GetNodesTrait(mV, Tag::Tag_Position_X);
+  pMesh->GetNodesTrait(mV, Tag::Position_X);
   igl::principal_curvature(mV, mF, PD1, PD2, PV1, PV2);
 
   vmEb.resize(pMesh->NumNodes());

@@ -28,8 +28,8 @@ EnergyElement_DER_Stretch::EnergyElement_DER_Stretch(Simulable* pModel,
   this->m_pEdge = pEdge;
 
   this->m_vDoF.resize(2);
-  this->m_vDoF[0] = pEdge->GetTail()->Traits().Kinematics(Tag::Tag_DOF_0);
-  this->m_vDoF[1] = pEdge->GetHead()->Traits().Kinematics(Tag::Tag_DOF_0);
+  this->m_vDoF[0] = pEdge->GetTail()->Traits().Kinematics(Tag::DOF_0);
+  this->m_vDoF[1] = pEdge->GetHead()->Traits().Kinematics(Tag::DOF_0);
 
   this->m_vgradient.resize(6);
   this->m_mHessian.resize(6, 6);
@@ -47,11 +47,11 @@ EnergyElement_DER_Stretch::~EnergyElement_DER_Stretch(void) {
 }
 
 void EnergyElement_DER_Stretch::Init() {
-  this->m_intVolume = this->ComputeLength(Tag::Tag_Position_0);
+  this->m_intVolume = this->ComputeLength(Tag::Position_0);
 }
 
 void EnergyElement_DER_Stretch::ComputeAndStore_Energy_Internal() {
-  Vector3d vx12 = this->m_pEdge->Vector(Tag::Tag_Position_X);
+  Vector3d vx12 = this->m_pEdge->Vector(Tag::Position_X);
 
   ParameterSet& parameters =
       *this->m_pModelDER->MaterialDistribution()->GetValueAtDomainPoint(
@@ -59,8 +59,8 @@ void EnergyElement_DER_Stretch::ComputeAndStore_Energy_Internal() {
 
   double* x12 = vx12.data();
   Real L0 = this->m_intVolume;
-  Real rh = this->m_pEdge->Traits().Double(Tag::Tag_Size_0);
-  Real rw = this->m_pEdge->Traits().Double(Tag::Tag_Size_1);
+  Real rh = this->m_pEdge->Traits().Double(Tag::Size_0);
+  Real rw = this->m_pEdge->Traits().Double(Tag::Size_1);
   Real E = parameters[ParameterSet::Param_Young];
 
 #include "../include/PhySim/Utils/Auto/RodEdge3DEnergyOPT.mcg"
@@ -69,7 +69,7 @@ void EnergyElement_DER_Stretch::ComputeAndStore_Energy_Internal() {
 }
 
 void EnergyElement_DER_Stretch::ComputeAndStore_Gradient_Internal() {
-  Vector3d vx12 = this->m_pEdge->Vector(Tag::Tag_Position_X);
+  Vector3d vx12 = this->m_pEdge->Vector(Tag::Position_X);
 
   ParameterSet& parameters =
       *this->m_pModelDER->MaterialDistribution()->GetValueAtDomainPoint(
@@ -77,8 +77,8 @@ void EnergyElement_DER_Stretch::ComputeAndStore_Gradient_Internal() {
 
   double* x12 = vx12.data();
   Real L0 = this->m_intVolume;
-  Real rh = this->m_pEdge->Traits().Double(Tag::Tag_Size_0);
-  Real rw = this->m_pEdge->Traits().Double(Tag::Tag_Size_1);
+  Real rh = this->m_pEdge->Traits().Double(Tag::Size_0);
+  Real rw = this->m_pEdge->Traits().Double(Tag::Size_1);
   Real E = parameters[ParameterSet::Param_Young];
 
   VectorXd vfx(3);
@@ -89,7 +89,7 @@ void EnergyElement_DER_Stretch::ComputeAndStore_Gradient_Internal() {
 }
 
 void EnergyElement_DER_Stretch::ComputeAndStore_Hessian_Internal() {
-  Vector3d vx12 = this->m_pEdge->Vector(Tag::Tag_Position_X);
+  Vector3d vx12 = this->m_pEdge->Vector(Tag::Position_X);
 
   ParameterSet& parameters =
       *this->m_pModelDER->MaterialDistribution()->GetValueAtDomainPoint(
@@ -97,8 +97,8 @@ void EnergyElement_DER_Stretch::ComputeAndStore_Hessian_Internal() {
 
   double* x12 = vx12.data();
   Real L0 = this->m_intVolume;
-  Real rh = this->m_pEdge->Traits().Double(Tag::Tag_Size_0);
-  Real rw = this->m_pEdge->Traits().Double(Tag::Tag_Size_1);
+  Real rh = this->m_pEdge->Traits().Double(Tag::Size_0);
+  Real rw = this->m_pEdge->Traits().Double(Tag::Size_1);
   Real E = parameters[ParameterSet::Param_Young];
 
   Real mJx[3][3];
@@ -121,7 +121,7 @@ void EnergyElement_DER_Stretch::ComputeAndStore_Hessian_Internal() {
 }
 
 Real EnergyElement_DER_Stretch::ComputeLength(Tag s) {
-  if (s != Tag::Tag_Position_0 && s != Tag::Tag_Position_X)
+  if (s != Tag::Position_0 && s != Tag::Position_X)
     throw PhySim::exception("Invalid Tag: [Position_0 | Position_X]");
 
   return this->m_pEdge->VolumeBasis(s);

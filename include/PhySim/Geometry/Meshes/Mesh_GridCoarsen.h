@@ -75,7 +75,7 @@ class Mesh_GridCoarsen : public Mesh_Grid {
                    const Vector3i& vfineDims,
                    const Vector3i& vcoarDims,
                    const iVector& vfineOccu,
-                   Discretization D = Discretization::Discretization_Hex8,
+                   Discretization D = Discretization::Hex8,
                    const vector<Tag>& vs = vector<Tag>());
 
   void Init(const Vector3d& vorigin,
@@ -83,7 +83,7 @@ class Mesh_GridCoarsen : public Mesh_Grid {
             const Vector3i& vfineDims,
             const Vector3i& vcoarDims,
             const iVector& vfineOccu,
-            Discretization D = Discretization::Discretization_Hex8,
+            Discretization D = Discretization::Hex8,
             const vector<Tag>& vs = vector<Tag>());
 
   virtual ~Mesh_GridCoarsen(void);
@@ -131,18 +131,16 @@ class Mesh_GridCoarsen : public Mesh_Grid {
   PtrS<Mesh_Grid> FineMesh() { return this->m_pFineMesh; }
 
   FineNodeMeta& GetFineNodeMeta(int idx) {
-    return this->m_pFineMesh->Nodes()[idx]->Trait<FineNodeMeta>(
-        Tag::Tag_FineMeta);
+    return this->m_pFineMesh->Nodes()[idx]->Trait<FineNodeMeta>(Tag::FineMeta);
   }
   FineElemMeta& GetFineElemMeta(int idx) {
-    return this->m_pFineMesh->Elems()[idx]->Trait<FineElemMeta>(
-        Tag::Tag_FineMeta);
+    return this->m_pFineMesh->Elems()[idx]->Trait<FineElemMeta>(Tag::FineMeta);
   }
   CoarNodeMeta& GetCoarNodeMeta(int idx) {
-    return this->Nodes()[idx]->Trait<CoarNodeMeta>(Tag::Tag_CoarMeta);
+    return this->Nodes()[idx]->Trait<CoarNodeMeta>(Tag::CoarMeta);
   }
   CoarElemMeta& GetCoarElemMeta(int idx) {
-    return this->Elems()[idx]->Trait<CoarElemMeta>(Tag::Tag_CoarMeta);
+    return this->Elems()[idx]->Trait<CoarElemMeta>(Tag::CoarMeta);
   }
 
   virtual void MapGlobalIndexToSubmeshIndex_Elem(int globalIdx,

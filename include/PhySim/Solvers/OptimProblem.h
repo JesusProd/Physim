@@ -51,7 +51,7 @@ struct OptimState {
     m_opt = 0;
     m_fea = 0;
     m_countIt = 0;
-    m_result = OSResult::OR_ONGOING;
+    m_result = OSResult::ONGOING;
     m_minImprCount = 0;
     m_minStepCount = 0;
     m_steepest = false;

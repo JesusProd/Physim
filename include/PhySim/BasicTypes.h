@@ -18,90 +18,84 @@ using namespace Eigen;
 ///////////////////////////////////////////////////////////////////////////////////////
 
 enum struct Discretization {
-  Discretization_Nodes,
-  Discretization_Edge2,  // Linear edge
-  Discretization_Edge3,  // Quadratic edge
-  Discretization_Tri3,   // Linear triangle
-  Discretization_Tri6,   // Quadratic triangle
-  Discretization_Quad4,  // Bilinear quadrangle
-  Discretization_Quad8,  // Quadratic quadrangle
-  Discretization_Tet4,   // Linear tetrahedron
-  Discretization_Tet10,  // Quadratic tetrahedron
-  Discretization_Hex8,   // Trilinear hexahedron
-  Discretization_Hex20   // Triquadratic hexahedron
+  Nodes,
+  Edge2,  // Linear edge
+  Edge3,  // Quadratic edge
+  Tri3,   // Linear triangle
+  Tri6,   // Quadratic triangle
+  Quad4,  // Bilinear quadrangle
+  Quad8,  // Quadratic quadrangle
+  Tet4,   // Linear tetrahedron
+  Tet10,  // Quadratic tetrahedron
+  Hex8,   // Trilinear hexahedron
+  Hex20   // Triquadratic hexahedron
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
 enum struct LSSolverType {
-  LS_EigenLU,
-  LS_EigenCG,
-  LS_EigenLDLT,
-  LS_BiCGSTAB,
-  LS_CholmodLDLT,
-  LS_SSparseSPQR,
-  LS_CUDALU,
-  LS_CUDAQR,
-  LS_CUDASC
+  EigenLU,
+  EigenCG,
+  EigenLDLT,
+  BiCGSTAB,
+  CholmodLDLT,
+  SSparseSPQR,
+  CUDALU,
+  CUDAQR,
+  CUDASC
 };
 
 enum struct QPSolverType {
-  QP_Steepest,
-  QP_Newton,
-  QP_LBFGS,
-  QP_Gauss,
-  QP_BFGS_D,
-  QP_BFGS_I,
+  Steepest,
+  Newton,
+  LBFGS,
+  Gauss,
+  BFGS_D,
+  BFGS_I,
 };
 
-enum struct LSearchType {
-  LSearch_None,
-  LSearch_Simple,
-  LSearch_Armijo,
-  LSearch_WolfeWeak,
-  LSearch_WolfeStrong
-};
+enum struct LSearchType { None, Simple, Armijo, WolfeWeak, WolfeStrong };
 
-enum struct StepSelType { SS_LineSearch, SS_TrustRegion };
+enum struct StepSelType { LineSearch, TrustRegion };
 
 enum struct LSResult {
-  LS_SUCCESS,   // Generic success
-  LS_FAILURE,   // Generic failure
-  LS_SINGULAR,  // Singular matrix (rank deficient)
-  LS_NONSPD,    // Non symmetric positive definite
-  LS_MAXITER,   // Maximum iterations reached
+  SUCCESS,   // Generic success
+  FAILURE,   // Generic failure
+  SINGULAR,  // Singular matrix (rank deficient)
+  NONSPD,    // Non symmetric positive definite
+  MAXITER,   // Maximum iterations reached
 };
 
 enum struct OSResult {
-  OR_ONGOING,  // Not finished yet
-  OR_SUCCESS,  // Generic success
-  OR_MINSTEP,  // Minimum step reached
-  OR_MINIMPR,  // Minimum improvement
-  OR_FAILURE,  // Generic failure
-  OR_MAXITER,  // Maximum iterations reached
-  OR_NONDESC   // Non-descendent step found
+  ONGOING,  // Not finished yet
+  SUCCESS,  // Generic success
+  MINSTEP,  // Minimum step reached
+  MINIMPR,  // Minimum improvement
+  FAILURE,  // Generic failure
+  MAXITER,  // Maximum iterations reached
+  NONDESC   // Non-descendent step found
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
 enum struct DirtyFlags : int {
-  Dirty_None = 0,
-  Dirty_Energy = 1,
-  Dirty_Gradient = 2,
-  Dirty_Hessian = 4,
-  Dirty_Mass = 8,
-  Dirty_Rest = 16,
-  Dirty_Fixed = 32,
-  Dirty_DuDp = 64,
-  Dirty_DgDp = 128,
-  Dirty_DmDp = 256,
-  Dirty_DxDp = 512,
-  Dirty_Constraint = 1024,
-  Dirty_Jacobian = 2048,
-  Dirty_Kinematics = 4096,
-  Dirty_Mechanics = 8192,
-  Dirty_DMvDt = 16384,
-  Dirty_All = 65535
+  None = 0,
+  Energy = 1,
+  Gradient = 2,
+  Hessian = 4,
+  Mass = 8,
+  Rest = 16,
+  Fixed = 32,
+  DuDp = 64,
+  DgDp = 128,
+  DmDp = 256,
+  DxDp = 512,
+  Constraint = 1024,
+  Jacobian = 2048,
+  Kinematics = 4096,
+  Mechanics = 8192,
+  DMvDt = 16384,
+  All = 65535
 };
 
 inline DirtyFlags operator|(DirtyFlags a, DirtyFlags b) {
@@ -123,149 +117,149 @@ inline DirtyFlags operator~(DirtyFlags a) {
 enum struct Tag {
   // DoF
 
-  Tag_DOF_0,
-  Tag_DOF_1,
-  Tag_DOF_2,
+  DOF_0,
+  DOF_1,
+  DOF_2,
 
   // General DoF traits
 
-  Tag_Position_X,
-  Tag_Position_0,
-  Tag_Velocity,
-  Tag_Mass,
-  Tag_Force,
+  Position_X,
+  Position_0,
+  Velocity,
+  Mass,
+  Force,
 
   // Deformation traits
 
-  Tag_DxD0_X,
-  Tag_DxD0_V,
+  DxD0_X,
+  DxD0_V,
 
   // Specific trait kinematics
 
-  Tag_Quat_0,
-  Tag_Quat_X,
-  Tag_Quat_V,  // Quaternion
-  Tag_Rotat_0,
-  Tag_Rotat_X,
-  Tag_Rotat_V,  // Rotations
-  Tag_Euler_0,
-  Tag_Euler_X,
-  Tag_Euler_V,  // Euler angles
-  Tag_Angle_0,
-  Tag_Angle_X,
-  Tag_Angle_V,  // Angle
-  Tag_Frame_0,
-  Tag_Frame_X,
-  Tag_Frame_V,  // Frame3d
-  Tag_Twist_0,
-  Tag_Twist_X,
-  Tag_Twist_V,  // Twist
+  Quat_0,
+  Quat_X,
+  Quat_V,  // Quaternion
+  Rotat_0,
+  Rotat_X,
+  Rotat_V,  // Rotations
+  Euler_0,
+  Euler_X,
+  Euler_V,  // Euler angles
+  Angle_0,
+  Angle_X,
+  Angle_V,  // Angle
+  Frame_0,
+  Frame_X,
+  Frame_V,  // Frame3d
+  Twist_0,
+  Twist_X,
+  Twist_V,  // Twist
 
   // Even more specific trait kinematics
 
-  Tag_Normal_0,
-  Tag_Normal_X,
-  Tag_Normal_V,  // Normal
-  Tag_Tangent_0,
-  Tag_Tangent_X,
-  Tag_Tangent_V,  // Tagent
-  Tag_Binormal_0,
-  Tag_Binormal_X,
-  Tag_Binormal_V,  // Binormal
+  Normal_0,
+  Normal_X,
+  Normal_V,  // Normal
+  Tangent_0,
+  Tangent_X,
+  Tangent_V,  // Tagent
+  Binormal_0,
+  Binormal_X,
+  Binormal_V,  // Binormal
 
   // Mesh related
 
-  Tag_Embedding_0,
-  Tag_Embedding_1,
-  Tag_Embedding_2,
-  Tag_GridMeta,
-  Tag_FineMeta,
-  Tag_CoarMeta,
-  Tag_CoarCoordEle,
+  Embedding_0,
+  Embedding_1,
+  Embedding_2,
+  GridMeta,
+  FineMeta,
+  CoarMeta,
+  CoarCoordEle,
 
   // Dimensions (radii, etc.)
 
-  Tag_Size_0,
-  Tag_Size_1,
-  Tag_Size_2,
+  Size_0,
+  Size_1,
+  Size_2,
 
   // Signs (directions, etc.)
 
-  Tag_Sign_0,
-  Tag_Sign_1,
-  Tag_Sign_2,
+  Sign_0,
+  Sign_1,
+  Sign_2,
 
   // Material traits
 
-  Tag_Mat_Model,
-  Tag_Mat_Young,
-  Tag_Mat_Poisson,
-  Tag_Mat_Lame1,
-  Tag_Mat_Lame2,
-  Tag_Mat_Bulk,
-  Tag_Mat_Mooney01,
-  Tag_Mat_Mooney10,
-  Tag_Mat_Radius1,
-  Tag_Mat_Radius0,
-  Tag_Mat_Thickness,
-  Tag_Mat_StretchK,
-  Tag_Mat_BendingK,
-  Tag_Mat_ShearK,
-  Tag_Mat_Density,
-  Tag_Mat_0,
-  Tag_Mat_1,
-  Tag_Mat_2,
+  Mat_Model,
+  Mat_Young,
+  Mat_Poisson,
+  Mat_Lame1,
+  Mat_Lame2,
+  Mat_Bulk,
+  Mat_Mooney01,
+  Mat_Mooney10,
+  Mat_Radius1,
+  Mat_Radius0,
+  Mat_Thickness,
+  Mat_StretchK,
+  Mat_BendingK,
+  Mat_ShearK,
+  Mat_Density,
+  Mat_0,
+  Mat_1,
+  Mat_2,
 
   // Mesh types
 
-  Tag_SurfaceMesh_0,
-  Tag_SurfaceMesh_1,
-  Tag_SurfaceMesh_2,
-  Tag_VisualMesh_0,
-  Tag_VisualMesh_1,
-  Tag_VisualMesh_2,
-  Tag_ContactMesh_0,
-  Tag_ContactMesh_1,
-  Tag_ContactMesh_2,
-  Tag_CoarseMesh_0,
-  Tag_CoarseMesh_1,
-  Tag_CoarseMesh_3,
-  Tag_FineMesh_0,
-  Tag_FineMesh_1,
-  Tag_FineMesh_2,
+  SurfaceMesh_0,
+  SurfaceMesh_1,
+  SurfaceMesh_2,
+  VisualMesh_0,
+  VisualMesh_1,
+  VisualMesh_2,
+  ContactMesh_0,
+  ContactMesh_1,
+  ContactMesh_2,
+  CoarseMesh_0,
+  CoarseMesh_1,
+  CoarseMesh_3,
+  FineMesh_0,
+  FineMesh_1,
+  FineMesh_2,
 
   // Mesh visualization?
 
-  Tag_Color_0,
-  Tag_Color_1,
-  Tag_Color_2,
-  Tag_Label_0,
-  Tag_Label_1,
-  Tag_Label_2,
-  Tag_TexUV_0,
-  Tag_TexUV_1,
-  Tag_TexUV_2,
-  Tag_Alpha_0,
-  Tag_Alpha_1,
-  Tag_Alpha_2,
+  Color_0,
+  Color_1,
+  Color_2,
+  Label_0,
+  Label_1,
+  Label_2,
+  TexUV_0,
+  TexUV_1,
+  TexUV_2,
+  Alpha_0,
+  Alpha_1,
+  Alpha_2,
 
   // Whole models
 
-  Tag_Model_0,
-  Tag_Model_1,
-  Tag_Model_2,
+  Model_0,
+  Model_1,
+  Model_2,
 
   // Custom semantics
 
-  Tag_Custom_0,
-  Tag_Custom_1,
-  Tag_Custom_2,
-  Tag_Custom_3,
-  Tag_Custom_4,
-  Tag_Custom_5,
-  Tag_Custom_6,
-  Tag_Custom_7,
-  Tag_Custom_8,
+  Custom_0,
+  Custom_1,
+  Custom_2,
+  Custom_3,
+  Custom_4,
+  Custom_5,
+  Custom_6,
+  Custom_7,
+  Custom_8,
 
   // Tag ADMM subsystem and CHen
   Tag_ADMMSubsystem,

@@ -91,8 +91,9 @@ SolveResult LinearSolver_SSparseSPQR::SolveInternal(MatrixSd& mA,
     //{
     //	if (fabs(vd(j)) < sinThres)
     //	{
-    //		logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear solve: singular
-    //matrix, value: %.6e", vd(j)); 		jumpSin = true; 		break;
+    //		logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear solve:
+    // singular matrix, value: %.6e", vd(j)); 		jumpSin = true;
+    // break;
     //	}
     //}
 
@@ -116,12 +117,12 @@ SolveResult LinearSolver_SSparseSPQR::SolveInternal(MatrixSd& mA,
     // if (this->m_options.regSign > 0 && dot < 0.0)
     //{
     //	logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear solve: indefinite
-    //matrix, dot: %.6e", dot); 	continue;
+    // matrix, dot: %.6e", dot); 	continue;
     //}
     // if (this->m_options.regSign < 0 && dot > 0.0)
     //{
     //	logTrace(Verbosity::V1_Default, "[FAILURE] Linear solve: indefinite
-    //matrix, dot: %.6e", dot); 	continue;
+    // matrix, dot: %.6e", dot); 	continue;
     //}
 
     // Check exact solution
@@ -181,7 +182,7 @@ SolveResult LinearSolver_SSparseSPQR::SolveInternal(MatrixSd& mA,
 //		if (i != 0)
 //		{
 //			logTrace(Verbosity::V1_Default, "\n[INFO] Regularizing
-//system, iteration %u", i);
+// system, iteration %u", i);
 
 //			mA += mR*regThres*pow(10, i - 1);
 //		}
@@ -196,8 +197,9 @@ SolveResult LinearSolver_SSparseSPQR::SolveInternal(MatrixSd& mA,
 
 //		if (solver.info() != Success)
 //		{
-//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear solve:
-//error during computation"); 			continue; // Iterate again
+//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear
+// solve: error during computation"); 			continue; // Iterate
+// again
 //		}
 
 //		vx = solver.solve(vb);
@@ -206,8 +208,9 @@ SolveResult LinearSolver_SSparseSPQR::SolveInternal(MatrixSd& mA,
 
 //		if (solver.info() != Success)
 //		{
-//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear solve:
-//error during calculation"); 			continue; // Iterate again
+//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear
+// solve: error during calculation"); 			continue; // Iterate
+// again
 //		}
 
 //		// Check indefiniteness
@@ -216,13 +219,13 @@ SolveResult LinearSolver_SSparseSPQR::SolveInternal(MatrixSd& mA,
 
 //		if (this->options.regSign > 0 && dot < 0.0)
 //		{
-//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear solve:
-//indefinite matrix, dot: %.6e", dot); 			continue;
+//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear
+// solve: indefinite matrix, dot: %.6e", dot); 			continue;
 //		}
 //		if (this->options.regSign < 0 && dot > 0.0)
 //		{
-//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear solve:
-//indefinite matrix, dot: %.6e", dot); 			continue;
+//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear
+// solve: indefinite matrix, dot: %.6e", dot); 			continue;
 //		}
 
 //		// Check exact solution
@@ -231,14 +234,15 @@ SolveResult LinearSolver_SSparseSPQR::SolveInternal(MatrixSd& mA,
 //		double absError = (vb - vbTest).norm();
 //		double relError = absError / vb.norm();
 //		if (absError > this->options.maxError && relError >
-//this->options.maxError)
+// this->options.maxError)
 //		{
-//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear solve:
-//inexact solution, error: %.6e", relError); 			continue; // Iterate again
+//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear
+// solve: inexact solution, error: %.6e", relError);
+// continue; // Iterate again
 //		}
 
-//		logTrace(Verbosity::V1_Default, "\n[SUCCESS] Linear solve: solved
-//using Conjugate GradientFull after %i regularization steps", i);
+//		logTrace(Verbosity::V1_Default, "\n[SUCCESS] Linear solve:
+// solved using Conjugate GradientFull after %i regularization steps", i);
 
 //		return SolveResult::Success;
 //	}
@@ -265,7 +269,7 @@ SolveResult LinearSolver_SSparseSPQR::SolveInternal(MatrixSd& mA,
 //		if (i != 0)
 //		{
 //			logTrace(Verbosity::V1_Default, "\n[INFO] Regularizing
-//system, iteration %u", i);
+// system, iteration %u", i);
 
 //			mA += mR*regThres*pow(10, i - 1);
 //		}
@@ -278,8 +282,10 @@ SolveResult LinearSolver_SSparseSPQR::SolveInternal(MatrixSd& mA,
 
 //		if (solver.info() != Success)
 //		{
-//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear solve:
-//error during factorization"); 			continue; // Iterate again
+//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear
+// solve: error during factorization"); 			continue; //
+// Iterate
+// again
 //		}
 
 //		vx = solver.solve(vb);
@@ -288,8 +294,9 @@ SolveResult LinearSolver_SSparseSPQR::SolveInternal(MatrixSd& mA,
 
 //		if (solver.info() != Success)
 //		{
-//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear solve:
-//error during calculation"); 			continue; // Iterate again
+//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear
+// solve: error during calculation"); 			continue; // Iterate
+// again
 //		}
 
 //		// Check indefiniteness
@@ -298,13 +305,13 @@ SolveResult LinearSolver_SSparseSPQR::SolveInternal(MatrixSd& mA,
 
 //		if (this->options.regSign > 0 && dot < 0.0)
 //		{
-//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear solve:
-//indefinite matrix, dot: %.6e", dot); 			continue;
+//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear
+// solve: indefinite matrix, dot: %.6e", dot); 			continue;
 //		}
 //		if (this->options.regSign < 0 && dot > 0.0)
 //		{
-//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear solve:
-//indefinite matrix, dot: %.6e", dot); 			continue;
+//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear
+// solve: indefinite matrix, dot: %.6e", dot); 			continue;
 //		}
 
 //		// Check exact solution
@@ -313,14 +320,15 @@ SolveResult LinearSolver_SSparseSPQR::SolveInternal(MatrixSd& mA,
 //		double absError = (vb - vbTest).norm();
 //		double relError = absError / vb.norm();
 //		if (absError > this->options.maxError && relError >
-//this->options.maxError)
+// this->options.maxError)
 //		{
-//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear solve:
-//inexact solution, error: %.6e", relError); 			continue; // Iterate again
+//			logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear
+// solve: inexact solution, error: %.6e", relError);
+// continue; // Iterate again
 //		}
 
-//		logTrace(Verbosity::V1_Default, "\n[SUCCESS] Linear solve: solved
-//using LU Factorization after %i regularization steps", i);
+//		logTrace(Verbosity::V1_Default, "\n[SUCCESS] Linear solve:
+// solved using LU Factorization after %i regularization steps", i);
 
 //		return SolveResult::Success;
 //	}

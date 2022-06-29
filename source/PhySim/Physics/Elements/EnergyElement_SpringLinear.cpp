@@ -24,8 +24,8 @@ EnergyElement_SpringLinear::EnergyElement_SpringLinear(Simulable* pModel,
   this->m_pEdge = pEdge;
 
   this->m_vDoF.resize(2);
-  this->m_vDoF[0] = pEdge->GetTail()->Traits().Kinematics(Tag::Tag_DOF_0);
-  this->m_vDoF[1] = pEdge->GetHead()->Traits().Kinematics(Tag::Tag_DOF_0);
+  this->m_vDoF[0] = pEdge->GetTail()->Traits().Kinematics(Tag::DOF_0);
+  this->m_vDoF[1] = pEdge->GetHead()->Traits().Kinematics(Tag::DOF_0);
 
   this->m_vgradient.resize(3);
   this->m_mHessian.resize(3, 3);
@@ -42,7 +42,7 @@ void EnergyElement_SpringLinear::Init() {
 }
 
 Real EnergyElement_SpringLinear::ComputeRestLength() {
-  return this->m_pEdge->VolumeBasis(Tag::Tag_Position_0);
+  return this->m_pEdge->VolumeBasis(Tag::Position_0);
 }
 
 void EnergyElement_SpringLinear::ComputeAndStore_Energy_Internal() {
@@ -132,8 +132,8 @@ void EnergyElement_SpringLinear::ComputeAndStore_Hessian_Internal() {
 //	int offset1 = this->m_vDoF[1]->Offset();
 
 //	assembleSparseMatrix(vtotalHessian, offset0, offset0,
-//m_mHessian.block<3, 3>(0, 0)); 	assembleSparseMatrix(vtotalHessian, offset1,
-//offset1, m_mHessian.block<3, 3>(0, 0));
+// m_mHessian.block<3, 3>(0, 0)); 	assembleSparseMatrix(vtotalHessian,
+// offset1, offset1, m_mHessian.block<3, 3>(0, 0));
 
 //	if (offset0 > offset1)
 //	{

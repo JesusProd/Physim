@@ -107,12 +107,12 @@ LSResult LinearSolver_BiCGSTAB::SolveInternal(MatrixSd& mA,
     // if (this->m_options.regSign > 0 && dot < 0.0)
     //{
     //	logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear solve: indefinite
-    //matrix, dot: %.6e", dot); 	continue;
+    // matrix, dot: %.6e", dot); 	continue;
     //}
     // if (this->m_options.regSign < 0 && dot > 0.0)
     //{
     //	logTrace(Verbosity::V1_Default, "[FAILURE] Linear solve: indefinite
-    //matrix, dot: %.6e", dot); 	continue;
+    // matrix, dot: %.6e", dot); 	continue;
     //}
 
     //// Check exact solution
@@ -124,7 +124,7 @@ LSResult LinearSolver_BiCGSTAB::SolveInternal(MatrixSd& mA,
     // this->m_options.maxError)
     //{
     //	logTrace(Verbosity::V1_Default, "\n[FAILURE] Linear solve: inexact
-    //solution, error: %.6e", relError); 	continue; // Iterate again
+    // solution, error: %.6e", relError); 	continue; // Iterate again
     //}
 
     IOUtils::logTrace(Verbosity::V1_Default,
@@ -132,10 +132,10 @@ LSResult LinearSolver_BiCGSTAB::SolveInternal(MatrixSd& mA,
                       "%d, Iter: %d, Error: %f",
                       i, m_solver.iterations(), m_solver.error());
 
-    return LSResult::LS_SUCCESS;
+    return LSResult::SUCCESS;
   }
 
-  return LSResult::LS_FAILURE;
+  return LSResult::FAILURE;
 }
 
 LSResult LinearSolver_BiCGSTAB::SolveInternal(MatrixSd& mA,
@@ -143,7 +143,7 @@ LSResult LinearSolver_BiCGSTAB::SolveInternal(MatrixSd& mA,
                                               MatrixXd& mX) {
   throw new exception("Not implemented");
 
-  return LSResult::LS_FAILURE;
+  return LSResult::FAILURE;
 }
 
 LSResult LinearSolver_BiCGSTAB::SolveInternal(MatrixSd& mA,
@@ -151,7 +151,7 @@ LSResult LinearSolver_BiCGSTAB::SolveInternal(MatrixSd& mA,
                                               MatrixSd& mX) {
   throw new exception("Not implemented");
 
-  return LSResult::LS_FAILURE;
+  return LSResult::FAILURE;
 }
 
 }  // namespace PhySim

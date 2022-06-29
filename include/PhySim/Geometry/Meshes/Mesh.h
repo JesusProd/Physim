@@ -37,21 +37,21 @@ class Mesh : public Geometry {
   Mesh(const Mesh& toCopy);
   Mesh(int numN,
        const MatrixXi& mE,
-       PhySim::Discretization D = Discretization::Discretization_Tri3,
+       PhySim::Discretization D = Discretization::Tri3,
        const vector<Tag>& vnTraits = vector<Tag>());
   Mesh(const MatrixXd& mN,
        const MatrixXi& mE,
-       PhySim::Discretization D = Discretization::Discretization_Tri3,
+       PhySim::Discretization D = Discretization::Tri3,
        const vector<Tag>& vnTraits = vector<Tag>());
   virtual ~Mesh(void);
 
   void Init(int numN,
             const MatrixXi& mE,
-            PhySim::Discretization D = Discretization::Discretization_Tri3,
+            PhySim::Discretization D = Discretization::Tri3,
             const vector<Tag>& vnTraits = vector<Tag>());
   void Init(const MatrixXd& mN,
             const MatrixXi& mE,
-            PhySim::Discretization D = Discretization::Discretization_Tri3,
+            PhySim::Discretization D = Discretization::Tri3,
             const vector<Tag>& vnTraits = vector<Tag>());
 
   virtual Mesh* Clone() const { return new Mesh(*this); }
@@ -97,8 +97,8 @@ class Mesh : public Geometry {
 
   virtual void GetElemMatrix(MatrixXi& mE) const;
 
-  virtual Real VolumeBasis(Tag s = Tag::Tag_Position_X) const override;
-  virtual Vector3d Centroid(Tag s = Tag::Tag_Position_X) const override;
+  virtual Real VolumeBasis(Tag s = Tag::Position_X) const override;
+  virtual Vector3d Centroid(Tag s = Tag::Position_X) const override;
   virtual Matrix3d Rotation(Tag f, Tag t) const override;
 
   // Topology

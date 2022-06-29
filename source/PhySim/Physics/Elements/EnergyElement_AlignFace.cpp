@@ -22,7 +22,7 @@ EnergyElement_AlignFace::EnergyElement_AlignFace(Simulable* pModel,
     : EnergyElement(pModel) {
   this->m_vDoF.resize(3);
   for (int i = 0; i < 3; ++i)
-    this->m_vDoF[i] = pFace->Nodes()[i]->Traits().Kinematics(Tag::Tag_DOF_0);
+    this->m_vDoF[i] = pFace->Nodes()[i]->Traits().Kinematics(Tag::DOF_0);
 
   this->m_vgradient.resize(9);
   this->m_mHessian.resize(9, 9);
@@ -37,7 +37,7 @@ EnergyElement_AlignFace::~EnergyElement_AlignFace() {
 void EnergyElement_AlignFace::Init() {
   // Set target normal
 
-  this->m_vnt = this->m_pFace->Normal(Tag::Tag_Position_X);
+  this->m_vnt = this->m_pFace->Normal(Tag::Position_X);
 
   // Set align stiffness
 
@@ -48,7 +48,7 @@ void EnergyElement_AlignFace::ComputeAndStore_Energy_Internal() {
   this->m_energy = 0;
 
   MatrixXd mX;
-  this->m_pFace->GetNodesTrait(mX, Tag::Tag_Position_X);
+  this->m_pFace->GetNodesTrait(mX, Tag::Position_X);
   VectorXd x0 = mX.row(0);
   VectorXd x1 = mX.row(1);
   VectorXd x2 = mX.row(2);
@@ -66,7 +66,7 @@ void EnergyElement_AlignFace::ComputeAndStore_Energy_Internal() {
 
 void EnergyElement_AlignFace::ComputeAndStore_Gradient_Internal() {
   MatrixXd mX;
-  this->m_pFace->GetNodesTrait(mX, Tag::Tag_Position_X);
+  this->m_pFace->GetNodesTrait(mX, Tag::Position_X);
   VectorXd x0 = mX.row(0);
   VectorXd x1 = mX.row(1);
   VectorXd x2 = mX.row(2);
@@ -88,7 +88,7 @@ void EnergyElement_AlignFace::ComputeAndStore_Gradient_Internal() {
 
 void EnergyElement_AlignFace::ComputeAndStore_Hessian_Internal() {
   MatrixXd mX;
-  this->m_pFace->GetNodesTrait(mX, Tag::Tag_Position_X);
+  this->m_pFace->GetNodesTrait(mX, Tag::Position_X);
   VectorXd x0 = mX.row(0);
   VectorXd x1 = mX.row(1);
   VectorXd x2 = mX.row(2);

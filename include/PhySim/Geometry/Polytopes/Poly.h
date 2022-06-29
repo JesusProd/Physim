@@ -38,11 +38,11 @@ class Poly : public Geometry {
   virtual inline void SetMesh(Mesh* m) { m_pMesh = m; }
   virtual inline Mesh* GetMesh() const { return m_pMesh; }
 
-  virtual Real VolumeBasis(Tag s = Tag::Tag_Position_X) const override {
+  virtual Real VolumeBasis(Tag s = Tag::Position_X) const override {
     return this->VolumeSpace(s);
   };
-  virtual Real VolumeSpace(Tag s = Tag::Tag_Position_X) const override;
-  virtual Vector3d Centroid(Tag s = Tag::Tag_Position_X) const override;
+  virtual Real VolumeSpace(Tag s = Tag::Position_X) const override;
+  virtual Vector3d Centroid(Tag s = Tag::Position_X) const override;
   virtual Matrix3d Rotation(Tag f, Tag t) const;
   virtual MatrixXd DeformationGradient(const VectorXd& vp, Tag f, Tag t) const;
   virtual void MassProperties(Tag s,
@@ -128,7 +128,7 @@ class Poly : public Geometry {
    * @param s The space in which node position is interpolated.
    */
   virtual PtrS<Embedding> ComputeEmbedding(const Vector3d& vx,
-                                           Tag s = Tag::Tag_Position_X) override;
+                                           Tag s = Tag::Position_X) override;
 
   /**
    * Compute the projected node corresponding to the specified
@@ -141,7 +141,7 @@ class Poly : public Geometry {
    * @param s The space in which node position is interpolated.
    */
   virtual PtrS<Embedding> ComputeProjection(const Vector3d& vx,
-                                            Tag s = Tag::Tag_Position_X) override;
+                                            Tag s = Tag::Position_X) override;
 };
 
 }  // namespace PhySim
